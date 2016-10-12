@@ -12,7 +12,11 @@
 //
 // RESUME WITH:
 //
-//
+// Display total time in each circle
+// Determine if a timer is currecntly running, change color and text accordingly
+// Tapping a cell starts a timer
+// Tap to stop
+// Don't allow other timers to be tapped when another timer is running
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
