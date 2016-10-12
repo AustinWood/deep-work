@@ -1,3 +1,5 @@
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 //
 //  HomeViewController.swift
 //  Deep Work
@@ -5,13 +7,32 @@
 //  Created by Austin Wood on 2016-10-11.
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
-
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//
+// RESUME WITH:
+//
+//
+//
+//////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
 // Replace fatalError with something friendlier
 //
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//
+// REFERENCES:
+//
+// Dates in Swift 3
+// http://www.globalnerdy.com/2016/08/18/how-to-work-with-dates-and-times-in-swift-3-part-1-dates-calendars-and-datecomponents/
+//
+// Calculating time intervals
+// http://stackoverflow.com/questions/27182023/getting-the-difference-between-two-nsdates-in-months-days-hours-minutes-seconds
+//
+//////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
 import UIKit
@@ -35,6 +56,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedObjectContext = appDelegate.persistentContainer.viewContext
         loadData()
+        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
     }
     
     ///////////////////////////
@@ -44,7 +66,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count + 1
     }
-    
+    var firstLoad = true
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         ///// You want to do cell setup in the cell subclass itself!!! /////
@@ -99,6 +121,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(alertController, animated: true, completion: nil)
     }
     
+    //////////////////////////////
+    ///// ADD FAKE TIME DATA /////
+    //////////////////////////////
+    
+    func addTimeData() {
+        for project in projects {
+            let newTimeLog = TimeLog(context: (self.managedObjectContext)!)
+            newTimeLog.project = project
+            newTimeLog.startTime = Date(timeIntervalSinceNow: -20 * 60)
+            newTimeLog.stopTime = Date(timeIntervalSinceNow: -5 * 60)
+            newTimeLog.note = "Here's my note"
+            do { try self.managedObjectContext?.save() }
+            catch { fatalError("Error storing data") }
+        }
+        self.loadData()
+    }
+    
     /////////////////////
     ///// LOAD DATA /////
     /////////////////////
@@ -121,6 +160,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
         print("project: \(project.title!)")
         print("timeLogArray: \(timeLogArray)")
+        
+        var totalTime = TimeInterval()
+        for entry in timeLogArray {
+            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
+            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+        }
+        print("totalTime: \(totalTime)")
     }
     
 }

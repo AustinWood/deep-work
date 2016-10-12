@@ -15,8 +15,8 @@ extension TimeLog {
         return NSFetchRequest<TimeLog>(entityName: "WorkEntry");
     }
 
-    @NSManaged public var startTime: NSDate?
-    @NSManaged public var stopTime: NSDate?
+    @NSManaged public var startTime: Date?
+    @NSManaged public var stopTime: Date?
     @NSManaged public var note: String?
     @NSManaged public var project: Project?
 
