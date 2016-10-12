@@ -55,6 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.titleLabel.text = ""
         } else {
             let project = projects[indexPath.row]
+            getTimeLog(project: project)
             cell.timeLabel.text = "1h 7m"
             cell.titleLabel.text = project.title
         }
@@ -112,6 +113,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         catch {
             fatalError("Error retrieving grocery item")
         }
+    }
+    
+    func getTimeLog(project: Project) { // private
+        print("func getTimeLog()")
+        let timeLog = TimeLog(context: managedObjectContext!)
+        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+        print("project: \(project.title!)")
+        print("timeLogArray: \(timeLogArray)")
     }
     
 }
