@@ -74,6 +74,7 @@
                                             <constraint firstAttribute="bottom" secondItem="cpX-X3-cWv" secondAttribute="bottom" id="y5m-q5-BhD"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="timeLabel" destination="faH-aZ-OKO" id="zrc-6q-yQV"/>
                                             <outlet property="titleLabel" destination="wWk-fx-hYD" id="TUh-EF-BtG"/>
                                         </connections>
                                     </collectionViewCell>

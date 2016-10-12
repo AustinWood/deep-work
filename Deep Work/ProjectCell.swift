@@ -11,5 +11,6 @@ import UIKit
 class ProjectCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
 }
