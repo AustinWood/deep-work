@@ -81,8 +81,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.titleLabel.text = ""
         } else {
             let project = projects[indexPath.row]
-            getTimeLog(project: project)
-            cell.timeLabel.text = "1h 7m"
+            let timeLog = TimeLog(context: managedObjectContext!)
+            let totalTime = timeLog.totalTime(project: project, moc: managedObjectContext!)
+            cell.timeLabel.text = "\(Int(totalTime))"
             cell.titleLabel.text = project.title
         }
         
@@ -158,19 +159,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    func getTimeLog(project: Project) { // private
-        print("func getTimeLog()")
-        let timeLog = TimeLog(context: managedObjectContext!)
-        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
-        print("project: \(project.title!)")
-        print("timeLogArray: \(timeLogArray)")
-        
-        var totalTime = TimeInterval()
-        for entry in timeLogArray {
-            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
-            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-        }
-        print("totalTime: \(totalTime)")
-    }
+//    func getTimeLog(project: Project) { // private
+//        print("func getTimeLog()")
+//        let timeLog = TimeLog(context: managedObjectContext!)
+//        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+//        print("project: \(project.title!)")
+//        print("timeLogArray: \(timeLogArray)")
+//        
+//        var totalTime = TimeInterval()
+//        for entry in timeLogArray {
+//            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
+//            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+//        }
+//        print("totalTime: \(totalTime)")
+//    }
     
 }

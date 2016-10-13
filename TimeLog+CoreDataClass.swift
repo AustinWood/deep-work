@@ -24,5 +24,16 @@ public class TimeLog: NSManagedObject {
             fatalError("Error getting time log")
         }
     }
+    
+    func totalTime(project: Project, moc: NSManagedObjectContext) -> TimeInterval {
+        let timeLog = TimeLog(context: managedObjectContext!)
+        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+        var totalTime = TimeInterval()
+        for entry in timeLogArray {
+            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
+            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+        }
+        return totalTime
+    }
 
 }
