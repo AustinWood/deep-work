@@ -42,6 +42,44 @@ public class TimeLog: NSManagedObject {
         return (totalTime, inProgress)
     }
     
+    func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        var totalTime = TimeInterval()
+        for project in projects {
+            let timeLog = TimeLog(context: managedObjectContext!)
+            let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+            for entry in timeLogArray {
+                let isToday = Calendar.current.isDateInToday(entry.startTime!)
+                if isToday && entry.stopTime != nil {
+                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                }
+            }
+        }
+        return totalTime
+    }
+    
+    func weekTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        
+        let startOfThisWeek = Date().startOfWeek
+        let calendar = NSCalendar.current
+        var dateComponents = DateComponents()
+        dateComponents.day = 7
+        let startOfNextWeek = calendar.date(byAdding: dateComponents, to: startOfThisWeek)
+        
+        var totalTime = TimeInterval()
+        for project in projects {
+            let timeLog = TimeLog(context: managedObjectContext!)
+            let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+            for entry in timeLogArray {
+                if entry.stopTime != nil {
+                    if entry.startTime! >= startOfThisWeek && entry.startTime! < startOfNextWeek! {
+                        totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                    }
+                }
+            }
+        }
+        return totalTime
+    }
+    
     func inProgress(project: Project, moc: NSManagedObjectContext) -> Bool {
         var inProgress = false
         let timeLog = TimeLog(context: managedObjectContext!)
@@ -66,4 +104,14 @@ public class TimeLog: NSManagedObject {
     }
     
 
+}
+
+
+extension Date {
+    struct Calendar {
+        static let iso8601 = NSCalendar(calendarIdentifier: NSCalendar.Identifier.ISO8601)!
+    }
+    var startOfWeek: Date {
+        return Calendar.iso8601.date(from: Calendar.iso8601.components([.yearForWeekOfYear, .weekOfYear], from: self as Date))!
+    }
 }

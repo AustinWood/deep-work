@@ -163,33 +163,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Calculate Daily and Weekly Totals
     
-    func calculateTotalTime() {
-        var totalTimeToday = TimeInterval()
-        for project in projects {
-            let timeLog = TimeLog(context: moc!)
-            let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc!)
-            totalTimeToday += totalTime
-        }
-        let displayInterval = FormatTime().timeIntervalToString(timeInterval: totalTimeToday)
-        todayLabel.text = displayInterval
+    func updateTimeLabels() {
+        
+        let timeLog = TimeLog(context: moc!)
+        
+        let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
+        let todayFormatted = FormatTime().timeIntervalToString(timeInterval: todayTime)
+        todayLabel.text = todayFormatted
+        
+        let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
+        let weekFormatted = FormatTime().timeIntervalToString(timeInterval: weekTime)
+        weekLabel.text = weekFormatted
     }
-    
-    func calculateWeekTime() {
-        print("calculateWeekTime()")
-        //let tommorrow = Date(timeIntervalSinceNow: 60 * 60 * 24)
-        //print(tommorrow.startOfWeek.description)
-        let calendar = NSCalendar.current
-        let date = Date()
-        print("startOfThisWeek")
-        let startOfThisWeek = date.startOfWeek
-        print(startOfThisWeek)
-        print("startOfNextWeek")
-        var dateComponents = DateComponents()
-        dateComponents.day = 7
-        let startOfNextWeek = calendar.date(byAdding: dateComponents, to: startOfThisWeek)
-        print(startOfNextWeek)
-    }
-    
     
     //////////////////////////////////////////////
     // MARK:- Load Data
@@ -205,8 +190,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             fatalError("Error retrieving grocery item")
         }
         checkForRunningTimers()
-        calculateTotalTime()
-        calculateWeekTime()
+        updateTimeLabels()
     }
     
     //////////////////////////////////////////////
@@ -225,14 +209,4 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.loadData()
     }
     
-}
-
-
-extension Date {
-    struct Calendar {
-        static let iso8601 = NSCalendar(calendarIdentifier: NSCalendar.Identifier.ISO8601)!
-    }
-    var startOfWeek: Date {
-        return Calendar.iso8601.date(from: Calendar.iso8601.components([.yearForWeekOfYear, .weekOfYear], from: self as Date))!
-    }
 }
