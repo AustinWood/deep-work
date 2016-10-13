@@ -27,6 +27,8 @@ class ProjectCell: UICollectionViewCell {
         
         if inProgress {
             circleView.backgroundColor = CustomColor.red
+        } else {
+            circleView.backgroundColor = CustomColor.ashGrey
         }
     }
     

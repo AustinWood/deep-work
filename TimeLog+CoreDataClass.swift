@@ -39,5 +39,29 @@ public class TimeLog: NSManagedObject {
         }
         return (totalTime, inProgress)
     }
+    
+    func inProgress(project: Project, moc: NSManagedObjectContext) -> Bool {
+        var inProgress = false
+        let timeLog = TimeLog(context: managedObjectContext!)
+        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+        for entry in timeLogArray {
+            if entry.stopTime == nil {
+                inProgress = true
+            }
+        }
+        return inProgress
+    }
+    
+    func getCurrentEntry(project: Project, moc: NSManagedObjectContext) -> TimeLog {
+        let timeLog = TimeLog(context: managedObjectContext!)
+        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+        for entry in timeLogArray {
+            if entry.stopTime == nil {
+                return entry
+            }
+        }
+        return TimeLog()
+    }
+    
 
 }

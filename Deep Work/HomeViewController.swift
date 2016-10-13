@@ -12,9 +12,6 @@
 //
 // RESUME WITH:
 //
-// Determine if a timer is currecntly running, change color and text accordingly
-// Tapping a cell starts a timer
-// Tap to stop
 // Don't allow other timers to be tapped when another timer is running
 //
 //////////////////////////////////////////////////
@@ -22,6 +19,7 @@
 //
 // TO DO:
 //
+// Animate invalid request if trying to start a timer while another is running
 // Replace fatalError with something friendlier
 //
 //////////////////////////////////////////////////
@@ -48,6 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var moc: NSManagedObjectContext?
     var projects = [Project]()
+    var timerRunning = false
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -89,7 +88,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(projects[indexPath.row].title!) tapped")
+        let currentProject = projects[indexPath.row]
+        startStopTimer(project: currentProject)
     }
     
     //////////////////////////////////////////////
@@ -119,6 +119,45 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     //////////////////////////////////////////////
+    // MARK:- Start / Stop time log
+    
+    func startStopTimer(project: Project) {
+        let timeLog = TimeLog(context: moc!)
+        if timeLog.inProgress(project: project, moc: moc!) {
+            print("Stop the timer")
+            let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
+            currentEntry.stopTime = Date()
+            //currentEntry.note = "Here's my note"
+        } else if !timerRunning {
+            // Start a new time log
+            print("Start the timer")
+            let newTimeLog = TimeLog(context: (self.moc)!)
+            newTimeLog.project = project
+            newTimeLog.startTime = Date()
+        } else {
+            // Animate invalid tap
+            print("You can't start a timer while another is in progress!")
+        }
+        do { try self.moc?.save() }
+        catch { fatalError("Error storing data") }
+        self.loadData()
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Check for running timers
+    
+    func checkForRunningTimers() {
+        timerRunning = false
+        for project in projects {
+            let timeLog = TimeLog(context: moc!)
+            if timeLog.inProgress(project: project, moc: moc!)  {
+                timerRunning = true
+            }
+        }
+    }
+    
+    
+    //////////////////////////////////////////////
     // MARK:- Load Data
     
     func loadData() {
@@ -131,6 +170,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         catch {
             fatalError("Error retrieving grocery item")
         }
+        checkForRunningTimers()
     }
     
     //////////////////////////////////////////////
