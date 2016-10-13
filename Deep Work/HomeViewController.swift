@@ -12,17 +12,22 @@
 //
 // RESUME WITH:
 //
-// Calculate total time for this week
+// Put tap recognizer on circle, not cell (use tag)
+// Long press to start/stop
+// Short press opens details
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
+// Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 // Give projects an Area parent
 // Animate invalid request if trying to start a timer while another is running
 // Replace fatalError with something friendlier
+// Refactor time summations
+// Professional design
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
