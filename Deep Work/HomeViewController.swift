@@ -12,13 +12,16 @@
 //
 // RESUME WITH:
 //
-// Don't allow other timers to be tapped when another timer is running
+// Calculate total time for today
+// Calculate total time for this week
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
+// Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
+// Give projects an Area parent
 // Animate invalid request if trying to start a timer while another is running
 // Replace fatalError with something friendlier
 //
