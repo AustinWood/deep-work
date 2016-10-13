@@ -44,7 +44,7 @@ import CoreData
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // Core Data
-    var managedObjectContext: NSManagedObjectContext?
+    var moc: NSManagedObjectContext?
     
     //let projects = ["Ruby", "iOS", "Object Oriented Design", "Deep Work", "Trekkie Calculator", "GamingU", "Stack Overflow", "Project Euler"]
     var projects = [Project]()
@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // Core Data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        managedObjectContext = appDelegate.persistentContainer.viewContext
+        moc = appDelegate.persistentContainer.viewContext
         loadData()
         Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
     }
@@ -72,17 +72,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
-        
-        ///// You want to do cell setup in the cell subclass itself!!! /////
-        
-        let project = projects[indexPath.row]
-        let timeLog = TimeLog(context: managedObjectContext!)
-        let totalTime = timeLog.totalTime(project: project, moc: managedObjectContext!)
-        let formatTime = initializeFormatTime(intervalToFormat: totalTime)
-        let displayInterval = formatTime.timeIntervalToString()
-        cell.timeLabel.text = displayInterval
-        cell.titleLabel.text = project.title
-        
+        let currentProject = projects[indexPath.row]
+        cell.configureCell(project: currentProject, moc: moc!)
         return cell
     }
     
@@ -102,9 +93,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             if alertController.textFields?.first?.text != "" {
                 projectTitle = alertController.textFields?.first?.text
             } else { return }
-            let newProject = Project(context: (self?.managedObjectContext)!)
+            let newProject = Project(context: (self?.moc)!)
             newProject.title = projectTitle
-            do { try self?.managedObjectContext?.save() }
+            do { try self?.moc?.save() }
             catch { fatalError("Error storing data") }
             self?.loadData()
         }
@@ -123,12 +114,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func addTimeData() {
         for project in projects {
-            let newTimeLog = TimeLog(context: (self.managedObjectContext)!)
+            let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
             newTimeLog.startTime = Date(timeIntervalSinceNow: -20 * 60)
             newTimeLog.stopTime = Date(timeIntervalSinceNow: -5 * 60)
             newTimeLog.note = "Here's my note"
-            do { try self.managedObjectContext?.save() }
+            do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
         }
         self.loadData()
@@ -141,7 +132,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func loadData() {
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
-            let results = try managedObjectContext?.fetch(request)
+            let results = try moc?.fetch(request)
             projects = results!
             collectionView.reloadData()
         }
@@ -150,9 +141,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    func initializeFormatTime(intervalToFormat: TimeInterval) -> FormatTime {
-        let formatTime = FormatTime(timeInterval: intervalToFormat)
-        return formatTime
-    }
+//    func initializeFormatTime(intervalToFormat: TimeInterval) -> FormatTime {
+//        let formatTime = FormatTime(timeInterval: intervalToFormat)
+//        return formatTime
+//    }
     
 }

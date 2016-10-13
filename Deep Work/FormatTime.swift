@@ -10,9 +10,9 @@ import Foundation
 
 struct FormatTime {
     
-    var timeInterval: TimeInterval
+    //var
     
-    func timeIntervalToString() -> String {
+    func timeIntervalToString(timeInterval: TimeInterval) -> String {
         let time = NSInteger(timeInterval)
         let seconds = time % 60
         let minutes = (time / 60) % 60
