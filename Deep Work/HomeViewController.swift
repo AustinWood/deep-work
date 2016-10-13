@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Display total time in each circle
 // Determine if a timer is currecntly running, change color and text accordingly
 // Tapping a cell starts a timer
 // Tap to stop
@@ -68,44 +67,34 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     ///////////////////////////
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return projects.count + 1
+        return projects.count
     }
-    var firstLoad = true
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
-        ///// You want to do cell setup in the cell subclass itself!!! /////
-        //cell.titleLabel.text = projects[indexPath.row]
         
-        if indexPath.row == projects.count {
-            cell.timeLabel.text = "+"
-            cell.titleLabel.text = ""
-        } else {
-            let project = projects[indexPath.row]
-            let timeLog = TimeLog(context: managedObjectContext!)
-            let totalTime = timeLog.totalTime(project: project, moc: managedObjectContext!)
-            let formatTime = initializeFormatTime(intervalToFormat: totalTime)
-            let displayInterval = formatTime.timeIntervalToString()
-            cell.timeLabel.text = displayInterval
-            cell.titleLabel.text = project.title
-        }
+        ///// You want to do cell setup in the cell subclass itself!!! /////
+        
+        let project = projects[indexPath.row]
+        let timeLog = TimeLog(context: managedObjectContext!)
+        let totalTime = timeLog.totalTime(project: project, moc: managedObjectContext!)
+        let formatTime = initializeFormatTime(intervalToFormat: totalTime)
+        let displayInterval = formatTime.timeIntervalToString()
+        cell.timeLabel.text = displayInterval
+        cell.titleLabel.text = project.title
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(projects[indexPath.row]) tapped")
-        
-        // Add a new item
-        if indexPath.row == projects.count {
-            addProject()
-        }
     }
     
     ///////////////////////
     ///// ADD PROJECT /////
     ///////////////////////
     
-    func addProject() {
+    @IBAction func addPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (action: UIAlertAction) in
@@ -160,21 +149,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             fatalError("Error retrieving grocery item")
         }
     }
-    
-//    func getTimeLog(project: Project) { // private
-//        print("func getTimeLog()")
-//        let timeLog = TimeLog(context: managedObjectContext!)
-//        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
-//        print("project: \(project.title!)")
-//        print("timeLogArray: \(timeLogArray)")
-//        
-//        var totalTime = TimeInterval()
-//        for entry in timeLogArray {
-//            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
-//            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-//        }
-//        print("totalTime: \(totalTime)")
-//    }
     
     func initializeFormatTime(intervalToFormat: TimeInterval) -> FormatTime {
         let formatTime = FormatTime(timeInterval: intervalToFormat)
