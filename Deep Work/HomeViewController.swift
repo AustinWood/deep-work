@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Calculate total time for today
 // Calculate total time for this week
 //
 //////////////////////////////////////////////////
@@ -175,6 +174,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         todayLabel.text = displayInterval
     }
     
+    func calculateWeekTime() {
+        print("calculateWeekTime()")
+        //let tommorrow = Date(timeIntervalSinceNow: 60 * 60 * 24)
+        //print(tommorrow.startOfWeek.description)
+        let calendar = NSCalendar.current
+        let date = Date()
+        print("startOfThisWeek")
+        let startOfThisWeek = date.startOfWeek
+        print(startOfThisWeek)
+        print("startOfNextWeek")
+        var dateComponents = DateComponents()
+        dateComponents.day = 7
+        let startOfNextWeek = calendar.date(byAdding: dateComponents, to: startOfThisWeek)
+        print(startOfNextWeek)
+    }
+    
     
     //////////////////////////////////////////////
     // MARK:- Load Data
@@ -191,6 +206,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         checkForRunningTimers()
         calculateTotalTime()
+        calculateWeekTime()
     }
     
     //////////////////////////////////////////////
@@ -209,4 +225,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.loadData()
     }
     
+}
+
+
+extension Date {
+    struct Calendar {
+        static let iso8601 = NSCalendar(calendarIdentifier: NSCalendar.Identifier.ISO8601)!
+    }
+    var startOfWeek: Date {
+        return Calendar.iso8601.date(from: Calendar.iso8601.components([.yearForWeekOfYear, .weekOfYear], from: self as Date))!
+    }
 }
