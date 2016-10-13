@@ -83,7 +83,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let project = projects[indexPath.row]
             let timeLog = TimeLog(context: managedObjectContext!)
             let totalTime = timeLog.totalTime(project: project, moc: managedObjectContext!)
-            cell.timeLabel.text = "\(Int(totalTime))"
+            let formatTime = initializeFormatTime(intervalToFormat: totalTime)
+            let displayInterval = formatTime.timeIntervalToString()
+            cell.timeLabel.text = displayInterval
             cell.titleLabel.text = project.title
         }
         
@@ -173,5 +175,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        }
 //        print("totalTime: \(totalTime)")
 //    }
+    
+    func initializeFormatTime(intervalToFormat: TimeInterval) -> FormatTime {
+        let formatTime = FormatTime(timeInterval: intervalToFormat)
+        return formatTime
+    }
     
 }
