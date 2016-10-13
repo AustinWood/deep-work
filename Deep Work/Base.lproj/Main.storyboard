@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="152" width="150" height="198"/>
+                                        <rect key="frame" x="40" y="152" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>
@@ -74,6 +74,7 @@
                                             <constraint firstAttribute="bottom" secondItem="cpX-X3-cWv" secondAttribute="bottom" id="y5m-q5-BhD"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="circleView" destination="Fyp-wf-ed9" id="xqN-9O-gcQ"/>
                                             <outlet property="timeLabel" destination="faH-aZ-OKO" id="zrc-6q-yQV"/>
                                             <outlet property="titleLabel" destination="wWk-fx-hYD" id="TUh-EF-BtG"/>
                                         </connections>
@@ -158,11 +159,11 @@
                             <constraint firstItem="1ci-ub-AwF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="C6c-JM-WKX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1ci-ub-AwF" secondAttribute="bottom" id="Chv-ZV-vVk"/>
                             <constraint firstAttribute="trailing" secondItem="ibJ-4e-nOC" secondAttribute="trailing" id="FPT-N4-X3S"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qkV-A2-N8D" secondAttribute="bottom" constant="22" id="IWa-Ir-dxa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qkV-A2-N8D" secondAttribute="bottom" constant="12" id="IWa-Ir-dxa"/>
                             <constraint firstItem="ibJ-4e-nOC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W6O-Ot-KXq"/>
                             <constraint firstItem="1ci-ub-AwF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YyA-ZB-oJj"/>
                             <constraint firstAttribute="trailing" secondItem="1ci-ub-AwF" secondAttribute="trailing" id="cyr-fk-tDF"/>
-                            <constraint firstItem="qkV-A2-N8D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="22" id="dyM-60-7P4"/>
+                            <constraint firstItem="qkV-A2-N8D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="dyM-60-7P4"/>
                             <constraint firstItem="ibJ-4e-nOC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="thf-NP-LaE"/>
                         </constraints>
                     </view>

@@ -43,28 +43,39 @@ import CoreData
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    // Core Data
-    var moc: NSManagedObjectContext?
+    //////////////////////////////////////////////
+    // MARK:- Properties
     
-    //let projects = ["Ruby", "iOS", "Object Oriented Design", "Deep Work", "Trekkie Calculator", "GamingU", "Stack Overflow", "Project Euler"]
+    var moc: NSManagedObjectContext?
     var projects = [Project]()
+    
+    //////////////////////////////////////////////
+    // MARK:- Outlets
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //////////////////////////////////////////////
+    // MARK:- Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setColors()
+        initializeCoreData()
+    }
+    
+    func setColors() {
         self.view.backgroundColor = CustomColor.blue
-        
-        // Core Data
+    }
+    
+    func initializeCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         moc = appDelegate.persistentContainer.viewContext
         loadData()
         Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
     }
     
-    ///////////////////////////
-    ///// COLLECTION VIEW /////
-    ///////////////////////////
+    //////////////////////////////////////////////
+    // MARK:- Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count
@@ -78,12 +89,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("\(projects[indexPath.row]) tapped")
+        print("\(projects[indexPath.row].title!) tapped")
     }
     
-    ///////////////////////
-    ///// ADD PROJECT /////
-    ///////////////////////
+    //////////////////////////////////////////////
+    // MARK:- Add New Project
     
     @IBAction func addPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
@@ -108,26 +118,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(alertController, animated: true, completion: nil)
     }
     
-    //////////////////////////////
-    ///// ADD FAKE TIME DATA /////
-    //////////////////////////////
-    
-    func addTimeData() {
-        for project in projects {
-            let newTimeLog = TimeLog(context: (self.moc)!)
-            newTimeLog.project = project
-            newTimeLog.startTime = Date(timeIntervalSinceNow: -20 * 60)
-            newTimeLog.stopTime = Date(timeIntervalSinceNow: -5 * 60)
-            newTimeLog.note = "Here's my note"
-            do { try self.moc?.save() }
-            catch { fatalError("Error storing data") }
-        }
-        self.loadData()
-    }
-    
-    /////////////////////
-    ///// LOAD DATA /////
-    /////////////////////
+    //////////////////////////////////////////////
+    // MARK:- Load Data
     
     func loadData() {
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
@@ -141,9 +133,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-//    func initializeFormatTime(intervalToFormat: TimeInterval) -> FormatTime {
-//        let formatTime = FormatTime(timeInterval: intervalToFormat)
-//        return formatTime
-//    }
+    //////////////////////////////////////////////
+    // MARK:- Add Fake Time Data
+    
+    func addTimeData() {
+        for project in projects {
+            let newTimeLog = TimeLog(context: (self.moc)!)
+            newTimeLog.project = project
+            newTimeLog.startTime = Date(timeIntervalSinceNow: -20 * 60)
+            newTimeLog.stopTime = Date(timeIntervalSinceNow: -5 * 60)
+            newTimeLog.note = "Here's my note"
+            do { try self.moc?.save() }
+            catch { fatalError("Error storing data") }
+        }
+        self.loadData()
+    }
     
 }

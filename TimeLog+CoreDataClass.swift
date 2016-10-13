@@ -25,15 +25,19 @@ public class TimeLog: NSManagedObject {
         }
     }
     
-    func totalTime(project: Project, moc: NSManagedObjectContext) -> TimeInterval {
+    func totalTime(project: Project, moc: NSManagedObjectContext) -> (TimeInterval, Bool) {
+        var inProgress = false
         let timeLog = TimeLog(context: managedObjectContext!)
         let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
         var totalTime = TimeInterval()
         for entry in timeLogArray {
-            //let interval = Calendar.current.dateComponents([.minute], from: entry.startTime!, to: entry.startTime!).minute ?? 0
-            totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+            if entry.stopTime != nil {
+                totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+            } else {
+                inProgress = true
+            }
         }
-        return totalTime
+        return (totalTime, inProgress)
     }
 
 }
