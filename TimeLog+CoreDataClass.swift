@@ -32,7 +32,9 @@ public class TimeLog: NSManagedObject {
         var totalTime = TimeInterval()
         for entry in timeLogArray {
             if entry.stopTime != nil {
-                totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                if Calendar.current.isDateInToday(entry.startTime!) {
+                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                }
             } else {
                 inProgress = true
             }

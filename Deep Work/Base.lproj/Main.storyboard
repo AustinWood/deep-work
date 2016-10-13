@@ -169,6 +169,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="1ci-ub-AwF" id="NOh-k9-3wH"/>
+                        <outlet property="todayLabel" destination="BDB-FQ-9uM" id="G3p-3z-aLS"/>
+                        <outlet property="weekLabel" destination="vsl-Ui-cP6" id="mEQ-ST-CD8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

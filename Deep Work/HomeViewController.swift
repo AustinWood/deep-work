@@ -54,6 +54,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Outlets
     
+    @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //////////////////////////////////////////////
@@ -159,6 +161,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    //////////////////////////////////////////////
+    // MARK:- Calculate Daily and Weekly Totals
+    
+    func calculateTotalTime() {
+        var totalTimeToday = TimeInterval()
+        for project in projects {
+            let timeLog = TimeLog(context: moc!)
+            let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc!)
+            totalTimeToday += totalTime
+        }
+        let displayInterval = FormatTime().timeIntervalToString(timeInterval: totalTimeToday)
+        todayLabel.text = displayInterval
+    }
+    
     
     //////////////////////////////////////////////
     // MARK:- Load Data
@@ -174,6 +190,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             fatalError("Error retrieving grocery item")
         }
         checkForRunningTimers()
+        calculateTotalTime()
     }
     
     //////////////////////////////////////////////
@@ -183,8 +200,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         for project in projects {
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
-            newTimeLog.startTime = Date(timeIntervalSinceNow: -20 * 60)
-            newTimeLog.stopTime = Date(timeIntervalSinceNow: -5 * 60)
+            newTimeLog.startTime = Date(timeIntervalSinceNow: -1700 * 60)
+            newTimeLog.stopTime = Date(timeIntervalSinceNow: -1650 * 60)
             newTimeLog.note = "Here's my note"
             do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
