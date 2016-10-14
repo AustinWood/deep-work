@@ -70,6 +70,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         setColors()
         initializeCoreData()
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        self.view.addGestureRecognizer(gestureRecognizer)
     }
     
     func setColors() {
@@ -81,6 +84,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         moc = appDelegate.persistentContainer.viewContext
         loadData()
         //Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
+    }
+    
+    /// TAPPIN'
+    
+    func tap(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("you tapped!")
     }
     
     //////////////////////////////////////////////
