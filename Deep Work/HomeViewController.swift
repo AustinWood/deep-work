@@ -21,6 +21,7 @@
 //
 // TO DO:
 //
+// Update timer (and day/week total) while timer running
 // Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 // Give projects an Area parent
@@ -79,7 +80,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         moc = appDelegate.persistentContainer.viewContext
         loadData()
-        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
+        //Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
     }
     
     //////////////////////////////////////////////
