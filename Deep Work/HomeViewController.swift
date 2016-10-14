@@ -71,8 +71,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         setColors()
         initializeCoreData()
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
-        self.view.addGestureRecognizer(gestureRecognizer)
+//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+//        self.view.addGestureRecognizer(gestureRecognizer)
     }
     
     func setColors() {
