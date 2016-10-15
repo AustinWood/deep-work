@@ -12,9 +12,12 @@
 //
 // RESUME WITH:
 //
-// Update timer (and day/week total) while timer running
-//
+// See responses on Stack Overflow...
 // Put tap recognizer on circle, not cell (use tag?)
+//
+// Bug: Don't repeat updateLabel() when no timer running
+//
+//
 // Long press to start/stop
 // Short press opens details
 //
@@ -101,8 +104,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
         cell.configureCell(project: currentProject, moc: moc!)
-        //let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
-        //cell.circleView.addGestureRecognizer(gestureRecognizer)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        cell.circleView.addGestureRecognizer(gestureRecognizer)
         return cell
     }
     
@@ -187,6 +190,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
+        //print("func updateTimeLabels(\(Date()))")
         let timeLog = TimeLog(context: moc!)
         
         collectionView.reloadData()

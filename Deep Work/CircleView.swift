@@ -20,4 +20,9 @@ class CircleView: UIView {
         //self.clipsToBounds = true
     }
     
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let center = CGPoint(x: bounds.size.width, y: bounds.size.height)
+        return pow(center.x-point.x, 2) + pow(center.y - point.y, 2) < pow(bounds.size.width/2, 2)
+    }
+    
 }
