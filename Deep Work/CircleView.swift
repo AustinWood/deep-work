@@ -12,11 +12,12 @@ class CircleView: UIView {
     
     override func awakeFromNib() {
         //print(self.frame.size.width)
-        layer.cornerRadius = 75 //self.frame.size.width/2
+        //layer.cornerRadius = self.bounds.size.width/2
         self.backgroundColor = CustomColor.ashGrey
         layer.borderWidth = 4
         layer.borderColor = UIColor.black.cgColor
-        
+        //layer.masksToBounds = true
+        //self.clipsToBounds = true
     }
     
 }

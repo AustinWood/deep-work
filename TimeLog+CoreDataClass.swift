@@ -37,6 +37,7 @@ public class TimeLog: NSManagedObject {
                 }
             } else {
                 inProgress = true
+                totalTime += (Date().timeIntervalSince(entry.startTime!))
             }
         }
         return (totalTime, inProgress)
@@ -48,9 +49,13 @@ public class TimeLog: NSManagedObject {
             let timeLog = TimeLog(context: managedObjectContext!)
             let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
             for entry in timeLogArray {
-                let isToday = Calendar.current.isDateInToday(entry.startTime!)
-                if isToday && entry.stopTime != nil {
-                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                if entry.stopTime != nil {
+                    let isToday = Calendar.current.isDateInToday(entry.startTime!)
+                    if isToday {
+                        totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+                    }
+                } else {
+                    totalTime += (Date().timeIntervalSince(entry.startTime!))
                 }
             }
         }
@@ -74,6 +79,8 @@ public class TimeLog: NSManagedObject {
                     if entry.startTime! >= startOfThisWeek && entry.startTime! < startOfNextWeek! {
                         totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
                     }
+                } else {
+                    totalTime += (Date().timeIntervalSince(entry.startTime!))
                 }
             }
         }

@@ -16,7 +16,8 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
-        
+        circleView.layer.cornerRadius = self.frame.size.width / 2
+        circleView.clipsToBounds = true
         titleLabel.text = project.title
         
         let timeLog = TimeLog(context: moc)

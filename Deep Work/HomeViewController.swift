@@ -12,7 +12,9 @@
 //
 // RESUME WITH:
 //
-// Put tap recognizer on circle, not cell (use tag)
+// Update timer (and day/week total) while timer running
+//
+// Put tap recognizer on circle, not cell (use tag?)
 // Long press to start/stop
 // Short press opens details
 //
@@ -21,13 +23,13 @@
 //
 // TO DO:
 //
-// Update timer (and day/week total) while timer running
+// Only current entry (not project) updates by second; project, day, week by minute
 // Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 // Give projects an Area parent
 // Animate invalid request if trying to start a timer while another is running
 // Replace fatalError with something friendlier
-// Refactor time summations
+// Refactor time summations (todayTime and weekTime DRY)
 // Professional design
 //
 //////////////////////////////////////////////////
@@ -52,9 +54,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Properties
     
-    var moc: NSManagedObjectContext?
+    var moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var projects = [Project]()
-    var timerRunning = false
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -67,29 +68,26 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Initialization
     
     override func viewDidLoad() {
+        print("func viewDidLoad()")
         super.viewDidLoad()
         setColors()
-        initializeCoreData()
-        
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
-//        self.view.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("func viewWillAppear()")
+        loadData()
     }
     
     func setColors() {
         self.view.backgroundColor = CustomColor.blue
     }
     
-    func initializeCoreData() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        moc = appDelegate.persistentContainer.viewContext
-        loadData()
-        //Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.addTimeData), userInfo: nil, repeats: false)
-    }
-    
-    /// TAPPIN'
+    //////////////////////////////////////////////
+    // MARK:- Gesture recognizer
     
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
-        print("you tapped!")
+        print("func tap()")
+        print(gestureRecognizer.location(in: self.view))
     }
     
     //////////////////////////////////////////////
@@ -103,6 +101,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
         cell.configureCell(project: currentProject, moc: moc!)
+        //let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        //cell.circleView.addGestureRecognizer(gestureRecognizer)
         return cell
     }
     
@@ -115,6 +115,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Add New Project
     
     @IBAction func addPressed(_ sender: AnyObject) {
+        print("func addPressed()")
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (action: UIAlertAction) in
@@ -128,12 +129,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             catch { fatalError("Error storing data") }
             self?.loadData()
         }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
-        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -141,6 +139,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Start / Stop time log
     
     func startStopTimer(project: Project) {
+        print("func startStopTimer()")
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
             print("Stop the timer")
@@ -165,12 +164,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Check for running timers
     
+    var timerRunning = false
+    var lastStartTime: Date?
+    var timer = Timer()
+    
     func checkForRunningTimers() {
+        print("func checkForRunningTimers()")
         timerRunning = false
+        lastStartTime = nil
+        timer.invalidate()
         for project in projects {
             let timeLog = TimeLog(context: moc!)
             if timeLog.inProgress(project: project, moc: moc!)  {
                 timerRunning = true
+                lastStartTime = timeLog.getCurrentEntry(project: project, moc: moc!).startTime
+                Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true);
             }
         }
     }
@@ -179,8 +187,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
-        
         let timeLog = TimeLog(context: moc!)
+        
+        collectionView.reloadData()
         
         let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().timeIntervalToString(timeInterval: todayTime)
@@ -195,11 +204,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Load Data
     
     func loadData() {
+        print("func loadData()")
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
             let results = try moc?.fetch(request)
             projects = results!
-            collectionView.reloadData()
         }
         catch {
             fatalError("Error retrieving grocery item")
@@ -212,6 +221,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Add Fake Time Data
     
     func addTimeData() {
+        print("func addTimeData()")
         for project in projects {
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project

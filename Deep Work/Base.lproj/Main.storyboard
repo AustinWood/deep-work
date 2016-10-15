@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="152" width="150" height="198"/>
+                                        <rect key="frame" x="112.66666666666667" y="152" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>
@@ -71,6 +71,7 @@
                                             <constraint firstItem="cpX-X3-cWv" firstAttribute="leading" secondItem="z7j-mK-Lhc" secondAttribute="leading" id="DTz-aR-3BP"/>
                                             <constraint firstAttribute="trailing" secondItem="cpX-X3-cWv" secondAttribute="trailing" id="Yab-3j-hkA"/>
                                             <constraint firstItem="cpX-X3-cWv" firstAttribute="top" secondItem="z7j-mK-Lhc" secondAttribute="top" id="ow9-fJ-b6h"/>
+                                            <constraint firstItem="Fyp-wf-ed9" firstAttribute="width" secondItem="z7j-mK-Lhc" secondAttribute="width" id="pEj-0v-mFA"/>
                                             <constraint firstAttribute="bottom" secondItem="cpX-X3-cWv" secondAttribute="bottom" id="y5m-q5-BhD"/>
                                         </constraints>
                                         <connections>
@@ -118,12 +119,14 @@
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oSU-b8-Y3F">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6h 2m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDB-FQ-9uM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="6h 2m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDB-FQ-9uM">
+                                                        <frame key="frameInset" width="120" height="25"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32h 41m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-Ui-cP6">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="32h 41m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-Ui-cP6">
+                                                        <frame key="frameInset" minY="35" width="120" height="23"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
