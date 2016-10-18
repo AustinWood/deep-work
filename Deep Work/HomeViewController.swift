@@ -12,15 +12,16 @@
 //
 // RESUME WITH:
 //
-// Long press to start/stop
-// Short press opens details
+// Display session time and day total when timer is running (2 time labels)
+// Only current session label updates by second; project, day, week by minute
+// Views at top of screen switch between displaying project time as day total or week total
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
-// Only current entry (not project) updates by second; project, day, week by minute
+// Display details
 // Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 // Give projects an Area parent
