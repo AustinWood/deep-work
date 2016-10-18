@@ -155,15 +155,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self?.loadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(addAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(addAction)
         present(alertController, animated: true, completion: nil)
     }
     
     func editProject(project: Project) {
         let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project.title!):", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
-        let addAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
             let projectTitle: String?
             if alertController.textFields?.first?.text != "" {
                 projectTitle = alertController.textFields?.first?.text
@@ -175,8 +175,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self?.loadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(addAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
     }
     
