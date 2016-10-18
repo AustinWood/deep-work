@@ -21,16 +21,20 @@ class ProjectCell: UICollectionViewCell {
         titleLabel.text = project.title
         
         let timeLog = TimeLog(context: moc)
-        let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc)
+        //let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc)
+        let totalTime = timeLog.todayTime(projects: [project], moc: moc)
         
         let displayInterval = FormatTime().timeIntervalToString(timeInterval: totalTime)
         timeLabel.text = displayInterval
         
-        if inProgress {
-            circleView.backgroundColor = CustomColor.red
-        } else {
+        let currentSessionLength = timeLog.currentSessionLength(project: project, moc: moc)
+        if currentSessionLength == 0 {
             circleView.backgroundColor = UIColor.black
+        } else {
+            circleView.backgroundColor = CustomColor.red
+            print("Current session: \(currentSessionLength)")
         }
+        
     }
     
 }

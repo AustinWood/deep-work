@@ -21,6 +21,7 @@
 //
 // TO DO:
 //
+// Remove leading zero from minutes in timeFormatter
 // Display details
 // Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
