@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Display session time and day total when timer is running (2 time labels)
 // Only current session label updates by second; project, day, week by minute
 // Views at top of screen switch between displaying project time as day total or week total
 //
@@ -72,7 +71,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("func viewDidLoad()")
         super.viewDidLoad()
         addGestureRecognizers()
-        
+        self.view.backgroundColor = UIColor.black
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.5
         //lpgr.delegate = self
@@ -86,9 +85,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //addTimeData()
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
+//    override var preferredStatusBarStyle : UIStatusBarStyle {
+//        return UIStatusBarStyle.lightContent
+//    }
     
     func addGestureRecognizers() {
         let dayRecognizer = UITapGestureRecognizer(target: self, action: #selector(dayPressed(_:)))
@@ -247,11 +246,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
-        let todayFormatted = FormatTime().timeIntervalToString(timeInterval: todayTime)
+        let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
         
         let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
-        let weekFormatted = FormatTime().timeIntervalToString(timeInterval: weekTime)
+        let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
         weekLabel.text = weekFormatted
     }
     
