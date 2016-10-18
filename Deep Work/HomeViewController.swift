@@ -199,7 +199,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             if timeLog.inProgress(project: project, moc: moc!)  {
                 timerRunning = true
                 lastStartTime = timeLog.getCurrentEntry(project: project, moc: moc!).startTime
-                Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true);
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true);
             }
         }
     }
