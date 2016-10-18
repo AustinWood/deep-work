@@ -12,12 +12,6 @@
 //
 // RESUME WITH:
 //
-// See responses on Stack Overflow...
-// Put tap recognizer on circle, not cell (use tag?)
-//
-// Bug: Don't repeat updateLabel() when no timer running
-//
-//
 // Long press to start/stop
 // Short press opens details
 //
@@ -76,6 +70,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("func viewDidLoad()")
         super.viewDidLoad()
         addGestureRecognizers()
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        //lpgr.delegate = self
+        lpgr.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(lpgr)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +98,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     //////////////////////////////////////////////
     // MARK:- Gesture recognizer
+    
+    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        print("long press")
+        
+        if (gestureRecognizer.state != UIGestureRecognizerState.ended){
+            return
+        }
+        
+        let p = gestureRecognizer.location(in: self.collectionView)
+        
+        if let indexPath : NSIndexPath = (self.collectionView?.indexPathForItem(at: p))! as NSIndexPath?{
+            print("long press on \(indexPath)")
+        }
+
+    }
     
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
         // Tapped outside circle
