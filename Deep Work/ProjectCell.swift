@@ -16,7 +16,7 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
-        circleView.layer.cornerRadius = self.frame.size.width / 2
+        //circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true
         titleLabel.text = project.title
         
@@ -29,7 +29,7 @@ class ProjectCell: UICollectionViewCell {
         if inProgress {
             circleView.backgroundColor = CustomColor.red
         } else {
-            circleView.backgroundColor = CustomColor.ashGrey
+            circleView.backgroundColor = UIColor.black
         }
     }
     

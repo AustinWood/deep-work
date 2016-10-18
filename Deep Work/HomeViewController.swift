@@ -66,6 +66,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dayView: DayWeekView!
+    @IBOutlet weak var weekView: DayWeekView!
     
     //////////////////////////////////////////////
     // MARK:- Initialization
@@ -73,24 +75,40 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         print("func viewDidLoad()")
         super.viewDidLoad()
-        setColors()
+        addGestureRecognizers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("func viewWillAppear()")
         loadData()
+        //addTimeData()
     }
     
-    func setColors() {
-        self.view.backgroundColor = CustomColor.blue
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
+    func addGestureRecognizers() {
+        let dayRecognizer = UITapGestureRecognizer(target: self, action: #selector(dayPressed(_:)))
+        dayView.addGestureRecognizer(dayRecognizer)
+        let weekRecognizer = UITapGestureRecognizer(target: self, action: #selector(weekPressed(_:)))
+        weekView.addGestureRecognizer(weekRecognizer)
+        
     }
     
     //////////////////////////////////////////////
     // MARK:- Gesture recognizer
     
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
-        print("func tap()")
-        print(gestureRecognizer.location(in: self.view))
+        // Tapped outside circle
+    }
+    
+    func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("Day pressed")
+    }
+    
+    func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("Week pressed")
     }
     
     //////////////////////////////////////////////
