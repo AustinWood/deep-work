@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Only current session label updates by second; project, day, week by minute
 // Views at top of screen switch between displaying project time as day total or week total
 //
 //////////////////////////////////////////////////
@@ -68,47 +67,32 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Initialization
     
     override func viewDidLoad() {
-        print("func viewDidLoad()")
         super.viewDidLoad()
         addGestureRecognizers()
-        self.view.backgroundColor = UIColor.black
-        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        lpgr.minimumPressDuration = 0.5
-        //lpgr.delegate = self
-        lpgr.delaysTouchesBegan = true
-        self.collectionView?.addGestureRecognizer(lpgr)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("func viewWillAppear()")
         loadData()
-        //addTimeData()
+        //addFakeTimeData()
     }
     
-//    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return UIStatusBarStyle.lightContent
-//    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     func addGestureRecognizers() {
         let dayRecognizer = UITapGestureRecognizer(target: self, action: #selector(dayPressed(_:)))
         dayView.addGestureRecognizer(dayRecognizer)
         let weekRecognizer = UITapGestureRecognizer(target: self, action: #selector(weekPressed(_:)))
         weekView.addGestureRecognizer(weekRecognizer)
-        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(longPressRecognizer)
     }
     
     //////////////////////////////////////////////
     // MARK:- Gesture recognizer
-    
-    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        if (gestureRecognizer.state == UIGestureRecognizerState.began){
-            let p = gestureRecognizer.location(in: self.collectionView)
-            if let selectedIndex = (self.collectionView?.indexPathForItem(at: p)) as NSIndexPath? {
-                editProject(project: projects[selectedIndex.row])
-            }
-        }
-        return
-    }
     
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
         // Tapped outside circle
@@ -120,6 +104,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         print("Week pressed")
+    }
+    
+    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state == UIGestureRecognizerState.began){
+            let p = gestureRecognizer.location(in: self.collectionView)
+            if let selectedIndex = (self.collectionView?.indexPathForItem(at: p)) as NSIndexPath? {
+                editProject(project: projects[selectedIndex.row])
+            }
+        }
+        return
     }
     
     //////////////////////////////////////////////
@@ -147,7 +141,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Add / Edit Project
     
     @IBAction func addPressed(_ sender: AnyObject) {
-        print("func addPressed()")
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (action: UIAlertAction) in
@@ -168,7 +161,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func editProject(project: Project) {
-        print("func editProject()")
         let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project.title!):", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         let addAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
@@ -240,15 +232,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
-        //print("func updateTimeLabels(\(Date()))")
         let timeLog = TimeLog(context: moc!)
-        
         collectionView.reloadData()
-        
         let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
-        
         let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
         let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
         weekLabel.text = weekFormatted
@@ -274,7 +262,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Add Fake Time Data
     
-    func addTimeData() {
+    func addFakeTimeData() {
         print("func addTimeData()")
         for project in projects {
             let newTimeLog = TimeLog(context: (self.moc)!)

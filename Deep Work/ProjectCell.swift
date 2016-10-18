@@ -37,7 +37,6 @@ class ProjectCell: UICollectionViewCell {
             let currentSessionFormatted = FormatTime().formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
             currentSessionLabel.text = currentSessionFormatted
             currentSessionLabel.isHidden = false
-            print("Current session: \(currentSessionLength)")
         }
         
     }
