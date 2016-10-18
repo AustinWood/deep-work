@@ -103,8 +103,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if (gestureRecognizer.state == UIGestureRecognizerState.began){
             let p = gestureRecognizer.location(in: self.collectionView)
             if let selectedIndex = (self.collectionView?.indexPathForItem(at: p)) as NSIndexPath? {
-                let x = selectedIndex.row
-                print(x)
+                editProject(project: projects[selectedIndex.row])
             }
         }
         return
@@ -144,7 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     //////////////////////////////////////////////
-    // MARK:- Add New Project
+    // MARK:- Add / Edit Project
     
     @IBAction func addPressed(_ sender: AnyObject) {
         print("func addPressed()")
@@ -157,6 +156,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             } else { return }
             let newProject = Project(context: (self?.moc)!)
             newProject.title = projectTitle
+            do { try self?.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self?.loadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func editProject(project: Project) {
+        print("func editProject()")
+        let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project.title!):", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField: UITextField) in }
+        let addAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
+            let projectTitle: String?
+            if alertController.textFields?.first?.text != "" {
+                projectTitle = alertController.textFields?.first?.text
+            } else { return }
+            //let newProject = Project(context: (self?.moc)!)
+            project.title = projectTitle
             do { try self?.moc?.save() }
             catch { fatalError("Error storing data") }
             self?.loadData()
