@@ -100,18 +100,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Gesture recognizer
     
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        print("long press")
-        
-        if (gestureRecognizer.state != UIGestureRecognizerState.ended){
-            return
+        if (gestureRecognizer.state == UIGestureRecognizerState.began){
+            let p = gestureRecognizer.location(in: self.collectionView)
+            if let selectedIndex = (self.collectionView?.indexPathForItem(at: p)) as NSIndexPath? {
+                let x = selectedIndex.row
+                print(x)
+            }
         }
-        
-        let p = gestureRecognizer.location(in: self.collectionView)
-        
-        if let indexPath : NSIndexPath = (self.collectionView?.indexPathForItem(at: p))! as NSIndexPath?{
-            print("long press on \(indexPath)")
-        }
-
+        return
     }
     
     func tap(_ gestureRecognizer: UITapGestureRecognizer) {
