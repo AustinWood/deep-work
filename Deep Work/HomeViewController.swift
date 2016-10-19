@@ -12,21 +12,22 @@
 //
 // RESUME WITH:
 //
-// Views at top of screen switch between displaying project time as day total or week total
+// Export/Import data as JSON
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
-// Export data to JSON/CSV
-// Import data
-// Display details
-// Delete/archive timers
-// Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
+//
+// Delete/archive timers
+// Display details
+//
+// Visual time line at top (like Hours)
 // Give projects an Area parent
 // Animate invalid request if trying to start a timer while another is running
+//
 // Replace fatalError with something friendlier
 // Refactor time summations (todayTime and weekTime DRY)
 // Professional design
