@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //deleteRecords()
+        checkDataStore()
         return true
     }
 
@@ -87,6 +88,107 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    //////////////////////////////////////////////
+    // Custom Core Data junk
+    
+    func checkDataStore() {
+        let request: NSFetchRequest<Project> = Project.fetchRequest()
+        let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
+        do {
+            let projectCount = try moc?.count(for: request)
+            print("projectCount = \(projectCount!)")
+            if projectCount == 0 {
+                uploadSampleData()
+            }
+        }
+        catch {
+            fatalError("Error counting project records")
+        }
+    }
+    
+    func uploadSampleData() {
+        let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
+        let url = Bundle.main.url(forResource: "sampleData", withExtension: "json")
+        let data = try? Data(contentsOf: url!)
+        do {
+            let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+            let jsonArray = jsonResult.value(forKey: "project") as! NSArray
+            
+            //var home: NSManagedObject?
+            for json in jsonArray {
+                
+                let projectData = json as! [String: AnyObject]
+                
+                guard let title = projectData["title"] else {
+                    return
+                }
+                
+                guard let color = projectData["color"] else {
+                    return
+                }
+                
+                guard let image = projectData["image"] else {
+                    return
+                }
+                
+                // Project object initialization
+                //let project = homeType?.caseInsensitiveCompare("condo") == .orderedSame ? Condo(context: moc) : SingleFamily(context: moc)
+                let project = Project(context: moc!)
+                project.title = title as? String
+                project.color = color as? String
+                project.image = image as? String
+                
+                // Time logs
+                if let workEntries = projectData["workEntry"] {
+                    let workEntryData = project.workEntry?.mutableCopy() as! NSMutableSet
+                    
+                    for workEntry in workEntries as! NSArray {
+                        let entryData = workEntry as! [String: AnyObject]
+                        
+                        let logEntry = TimeLog(context: moc!)
+                        let startTimeStr = entryData["startTime"] as! String
+                        let stopTimeStr = entryData["stopTime"] as! String
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                        let startTime = dateFormatter.date(from: startTimeStr)
+                        let stopTime = dateFormatter.date(from: stopTimeStr)
+                        
+                        logEntry.startTime = startTime
+                        logEntry.stopTime = stopTime
+                        
+                        logEntry.note = entryData["note"] as? String
+                        
+                        workEntryData.add(logEntry)
+                        project.workEntry = workEntryData.copy() as? NSSet
+                    }
+                }
+            }
+            saveContext()
+        }
+        catch {
+            fatalError("Cannot upload sample data")
+        }
+    }
+    
+    func deleteRecords() {
+//        let moc = coreData.persistentContainer.viewContext
+//        let homeRequest: NSFetchRequest<Home> = Home.fetchRequest()
+//        let saleHistoryRequest: NSFetchRequest<SaleHistory> = SaleHistory.fetchRequest()
+//        
+//        var deleteRequest: NSBatchDeleteRequest
+//        var deleteResults: NSPersistentStoreResult
+//        do {
+//            deleteRequest = NSBatchDeleteRequest(fetchRequest: homeRequest as! NSFetchRequest<NSFetchRequestResult>)
+//            deleteResults = try moc.execute(deleteRequest)
+//            
+//            deleteRequest = NSBatchDeleteRequest(fetchRequest: saleHistoryRequest as! NSFetchRequest<NSFetchRequestResult>)
+//            deleteResults = try moc.execute(deleteRequest)
+//        }
+//        catch {
+//            fatalError("Failed removing existing records")
+//        }
+    }
+    
 }
-

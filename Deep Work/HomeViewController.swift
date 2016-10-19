@@ -48,13 +48,14 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate {
     
     //////////////////////////////////////////////
     // MARK:- Properties
     
-    var moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var projects = [Project]()
     var displayWeekTotals = false
     
@@ -277,6 +278,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         checkForRunningTimers()
         updateTimeLabels()
+        exportJSON()
     }
     
     //////////////////////////////////////////////
@@ -294,6 +296,78 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             catch { fatalError("Error storing data") }
         }
         self.loadData()
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Export Data
+    
+    @IBAction func emailPressed(sender: AnyObject) {
+        
+        let mailComposeViewController = configuredMailComposeViewController()
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            print("Error sending email")
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        
+        let stringToSend = exportJSON()
+        
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["austinkwood.57e2b0b@m.evernote.com"])
+        mailComposerVC.setSubject("Deep Work data @Archive #data")
+        mailComposerVC.setMessageBody("\(stringToSend)", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    func exportJSON() -> String {
+        
+        //var timeLog = ""
+        var dataString = "{\"project\": [\n\n"
+        
+        //var tasksToSend = allTasks + substances + dataPoint
+        //tasksToSend.sortInPlace({ $0.taskOrder < $1.taskOrder })
+        
+        for project in projects {
+            
+            dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
+            dataString += "\"color\":\"" + project.color! + "\",\n"
+            dataString += "\"image\":\"" + project.image! + "\",\n"
+            
+            
+//            // COMPLETION
+//            var taskCompletionString = "\(taskCompletionDict)"
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString(" = ", withString: "\":\"")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("date", withString: "\"date")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("time", withString: "\"time")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString(";", withString: "\",")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("\",\n}", withString: "\"}")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("\"    {", withString: "{")
+//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("}\"", withString: "}")
+            
+            //dataString = dataString + "\"taskCompletion\":" + taskCompletionString + "\n},\n\n"
+            dataString += "\n},\n\n"
+        }
+        
+        dataString += "]}"
+        
+        // NEXT LINE: This is where the String extension is needed
+        // dataString = dataString.stringByReplacingOccurrencesOfString(",\n\n]}", withString: "\n\n]}")
+        
+        //dataString = timeLog + "\n\n\n" + dataString
+        
+        print(dataString)
+        return dataString
     }
     
 }

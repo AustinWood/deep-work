@@ -13,6 +13,7 @@
 		4223754A1DAE96C0005707B7 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422375461DAE96C0005707B7 /* Project+CoreDataProperties.swift */; };
 		42303F481DB66F2900365379 /* DayWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42303F471DB66F2900365379 /* DayWeekView.swift */; };
 		427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AD7891DAF933400B22DB5 /* FormatTime.swift */; };
+		429FA5A71DB7AFCF00242E77 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 429FA5A61DB7AFCF00242E77 /* sampleData.json */; };
 		42A52E601DAD502F00924350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A52E5F1DAD502F00924350 /* Colors.swift */; };
 		42BD2DD21DAD413500D38118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD2DD11DAD413500D38118 /* AppDelegate.swift */; };
 		42BD2DD71DAD413500D38118 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BD2DD51DAD413500D38118 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		422375461DAE96C0005707B7 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Project+CoreDataProperties.swift"; path = "../Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		42303F471DB66F2900365379 /* DayWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeekView.swift; sourceTree = "<group>"; };
 		427AD7891DAF933400B22DB5 /* FormatTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatTime.swift; sourceTree = "<group>"; };
+		429FA5A61DB7AFCF00242E77 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		42BD2DCE1DAD413500D38118 /* Deep Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deep Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BD2DD11DAD413500D38118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		42C3A7F51DAD4628008F0260 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				429FA5A61DB7AFCF00242E77 /* sampleData.json */,
 				42BD2DD81DAD413500D38118 /* Deep_Work.xcdatamodeld */,
 			);
 			name = Model;
@@ -204,6 +207,7 @@
 			files = (
 				42BD2DDF1DAD413500D38118 /* LaunchScreen.storyboard in Resources */,
 				42BD2DDC1DAD413500D38118 /* Assets.xcassets in Resources */,
+				429FA5A71DB7AFCF00242E77 /* sampleData.json in Resources */,
 				42BD2DD71DAD413500D38118 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
