@@ -225,13 +225,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func startStopTimer(project: Project) {
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
-            print("Stop the timer")
             let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
             currentEntry.stopTime = Date()
             //currentEntry.note = "Here's my note"
         } else if !timerRunning {
             // Start a new time log
-            print("Start the timer")
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
             newTimeLog.startTime = Date()
@@ -269,8 +267,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
+        // Update the time in each collection view cell
         collectionView.reloadData()
         
+        // Update the time of 'Today' and 'This week' labels
         let timeLog = TimeLog(context: moc!)
         let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
@@ -293,8 +293,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Load Data
     
     func loadData() {
-        print("func loadData()")
-        
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
@@ -329,9 +327,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Export Data
     
     func emailData() {
+        print("\n\n************************************************************\n\n")
         print(exportJSON())
+        print("\n\n************************************************************\n\n")
         let mailComposeViewController = configuredMailComposeViewController()
-        
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
@@ -340,16 +339,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
-        
         let stringToSend = exportJSON()
-        
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        
         mailComposerVC.setToRecipients(["austinkwood.57e2b0b@m.evernote.com"])
         mailComposerVC.setSubject("Deep Work data @Archive #data")
         mailComposerVC.setMessageBody("\(stringToSend)", isHTML: false)
-        
         return mailComposerVC
     }
     
@@ -358,19 +353,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func exportJSON() -> String {
-        
-        //var timeLog = ""
         var dataString = "{\"project\": [\n\n"
-        
         //var tasksToSend = allTasks + substances + dataPoint
         //tasksToSend.sortInPlace({ $0.taskOrder < $1.taskOrder })
-        
         for project in projects {
-            
             dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
             dataString += "\"color\":\"" + "" + "\",\n" // project.color!
             dataString += "\"image\":\"" + "" + "\",\n" // project.image!
-            
             dataString += "\"workEntry\": [\n\n"
             var workData = ""
             for entry in project.workEntry! {
@@ -378,7 +367,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                 let startTime = entryData.startTime
-                print(startTime)
                 let startTimeStr = dateFormatter.string(from: startTime!)
                 workData += "{\n" + "\"startTime\":\"" + startTimeStr + "\",\n"
                 if let stopTime = entryData.stopTime {
@@ -392,14 +380,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             workData += "]},"
             workData = workData.replacingOccurrences(of: "},\n]},", with: "}\n]},")
             dataString += workData
-            //dataString += "\n},\n\n"
         }
-        
         dataString += "]}"
         dataString = dataString.replacingOccurrences(of: "]},]}", with: "]}]}")
-        
-        //dataString = timeLog + "\n\n\n" + dataString
-        
         return dataString
     }
     

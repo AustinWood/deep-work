@@ -11,32 +11,6 @@
                            "stopTime":"2016-10-19T14:41:00",
                            "note":""}
                            ]},{
-             "title":"Problem Solving",
-             "color":"",
-             "image":"",
-             "workEntry": [
-                           
-                           {
-                           "startTime":"2016-10-18T11:14:00",
-                           "stopTime":"2016-10-18T12:40:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T12:52:00",
-                           "stopTime":"2016-10-18T15:27:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:34:00",
-                           "stopTime":"2016-10-17T20:52:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T11:31:00",
-                           "stopTime":"2016-10-17T12:57:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T10:37:00",
-                           "stopTime":"2016-10-18T11:08:00",
-                           "note":""}
-                           ]},{
              "title":"Deep Work",
              "color":"",
              "image":"",
@@ -47,23 +21,49 @@
                            "stopTime":"2016-10-18T18:40:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-17T20:14:00",
-                           "stopTime":"2016-10-17T20:34:00",
+                           "startTime":"2016-10-19T10:24:00",
+                           "stopTime":"2016-10-19T11:58:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-19T16:35:00",
-                           "stopTime":"2016-10-19T18:01:00",
+                           "startTime":"2016-10-17T20:14:00",
+                           "stopTime":"2016-10-17T20:34:00",
                            "note":""},
                            {
                            "startTime":"2016-10-18T18:53:00",
                            "stopTime":"2016-10-18T20:00:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-19T18:31:00",
-                           "stopTime":"",
+                           "startTime":"2016-10-19T16:35:00",
+                           "stopTime":"2016-10-19T18:01:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-19T10:24:00",
-                           "stopTime":"2016-10-19T11:58:00",
+                           "startTime":"2016-10-19T18:31:00",
+                           "stopTime":"2016-10-19T19:59:44",
+                           "note":""}
+                           ]},{
+             "title":"Problem Solving",
+             "color":"",
+             "image":"",
+             "workEntry": [
+                           
+                           {
+                           "startTime":"2016-10-18T10:37:00",
+                           "stopTime":"2016-10-18T11:08:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T11:31:00",
+                           "stopTime":"2016-10-17T12:57:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T20:34:00",
+                           "stopTime":"2016-10-17T20:52:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T11:14:00",
+                           "stopTime":"2016-10-18T12:40:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T12:52:00",
+                           "stopTime":"2016-10-18T15:27:00",
                            "note":""}
                            ]}]}
