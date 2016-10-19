@@ -55,6 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var projects = [Project]()
+    var displayTodayTotals = true
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -102,10 +103,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         print("Day pressed")
+        displayTodayTotals = true
+        saveDisplaySettings()
     }
     
     func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         print("Week pressed")
+        displayTodayTotals = false
+        saveDisplaySettings()
+    }
+    
+    func saveDisplaySettings() {
+        UserDefaults.standard.set(displayTodayTotals, forKey: "displayTodayTotals")
+        //updateTimeLabels()
     }
     
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -249,6 +259,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadData() {
         print("func loadData()")
+        displayTodayTotals = UserDefaults.standard.bool(forKey: "displayTodayTotals")
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
             let results = try moc?.fetch(request)
