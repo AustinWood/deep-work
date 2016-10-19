@@ -25,6 +25,18 @@ class ProjectCell: UICollectionViewCell {
         //let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc)
         let totalTime = timeLog.todayTime(projects: [project], moc: moc)
         
+        
+        
+//        let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
+//        let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
+//        todayLabel.text = todayFormatted
+//        let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
+//        let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
+        
+        
+        
+        
+        
         let displayInterval = FormatTime().formattedHoursMinutes(timeInterval: totalTime)
         timeLabel.text = displayInterval
         

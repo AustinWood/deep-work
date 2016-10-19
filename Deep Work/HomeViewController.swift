@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var projects = [Project]()
-    var displayTodayTotals = true
+    var displayWeekTotals = false
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -103,18 +103,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         print("Day pressed")
-        displayTodayTotals = true
+        displayWeekTotals = false
         saveDisplaySettings()
     }
     
     func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         print("Week pressed")
-        displayTodayTotals = false
+        displayWeekTotals = true
         saveDisplaySettings()
     }
     
     func saveDisplaySettings() {
-        UserDefaults.standard.set(displayTodayTotals, forKey: "displayTodayTotals")
+        UserDefaults.standard.set(displayWeekTotals, forKey: "displayWeekTotals")
         //updateTimeLabels()
     }
     
@@ -259,7 +259,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadData() {
         print("func loadData()")
-        displayTodayTotals = UserDefaults.standard.bool(forKey: "displayTodayTotals")
+        print(displayWeekTotals)
+        displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
+        print(displayWeekTotals)
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
             let results = try moc?.fetch(request)
