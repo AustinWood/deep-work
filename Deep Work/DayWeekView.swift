@@ -25,14 +25,14 @@ class DayWeekView: UIView {
     
     func isSelected() {
         self.backgroundColor = CustomColor.blueGreen
-        layer.borderColor = CustomColor.blueLight.cgColor
-        setTextColor(color: CustomColor.blueLight)
+        layer.borderColor = CustomColor.whiteSmoke.cgColor
+        setTextColor(color: CustomColor.whiteSmoke)
     }
     
     func isNotSelected() {
         self.backgroundColor = UIColor.black
-        layer.borderColor = CustomColor.whiteSmoke.cgColor
-        setTextColor(color: CustomColor.whiteSmoke)
+        layer.borderColor = CustomColor.ashGrey.cgColor
+        setTextColor(color: CustomColor.ashGrey)
     }
     
     ////////////////////////////////////////
