@@ -342,7 +342,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
             dataString += "\"color\":\"" + project.color! + "\",\n"
-            dataString += "\"image\":\"" + project.image! + "\",\n"
+            dataString += "\"image\":\"" + project.image! + "\"\n" // "\",\n" <<< Put the comma back
             
             
 //            // COMPLETION
@@ -363,6 +363,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // NEXT LINE: This is where the String extension is needed
         // dataString = dataString.stringByReplacingOccurrencesOfString(",\n\n]}", withString: "\n\n]}")
+        dataString = dataString.replacingOccurrences(of: ",\n\n]}", with: "\n\n]}")
         
         //dataString = timeLog + "\n\n\n" + dataString
         
