@@ -13,13 +13,12 @@
 // RESUME WITH:
 //
 // Add note to entry
+// Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
-//
-// Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 //
 // Delete/archive timers
 // Display details
@@ -29,11 +28,11 @@
 //    And two buttons: 'Delete' and 'Add Note'.
 //    This view can fade out after 5 seconds.
 //
+// Daily/Weekly goals (see Evernote)
 // Sort JSON time entries for readability
-// Present warning if trying to export while timer is running
 //
 // Visual time line at top (like Hours)
-// Give projects an Area parent
+// Give projects an Area parent / tags
 // Animate invalid request if trying to start a timer while another is running
 //
 // Replace fatalError with something friendlier
@@ -204,18 +203,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBAction func settingsPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Settings", message: "What would you like to do?", preferredStyle: .actionSheet)
-        
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
         })
-        
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
             // Cancel
         })
-        
         alertController.addAction(exportButton)
         alertController.addAction(cancelButton)
-        
         self.present(alertController, animated: true, completion: nil)
     }
 
@@ -327,6 +322,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Export Data
     
     func emailData() {
+        if timerRunning {
+            presentWarning()
+        } else {
+            initiateEmail()
+        }
+    }
+    
+    func presentWarning() {
+        let alertController = UIAlertController(title: "Warning!", message: "A timer is currently running. Data with incomplete entries can lead to irregular results when later imported back into the app. Are you sure you want to export data now?", preferredStyle: .actionSheet)
+        let continueButton = UIAlertAction(title: "Continue with export", style: .destructive, handler: { (action) -> Void in
+            self.initiateEmail()
+        })
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            // Do nothing
+        })
+        alertController.addAction(continueButton)
+        alertController.addAction(cancelButton)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func initiateEmail() {
         print("\n\n************************************************************\n\n")
         print(exportJSON())
         print("\n\n************************************************************\n\n")
