@@ -19,10 +19,10 @@
 //
 // TO DO:
 //
-// Remove leading zero from minutes in timeFormatter
 // Export data to JSON/CSV
 // Import data
 // Display details
+// Delete/archive timers
 // Visual time line at top (like Hours)
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 // Give projects an Area parent
@@ -102,13 +102,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
-        print("Day pressed")
         displayWeekTotals = false
         saveDisplaySettings()
     }
     
     func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
-        print("Week pressed")
         displayWeekTotals = true
         saveDisplaySettings()
     }
@@ -196,7 +194,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Start / Stop time log
     
     func startStopTimer(project: Project) {
-        print("func startStopTimer()")
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
             print("Stop the timer")
@@ -226,7 +223,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var timer = Timer()
     
     func checkForRunningTimers() {
-        print("func checkForRunningTimers()")
         timerRunning = false
         lastStartTime = nil
         timer.invalidate()
@@ -244,14 +240,24 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
-        let timeLog = TimeLog(context: moc!)
         collectionView.reloadData()
+        
+        let timeLog = TimeLog(context: moc!)
         let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
         let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
         let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
         weekLabel.text = weekFormatted
+        
+        // Refresh the design of 'Today' and 'This week' labels
+        if displayWeekTotals {
+            weekView.isSelected()
+            dayView.isNotSelected()
+        } else {
+            weekView.isNotSelected()
+            dayView.isSelected()
+        }
     }
     
     //////////////////////////////////////////////
@@ -259,9 +265,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadData() {
         print("func loadData()")
-        print(displayWeekTotals)
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
-        print(displayWeekTotals)
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
             let results = try moc?.fetch(request)
@@ -278,7 +282,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Add Fake Time Data
     
     func addFakeTimeData() {
-        print("func addTimeData()")
+        print("func addFakeTimeData()")
         for project in projects {
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
