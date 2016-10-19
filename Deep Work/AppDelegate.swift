@@ -174,22 +174,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func deleteRecords() {
-//        let moc = coreData.persistentContainer.viewContext
-//        let homeRequest: NSFetchRequest<Home> = Home.fetchRequest()
-//        let saleHistoryRequest: NSFetchRequest<SaleHistory> = SaleHistory.fetchRequest()
-//        
-//        var deleteRequest: NSBatchDeleteRequest
-//        var deleteResults: NSPersistentStoreResult
-//        do {
-//            deleteRequest = NSBatchDeleteRequest(fetchRequest: homeRequest as! NSFetchRequest<NSFetchRequestResult>)
-//            deleteResults = try moc.execute(deleteRequest)
-//            
-//            deleteRequest = NSBatchDeleteRequest(fetchRequest: saleHistoryRequest as! NSFetchRequest<NSFetchRequestResult>)
-//            deleteResults = try moc.execute(deleteRequest)
-//        }
-//        catch {
-//            fatalError("Failed removing existing records")
-//        }
+        print("func deleteRecords()")
+        let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
+        let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
+        let workEntryRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        
+        var deleteRequest: NSBatchDeleteRequest
+        var deleteResults: NSPersistentStoreResult
+        do {
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: projectRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc!.execute(deleteRequest)
+            
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: workEntryRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc!.execute(deleteRequest)
+            
+            print(deleteResults)
+        }
+        catch {
+            fatalError("Failed removing existing records")
+        }
     }
     
 }

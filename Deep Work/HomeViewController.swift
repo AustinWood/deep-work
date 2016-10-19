@@ -12,7 +12,7 @@
 //
 // RESUME WITH:
 //
-// Export/Import data as JSON
+// Add note to entry
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -23,6 +23,11 @@
 //
 // Delete/archive timers
 // Display details
+//
+// After stopping a timer, fade-in a dialog with text
+//    "You just saved an entry of #TimeInterval for project #Porject".
+//    And two buttons: 'Delete' and 'Add Note'.
+//    This view can fade out after 5 seconds.
 //
 // Sort JSON time entries for readability
 // Present warning if trying to export while timer is running
@@ -289,6 +294,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadData() {
         print("func loadData()")
+        
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
         do {
@@ -300,30 +306,30 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         checkForRunningTimers()
         updateTimeLabels()
-        exportJSON()
     }
     
     //////////////////////////////////////////////
     // MARK:- Add Fake Time Data
     
     func addFakeTimeData() {
-        print("func addFakeTimeData()")
-        for project in projects {
-            let newTimeLog = TimeLog(context: (self.moc)!)
-            newTimeLog.project = project
-            newTimeLog.startTime = Date(timeIntervalSinceNow: -1700 * 60)
-            newTimeLog.stopTime = Date(timeIntervalSinceNow: -1650 * 60)
-            newTimeLog.note = "Here's my note"
-            do { try self.moc?.save() }
-            catch { fatalError("Error storing data") }
-        }
-        self.loadData()
+//        print("func addFakeTimeData()")
+//        for project in projects {
+//            let newTimeLog = TimeLog(context: (self.moc)!)
+//            newTimeLog.project = project
+//            newTimeLog.startTime = Date(timeIntervalSinceNow: -1700 * 60)
+//            newTimeLog.stopTime = Date(timeIntervalSinceNow: -1650 * 60)
+//            newTimeLog.note = "Here's my note"
+//            do { try self.moc?.save() }
+//            catch { fatalError("Error storing data") }
+//        }
+//        self.loadData()
     }
     
     //////////////////////////////////////////////
     // MARK:- Export Data
     
     func emailData() {
+        print(exportJSON())
         let mailComposeViewController = configuredMailComposeViewController()
         
         if MFMailComposeViewController.canSendMail() {
@@ -372,6 +378,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                 let startTime = entryData.startTime
+                print(startTime)
                 let startTimeStr = dateFormatter.string(from: startTime!)
                 workData += "{\n" + "\"startTime\":\"" + startTimeStr + "\",\n"
                 if let stopTime = entryData.stopTime {
@@ -393,7 +400,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         //dataString = timeLog + "\n\n\n" + dataString
         
-        print(dataString)
         return dataString
     }
     
