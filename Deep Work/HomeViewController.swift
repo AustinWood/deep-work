@@ -347,9 +347,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             dataString += "\"workEntry\": [\n\n"
             var workData = ""
             for entry in project.workEntry! {
-                workData += "{\n" + "\"startTime\":\"" + project.title! + "\",\n"
-                workData += "\"stopTime\":\"" + project.title! + "\",\n"
-                workData += "\"note\":\"" + project.title! + "\"},\n"
+                let entryData = entry as! TimeLog
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                let startTime = entryData.startTime
+                let startTimeStr = dateFormatter.string(from: startTime!)
+                workData += "{\n" + "\"startTime\":\"" + startTimeStr + "\",\n"
+                if let stopTime = entryData.stopTime {
+                    let stopTimeStr = dateFormatter.string(from: stopTime)
+                    workData += "\"stopTime\":\"" + stopTimeStr + "\",\n"
+                } else {
+                    workData += "\"stopTime\":\"" + "" + "\",\n"
+                }
+                workData += "\"note\":\"" + "" + "\"},\n" // entryData.note!
             }
             workData += "]},"
             workData = workData.replacingOccurrences(of: "},\n]},", with: "}\n]},")

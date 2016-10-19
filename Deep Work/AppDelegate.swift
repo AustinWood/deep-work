@@ -108,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func uploadSampleData() {
+        print("func uploadSampleData()")
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         let url = Bundle.main.url(forResource: "sampleData", withExtension: "json")
         let data = try? Data(contentsOf: url!)
