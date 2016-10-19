@@ -11,13 +11,9 @@ import UIKit
 class CircleView: UIView {
     
     override func awakeFromNib() {
-        //print(self.frame.size.width)
-        layer.cornerRadius = 75 //self.bounds.size.width/2
         self.backgroundColor = UIColor.black
         layer.borderWidth = 2
         layer.borderColor = UIColor.white.cgColor
-        //layer.masksToBounds = true
-        //self.clipsToBounds = true
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

@@ -16,29 +16,24 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var currentSessionLabel: UILabel!
     
+    var displayWeekTotals = false
+    
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
-        //circleView.layer.cornerRadius = self.frame.size.width / 2
+        circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true
         titleLabel.text = project.title
         
         let timeLog = TimeLog(context: moc)
-        //let (totalTime, inProgress) = timeLog.totalTime(project: project, moc: moc)
-        let totalTime = timeLog.todayTime(projects: [project], moc: moc)
-        
-        
-        
-//        let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
-//        let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
-//        todayLabel.text = todayFormatted
-//        let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
-//        let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
-        
-        
-        
-        
-        
-        let displayInterval = FormatTime().formattedHoursMinutes(timeInterval: totalTime)
-        timeLabel.text = displayInterval
+        displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
+        if displayWeekTotals {
+            let weekTime = timeLog.weekTime(projects: [project], moc: moc)
+            let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
+            timeLabel.text = weekFormatted
+        } else {
+            let todayTime = timeLog.todayTime(projects: [project], moc: moc)
+            let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
+            timeLabel.text = todayFormatted
+        }
         
         let currentSessionLength = timeLog.currentSessionLength(project: project, moc: moc)
         if currentSessionLength == 0 {
@@ -50,7 +45,5 @@ class ProjectCell: UICollectionViewCell {
             currentSessionLabel.text = currentSessionFormatted
             currentSessionLabel.isHidden = false
         }
-        
     }
-    
 }

@@ -115,7 +115,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func saveDisplaySettings() {
         UserDefaults.standard.set(displayWeekTotals, forKey: "displayWeekTotals")
-        //updateTimeLabels()
+        updateTimeLabels()
     }
     
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
