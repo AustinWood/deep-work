@@ -29,13 +29,30 @@
                                     <inset key="sectionInset" minX="40" minY="135" maxX="40" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" id="AiJ-VP-ysl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T46-Zs-DhU">
+                                            <frame key="frameInset" minX="384" minY="706" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="76i-qC-Lfh"/>
+                                                <constraint firstAttribute="width" constant="22" id="KJl-2x-8YD"/>
+                                            </constraints>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="settingsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ly1-Ig-kp4"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="T46-Zs-DhU" secondAttribute="bottom" constant="12" id="8u4-hS-437"/>
+                                        <constraint firstAttribute="trailing" secondItem="T46-Zs-DhU" secondAttribute="trailing" constant="12" id="fp2-vA-Oas"/>
+                                    </constraints>
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="135" width="150" height="198"/>
+                                        <rect key="frame" x="40" y="135" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>

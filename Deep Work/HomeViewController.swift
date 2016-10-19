@@ -24,6 +24,9 @@
 // Delete/archive timers
 // Display details
 //
+// Sort JSON time entries for readability
+// Present warning if trying to export while timer is running
+//
 // Visual time line at top (like Hours)
 // Give projects an Area parent
 // Animate invalid request if trying to start a timer while another is running
@@ -192,9 +195,28 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(alertController, animated: true, completion: nil)
     }
     
+    ///
+    
+    @IBAction func settingsPressed(_ sender: AnyObject) {
+        let alertController = UIAlertController(title: "Settings", message: "What would you like to do?", preferredStyle: .actionSheet)
+        
+        let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
+            self.emailData()
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            // Cancel
+        })
+        
+        alertController.addAction(exportButton)
+        alertController.addAction(cancelButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     //////////////////////////////////////////////
     // MARK:- Start / Stop time log
-    
+
     func startStopTimer(project: Project) {
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
@@ -301,8 +323,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     //////////////////////////////////////////////
     // MARK:- Export Data
     
-    @IBAction func emailPressed(sender: AnyObject) {
-        
+    func emailData() {
         let mailComposeViewController = configuredMailComposeViewController()
         
         if MFMailComposeViewController.canSendMail() {
