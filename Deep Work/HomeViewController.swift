@@ -341,29 +341,24 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         for project in projects {
             
             dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
-            dataString += "\"color\":\"" + project.color! + "\",\n"
-            dataString += "\"image\":\"" + project.image! + "\"\n" // "\",\n" <<< Put the comma back
+            dataString += "\"color\":\"" + "" + "\",\n" // project.color!
+            dataString += "\"image\":\"" + "" + "\",\n" // project.image!
             
-            
-//            // COMPLETION
-//            var taskCompletionString = "\(taskCompletionDict)"
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString(" = ", withString: "\":\"")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("date", withString: "\"date")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("time", withString: "\"time")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString(";", withString: "\",")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("\",\n}", withString: "\"}")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("\"    {", withString: "{")
-//            taskCompletionString = taskCompletionString.stringByReplacingOccurrencesOfString("}\"", withString: "}")
-            
-            //dataString = dataString + "\"taskCompletion\":" + taskCompletionString + "\n},\n\n"
-            dataString += "\n},\n\n"
+            dataString += "\"workEntry\": [\n\n"
+            var workData = ""
+            for entry in project.workEntry! {
+                workData += "{\n" + "\"startTime\":\"" + project.title! + "\",\n"
+                workData += "\"stopTime\":\"" + project.title! + "\",\n"
+                workData += "\"note\":\"" + project.title! + "\"},\n"
+            }
+            workData += "]},"
+            workData = workData.replacingOccurrences(of: "},\n]},", with: "}\n]},")
+            dataString += workData
+            //dataString += "\n},\n\n"
         }
         
         dataString += "]}"
-        
-        // NEXT LINE: This is where the String extension is needed
-        // dataString = dataString.stringByReplacingOccurrencesOfString(",\n\n]}", withString: "\n\n]}")
-        dataString = dataString.replacingOccurrences(of: ",\n\n]}", with: "\n\n]}")
+        dataString = dataString.replacingOccurrences(of: "]},]}", with: "]}]}")
         
         //dataString = timeLog + "\n\n\n" + dataString
         
