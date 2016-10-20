@@ -253,23 +253,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func addNote(timeLog: TimeLog) {
-        let sessionLength = timeLog.stopTime?.timeIntervalSince(timeLog.startTime!)
-        let sessionLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: sessionLength!)
+        let sessionLength = Date().timeIntervalSince(timeLog.startTime!)
+        let sessionLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: sessionLength)
         let project = timeLog.project
-        
-        let alertController = UIAlertController(title: "\(project!.title!)\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nWould you like to Save\nor Delete this entry?\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
-            var noteStr = alertController.textFields?.first?.text
-            noteStr = noteStr?.replacingOccurrences(of: "\"", with: "'") // Replace double quotes with single quotes to avoid confusing JSON exporter
-            timeLog.note = noteStr
-            do { try self?.moc?.save() }
-            catch { fatalError("Error storing data") }
-            self?.loadData()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (action: UIAlertAction) in
+        let deleteAction = UIAlertAction(title: "Delete entry", style: .destructive) { [weak self] (action: UIAlertAction) in
             do {
                 let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "WorkEntry")
                 do {
@@ -285,17 +274,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             catch { fatalError("Error deleting data") }
             self?.loadData()
         }
-        
-        
+        let cancelAction = UIAlertAction(title: "Continue working", style: .default, handler: nil)
+        let saveAction = UIAlertAction(title: "Save entry", style: .default) { [weak self] (action: UIAlertAction) in
+            timeLog.stopTime = Date()
+            var noteStr = alertController.textFields?.first?.text
+            noteStr = noteStr?.replacingOccurrences(of: "\"", with: "'") // Replace double quotes with single quotes to avoid confusing JSON exporter
+            timeLog.note = noteStr
+            do { try self?.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self?.loadData()
+        }
+        alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
-        
-        
-        // Is this in the right place?
-        do { try self.moc?.save() }
-        catch { fatalError("Error storing data") }
-        self.loadData()
     }
     
     @IBAction func settingsPressed(_ sender: AnyObject) {
@@ -303,9 +295,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
         })
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            // Cancel
-        })
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
         alertController.addAction(exportButton)
         alertController.addAction(cancelButton)
         self.present(alertController, animated: true, completion: nil)
@@ -318,7 +308,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
             let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
-            currentEntry.stopTime = Date()
             addNote(timeLog: currentEntry)
         } else if !timerRunning {
             // Start a new time log
