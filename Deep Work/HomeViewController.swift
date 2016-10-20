@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Remove deleteRecords() from app delegate and add option to settings
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -25,10 +24,8 @@
 // Bug: App freezes if cell moved out of bounds of collection view during reordering
 // Automatically capitalize first letter of entry note, and after periods
 //
-// After stopping a timer, fade-in a dialog with text
-//    "You just saved an entry of #TimeInterval for project #Porject".
-//    And two buttons: 'Delete' and 'Add Note'.
-//    This view can fade out after 5 seconds.
+// Animations
+//   # When starting timer: fade button color in, fade other buttons text/outline to gray
 //
 // Add randomized confimation messages to "Add note"
 // Daily/Weekly goals (see Evernote)
@@ -304,10 +301,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBAction func settingsPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Settings", message: "What would you like to do?", preferredStyle: .actionSheet)
+        let deleteButton = UIAlertAction(title: "Delete records", style: .destructive, handler: { (action) -> Void in
+            self.deleteRecords()
+        })
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
         })
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+        alertController.addAction(deleteButton)
         alertController.addAction(exportButton)
         alertController.addAction(cancelButton)
         self.present(alertController, animated: true, completion: nil)
@@ -400,6 +401,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         projects.sort(by: { $0.order < $1.order })
         checkForRunningTimers()
         updateTimeLabels()
+    }
+    
+    func deleteRecords() {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.checkDataStore()
+        delegate.deleteRecords()
+        delegate.checkDataStore()
     }
     
     //////////////////////////////////////////////

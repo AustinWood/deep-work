@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        deleteRecords()
         checkDataStore()
         return true
     }
@@ -97,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         do {
             let projectCount = try moc?.count(for: request)
-            print("projectCount = \(projectCount!)")
+            print("projectCount: \(projectCount!)")
             if projectCount == 0 {
                 uploadSampleData()
             }
@@ -140,7 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Project object initialization
                 let project = Project(context: moc!)
                 project.title = title as? String
-                print(order)
                 project.order = order.int16Value
                 project.color = color as? String
                 project.image = image as? String
@@ -172,6 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             saveContext()
+            checkDataStore()
         }
         catch {
             fatalError("Cannot upload sample data")
@@ -183,17 +182,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
         let workEntryRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        
         var deleteRequest: NSBatchDeleteRequest
         var deleteResults: NSPersistentStoreResult
         do {
             deleteRequest = NSBatchDeleteRequest(fetchRequest: projectRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
-            
             deleteRequest = NSBatchDeleteRequest(fetchRequest: workEntryRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
-            
-            print(deleteResults)
         }
         catch {
             fatalError("Failed removing existing records")
