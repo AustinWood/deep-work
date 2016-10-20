@@ -259,20 +259,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         let deleteAction = UIAlertAction(title: "Delete entry", style: .destructive) { [weak self] (action: UIAlertAction) in
-            do {
-                let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "WorkEntry")
-                do {
-                    let results = try self?.moc?.fetch(request)
-                    for result in results! {
-                        if result == timeLog {
-                            print("Deleted!")
-                            self?.moc?.delete(result)
-                        }
-                    }
-                }
-            }
-            catch { fatalError("Error deleting data") }
-            self?.loadData()
+            self?.warningDeleteEntry(timeLog: timeLog)
         }
         let cancelAction = UIAlertAction(title: "Continue working", style: .default, handler: nil)
         let saveAction = UIAlertAction(title: "Save entry", style: .default) { [weak self] (action: UIAlertAction) in
@@ -288,6 +275,30 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func warningDeleteEntry(timeLog: TimeLog) {
+        let alertController = UIAlertController(title: "Warning!", message: "Are you sure you want to delete the current entry? This action cannot be undone.", preferredStyle: .actionSheet)
+        let continueButton = UIAlertAction(title: "Delete entry", style: .destructive, handler: { (action) -> Void in
+            do {
+                let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "WorkEntry")
+                do {
+                    let results = try self.moc?.fetch(request)
+                    for result in results! {
+                        if result == timeLog {
+                            print("Deleted!")
+                            self.moc?.delete(result)
+                        }
+                    }
+                }
+            }
+            catch { fatalError("Error deleting data") }
+            self.loadData()
+        })
+        let cancelButton = UIAlertAction(title: "Continue working", style: .cancel, handler: { (action) -> Void in })
+        alertController.addAction(continueButton)
+        alertController.addAction(cancelButton)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func settingsPressed(_ sender: AnyObject) {
@@ -412,13 +423,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func emailData() {
         if timerRunning {
-            presentWarning()
+            warningRunningTimer()
         } else {
             initiateEmail()
         }
     }
     
-    func presentWarning() {
+    func warningRunningTimer() {
         let alertController = UIAlertController(title: "Warning!", message: "A timer is currently running. Data with incomplete entries can lead to irregular results when later imported back into the app. Are you sure you want to export data now?", preferredStyle: .actionSheet)
         let continueButton = UIAlertAction(title: "Continue with export", style: .destructive, handler: { (action) -> Void in
             self.initiateEmail()
