@@ -115,9 +115,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     func didSingleTap(_ gesture: UITapGestureRecognizer) {
-        var pointInCollectionView = gesture.location(in: self.collectionView!)
+        let pointInCollectionView = gesture.location(in: self.collectionView!)
         var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
-        var selectedCell = self.collectionView!.cellForItem(at: selectedIndexPath)! as! ProjectCell
+        let selectedCell = self.collectionView!.cellForItem(at: selectedIndexPath)! as! ProjectCell
         print("Single tapped: \(selectedCell.titleLabel.text)")
         let selectedProject = projects[selectedIndexPath.row]
         startStopTimer(project: selectedProject)
@@ -206,8 +206,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
         cell.configureCell(project: currentProject, moc: moc!)
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
-//        cell.circleView.addGestureRecognizer(gestureRecognizer)
         return cell
     }
     
@@ -416,6 +414,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         delegate.checkDataStore()
         delegate.deleteRecords()
         delegate.checkDataStore()
+        loadData()
     }
     
     //////////////////////////////////////////////
