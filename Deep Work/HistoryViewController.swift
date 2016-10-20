@@ -39,6 +39,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         for entry in timeLogArray! {
             print(entry.startTime)
         }
+        tableView.reloadData()
     }
     
     //////////////////////////////////////////////
@@ -49,7 +50,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return (timeLogArray?.count)! + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +59,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
+        let entry = (timeLogArray?[indexPath.row - 1])! as TimeLog
+        
+        let entryLength = entry.stopTime?.timeIntervalSince(entry.startTime!)
+        let entryLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: entryLength!)
+        
+        cell.timeLabel.text = entryLengthFormatted
         return cell
     }
     
