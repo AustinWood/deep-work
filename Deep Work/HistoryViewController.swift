@@ -15,6 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK:- Properties
     
     var project: Project?
+    var timeLogArray: [TimeLog]?
     var moc: NSManagedObjectContext?
     
     //////////////////////////////////////////////
@@ -29,6 +30,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = project?.title
+        intializeTimeLogs()
+    }
+    
+    func intializeTimeLogs() {
+        let timeLog = TimeLog(context: moc!)
+        timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
+        for entry in timeLogArray! {
+            print(entry.startTime)
+        }
     }
     
     //////////////////////////////////////////////

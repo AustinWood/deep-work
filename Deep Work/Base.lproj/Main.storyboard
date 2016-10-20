@@ -271,6 +271,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="uof-cg-4gB" id="7eb-0S-e13"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" rowHeight="129" id="Kta-jk-aqi" customClass="HistoryCell" customModule="Deep_Work" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="67" width="375" height="129"/>
@@ -296,6 +299,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="noteLabel" destination="ZNc-Bb-4tn" id="TJe-cG-v3j"/>
+                                            <outlet property="timeLabel" destination="USe-gH-3sa" id="2T5-Rd-dx2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

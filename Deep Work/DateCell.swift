@@ -20,5 +20,7 @@ class DateCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }

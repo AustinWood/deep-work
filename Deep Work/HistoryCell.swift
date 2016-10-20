@@ -20,5 +20,9 @@ class HistoryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
+    
 
 }
