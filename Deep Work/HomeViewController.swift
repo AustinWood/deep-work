@@ -438,7 +438,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 } else {
                     workData += "\"stopTime\":\"" + "" + "\",\n"
                 }
-                workData += "\"note\":\"" + "" + "\"},\n" // entryData.note!
+                if let note = entryData.note {
+                    workData += "\"note\":\"" + note + "\"},\n"
+                } else {
+                    workData += "\"note\":\"" + "" + "\"},\n"
+                }
             }
             workData += "]},"
             workData = workData.replacingOccurrences(of: "},\n]},", with: "}\n]},")
