@@ -23,6 +23,7 @@
 // Display details
 // Add back edit project name long press (disabled for reordering)
 // Bug: App freezes if cell moved out of bounds of collection view during reordering
+// Automatically capitalize first letter of entry note, and after periods
 //
 // After stopping a timer, fade-in a dialog with text
 //    "You just saved an entry of #TimeInterval for project #Porject".
