@@ -12,7 +12,6 @@
 //
 // RESUME WITH:
 //
-// Add note to entry
 // Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
 //
 //////////////////////////////////////////////////
@@ -202,11 +201,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func addNote(timeLog: TimeLog) {
-        let sessionLength = timeLog.startTime?.timeIntervalSince(timeLog.startTime!)
+        let sessionLength = timeLog.stopTime?.timeIntervalSince(timeLog.startTime!)
         let sessionLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: sessionLength!)
         let project = timeLog.project
         
-        let alertController = UIAlertController(title: "\(project!.title!)\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nEnter a note (optional)\nfor your new time log:", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "\(project!.title!)\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nWould you like to Save\nor Delete this entry?\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
