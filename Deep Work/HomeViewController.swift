@@ -190,7 +190,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             if alertController.textFields?.first?.text != "" {
                 projectTitle = alertController.textFields?.first?.text
             } else { return }
-            //let newProject = Project(context: (self?.moc)!)
             project.title = projectTitle
             do { try self?.moc?.save() }
             catch { fatalError("Error storing data") }
@@ -211,7 +210,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         alertController.addTextField { (textField: UITextField) in }
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
-            timeLog.note = alertController.textFields?.first?.text
+            var noteStr = alertController.textFields?.first?.text
+            noteStr = noteStr?.replacingOccurrences(of: "\"", with: "'") // Replace double quotes with single quotes to avoid confusing JSON exporter
+            timeLog.note = noteStr
             do { try self?.moc?.save() }
             catch { fatalError("Error storing data") }
             self?.loadData()

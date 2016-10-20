@@ -9,37 +9,7 @@
                            {
                            "startTime":"2016-10-19T13:39:00",
                            "stopTime":"2016-10-19T14:41:00",
-                           "note":""}
-                           ]},{
-             "title":"Deep Work",
-             "color":"",
-             "image":"",
-             "workEntry": [
-                           
-                           {
-                           "startTime":"2016-10-18T17:17:00",
-                           "stopTime":"2016-10-18T18:40:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T10:24:00",
-                           "stopTime":"2016-10-19T11:58:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:14:00",
-                           "stopTime":"2016-10-17T20:34:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T18:53:00",
-                           "stopTime":"2016-10-18T20:00:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T16:35:00",
-                           "stopTime":"2016-10-19T18:01:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T18:31:00",
-                           "stopTime":"2016-10-19T19:59:44",
-                           "note":""}
+                           "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"}
                            ]},{
              "title":"Problem Solving",
              "color":"",
@@ -51,19 +21,63 @@
                            "stopTime":"2016-10-18T11:08:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-17T11:31:00",
-                           "stopTime":"2016-10-17T12:57:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:34:00",
-                           "stopTime":"2016-10-17T20:52:00",
+                           "startTime":"2016-10-18T12:52:00",
+                           "stopTime":"2016-10-18T15:27:00",
                            "note":""},
                            {
                            "startTime":"2016-10-18T11:14:00",
                            "stopTime":"2016-10-18T12:40:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-18T12:52:00",
-                           "stopTime":"2016-10-18T15:27:00",
+                           "startTime":"2016-10-17T11:31:00",
+                           "stopTime":"2016-10-17T12:57:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T10:53:39",
+                           "stopTime":"2016-10-20T11:40:58",
+                           "note":"Solved 'How Many Numbers? II' - 5 kyu"},
+                           {
+                           "startTime":"2016-10-17T20:34:00",
+                           "stopTime":"2016-10-17T20:52:00",
                            "note":""}
-                           ]}]}
+                           ]},{
+             "title":"Deep Work",
+             "color":"",
+             "image":"",
+             "workEntry": [
+                           
+                           {
+                           "startTime":"2016-10-18T18:53:00",
+                           "stopTime":"2016-10-18T20:00:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T11:44:33",
+                           "stopTime":"",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T17:17:00",
+                           "stopTime":"2016-10-18T18:40:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T20:14:00",
+                           "stopTime":"2016-10-17T20:34:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-19T16:35:00",
+                           "stopTime":"2016-10-19T18:01:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-19T10:24:00",
+                           "stopTime":"2016-10-19T11:58:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-19T18:31:00",
+                           "stopTime":"2016-10-19T20:36:26",
+                           "note":""}
+                           ]},{
+             "title":"Core Data",
+             "color":"",
+             "image":"",
+             "workEntry": [
+             
+             ]}]}
