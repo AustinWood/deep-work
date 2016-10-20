@@ -13,6 +13,11 @@
 // RESUME WITH:
 //
 // Display details
+//   # timeLabel.text: 22:21 → 22:52 = 0h 31m
+//   # Add note
+//   # Add date label
+//   # Swipe to edit
+//   # Add edit project button in upper right
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
