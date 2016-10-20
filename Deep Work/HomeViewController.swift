@@ -123,13 +123,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         startStopTimer(project: selectedProject)
     }
     
+    var selectedProject: Project?
+    
     func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         let pointInCollectionView = gesture.location(in: self.collectionView!)
         var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
         let selectedCell = self.collectionView!.cellForItem(at: selectedIndexPath)! as! ProjectCell
         print("Double tapped: \(selectedCell.titleLabel.text)")
-        let selectedProject = projects[selectedIndexPath.row]
-        editProject(project: selectedProject)
+        print(selectedIndexPath.row)
+        print(projects[selectedIndexPath.row].title)
+        selectedProject = projects[selectedIndexPath.row]
+        performSegue(withIdentifier: "goToHistory", sender: self)
     }
     
     var oldIndex = IndexPath()
@@ -415,6 +419,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         delegate.deleteRecords()
         delegate.checkDataStore()
         loadData()
+    }
+    
+    //////////////////////////////////////////////
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToHistory" {
+            let destinationController = segue.destination as! HistoryViewController
+            print(selectedProject?.title)
+            destinationController.project = selectedProject!
+            destinationController.moc = moc
+        }
     }
     
     //////////////////////////////////////////////
