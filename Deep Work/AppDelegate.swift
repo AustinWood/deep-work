@@ -125,6 +125,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
                 }
                 
+                guard let order = projectData["order"] else {
+                    return
+                }
+                
                 guard let color = projectData["color"] else {
                     return
                 }
@@ -134,9 +138,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 // Project object initialization
-                //let project = homeType?.caseInsensitiveCompare("condo") == .orderedSame ? Condo(context: moc) : SingleFamily(context: moc)
                 let project = Project(context: moc!)
                 project.title = title as? String
+                print(order)
+                project.order = order.int16Value
                 project.color = color as? String
                 project.image = image as? String
                 

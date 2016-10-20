@@ -12,7 +12,9 @@
 //
 // RESUME WITH:
 //
-// Rearrange by dragging: http://nshint.io/blog/2015/07/16/uicollectionviews-now-have-easy-reordering/
+// Save projects[] order
+// Animate when moving is enabled
+// Add back edit project name long press (disabled for reordering)
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -134,10 +136,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             let element = projects.remove(at: oldIndex)
             projects.insert(element, at: newIndex.row)
+            updateProjectOrder()
             collectionView.endInteractiveMovement()
-        
         default:
             collectionView.cancelInteractiveMovement()
+        }
+    }
+    
+    func updateProjectOrder() {
+        var i = 0
+        while i < projects.count {
+            let project = projects[i] as Project
+            project.order = Int16(i)
+            i += 1
         }
     }
     
@@ -211,6 +222,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             } else { return }
             let newProject = Project(context: (self?.moc)!)
             newProject.title = projectTitle
+            newProject.order = Int16((self?.projects.count)!)
             do { try self?.moc?.save() }
             catch { fatalError("Error storing data") }
             self?.loadData()
@@ -384,6 +396,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         catch {
             fatalError("Error retrieving grocery item")
         }
+        projects.sort(by: { $0.order < $1.order })
         checkForRunningTimers()
         updateTimeLabels()
     }
@@ -461,6 +474,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         //tasksToSend.sortInPlace({ $0.taskOrder < $1.taskOrder })
         for project in projects {
             dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
+            dataString += "\"order\":" + "\(project.order)" + ",\n"
             dataString += "\"color\":\"" + "" + "\",\n" // project.color!
             dataString += "\"image\":\"" + "" + "\",\n" // project.image!
             dataString += "\"workEntry\": [\n\n"

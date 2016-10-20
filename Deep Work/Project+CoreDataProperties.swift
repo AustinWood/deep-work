@@ -2,7 +2,7 @@
 //  Project+CoreDataProperties.swift
 //  Deep Work
 //
-//  Created by Austin Wood on 2016-10-12.
+//  Created by Austin Wood on 2016-10-20.
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
@@ -15,9 +15,10 @@ extension Project {
         return NSFetchRequest<Project>(entityName: "Project");
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var color: String?
     @NSManaged public var image: String?
+    @NSManaged public var title: String?
+    @NSManaged public var order: Int16
     @NSManaged public var workEntry: NSSet?
 
 }

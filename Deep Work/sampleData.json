@@ -1,32 +1,66 @@
 {"project": [
              
              {
-             "title":"GamingU",
+             "title":"Deep Work",
+             "order":2,
              "color":"",
              "image":"",
              "workEntry": [
                            
                            {
-                           "startTime":"2016-10-19T13:39:00",
-                           "stopTime":"2016-10-19T14:41:00",
-                           "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"}
+                           "startTime":"2016-10-19T10:24:00",
+                           "stopTime":"2016-10-19T11:58:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-19T18:31:00",
+                           "stopTime":"2016-10-19T20:36:26",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T17:17:00",
+                           "stopTime":"2016-10-18T18:40:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T11:44:33",
+                           "stopTime":"2016-10-20T12:39:46",
+                           "note":"After stopping timer, user is presented with option to save entry with an optional note, or delete the entry"},
+                           {
+                           "startTime":"2016-10-19T16:35:00",
+                           "stopTime":"2016-10-19T18:01:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T18:53:00",
+                           "stopTime":"2016-10-18T20:00:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T20:14:00",
+                           "stopTime":"2016-10-17T20:34:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T12:54:38",
+                           "stopTime":"",
+                           "note":""}
                            ]},{
              "title":"Problem Solving",
+             "order":1,
              "color":"",
              "image":"",
              "workEntry": [
                            
-                           {
-                           "startTime":"2016-10-18T10:37:00",
-                           "stopTime":"2016-10-18T11:08:00",
-                           "note":""},
                            {
                            "startTime":"2016-10-18T12:52:00",
                            "stopTime":"2016-10-18T15:27:00",
                            "note":""},
                            {
+                           "startTime":"2016-10-17T20:34:00",
+                           "stopTime":"2016-10-17T20:52:00",
+                           "note":""},
+                           {
                            "startTime":"2016-10-18T11:14:00",
                            "stopTime":"2016-10-18T12:40:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T10:37:00",
+                           "stopTime":"2016-10-18T11:08:00",
                            "note":""},
                            {
                            "startTime":"2016-10-17T11:31:00",
@@ -35,49 +69,23 @@
                            {
                            "startTime":"2016-10-20T10:53:39",
                            "stopTime":"2016-10-20T11:40:58",
-                           "note":"Solved 'How Many Numbers? II' - 5 kyu"},
-                           {
-                           "startTime":"2016-10-17T20:34:00",
-                           "stopTime":"2016-10-17T20:52:00",
-                           "note":""}
+                           "note":"Solved 'How Many Numbers? II' - 5 kyu"}
                            ]},{
-             "title":"Deep Work",
+             "title":"Core Data",
+             "order":3,
+             "color":"",
+             "image":"",
+             "workEntry": [
+             
+             ]},{
+             "title":"GamingU",
+             "order":0,
              "color":"",
              "image":"",
              "workEntry": [
                            
                            {
-                           "startTime":"2016-10-18T18:53:00",
-                           "stopTime":"2016-10-18T20:00:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-20T11:44:33",
-                           "stopTime":"",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T17:17:00",
-                           "stopTime":"2016-10-18T18:40:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:14:00",
-                           "stopTime":"2016-10-17T20:34:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T16:35:00",
-                           "stopTime":"2016-10-19T18:01:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T10:24:00",
-                           "stopTime":"2016-10-19T11:58:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-19T18:31:00",
-                           "stopTime":"2016-10-19T20:36:26",
-                           "note":""}
-                           ]},{
-             "title":"Core Data",
-             "color":"",
-             "image":"",
-             "workEntry": [
-             
-             ]}]}
+                           "startTime":"2016-10-19T13:39:00",
+                           "stopTime":"2016-10-19T14:41:00",
+                           "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"}
+                           ]}]}

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		422375471DAE96C0005707B7 /* TimeLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422375431DAE96C0005707B7 /* TimeLog+CoreDataClass.swift */; };
 		422375481DAE96C0005707B7 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422375441DAE96C0005707B7 /* TimeLog+CoreDataProperties.swift */; };
-		422375491DAE96C0005707B7 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422375451DAE96C0005707B7 /* Project+CoreDataClass.swift */; };
-		4223754A1DAE96C0005707B7 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422375461DAE96C0005707B7 /* Project+CoreDataProperties.swift */; };
 		42303F481DB66F2900365379 /* DayWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42303F471DB66F2900365379 /* DayWeekView.swift */; };
 		427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AD7891DAF933400B22DB5 /* FormatTime.swift */; };
 		429FA5A71DB7AFCF00242E77 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 429FA5A61DB7AFCF00242E77 /* sampleData.json */; };
@@ -23,13 +21,13 @@
 		42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F71DAD474E008F0260 /* ProjectCell.swift */; };
 		42C3A7FA1DAD482F008F0260 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F91DAD482F008F0260 /* HomeViewController.swift */; };
 		42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */; };
+		42D55C221DB8D28D0087F56F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D55C201DB8D28D0087F56F /* Project+CoreDataClass.swift */; };
+		42D55C231DB8D28D0087F56F /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D55C211DB8D28D0087F56F /* Project+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		422375431DAE96C0005707B7 /* TimeLog+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeLog+CoreDataClass.swift"; path = "../TimeLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		422375441DAE96C0005707B7 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeLog+CoreDataProperties.swift"; path = "../TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		422375451DAE96C0005707B7 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Project+CoreDataClass.swift"; path = "../Project+CoreDataClass.swift"; sourceTree = "<group>"; };
-		422375461DAE96C0005707B7 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Project+CoreDataProperties.swift"; path = "../Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		42303F471DB66F2900365379 /* DayWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeekView.swift; sourceTree = "<group>"; };
 		427AD7891DAF933400B22DB5 /* FormatTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatTime.swift; sourceTree = "<group>"; };
 		429FA5A61DB7AFCF00242E77 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
@@ -44,6 +42,8 @@
 		42C3A7F71DAD474E008F0260 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		42C3A7F91DAD482F008F0260 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		42D55C201DB8D28D0087F56F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
+		42D55C211DB8D28D0087F56F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,10 +137,10 @@
 		42C3A7F61DAD4631008F0260 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				42D55C201DB8D28D0087F56F /* Project+CoreDataClass.swift */,
+				42D55C211DB8D28D0087F56F /* Project+CoreDataProperties.swift */,
 				422375431DAE96C0005707B7 /* TimeLog+CoreDataClass.swift */,
 				422375441DAE96C0005707B7 /* TimeLog+CoreDataProperties.swift */,
-				422375451DAE96C0005707B7 /* Project+CoreDataClass.swift */,
-				422375461DAE96C0005707B7 /* Project+CoreDataProperties.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -222,12 +222,12 @@
 				42303F481DB66F2900365379 /* DayWeekView.swift in Sources */,
 				42C3A7FA1DAD482F008F0260 /* HomeViewController.swift in Sources */,
 				42A52E601DAD502F00924350 /* Colors.swift in Sources */,
-				4223754A1DAE96C0005707B7 /* Project+CoreDataProperties.swift in Sources */,
 				42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */,
-				422375491DAE96C0005707B7 /* Project+CoreDataClass.swift in Sources */,
 				422375471DAE96C0005707B7 /* TimeLog+CoreDataClass.swift in Sources */,
+				42D55C221DB8D28D0087F56F /* Project+CoreDataClass.swift in Sources */,
 				42BD2DDA1DAD413500D38118 /* Deep_Work.xcdatamodeld in Sources */,
 				42BD2DD21DAD413500D38118 /* AppDelegate.swift in Sources */,
+				42D55C231DB8D28D0087F56F /* Project+CoreDataProperties.swift in Sources */,
 				422375481DAE96C0005707B7 /* TimeLog+CoreDataProperties.swift in Sources */,
 				427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */,
 				42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */,
