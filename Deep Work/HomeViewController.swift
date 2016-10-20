@@ -12,7 +12,7 @@
 //
 // RESUME WITH:
 //
-// Add back edit project name long press (disabled for reordering)
+// Remove deleteRecords() from app delegate and add option to settings
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -21,8 +21,8 @@
 //
 // Delete/archive timers
 // Display details
-//
-// Bug: Can't stop timer after unlocking iPhone
+// Add back edit project name long press (disabled for reordering)
+// Bug: App freezes if cell moved out of bounds of collection view during reordering
 //
 // After stopping a timer, fade-in a dialog with text
 //    "You just saved an entry of #TimeInterval for project #Porject".
