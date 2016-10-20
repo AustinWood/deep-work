@@ -12,8 +12,6 @@
 //
 // RESUME WITH:
 //
-// Save projects[] order
-// Animate when moving is enabled
 // Add back edit project name long press (disabled for reordering)
 //
 //////////////////////////////////////////////////
@@ -114,7 +112,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.collectionView.addGestureRecognizer(longPressGesture)
     }
     
-    var oldIndex = Int()
+    var oldIndex = IndexPath()
     
     func handleLongPress(gesture: UILongPressGestureRecognizer) {
         print("Long press!")
@@ -124,8 +122,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
             }
-            oldIndex = selectedIndexPath.row
+            oldIndex = selectedIndexPath
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+            let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as! ProjectCell
+            selectedCell.circleView.backgroundColor = CustomColor.blueGreen
         
         case UIGestureRecognizerState.changed:
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
@@ -134,7 +134,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             guard let newIndex = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
             }
-            let element = projects.remove(at: oldIndex)
+            let element = projects.remove(at: oldIndex.row)
             projects.insert(element, at: newIndex.row)
             updateProjectOrder()
             collectionView.endInteractiveMovement()
