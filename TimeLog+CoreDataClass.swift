@@ -110,6 +110,10 @@ public class TimeLog: NSManagedObject {
         return 0
     }
     
+//    func calculateSessionLength(timeLog: TimeLog, moc: NSManagedObjectContext) -> TimeInterval {
+//        
+//    }
+    
     func getCurrentEntry(project: Project, moc: NSManagedObjectContext) -> TimeLog {
         let timeLog = TimeLog(context: managedObjectContext!)
         let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)

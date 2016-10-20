@@ -23,11 +23,14 @@
 // Delete/archive timers
 // Display details
 //
+// Bug: Can't stop timer after unlocking iPhone
+//
 // After stopping a timer, fade-in a dialog with text
 //    "You just saved an entry of #TimeInterval for project #Porject".
 //    And two buttons: 'Delete' and 'Add Note'.
 //    This view can fade out after 5 seconds.
 //
+// Add randomized confimation messages to "Add note"
 // Daily/Weekly goals (see Evernote)
 // Sort JSON time entries for readability
 //
@@ -157,7 +160,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     //////////////////////////////////////////////
-    // MARK:- Add / Edit Project
+    // MARK:- Alerts and Menus
     
     @IBAction func addPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
@@ -199,7 +202,49 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         present(alertController, animated: true, completion: nil)
     }
     
-    ///
+    func addNote(timeLog: TimeLog) {
+        let sessionLength = timeLog.startTime?.timeIntervalSince(timeLog.startTime!)
+        let sessionLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: sessionLength!)
+        let project = timeLog.project
+        
+        let alertController = UIAlertController(title: "\(project!.title!)\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nEnter a note (optional)\nfor your new time log:", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField: UITextField) in }
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
+            timeLog.note = alertController.textFields?.first?.text
+            do { try self?.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self?.loadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (action: UIAlertAction) in
+            do {
+                let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "WorkEntry")
+                do {
+                    let results = try self?.moc?.fetch(request)
+                    for result in results! {
+                        if result == timeLog {
+                            print("Deleted!")
+                            self?.moc?.delete(result)
+                        }
+                    }
+                }
+            }
+            catch { fatalError("Error deleting data") }
+            self?.loadData()
+        }
+        
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
+        
+        
+        // Is this in the right place?
+        do { try self.moc?.save() }
+        catch { fatalError("Error storing data") }
+        self.loadData()
+    }
     
     @IBAction func settingsPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Settings", message: "What would you like to do?", preferredStyle: .actionSheet)
@@ -222,19 +267,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if timeLog.inProgress(project: project, moc: moc!) {
             let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
             currentEntry.stopTime = Date()
-            //currentEntry.note = "Here's my note"
+            addNote(timeLog: currentEntry)
         } else if !timerRunning {
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
             newTimeLog.startTime = Date()
+            
+            // THIS WILL NEED TO BE COPIED TO addComment SECTION
+            do { try self.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self.loadData()
         } else {
             // Animate invalid tap
             print("You can't start a timer while another is in progress!")
         }
-        do { try self.moc?.save() }
-        catch { fatalError("Error storing data") }
-        self.loadData()
     }
     
     //////////////////////////////////////////////
