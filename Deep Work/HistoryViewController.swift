@@ -41,16 +41,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func intializeTimeLogs() {
         let timeLog = TimeLog(context: moc!)
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
-        for entry in timeLogArray! {
-            print(entry.startTime)
-        }
         tableView.reloadData()
     }
     
     //////////////////////////////////////////////
     // MARK:- Table View
     
-    func setupTableView() {
+    func setupTableView() { // Called on viewDidLoad
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
@@ -69,11 +66,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         // Confifure DateCell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
+            cell.selectionStyle = .none // DRY
             return cell
         }
         
         // Configure HistoryCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
+        cell.selectionStyle = .none // DRY
         let entry = (timeLogArray?[indexPath.row - 1])! as TimeLog
         cell.configureCell(entry: entry, moc: moc!)
         return cell

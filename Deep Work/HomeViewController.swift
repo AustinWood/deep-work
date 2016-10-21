@@ -13,10 +13,10 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Alternate cell color
 //   # Turn off cell selection
 //   # Sort entries
 //   # Add date label
+//   # Alternate cell color by date
 //   # Swipe to edit
 //   # Add edit project button in upper right
 //   # If entry is active:
