@@ -44,18 +44,20 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func intializeTimeLogs() {
+        
+        // Create an array of all TimeLog entries for the selected project and sort it
         let timeLog = TimeLog(context: moc!)
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
         timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
         
-        print("\n***********\n")
+        // Created an array of arrays of TimeLog entries, grouping them by date
         for entry in timeLogArray {
             let currentFormmattedDate = FormatTime().formattedDate(date: entry.startTime!)
-            var i = 0
             var foundMatch = false
+            var i = 0
             while i < timeLogNestedArray.count && !foundMatch {
-                let dateArray = timeLogNestedArray[i]
-                let existingFormmattedDate = FormatTime().formattedDate(date: dateArray[0].startTime!)
+                let entryArray = timeLogNestedArray[i]
+                let existingFormmattedDate = FormatTime().formattedDate(date: entryArray[0].startTime!)
                 if currentFormmattedDate == existingFormmattedDate {
                     timeLogNestedArray[i].append(entry)
                     foundMatch = true
@@ -66,26 +68,26 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 timeLogNestedArray.append([entry])
             }
         }
-        print("\n***********\n")
         
-        // Do I need to sort again?
-        
+        // Create cellInitializerArray, which is used by tableView's cellForRowAtIndexPath for configuring cells
+        // Each element's position in the array corresponds to a cell's indexPath
         var x = 0
         var y = 0
         while x < timeLogNestedArray.count {
+            // Negative values indicate a DateCell and their corresponding position in timeLogNestedArray
             cellInitializerArray.append(-(x+1))
             createColorArray(x: x)
             for _ in timeLogNestedArray[x] {
+                // Positive values indicate a time log HistoryCell and their corresponding position in timeLogArray
                 cellInitializerArray.append(y)
                 createColorArray(x: x)
                 y += 1
             }
             x += 1
         }
-        print(cellInitializerArray)
-        print(colorArray)
     }
     
+    // colorArray is used by tableView's cellForRowAtIndexPath for determining the background color of the cell
     func createColorArray(x: Int) {
         if x % 2 == 0 {
             colorArray.append(color2)
