@@ -90,6 +90,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
+        
+        // Can I animate the scrolling to the bottom of the tableView?
+        // This attempt yields no result
+        // let startIndexPath = IndexPath(row: 0, section: 0)
+        // tableView.scrollToRow(at: startIndexPath, at: .bottom, animated: true)
+        
+        let stopIndexPath = IndexPath(row: cellInitializerArray.count - 1, section: 0)
+        tableView.scrollToRow(at: stopIndexPath, at: .bottom, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

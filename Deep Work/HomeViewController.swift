@@ -14,9 +14,12 @@
 //
 // Display details:
 //   # Alternate cell color by date
-//   # Sort reverse order
 //   # Swipe to edit
 //   # Add edit project button in upper right
+//   # Stylize today
+//   # Add summary views to top of VC
+//   # Display up/down arrow indicating that there are more entries above/below
+//   # Stylize this week (color code with summary view at top of VC)
 //   # If entry is active:
 //       # Cell color
 //       # Remove stop time from output string
