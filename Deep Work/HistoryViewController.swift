@@ -15,7 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK:- Properties
     
     var project: Project?
-    var timeLogArray: [TimeLog]?
+    var timeLogArray: [TimeLog] = []
     var moc: NSManagedObjectContext?
     
     //////////////////////////////////////////////
@@ -41,6 +41,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func intializeTimeLogs() {
         let timeLog = TimeLog(context: moc!)
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
+        timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
         tableView.reloadData()
     }
     
@@ -58,7 +59,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (timeLogArray?.count)! + 1
+        return (timeLogArray.count) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +74,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         // Configure HistoryCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
         cell.selectionStyle = .none // DRY
-        let entry = (timeLogArray?[indexPath.row - 1])! as TimeLog
+        let entry = (timeLogArray[indexPath.row - 1]) as TimeLog
         cell.configureCell(entry: entry, moc: moc!)
         return cell
     }

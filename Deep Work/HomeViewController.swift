@@ -13,7 +13,6 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Turn off cell selection
 //   # Sort entries
 //   # Add date label
 //   # Alternate cell color by date
