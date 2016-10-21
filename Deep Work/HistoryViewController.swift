@@ -19,6 +19,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var timeLogArray: [TimeLog] = []
     var timeLogNestedArray: [[TimeLog]] = []
     var cellInitializerArray: [Int] = []
+    var colorArray: [UIColor] = []
+    let color1 = UIColor.black
+    let color2 = CustomColor.blueDark
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -72,15 +75,24 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         var y = 0
         while x < timeLogNestedArray.count {
             cellInitializerArray.append(-(x+1))
+            createColorArray(x: x)
             for _ in timeLogNestedArray[x] {
                 cellInitializerArray.append(y)
+                createColorArray(x: x)
                 y += 1
             }
             x += 1
         }
         print(cellInitializerArray)
-        
-        
+        print(colorArray)
+    }
+    
+    func createColorArray(x: Int) {
+        if x % 2 == 0 {
+            colorArray.append(color2)
+        } else {
+            colorArray.append(color1)
+        }
     }
     
     //////////////////////////////////////////////
@@ -114,6 +126,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         if cellInitializerArray[indexPath.row] < 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
             cell.selectionStyle = .none // DRY
+            cell.backgroundColor = colorArray[indexPath.row] // DRY
             let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row]+1)][0]
             let formattedDate = FormatTime().formattedDate(date: entry.startTime!)
             cell.dateLabel.text = formattedDate
@@ -123,6 +136,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         // Configure HistoryCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
         cell.selectionStyle = .none // DRY
+        cell.backgroundColor = colorArray[indexPath.row] // DRY
         let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
         cell.configureCell(entry: entry, moc: moc!)
         return cell

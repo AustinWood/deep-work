@@ -14,6 +14,7 @@
 //
 // Display details:
 //   # Alternate cell color by date
+//   # Clean up intializeTimeLogs()
 //   # Swipe to edit
 //   # Add edit project button in upper right
 //   # Stylize today
