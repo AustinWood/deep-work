@@ -47,6 +47,7 @@ class HistoryCell: UITableViewCell {
         if entry.note == nil || entry.note == "" {
             noteLabel.isHidden = true
         } else {
+            noteLabel.isHidden = false
             noteLabel.text = entry.note
         }
     }

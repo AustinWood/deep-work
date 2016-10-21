@@ -19,6 +19,9 @@
 //       # Remove stop time from output string
 //       # Update timer each second
 //   # Swipe to edit
+//       # Delete entry
+//       # Edit note
+//       # Edit start/stop time
 //   # Add edit project button in upper right
 //   # Add summary views to top of VC
 //   # Stylize this week (color code with summary view at top of VC)
@@ -31,6 +34,7 @@
 // Automatically capitalize first letter of entry note, and after periods
 // Pause timer when "Great work!" screen appears (resume is 'Continue working' pressed), currently still running in background
 // Animation: When starting timer: fade button color in, fade other buttons text/outline to gray
+// Edge swipe to go back to main VC from HistoryVC
 
 // Visual time line at top (like Hours... No! Better, like my new sketch)
 // Give projects an Area parent / tags
@@ -270,9 +274,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let deleteAction = UIAlertAction(title: "Delete entry", style: .destructive) { [weak self] (action: UIAlertAction) in
             self?.warningDeleteEntry(timeLog: timeLog)
         }
-        let cancelAction = UIAlertAction(title: "Continue working", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Continue working", style: .default) { (action: UIAlertAction) in
+            timeLog.stopTime = nil
+        }
         let saveAction = UIAlertAction(title: "Save entry", style: .default) { [weak self] (action: UIAlertAction) in
-            timeLog.stopTime = Date()
             var noteStr = alertController.textFields?.first?.text
             noteStr = noteStr?.replacingOccurrences(of: "\"", with: "'") // Replace double quotes with single quotes to avoid confusing JSON exporter
             timeLog.note = noteStr
@@ -332,6 +337,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let timeLog = TimeLog(context: moc!)
         if timeLog.inProgress(project: project, moc: moc!) {
             let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
+            currentEntry.stopTime = Date()
             addNote(timeLog: currentEntry)
         } else if !timerRunning {
             // Start a new time log
