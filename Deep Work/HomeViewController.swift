@@ -13,8 +13,6 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Move table view to bottom stopped working
-//   # Clean up intializeTimeLogs()
 //   # Stylize today
 //   # If entry is active:
 //       # Cell color
@@ -30,26 +28,22 @@
 //
 // TO DO:
 //
-// Delete/archive timers
 // Automatically capitalize first letter of entry note, and after periods
 // Pause timer when "Great work!" screen appears (resume is 'Continue working' pressed), currently still running in background
-//
-// Animations
-//   # When starting timer: fade button color in, fade other buttons text/outline to gray
-//
-// Create an asynchronous request in History, upon completion scroll to bottom 
-// Add randomized confimation messages to "Add note"
+// Animation: When starting timer: fade button color in, fade other buttons text/outline to gray
+
+// Visual time line at top (like Hours... No! Better, like my new sketch)
+// Give projects an Area parent / tags
 // Daily/Weekly goals (see Evernote)
 // Sort JSON time entries for readability
-//
+// Delete/archive timers
+// Create an asynchronous request in History, upon completion scroll to bottom
+// Add randomized confimation messages to "Add note"
 // Verify that time entries are disaplayed the same when moving across time zones
-// Visual time line at top (like Hours)
-// Give projects an Area parent / tags
-// Animate invalid request if trying to start a timer while another is running
-//
+// Animation: Invalid action if trying to start a timer while another is running
 // Replace fatalError with something friendlier
 // Refactor time summations (todayTime and weekTime DRY)
-// Professional design
+// Professional design (see Evernote, by asset pack?)
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
