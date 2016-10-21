@@ -13,18 +13,16 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Alternate cell color by date
 //   # Clean up intializeTimeLogs()
-//   # Swipe to edit
-//   # Add edit project button in upper right
 //   # Stylize today
-//   # Add summary views to top of VC
-//   # Display up/down arrow indicating that there are more entries above/below
-//   # Stylize this week (color code with summary view at top of VC)
 //   # If entry is active:
 //       # Cell color
 //       # Remove stop time from output string
 //       # Update timer each second
+//   # Swipe to edit
+//   # Add edit project button in upper right
+//   # Add summary views to top of VC
+//   # Stylize this week (color code with summary view at top of VC)
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -421,6 +419,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func deleteRecords() {
+        let alertController = UIAlertController(title: "Warning!", message: "This action will delete all data associated with this app and replace it with the contents of 'sampleData.json'\n\nAre you sure you want to continue?", preferredStyle: .actionSheet)
+        let continueButton = UIAlertAction(title: "Yes, delete my data", style: .destructive, handler: { (action) -> Void in
+            self.proceedWithDeleteRecords()
+        })
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            // Do nothing
+        })
+        alertController.addAction(continueButton)
+        alertController.addAction(cancelButton)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func proceedWithDeleteRecords() {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.checkDataStore()
         delegate.deleteRecords()
@@ -467,8 +478,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    // DRY: Combine with warning for deleting all entries, for deleting entry after having stopped timer, etc
     func warningRunningTimer() {
-        let alertController = UIAlertController(title: "Warning!", message: "A timer is currently running. Data with incomplete entries can lead to irregular results when later imported back into the app. Are you sure you want to export data now?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Warning!", message: "A timer is currently running. Data with incomplete entries can lead to irregular results when later imported back into the app. It is recommended that you only use the export feature after having stopped all timers.\n\nAre you sure you want to export data now?", preferredStyle: .actionSheet)
         let continueButton = UIAlertAction(title: "Continue with export", style: .destructive, handler: { (action) -> Void in
             self.initiateEmail()
         })

@@ -35,11 +35,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         intializeTimeLogs()
-        setupController()
+        setupViewController()
         setupTableView()
     }
     
-    func setupController() {
+    func setupViewController() {
         titleLabel.text = project?.title
     }
     
@@ -47,7 +47,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let timeLog = TimeLog(context: moc!)
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
         timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
-        tableView.reloadData()
         
         print("\n***********\n")
         for entry in timeLogArray {
@@ -102,6 +101,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
+        
         
         // Can I animate the scrolling to the bottom of the tableView?
         // This attempt yields no result

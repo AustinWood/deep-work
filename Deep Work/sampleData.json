@@ -8,17 +8,9 @@
              "workEntry": [
                            
                            {
-                           "startTime":"2016-10-19T18:31:00",
-                           "stopTime":"2016-10-19T20:36:26",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:14:00",
-                           "stopTime":"2016-10-17T20:34:00",
-                           "note":""},
-                           {
                            "startTime":"2016-10-20T17:40:56",
-                           "stopTime":"",
-                           "note":""},
+                           "stopTime":"2016-10-20T18:43:04",
+                           "note":"Moved deleteRecords to Settings, doulbe tap to edit title, fix bug: froze when dragging cell out of bounds"},
                            {
                            "startTime":"2016-10-19T16:35:00",
                            "stopTime":"2016-10-19T18:01:00",
@@ -28,52 +20,52 @@
                            "stopTime":"2016-10-20T12:39:46",
                            "note":"After stopping timer, user is presented with option to save entry with an optional note, or delete the entry"},
                            {
-                           "startTime":"2016-10-19T10:24:00",
-                           "stopTime":"2016-10-19T11:58:00",
+                           "startTime":"2016-10-19T18:31:00",
+                           "stopTime":"2016-10-19T20:36:26",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-21T12:19:27",
+                           "stopTime":"2016-10-21T13:45:00",
+                           "note":"Working on HistoryVC"},
+                           {
+                           "startTime":"2016-10-21T14:13:10",
+                           "stopTime":"",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T17:17:00",
+                           "stopTime":"2016-10-18T18:40:00",
                            "note":""},
                            {
                            "startTime":"2016-10-20T12:54:38",
                            "stopTime":"2016-10-20T14:15:50",
                            "note":"Long press to rearrange projects, order saves persitently."},
                            {
+                           "startTime":"2016-10-19T10:24:00",
+                           "stopTime":"2016-10-19T11:58:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T21:14:09",
+                           "stopTime":"2016-10-20T22:23:44",
+                           "note":"Began working on HistoryVC. TableView displays length of all entries for the selected project"},
+                           {
                            "startTime":"2016-10-18T18:53:00",
                            "stopTime":"2016-10-18T20:00:00",
                            "note":""},
                            {
-                           "startTime":"2016-10-18T17:17:00",
-                           "stopTime":"2016-10-18T18:40:00",
+                           "startTime":"2016-10-17T20:14:00",
+                           "stopTime":"2016-10-17T20:34:00",
                            "note":""}
                            ]},{
-             "title":"Problem Solving",
+             "title":"Ruby",
              "order":1,
              "color":"",
              "image":"",
              "workEntry": [
                            
                            {
-                           "startTime":"2016-10-18T11:14:00",
-                           "stopTime":"2016-10-18T12:40:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T11:31:00",
-                           "stopTime":"2016-10-17T12:57:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T10:37:00",
-                           "stopTime":"2016-10-18T11:08:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-17T20:34:00",
-                           "stopTime":"2016-10-17T20:52:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-18T12:52:00",
-                           "stopTime":"2016-10-18T15:27:00",
-                           "note":""},
-                           {
-                           "startTime":"2016-10-20T10:53:39",
-                           "stopTime":"2016-10-20T11:40:58",
-                           "note":"Solved 'How Many Numbers? II' - 5 kyu"}
+                           "startTime":"2016-10-21T10:20:32",
+                           "stopTime":"2016-10-21T11:28:33",
+                           "note":"Textbook"}
                            ]},{
              "title":"Core Data",
              "order":2,
@@ -84,10 +76,45 @@
                            {
                            "startTime":"2016-10-20T14:54:04",
                            "stopTime":"2016-10-20T15:43:52",
-                           "note":"Finished Section 3: Let's Get Wet (Home Report project)"}
+                           "note":"Finished Section 3: Let's Get Wet (Home Report project)"},
+                           {
+                           "startTime":"2016-10-21T11:35:02",
+                           "stopTime":"2016-10-21T12:14:41",
+                           "note":"Start and finish Section 4: Automatic subclass generation"}
+                           ]},{
+             "title":"Problem Solving",
+             "order":3,
+             "color":"",
+             "image":"",
+             "workEntry": [
+                           
+                           {
+                           "startTime":"2016-10-18T10:37:00",
+                           "stopTime":"2016-10-18T11:08:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-18T11:14:00",
+                           "stopTime":"2016-10-18T12:40:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T20:34:00",
+                           "stopTime":"2016-10-17T20:52:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-17T11:31:00",
+                           "stopTime":"2016-10-17T12:57:00",
+                           "note":""},
+                           {
+                           "startTime":"2016-10-20T10:53:39",
+                           "stopTime":"2016-10-20T11:40:58",
+                           "note":"Solved 'How Many Numbers? II' - 5 kyu"},
+                           {
+                           "startTime":"2016-10-18T12:52:00",
+                           "stopTime":"2016-10-18T15:27:00",
+                           "note":""}
                            ]},{
              "title":"GamingU",
-             "order":3,
+             "order":4,
              "color":"",
              "image":"",
              "workEntry": [
