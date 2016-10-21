@@ -13,6 +13,7 @@
 // RESUME WITH:
 //
 // Display details:
+//   # Move table view to bottom stopped working
 //   # Clean up intializeTimeLogs()
 //   # Stylize today
 //   # If entry is active:
@@ -36,6 +37,7 @@
 // Animations
 //   # When starting timer: fade button color in, fade other buttons text/outline to gray
 //
+// Create an asynchronous request in History, upon completion scroll to bottom 
 // Add randomized confimation messages to "Add note"
 // Daily/Weekly goals (see Evernote)
 // Sort JSON time entries for readability

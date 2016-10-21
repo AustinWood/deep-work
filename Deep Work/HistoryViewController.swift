@@ -97,17 +97,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     // MARK:- Table View
     
+    var timer = Timer()
+    
     func setupTableView() { // Called on viewDidLoad
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
-        
-        
-        // Can I animate the scrolling to the bottom of the tableView?
-        // This attempt yields no result
-        // let startIndexPath = IndexPath(row: 0, section: 0)
-        // tableView.scrollToRow(at: startIndexPath, at: .bottom, animated: true)
-        
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.scrollToBottom), userInfo: nil, repeats: false)
+    }
+    
+    func scrollToBottom() {
         let stopIndexPath = IndexPath(row: cellInitializerArray.count - 1, section: 0)
         tableView.scrollToRow(at: stopIndexPath, at: .bottom, animated: true)
     }
@@ -153,6 +152,4 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    
 }
- 
