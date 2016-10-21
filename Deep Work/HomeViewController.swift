@@ -13,11 +13,15 @@
 // RESUME WITH:
 //
 // Display details
-//   # timeLabel.text: 22:21 → 22:52 = 0h 31m
-//   # Add note
+//   # Cell should resize to fit note height
+//   # Sort entries
 //   # Add date label
 //   # Swipe to edit
 //   # Add edit project button in upper right
+//   # If entry is active:
+//       # Cell color
+//       # Remove stop time from output string
+//       # Update timer each second
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
