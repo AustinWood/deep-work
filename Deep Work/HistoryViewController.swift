@@ -54,17 +54,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Confifure DateCell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
             return cell
         }
+        
+        // Configure HistoryCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
         let entry = (timeLogArray?[indexPath.row - 1])! as TimeLog
-        
-        let entryLength = entry.stopTime?.timeIntervalSince(entry.startTime!)
-        let entryLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: entryLength!)
-        
-        cell.timeLabel.text = entryLengthFormatted
+        cell.configureCell(entry: entry, moc: moc!)
         return cell
     }
     

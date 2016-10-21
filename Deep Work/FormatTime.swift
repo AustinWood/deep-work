@@ -26,4 +26,19 @@ struct FormatTime {
         return NSString(format: "%0.1dh %0.1dm",hours,minutes) as String
     }
     
+    func formattedTime(date: Date) -> String {
+        let calendar = NSCalendar.current
+        let hour = calendar.component(.hour, from: date)
+        var hourStr = String(hour)
+        if hour < 10 {
+            hourStr = "0" + hourStr
+        }
+        let minute = calendar.component(.minute, from: date)
+        var minuteStr = String(minute)
+        if minute < 10 {
+            minuteStr = "0" + minuteStr
+        }
+        return hourStr + ":" + minuteStr
+    }
+    
 }
