@@ -112,6 +112,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.scrollToRow(at: stopIndexPath, at: .bottom, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let blackView = UIView()
+        blackView.backgroundColor = UIColor.clear
+        return blackView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // This should be the same as Visual Effects View which contains the back button and project title
+        return 76 as CGFloat
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
