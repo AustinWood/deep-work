@@ -286,7 +286,7 @@
                                                     <frame key="frameInset" width="375" height="91"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="PGu-38-p4t">
-                                                            <frame key="frameInset" minX="20" minY="12" width="335" height="64"/>
+                                                            <frame key="frameInset" minX="20" minY="12" width="335" height="56"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-X9-3ts">
                                                                     <subviews>
@@ -320,9 +320,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="PGu-38-p4t" secondAttribute="bottom" constant="10" id="Ccl-m7-eXI"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PGu-38-p4t" secondAttribute="bottom" constant="14" id="Ccl-m7-eXI"/>
                                                         <constraint firstAttribute="trailing" secondItem="PGu-38-p4t" secondAttribute="trailing" constant="12" id="ahs-6I-Ib5"/>
-                                                        <constraint firstItem="PGu-38-p4t" firstAttribute="top" secondItem="2cz-Rt-8N8" secondAttribute="top" constant="8" id="i8M-Jw-WX1"/>
+                                                        <constraint firstItem="PGu-38-p4t" firstAttribute="top" secondItem="2cz-Rt-8N8" secondAttribute="top" constant="12" id="i8M-Jw-WX1"/>
                                                         <constraint firstItem="PGu-38-p4t" firstAttribute="leading" secondItem="2cz-Rt-8N8" secondAttribute="leading" constant="12" id="muP-hL-p40"/>
                                                     </constraints>
                                                 </view>

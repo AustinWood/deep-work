@@ -13,8 +13,8 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Add date label
 //   # Alternate cell color by date
+//   # Sort reverse order
 //   # Swipe to edit
 //   # Add edit project button in upper right
 //   # If entry is active:
@@ -126,8 +126,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func didSingleTap(_ gesture: UITapGestureRecognizer) {
         let pointInCollectionView = gesture.location(in: self.collectionView!)
         var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
-        let selectedCell = self.collectionView!.cellForItem(at: selectedIndexPath)! as! ProjectCell
-        print("Single tapped: \(selectedCell.titleLabel.text)")
         let selectedProject = projects[selectedIndexPath.row]
         startStopTimer(project: selectedProject)
     }
@@ -137,10 +135,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         let pointInCollectionView = gesture.location(in: self.collectionView!)
         var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
-        let selectedCell = self.collectionView!.cellForItem(at: selectedIndexPath)! as! ProjectCell
-        print("Double tapped: \(selectedCell.titleLabel.text)")
-        print(selectedIndexPath.row)
-        print(projects[selectedIndexPath.row].title)
         selectedProject = projects[selectedIndexPath.row]
         performSegue(withIdentifier: "goToHistory", sender: self)
     }
@@ -436,7 +430,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHistory" {
             let destinationController = segue.destination as! HistoryViewController
-            print(selectedProject?.title)
             destinationController.project = selectedProject!
             destinationController.moc = moc
         }

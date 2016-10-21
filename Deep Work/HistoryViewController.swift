@@ -14,9 +14,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     // MARK:- Properties
     
+    var moc: NSManagedObjectContext?
     var project: Project?
     var timeLogArray: [TimeLog] = []
-    var moc: NSManagedObjectContext?
+    var timeLogNestedArray: [[TimeLog]] = []
+    var cellInitializerArray: [Int] = []
     
     //////////////////////////////////////////////
     // MARK:- Outlets
@@ -43,6 +45,42 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
         timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
         tableView.reloadData()
+        
+        print("\n***********\n")
+        for entry in timeLogArray {
+            let currentFormmattedDate = FormatTime().formattedDate(date: entry.startTime!)
+            var i = 0
+            var foundMatch = false
+            while i < timeLogNestedArray.count && !foundMatch {
+                let dateArray = timeLogNestedArray[i]
+                let existingFormmattedDate = FormatTime().formattedDate(date: dateArray[0].startTime!)
+                if currentFormmattedDate == existingFormmattedDate {
+                    timeLogNestedArray[i].append(entry)
+                    foundMatch = true
+                }
+                i += 1
+            }
+            if !foundMatch {
+                timeLogNestedArray.append([entry])
+            }
+        }
+        print("\n***********\n")
+        
+        // Do I need to sort again?
+        
+        var x = 0
+        var y = 0
+        while x < timeLogNestedArray.count {
+            cellInitializerArray.append(-(x+1))
+            for _ in timeLogNestedArray[x] {
+                cellInitializerArray.append(y)
+                y += 1
+            }
+            x += 1
+        }
+        print(cellInitializerArray)
+        
+        
     }
     
     //////////////////////////////////////////////
@@ -59,24 +97,26 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (timeLogArray.count) + 1
+        return timeLogArray.count + timeLogNestedArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Confifure DateCell
-        if indexPath.row == 0 {
+        if cellInitializerArray[indexPath.row] < 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
             cell.selectionStyle = .none // DRY
+            let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row]+1)][0]
+            let formattedDate = FormatTime().formattedDate(date: entry.startTime!)
+            cell.dateLabel.text = formattedDate
             return cell
         }
         
         // Configure HistoryCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
         cell.selectionStyle = .none // DRY
-        let entry = (timeLogArray[indexPath.row - 1]) as TimeLog
+        let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
         cell.configureCell(entry: entry, moc: moc!)
-        print(FormatTime().formattedDate(date: entry.startTime!))
         return cell
     }
     
