@@ -29,10 +29,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = project?.title
         intializeTimeLogs()
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 75
+        setupController()
+        setupTableView()
+    }
+    
+    func setupController() {
+        titleLabel.text = project?.title
     }
     
     func intializeTimeLogs() {
@@ -45,7 +48,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //////////////////////////////////////////////
-    // MARK:- Initialization
+    // MARK:- Table View
+    
+    func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 75
+        tableView.separatorColor = UIColor.clear
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
