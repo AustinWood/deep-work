@@ -12,7 +12,7 @@
 //
 // RESUME WITH:
 //
-// Display details
+// Display details:
 //   # Cell should resize to fit note height
 //   # Sort entries
 //   # Add date label

@@ -44,7 +44,11 @@ class HistoryCell: UITableViewCell {
         intervalLabel.text = entryLengthStr
         
         // Note Label
-        noteLabel.text = entry.note
+        if entry.note == nil || entry.note == "" {
+            noteLabel.isHidden = true
+        } else {
+            noteLabel.text = entry.note
+        }
     }
 
 }

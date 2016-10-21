@@ -31,6 +31,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         titleLabel.text = project?.title
         intializeTimeLogs()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 75
     }
     
     func intializeTimeLogs() {
