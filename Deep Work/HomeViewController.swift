@@ -13,7 +13,6 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Sort entries
 //   # Add date label
 //   # Alternate cell color by date
 //   # Swipe to edit
@@ -39,6 +38,7 @@
 // Daily/Weekly goals (see Evernote)
 // Sort JSON time entries for readability
 //
+// Verify that time entries are disaplayed the same when moving across time zones
 // Visual time line at top (like Hours)
 // Give projects an Area parent / tags
 // Animate invalid request if trying to start a timer while another is running

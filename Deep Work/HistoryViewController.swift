@@ -76,6 +76,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.selectionStyle = .none // DRY
         let entry = (timeLogArray[indexPath.row - 1]) as TimeLog
         cell.configureCell(entry: entry, moc: moc!)
+        print(FormatTime().formattedDate(date: entry.startTime!))
         return cell
     }
     

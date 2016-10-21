@@ -41,4 +41,11 @@ struct FormatTime {
         return hourStr + ":" + minuteStr
     }
     
+    func formattedDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: date)
+    }
+    
 }
