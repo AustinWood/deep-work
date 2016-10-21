@@ -13,7 +13,8 @@
 // RESUME WITH:
 //
 // Display details:
-//   # Cell should resize to fit note height
+//   # Alternate cell color
+//   # Turn off cell selection
 //   # Sort entries
 //   # Add date label
 //   # Swipe to edit
