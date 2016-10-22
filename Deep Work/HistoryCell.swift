@@ -10,38 +10,46 @@ import UIKit
 import CoreData
 
 class HistoryCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    
+    var entryComplete = true
+    var thisEntry: TimeLog?
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var intervalLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
     
     internal func configureCell(entry: TimeLog, moc: NSManagedObjectContext) {
+        thisEntry = entry
+        entryComplete = true
+        timer.invalidate()
         
         // Time Label
         let startTime = entry.startTime
+        let starTimeStr = FormatTime().formattedTime(date: startTime!)
         var stopTime = Date()
+        var stopTimeStr = ""
+        // This entry is complete
         if entry.stopTime != nil {
             stopTime = entry.stopTime!
+            stopTimeStr = "  →  " +  FormatTime().formattedTime(date: stopTime)
         }
-        let starTimeStr = FormatTime().formattedTime(date: startTime!)
-        let stopTimeStr = FormatTime().formattedTime(date: stopTime)
-        timeLabel.text = starTimeStr + "  →  " + stopTimeStr
         
-        // Interval Label
+        // Timer is still running
+        else {
+            entryComplete = false
+        }
+        
+        timeLabel.text = starTimeStr + stopTimeStr
+        
+        // Interval Label ///  REFACTOR _ --=- =- - - --0923- COMBINE WITH ABOVE
         let entryLength = stopTime.timeIntervalSince(startTime!)
-        let entryLengthStr = FormatTime().formattedHoursMinutes(timeInterval: entryLength)
-        intervalLabel.text = entryLengthStr
+        if entryComplete {
+            let entryLengthStr = FormatTime().formattedHoursMinutes(timeInterval: entryLength)
+            intervalLabel.text = entryLengthStr
+        } else {
+            updateLabelEachSecond()
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateLabelEachSecond), userInfo: nil, repeats: true);
+        }
         
         // Note Label
         if entry.note == nil || entry.note == "" {
@@ -50,6 +58,14 @@ class HistoryCell: UITableViewCell {
             noteLabel.isHidden = false
             noteLabel.text = entry.note
         }
+    }
+    
+    var timer = Timer()
+    
+    func updateLabelEachSecond() {
+        let entryLength = Date().timeIntervalSince((thisEntry?.startTime)!)
+        let entryLengthStr = FormatTime().formattedHoursMinutesSeconds(timeInterval: entryLength)
+        intervalLabel.text = entryLengthStr
     }
 
 }

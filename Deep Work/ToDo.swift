@@ -22,6 +22,7 @@
 //
 // TO DO:
 //
+// Bug: single tapping in collection view where no cell exists throws error
 // Turn off landscape
 // Automatically capitalize first letter of entry note, and after periods
 // Pause timer when "Great work!" screen appears (resume is 'Continue working' pressed), currently still running in background
