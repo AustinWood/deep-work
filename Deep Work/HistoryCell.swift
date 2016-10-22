@@ -66,9 +66,13 @@ class HistoryCell: UITableViewCell {
     var timer = Timer()
     
     func updateLabelEachSecond() {
-        let entryLength = Date().timeIntervalSince((thisEntry?.startTime)!)
-        let entryLengthStr = FormatTime().formattedHoursMinutesSeconds(timeInterval: entryLength)
-        intervalLabel.text = entryLengthStr
+        if thisEntry?.stopTime == nil {
+            let entryLength = Date().timeIntervalSince((thisEntry?.startTime)!)
+            let entryLengthStr = FormatTime().formattedHoursMinutesSeconds(timeInterval: entryLength)
+            intervalLabel.text = entryLengthStr
+        } else {
+            timer.invalidate()
+        }
     }
 
 }

@@ -2,12 +2,16 @@
 //////////////////////////////////////////////////
 //
 // RESUME WITH:
+
+// # Bug: doesn't reload data after saving entry
 //
 // HistoryVC:
 //   # Swipe to edit
-//       # Delete entry
+//       # Bug: crash if deleting last entry in a day
+//       # Move to bottom of table view after delete (or move appropriate height down)
 //       # Edit note
 //       # Edit start/stop time
+//       # If in progress - stop entry option instead of delete
 //   # Add edit project button in upper right
 //       # Edit project name
 //

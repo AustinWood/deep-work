@@ -90,6 +90,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             x += 1
         }
+        
+        print(cellInitializerArray)
     }
     
     // colorArray is used by tableView's cellForRowAtIndexPath for determining the background color of the cell
@@ -159,32 +161,56 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        // No edit actions for dateCell
+        if cellInitializerArray[indexPath.row] < 0 {
+            return false
+        }
+        
+        // No edit actions for entry if inProgress
+        let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
+        if entry.stopTime == nil {
+            return false
+        }
+        
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        print((timeLogArray.count + timeLogNestedArray.count - 1))
+        print(indexPath.row)
         
         let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
         
         // Delete Button
         let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
-            print("deleteButton pressed")
             let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
             let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
                 self?.moc?.delete(entry)
                 do {
                     try self?.moc?.save()
-                    print("Deleted entry")
+                    var rowsToDelete = [indexPath]
+                    if (self?.cellInitializerArray[indexPath.row - 1])! < 0 {
+                        let nestedIndex = -((self?.cellInitializerArray[indexPath.row - 1])! + 1)
+                        if (self?.timeLogNestedArray[nestedIndex].count)! == 1 {
+                            let previousIndexPath = IndexPath(row: (indexPath.row - 1), section: 0)
+                            rowsToDelete = [previousIndexPath, indexPath]
+                        }
+                    }
                     self?.intializeTimeLogs()
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    //self?.setupTableView()
+                    tableView.deleteRows(at: rowsToDelete as! [IndexPath], with: .fade)
                 }
                 catch { fatalError("Error storing data") }
                 })
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in
-                // Refresh or something like that?
-                })
+                
+                tableView.isEditing = false
+            })
             confirmDeleteAlertController.addAction(deleteAction)
             confirmDeleteAlertController.addAction(cancelAction)
             self.present(confirmDeleteAlertController, animated: true, completion: nil)
-            
         }
         
         deleteButton.backgroundColor = CustomColor.red
