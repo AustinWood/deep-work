@@ -45,6 +45,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func intializeTimeLogs() {
         
+        timeLogArray = []
+        timeLogNestedArray = []
+        cellInitializerArray = []
+        colorArray = []
+        
         // Create an array of all TimeLog entries for the selected project and sort it
         let timeLog = TimeLog(context: moc!)
         timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
@@ -152,6 +157,39 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.selectionStyle = .none
         cell.backgroundColor = colorArray[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
+        
+        // Delete Button
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
+            print("deleteButton pressed")
+            let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
+                self?.moc?.delete(entry)
+                do {
+                    try self?.moc?.save()
+                    print("Deleted entry")
+                    self?.intializeTimeLogs()
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    //self?.setupTableView()
+                }
+                catch { fatalError("Error storing data") }
+                })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in
+                // Refresh or something like that?
+                })
+            confirmDeleteAlertController.addAction(deleteAction)
+            confirmDeleteAlertController.addAction(cancelAction)
+            self.present(confirmDeleteAlertController, animated: true, completion: nil)
+            
+        }
+        
+        deleteButton.backgroundColor = CustomColor.red
+        
+        return [deleteButton]
     }
     
 }
