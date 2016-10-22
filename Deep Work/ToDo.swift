@@ -3,12 +3,9 @@
 //
 // RESUME WITH:
 //
-// HistoryVC:
-//   # Swipe to edit
-//       # Edit note
-//       # Edit start/stop time
-//   # Add edit project button in upper right
-//       # Edit project name
+//   # HistoryVC: Edit project name, button in top right
+//   # Turn off landscape
+//   # Automatically capitalize first letter of entry note, and after periods
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -16,11 +13,11 @@
 // TO DO:
 //
 // Priority 1
-//   # Bug: single tapping in collection view where no cell exists throws error
-//   # Turn off landscape
-//   # Automatically capitalize first letter of entry note, and after periods
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
+//   # HistoryVC:
+//       # Swipe to edit note
+//       # Swipe to edit start/stop time
 //
 // Priority 2
 //   # DRY: dayPressed + weekPressed

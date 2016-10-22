@@ -224,6 +224,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         let cancelAction = UIAlertAction(title: "Continue working", style: .default) { (action: UIAlertAction) in
             timeLog.stopTime = nil
+            self.checkForRunningTimers()
         }
         let saveAction = UIAlertAction(title: "Save entry", style: .default) { [weak self] (action: UIAlertAction) in
             var noteStr = alertController.textFields?.first?.text
@@ -286,6 +287,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if timeLog.inProgress(project: project, moc: moc!) {
             let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
             currentEntry.stopTime = Date()
+            timer.invalidate()
+            updateTimeLabels()
             addNote(timeLog: currentEntry)
         } else if !timerRunning {
             // Start a new time log
