@@ -133,24 +133,24 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        var cell = UITableViewCell()
         // Confifure DateCell
         if cellInitializerArray[indexPath.row] < 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
-            cell.selectionStyle = .none // DRY
-            cell.backgroundColor = colorArray[indexPath.row] // DRY
-            let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row]+1)][0]
+            let dateCell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
+            let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row] + 1)][0]
             let formattedDate = FormatTime().formattedDate(date: entry.startTime!)
-            cell.dateLabel.text = formattedDate
-            return cell
+            dateCell.dateLabel.text = formattedDate
+            cell = dateCell
+        // Confifure HistoryCell
+        } else {
+            let historyCell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
+            let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
+            historyCell.configureCell(entry: entry, moc: moc!)
+            cell = historyCell
         }
-        
-        // Configure HistoryCell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
-        cell.selectionStyle = .none // DRY
-        cell.backgroundColor = colorArray[indexPath.row] // DRY
-        let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
-        cell.configureCell(entry: entry, moc: moc!)
+        // Applicable to both types of cells
+        cell.selectionStyle = .none
+        cell.backgroundColor = colorArray[indexPath.row]
         return cell
     }
     
