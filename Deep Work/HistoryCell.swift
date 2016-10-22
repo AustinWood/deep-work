@@ -11,53 +11,56 @@ import CoreData
 
 class HistoryCell: UITableViewCell {
     
-    var entryComplete = true
     var thisEntry: TimeLog?
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var intervalLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var roundedBorderView: RoundedBorderView!
     
     internal func configureCell(entry: TimeLog, moc: NSManagedObjectContext) {
+        
         thisEntry = entry
-        entryComplete = true
         timer.invalidate()
         
-        // Time Label
         let startTime = entry.startTime
         let starTimeStr = FormatTime().formattedTime(date: startTime!)
         var stopTime = Date()
         var stopTimeStr = ""
-        // This entry is complete
+        
+        // This entry is complete, set intervalLabel text
         if entry.stopTime != nil {
+            configureColors(color: UIColor.white)
             stopTime = entry.stopTime!
             stopTimeStr = "  →  " +  FormatTime().formattedTime(date: stopTime)
-        }
-        
-        // Timer is still running
-        else {
-            entryComplete = false
-        }
-        
-        timeLabel.text = starTimeStr + stopTimeStr
-        
-        // Interval Label ///  REFACTOR _ --=- =- - - --0923- COMBINE WITH ABOVE
-        let entryLength = stopTime.timeIntervalSince(startTime!)
-        if entryComplete {
+            let entryLength = stopTime.timeIntervalSince(startTime!)
             let entryLengthStr = FormatTime().formattedHoursMinutes(timeInterval: entryLength)
             intervalLabel.text = entryLengthStr
-        } else {
+        }
+        
+        // Timer is still running, update intervalLabel text each second
+        else {
+            configureColors(color: CustomColor.red)
             updateLabelEachSecond()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateLabelEachSecond), userInfo: nil, repeats: true);
         }
         
-        // Note Label
+        // Set timeLabel text
+        timeLabel.text = starTimeStr + stopTimeStr
+        
+        // Configure noteLabel
         if entry.note == nil || entry.note == "" {
             noteLabel.isHidden = true
         } else {
             noteLabel.isHidden = false
             noteLabel.text = entry.note
         }
+    }
+    
+    func configureColors(color: UIColor) {
+        roundedBorderView.setBorderColor(color: color)
+        timeLabel.textColor = color
+        intervalLabel.textColor = color
     }
     
     var timer = Timer()
