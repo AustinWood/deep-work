@@ -45,19 +45,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return UIStatusBarStyle.lightContent
     }
     
+    //////////////////////////////////////////////
+    // MARK:- Gesture Recognizers
+    
     func addGestureRecognizers() {
+        
+        // For recognizing taps on views at top of VC
         let dayRecognizer = UITapGestureRecognizer(target: self, action: #selector(dayPressed(_:)))
         dayView.addGestureRecognizer(dayRecognizer)
         let weekRecognizer = UITapGestureRecognizer(target: self, action: #selector(weekPressed(_:)))
         weekView.addGestureRecognizer(weekRecognizer)
-        
         
         // Long press recognizer for rearranging collection view cells
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         longPressGesture.minimumPressDuration = 0.3
         self.collectionView.addGestureRecognizer(longPressGesture)
         
-        // Single and double tap recognizers
+        // Single and double tap recognizers for collection view cells
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.didSingleTap))
         singleTap.numberOfTapsRequired = 1
         self.collectionView!.addGestureRecognizer(singleTap)
@@ -67,31 +71,34 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         singleTap.require(toFail: doubleTap)
     }
     
-    
     func didSingleTap(_ gesture: UITapGestureRecognizer) {
-        let pointInCollectionView = gesture.location(in: self.collectionView!)
-        var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
-        let selectedProject = projects[selectedIndexPath.row]
-        startStopTimer(project: selectedProject)
+        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
+            startStopTimer(project: selectedProject!)
+        }
+    }
+    
+    func didDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
+            performSegue(withIdentifier: "goToHistory", sender: self)
+        }
     }
     
     var selectedProject: Project?
     
-    func didDoubleTap(_ gesture: UITapGestureRecognizer) {
-        let pointInCollectionView = gesture.location(in: self.collectionView!)
-        var selectedIndexPath = self.collectionView!.indexPathForItem(at: pointInCollectionView)!
-        selectedProject = projects[selectedIndexPath.row]
-        performSegue(withIdentifier: "goToHistory", sender: self)
+    func validateTap(gestureLocation: CGPoint) -> Bool {
+        if let selectedIndexPath = self.collectionView!.indexPathForItem(at: gestureLocation) {
+            selectedProject = projects[selectedIndexPath.row]
+            return true
+        }
+        return false
     }
     
     var oldIndex = IndexPath()
     var lastIndex = IndexPath()
     
     func handleLongPress(gesture: UILongPressGestureRecognizer) {
-        print("Long press!")
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
-            print("began")
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
                 else { break }
             oldIndex = selectedIndexPath
@@ -99,18 +106,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as! ProjectCell
             selectedCell.circleView.backgroundColor = CustomColor.blueGreen
         case UIGestureRecognizerState.changed:
-            print("changed")
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
             if let currentIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
                 lastIndex = currentIndexPath
             } else { break }
         case UIGestureRecognizerState.ended:
             let element = projects.remove(at: oldIndex.row)
-            print("ended")
             if let newIndex = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
                 projects.insert(element, at: newIndex.row)
             } else {
-                print("we be breakin")
                 projects.insert(element, at: lastIndex.row)
             }
             updateProjectOrder()
@@ -129,8 +133,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    //////////////////////////////////////////////
-    // MARK:- Gesture recognizer
+    // DRY !!!
+    // I could combine dayPressed and weekPressed by adding tags to the views
+    // This will be especially useful if I want to add a month and year view
     
     func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
         displayWeekTotals = false
@@ -162,7 +167,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        // Logic for moving cells in handleLongPress()
     }
     
     //////////////////////////////////////////////
