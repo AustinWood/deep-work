@@ -15,6 +15,7 @@
 // Priority 1
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
+//   # Confirmation toast when deleting data / restoring from JSON
 //   # HistoryVC:
 //       # Swipe to edit note
 //       # Swipe to edit start/stop time
@@ -36,6 +37,7 @@
 //       # Add summary views to top of VC
 //       # Stylize today
 //       # Stylize this week (color code with summary view at top of VC)
+//       # Show totals by day next to each dateLabel
 //   # Swipe to edit
 //       # If in progress - stop entry option instead of delete
 //       # Move to bottom of table view after delete (or move appropriate height down)
