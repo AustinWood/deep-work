@@ -29,10 +29,13 @@
 //   # Delete/archive timers (when dragging, views at top turn into trash can/archive)
 //   # Add randomized confimation messages to "Add note"
 //   # Verify that time entries are disaplayed the same when moving across time zones
-//   # Animation: Invalid action if trying to start a timer while another is running
+//   # Animate: Invalid action, try to start timer while another running: startStopTimer()
 //   # Replace fatalError with something friendlier
 //   # Refactor time summations (todayTime and weekTime DRY)
-//   # Professional design (see Evernote, by asset pack?)
+//   # Design:
+//       # Professional design (see Evernote, by asset pack?)
+//       # App icon
+//       # Launch screen
 //   # HistoryVC:
 //       # Add summary views to top of VC
 //       # Stylize today

@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Custom Core Data junk
     
     func checkDataStore() {
+        print("* AppDelegate: checkDataStore()")
         countProjects()
         countTimeLogs()
     }

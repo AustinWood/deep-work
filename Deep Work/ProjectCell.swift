@@ -23,7 +23,6 @@ class ProjectCell: UICollectionViewCell {
         circleView.clipsToBounds = true
         titleLabel.text = project.title
         
-        //let timeLog = TimeLog(context: moc)
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
         if displayWeekTotals {
             let weekTime = TimeLog.weekTime(projects: [project], moc: moc)

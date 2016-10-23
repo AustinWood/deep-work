@@ -13,25 +13,26 @@ import MessageUI
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate {
     
     //////////////////////////////////////////////
-    // MARK:- Bug Testing
+    // MARK:- Count Records
+    
+    func countData() {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.checkDataStore()
+        self.countTimeLogs()
+    }
     
     func countTimeLogs() {
-        print("*** countTimeLogs()")
+        print("* HomeViewController: countTimeLogs()")
         var x = 0
         for project in projects {
-            //let timeLog = TimeLog(context: moc!)
-            //let timeLogs = timeLog.getTimeLog(project: project, moc: moc!)
             let timeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
             x += timeLogs.count
             print("project: \(project.title), timeLogs: \(timeLogs.count)")
         }
         print("timeLogs belonging to projects: \(x)")
-        //let timeLog = TimeLog(context: moc!)
-        //let allTimeLogs = timeLog.getAllTimeLogs(moc: moc!)
         let allTimeLogs = TimeLog.getAllTimeLogs(moc: moc!)
         print("allTimeLogs: \(allTimeLogs.count)")
     }
-    
     
     //////////////////////////////////////////////
     // MARK:- Properties
@@ -59,7 +60,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
-        //addFakeTimeData()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -291,9 +291,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.deleteRecords()
         })
         let countButton = UIAlertAction(title: "Count data", style: .default, handler: { (action) -> Void in
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.checkDataStore()
-            self.countTimeLogs()
+            self.countData()
         })
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
@@ -310,7 +308,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Start / Stop time log
 
     func startStopTimer(project: Project) {
-        //let timeLog = TimeLog(context: moc!)
         if TimeLog.inProgress(project: project, moc: moc!) {
             let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
             currentEntry.stopTime = Date()
@@ -322,13 +319,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
             newTimeLog.startTime = Date()
-            
-            // THIS WILL NEED TO BE COPIED TO addComment SECTION
             do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
             self.loadData()
         } else {
-            // Animate invalid tap
             print("You can't start a timer while another is in progress!")
         }
     }
@@ -345,7 +339,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         lastStartTime = nil
         timer.invalidate()
         for project in projects {
-            //let timeLog = TimeLog(context: moc!)
             if TimeLog.inProgress(project: project, moc: moc!)  {
                 timerRunning = true
                 lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!).startTime
@@ -362,7 +355,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         // Update the time of 'Today' and 'This week' labels
-        //let timeLog = TimeLog(context: moc!)
         let todayTime = TimeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
@@ -428,23 +420,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             destinationController.project = selectedProject!
             destinationController.moc = moc
         }
-    }
-    
-    //////////////////////////////////////////////
-    // MARK:- Add Fake Time Data
-    
-    func addFakeTimeData() {
-//        print("func addFakeTimeData()")
-//        for project in projects {
-//            let newTimeLog = TimeLog(context: (self.moc)!)
-//            newTimeLog.project = project
-//            newTimeLog.startTime = Date(timeIntervalSinceNow: -1700 * 60)
-//            newTimeLog.stopTime = Date(timeIntervalSinceNow: -1650 * 60)
-//            newTimeLog.note = "Here's my note"
-//            do { try self.moc?.save() }
-//            catch { fatalError("Error storing data") }
-//        }
-//        self.loadData()
     }
     
     //////////////////////////////////////////////

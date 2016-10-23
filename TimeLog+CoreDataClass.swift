@@ -59,8 +59,6 @@ public class TimeLog: NSManagedObject {
     internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
         var totalTime = TimeInterval()
         for project in projects {
-            //let timeLog = TimeLog(context: managedObjectContext!)
-            //let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
             let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
             for entry in timeLogArray {
                 if entry.stopTime != nil {
@@ -86,8 +84,6 @@ public class TimeLog: NSManagedObject {
         
         var totalTime = TimeInterval()
         for project in projects {
-            //let timeLog = TimeLog(context: managedObjectContext!)
-            //let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
             let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
             for entry in timeLogArray {
                 if entry.stopTime != nil {
@@ -104,8 +100,6 @@ public class TimeLog: NSManagedObject {
     
     internal static func inProgress(project: Project, moc: NSManagedObjectContext) -> Bool {
         var inProgress = false
-        //let timeLog = TimeLog(context: managedObjectContext!)
-        //let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
         let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
         for entry in timeLogArray {
             if entry.stopTime == nil {
@@ -116,8 +110,6 @@ public class TimeLog: NSManagedObject {
     }
     
     internal static func currentSessionLength(project: Project, moc: NSManagedObjectContext) -> TimeInterval {
-        //let timeLog = TimeLog(context: managedObjectContext!)
-        //let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
         let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
         for entry in timeLogArray {
             if entry.stopTime == nil {
@@ -127,13 +119,7 @@ public class TimeLog: NSManagedObject {
         return 0
     }
     
-//    func calculateSessionLength(timeLog: TimeLog, moc: NSManagedObjectContext) -> TimeInterval {
-//        
-//    }
-    
     internal static func getCurrentEntry(project: Project, moc: NSManagedObjectContext) -> TimeLog {
-        //let timeLog = TimeLog(context: managedObjectContext!)
-        //let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
         let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
         for entry in timeLogArray {
             if entry.stopTime == nil {
