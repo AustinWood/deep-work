@@ -38,23 +38,23 @@ public class TimeLog: NSManagedObject {
         }
     }
     
-//    func totalTime(project: Project, moc: NSManagedObjectContext) -> (TimeInterval, Bool) {
-//        var inProgress = false
-//        let timeLog = TimeLog(context: managedObjectContext!)
-//        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
-//        var totalTime = TimeInterval()
-//        for entry in timeLogArray {
-//            if entry.stopTime != nil {
-//                if Calendar.current.isDateInToday(entry.startTime!) {
-//                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-//                }
-//            } else {
-//                inProgress = true
-//                totalTime += (Date().timeIntervalSince(entry.startTime!))
-//            }
-//        }
-//        return (totalTime, inProgress)
-//    }
+    //    func totalTime(project: Project, moc: NSManagedObjectContext) -> (TimeInterval, Bool) {
+    //        var inProgress = false
+    //        let timeLog = TimeLog(context: managedObjectContext!)
+    //        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
+    //        var totalTime = TimeInterval()
+    //        for entry in timeLogArray {
+    //            if entry.stopTime != nil {
+    //                if Calendar.current.isDateInToday(entry.startTime!) {
+    //                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
+    //                }
+    //            } else {
+    //                inProgress = true
+    //                totalTime += (Date().timeIntervalSince(entry.startTime!))
+    //            }
+    //        }
+    //        return (totalTime, inProgress)
+    //    }
     
     internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
         var totalTime = TimeInterval()
@@ -129,7 +129,7 @@ public class TimeLog: NSManagedObject {
         return TimeLog()
     }
     
-
+    
 }
 
 

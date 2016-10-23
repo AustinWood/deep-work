@@ -150,40 +150,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
                 }
                 
-                guard let image = projectData["image"] else {
-                    return
-                }
-                
                 // Project object initialization
                 let project = Project(context: moc!)
                 project.title = title as? String
                 project.order = order.int16Value
                 project.color = color as? String
-                project.image = image as? String
                 
                 // Time logs
-                if let workEntries = projectData["workEntry"] {
-                    let workEntryData = project.workEntry?.mutableCopy() as! NSMutableSet
+                if let timeLogs = projectData["timeLog"] {
+                    let timeLogsData = project.timeLog?.mutableCopy() as! NSMutableSet
                     
-                    for workEntry in workEntries as! NSArray {
-                        let entryData = workEntry as! [String: AnyObject]
+                    for timeLog in timeLogs as! NSArray {
+                        let timeLogData = timeLog as! [String: AnyObject]
                         
-                        let logEntry = TimeLog(context: moc!)
-                        let startTimeStr = entryData["startTime"] as! String
-                        let stopTimeStr = entryData["stopTime"] as! String
+                        let timeLog = TimeLog(context: moc!)
+                        let workDayStr = timeLogData["workDay"] as! String
+                        let startTimeStr = timeLogData["startTime"] as! String
+                        let stopTimeStr = timeLogData["stopTime"] as! String
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                         let startTime = dateFormatter.date(from: startTimeStr)
                         let stopTime = dateFormatter.date(from: stopTimeStr)
                         
-                        logEntry.startTime = startTime
-                        logEntry.stopTime = stopTime
+                        let workDay = WorkDay.getWorkDay(workDayStr: workDayStr, moc: moc!)
+                        timeLog.workDay = workDay
                         
-                        logEntry.note = entryData["note"] as? String
+                        timeLog.startTime = startTime
+                        timeLog.stopTime = stopTime
                         
-                        workEntryData.add(logEntry)
-                        project.workEntry = workEntryData.copy() as? NSSet
+                        timeLog.note = timeLogData["note"] as? String
+                        
+                        timeLogsData.add(timeLog)
+                        project.timeLog = timeLogsData.copy() as? NSSet
                     }
                 }
             }
@@ -199,13 +198,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("func deleteRecords()")
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
-        let workEntryRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        let workDayRequest: NSFetchRequest<WorkDay> = WorkDay.fetchRequest()
         var deleteRequest: NSBatchDeleteRequest
         var deleteResults: NSPersistentStoreResult
         do {
             deleteRequest = NSBatchDeleteRequest(fetchRequest: projectRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
-            deleteRequest = NSBatchDeleteRequest(fetchRequest: workEntryRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: timeLogRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc!.execute(deleteRequest)
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: workDayRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
         }
         catch {

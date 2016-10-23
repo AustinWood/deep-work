@@ -2,19 +2,24 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G1004" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName=".Project" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="workEntry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkEntry" inverseName="project" inverseEntity="WorkEntry" syncable="YES"/>
+        <relationship name="timeLog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeLog" inverseName="project" inverseEntity="TimeLog" syncable="YES"/>
     </entity>
-    <entity name="WorkEntry" representedClassName=".TimeLog" syncable="YES">
+    <entity name="TimeLog" representedClassName=".TimeLog" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="stopTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="workEntry" inverseEntity="Project" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="timeLog" inverseEntity="Project" syncable="YES"/>
+        <relationship name="workDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkDay" inverseName="timeLog" inverseEntity="WorkDay" syncable="YES"/>
+    </entity>
+    <entity name="WorkDay" representedClassName=".WorkDay" syncable="YES">
+        <attribute name="workDay" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timeLog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeLog" inverseName="workDay" inverseEntity="TimeLog" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="WorkEntry" positionX="261" positionY="-69" width="128" height="105"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="TimeLog" positionX="234" positionY="69" width="128" height="118"/>
+        <element name="WorkDay" positionX="27" positionY="288" width="128" height="73"/>
     </elements>
 </model>

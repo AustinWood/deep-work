@@ -32,6 +32,9 @@
 //   # Animate: Invalid action, try to start timer while another running: startStopTimer()
 //   # Replace fatalError with something friendlier
 //   # Refactor time summations (todayTime and weekTime DRY)
+//   # Reordering:
+//       # Cell usually stays highlighted until another action is performed
+//       # App sometimes freezes if lots of reordering is done quickly
 //   # Design:
 //       # Professional design (see Evernote, by asset pack?)
 //       # App icon

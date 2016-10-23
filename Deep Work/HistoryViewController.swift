@@ -31,16 +31,64 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         loadData()
         setupViewController()
+        setupTableView()
         //intializeTimeLogs()
-        //setupTableView()
+    }
+    
+    private func loadData() {
+        fetchedResultsController = DataService.fetchTimeLogs(project: project!, moc: moc!)
     }
     
     func setupViewController() {
         titleLabel.text = project?.title
     }
     
+    // ************************************************
+    // ************************************************
+    // ****************** TABLE VIEW ******************
+    // ************************************************
+    // ************************************************
+    
     //////////////////////////////////////////////
-    // MARK:- Table View
+    // MARK:- Table View Initialization
+    
+    var timer = Timer()
+    
+    func setupTableView() { // Called on viewDidLoad
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 75
+        tableView.separatorColor = UIColor.clear
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.scrollToBottom), userInfo: nil, repeats: false)
+    }
+    
+    func scrollToBottom() {
+        timer.invalidate()
+        var lastSection = 0
+        var lastRow = 0
+        if let sections = fetchedResultsController.sections {
+            lastSection = sections.count - 1
+            lastRow = sections[lastSection].numberOfObjects - 1
+        }
+        let lastIndex = IndexPath(row: lastRow, section: lastSection)
+        tableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Table View Headers
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let blackView = UIView()
+        blackView.backgroundColor = UIColor.clear
+        return blackView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // This should be the same as Visual Effects View which contains the back button and project title
+        return 76 as CGFloat
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Table View Required Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = fetchedResultsController.sections {
@@ -50,12 +98,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //////////////////////////////////////////////
-        // Old code:
-//        return timeLogArray.count + timeLogNestedArray.count
-        
-        //////////////////////////////////////////////
-        // New code:
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
             return currentSection.numberOfObjects
@@ -94,13 +136,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let timeLog = fetchedResultsController.object(at: indexPath)
         cell.configureCell(entry: timeLog, moc: moc!)
         return cell
-    }
-    
-    //////////////////////////////////////////////
-    // MARK:- Private Function
-    
-    private func loadData() {
-        fetchedResultsController = DataService.fetchTimeLogs(project: project!, moc: moc!)
     }
     
     //////////////////////////////////////////////
@@ -179,31 +214,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //////////////////////////////////////////////
     // MARK:- Old Table View
-    
-//    var timer = Timer()
-//    
-//    func setupTableView() { // Called on viewDidLoad
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 75
-//        tableView.separatorColor = UIColor.clear
-//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.scrollToBottom), userInfo: nil, repeats: false)
-//    }
-//    
-//    func scrollToBottom() {
-//        let stopIndexPath = IndexPath(row: cellInitializerArray.count - 1, section: 0)
-//        tableView.scrollToRow(at: stopIndexPath, at: .bottom, animated: true)
-//    }
-//    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let blackView = UIView()
-//        blackView.backgroundColor = UIColor.clear
-//        return blackView
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        // This should be the same as Visual Effects View which contains the back button and project title
-//        return 76 as CGFloat
-//    }
 //    
 //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 //        

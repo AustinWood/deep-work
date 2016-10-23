@@ -14,21 +14,22 @@ class DataService {
     
     internal static func fetchTimeLogs(project: Project, moc: NSManagedObjectContext) -> NSFetchedResultsController<TimeLog> {
         
+        
         let fetchedResultsController: NSFetchedResultsController<TimeLog>
         
-        let request: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        let sort = NSSortDescriptor(key: "startTime", ascending: true)
-        request.sortDescriptors = [sort]
         
-        // start my junk
+        let request: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        let timeSort = NSSortDescriptor(key: "startTime", ascending: true)
+        request.sortDescriptors = [dateSort, timeSort]
+        
         
         let searchPredicate: NSPredicate?
         searchPredicate = NSPredicate(format: "project = %@", project)
         request.predicate = searchPredicate
         
-        // end my junk
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
         
         
         do {
@@ -37,6 +38,7 @@ class DataService {
         catch {
             fatalError("Error fetching time logs")
         }
+        
         
         return fetchedResultsController
     }

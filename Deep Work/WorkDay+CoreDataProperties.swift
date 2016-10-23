@@ -1,5 +1,5 @@
 //
-//  Project+CoreDataProperties.swift
+//  WorkDay+CoreDataProperties.swift
 //  Deep Work
 //
 //  Created by Austin Wood on 2016-10-23.
@@ -9,21 +9,19 @@
 import Foundation
 import CoreData
 
-extension Project {
+extension WorkDay {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Project> {
-        return NSFetchRequest<Project>(entityName: "Project");
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<WorkDay> {
+        return NSFetchRequest<WorkDay>(entityName: "WorkDay");
     }
 
-    @NSManaged public var color: String?
-    @NSManaged public var order: Int16
-    @NSManaged public var title: String?
+    @NSManaged public var workDay: String?
     @NSManaged public var timeLog: NSSet?
 
 }
 
 // MARK: Generated accessors for timeLog
-extension Project {
+extension WorkDay {
 
     @objc(addTimeLogObject:)
     @NSManaged public func addToTimeLog(_ value: TimeLog)

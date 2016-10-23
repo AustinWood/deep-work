@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.checkDataStore()
         self.countTimeLogs()
+        self.countWorkDays()
     }
     
     func countTimeLogs() {
@@ -26,12 +27,26 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         var x = 0
         for project in projects {
             let timeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
-            x += timeLogs.count
-            print("project: \(project.title), timeLogs: \(timeLogs.count)")
+            let timeLogCount = timeLogs.count
+            x += timeLogCount
+            print("project: \(project.title!), timeLogs: \(timeLogCount)")
         }
         print("timeLogs belonging to projects: \(x)")
         let allTimeLogs = TimeLog.getAllTimeLogs(moc: moc!)
         print("allTimeLogs: \(allTimeLogs.count)")
+    }
+    
+    func countWorkDays() {
+        print("* HomeViewController: countWorkDays()")
+        var x = 0
+        let workDays = WorkDay.getAllWorkDays(moc: moc!)
+        for workDay in workDays {
+            let timeLogCount = workDay.timeLog?.count
+            x += timeLogCount!
+            print("workDay: \(workDay.workDay!), timeLogs: \(timeLogCount!)")
+        }
+        print("timeLogs belonging to projects: \(x)")
+        print("workDayCount: \(workDays.count)")
     }
     
     //////////////////////////////////////////////
@@ -118,30 +133,32 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var lastIndex = IndexPath()
     
     func handleLongPress(gesture: UILongPressGestureRecognizer) {
-        switch(gesture.state) {
-        case UIGestureRecognizerState.began:
-            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-                else { break }
-            oldIndex = selectedIndexPath
-            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-            let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as! ProjectCell
-            selectedCell.circleView.backgroundColor = CustomColor.blueGreen
-        case UIGestureRecognizerState.changed:
-            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-            if let currentIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
-                lastIndex = currentIndexPath
-            } else { break }
-        case UIGestureRecognizerState.ended:
-            let element = projects.remove(at: oldIndex.row)
-            if let newIndex = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
-                projects.insert(element, at: newIndex.row)
-            } else {
-                projects.insert(element, at: lastIndex.row)
+        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
+            switch(gesture.state) {
+            case UIGestureRecognizerState.began:
+                guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+                    else { break }
+                oldIndex = selectedIndexPath
+                collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+                let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as! ProjectCell
+                selectedCell.circleView.backgroundColor = CustomColor.blueGreen
+            case UIGestureRecognizerState.changed:
+                collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+                if let currentIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
+                    lastIndex = currentIndexPath
+                } else { break }
+            case UIGestureRecognizerState.ended:
+                let element = projects.remove(at: oldIndex.row)
+                if let newIndex = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
+                    projects.insert(element, at: newIndex.row)
+                } else {
+                    projects.insert(element, at: lastIndex.row)
+                }
+                updateProjectOrder()
+                collectionView.endInteractiveMovement()
+            default:
+                collectionView.cancelInteractiveMovement()
             }
-            updateProjectOrder()
-            collectionView.endInteractiveMovement()
-        default:
-            collectionView.cancelInteractiveMovement()
         }
     }
     
@@ -265,7 +282,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let alertController = UIAlertController(title: "Warning!", message: "Are you sure you want to delete the current entry? This action cannot be undone.", preferredStyle: .actionSheet)
         let continueButton = UIAlertAction(title: "Delete entry", style: .destructive, handler: { (action) -> Void in
             do {
-                let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "WorkEntry")
+                let request: NSFetchRequest<TimeLog> = NSFetchRequest(entityName: "TimeLog")
                 do {
                     let results = try self.moc?.fetch(request)
                     for result in results! {
@@ -318,6 +335,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
+            let workDayStr = FormatTime().dateISO(date: Date())
+            let workDay = WorkDay.getWorkDay(workDayStr: workDayStr, moc: moc!)
+            newTimeLog.workDay = workDay
             newTimeLog.startTime = Date()
             do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
@@ -481,16 +501,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
             dataString += "\"order\":" + "\(project.order)" + ",\n"
             dataString += "\"color\":\"" + "" + "\",\n" // project.color!
-            dataString += "\"image\":\"" + "" + "\",\n" // project.image!
-            dataString += "\"workEntry\": [\n\n"
+            dataString += "\"timeLog\": [\n\n"
             var workData = ""
-            for entry in project.workEntry! {
+            for entry in project.timeLog! {
                 let entryData = entry as! TimeLog
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                
                 let startTime = entryData.startTime
+                
+                //dateFormatter.dateFormat = "yyyy-MM-dd"
+                //let workDayStr = dateFormatter.string(from: startTime!)
+                let workDayStr = entryData.workDay?.workDay
+                workData += "{\n" + "\"workDay\":\"" + workDayStr! + "\",\n"
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
                 let startTimeStr = dateFormatter.string(from: startTime!)
-                workData += "{\n" + "\"startTime\":\"" + startTimeStr + "\",\n"
+                workData += "\"startTime\":\"" + startTimeStr + "\",\n"
                 if let stopTime = entryData.stopTime {
                     let stopTimeStr = dateFormatter.string(from: stopTime)
                     workData += "\"stopTime\":\"" + stopTimeStr + "\",\n"
