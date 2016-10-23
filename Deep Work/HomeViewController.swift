@@ -19,14 +19,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("*** countTimeLogs()")
         var x = 0
         for project in projects {
-            let timeLog = TimeLog(context: moc!)
-            let timeLogs = timeLog.getTimeLog(project: project, moc: moc!)
+            //let timeLog = TimeLog(context: moc!)
+            //let timeLogs = timeLog.getTimeLog(project: project, moc: moc!)
+            let timeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
             x += timeLogs.count
             print("project: \(project.title), timeLogs: \(timeLogs.count)")
         }
         print("timeLogs belonging to projects: \(x)")
-        let timeLog = TimeLog(context: moc!)
-        let allTimeLogs = timeLog.getAllTimeLogs(moc: moc!)
+        //let timeLog = TimeLog(context: moc!)
+        //let allTimeLogs = timeLog.getAllTimeLogs(moc: moc!)
+        let allTimeLogs = TimeLog.getAllTimeLogs(moc: moc!)
         print("allTimeLogs: \(allTimeLogs.count)")
     }
     
@@ -308,9 +310,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Start / Stop time log
 
     func startStopTimer(project: Project) {
-        let timeLog = TimeLog(context: moc!)
-        if timeLog.inProgress(project: project, moc: moc!) {
-            let currentEntry = timeLog.getCurrentEntry(project: project, moc: moc!)
+        //let timeLog = TimeLog(context: moc!)
+        if TimeLog.inProgress(project: project, moc: moc!) {
+            let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
             currentEntry.stopTime = Date()
             timer.invalidate()
             updateTimeLabels()
@@ -343,10 +345,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         lastStartTime = nil
         timer.invalidate()
         for project in projects {
-            let timeLog = TimeLog(context: moc!)
-            if timeLog.inProgress(project: project, moc: moc!)  {
+            //let timeLog = TimeLog(context: moc!)
+            if TimeLog.inProgress(project: project, moc: moc!)  {
                 timerRunning = true
-                lastStartTime = timeLog.getCurrentEntry(project: project, moc: moc!).startTime
+                lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!).startTime
                 timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true);
             }
         }
@@ -360,11 +362,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.reloadData()
         
         // Update the time of 'Today' and 'This week' labels
-        let timeLog = TimeLog(context: moc!)
-        let todayTime = timeLog.todayTime(projects: projects, moc: moc!)
+        //let timeLog = TimeLog(context: moc!)
+        let todayTime = TimeLog.todayTime(projects: projects, moc: moc!)
         let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
-        let weekTime = timeLog.weekTime(projects: projects, moc: moc!)
+        let weekTime = TimeLog.weekTime(projects: projects, moc: moc!)
         let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
         weekLabel.text = weekFormatted
         

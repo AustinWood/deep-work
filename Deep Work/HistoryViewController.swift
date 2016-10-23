@@ -51,8 +51,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         colorArray = []
         
         // Create an array of all TimeLog entries for the selected project and sort it
-        let timeLog = TimeLog(context: moc!)
-        timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
+        //let timeLog = TimeLog(context: moc!)
+        //timeLogArray = timeLog.getTimeLog(project: project!, moc: moc!)
+        timeLogArray = TimeLog.getTimeLog(project: project!, moc: moc!)
         timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
         
         // Created an array of arrays of TimeLog entries, grouping them by date

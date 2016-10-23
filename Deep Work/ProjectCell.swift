@@ -23,19 +23,19 @@ class ProjectCell: UICollectionViewCell {
         circleView.clipsToBounds = true
         titleLabel.text = project.title
         
-        let timeLog = TimeLog(context: moc)
+        //let timeLog = TimeLog(context: moc)
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
         if displayWeekTotals {
-            let weekTime = timeLog.weekTime(projects: [project], moc: moc)
+            let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
             let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
             timeLabel.text = weekFormatted
         } else {
-            let todayTime = timeLog.todayTime(projects: [project], moc: moc)
+            let todayTime = TimeLog.todayTime(projects: [project], moc: moc)
             let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
             timeLabel.text = todayFormatted
         }
         
-        let currentSessionLength = timeLog.currentSessionLength(project: project, moc: moc)
+        let currentSessionLength = TimeLog.currentSessionLength(project: project, moc: moc)
         if currentSessionLength == 0 {
             circleView.backgroundColor = UIColor.black
             currentSessionLabel.isHidden = true
