@@ -25,6 +25,19 @@ public class TimeLog: NSManagedObject {
         }
     }
     
+    func getAllTimeLogs(moc: NSManagedObjectContext) -> [TimeLog] {
+        let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        //timeLogRequest.predicate = NSPredicate(format: "project = %@", project)
+        
+        do {
+            let timeLog = try moc.fetch(timeLogRequest)
+            return timeLog
+        }
+        catch {
+            fatalError("Error getting time log")
+        }
+    }
+    
 //    func totalTime(project: Project, moc: NSManagedObjectContext) -> (TimeInterval, Bool) {
 //        var inProgress = false
 //        let timeLog = TimeLog(context: managedObjectContext!)

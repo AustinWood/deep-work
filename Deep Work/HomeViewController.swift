@@ -13,6 +13,25 @@ import MessageUI
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate {
     
     //////////////////////////////////////////////
+    // MARK:- Bug Testing
+    
+    func countTimeLogs() {
+        print("*** countTimeLogs()")
+        var x = 0
+        for project in projects {
+            let timeLog = TimeLog(context: moc!)
+            let timeLogs = timeLog.getTimeLog(project: project, moc: moc!)
+            x += timeLogs.count
+            print("project: \(project.title), timeLogs: \(timeLogs.count)")
+        }
+        print("timeLogs belonging to projects: \(x)")
+        let timeLog = TimeLog(context: moc!)
+        let allTimeLogs = timeLog.getAllTimeLogs(moc: moc!)
+        print("allTimeLogs: \(allTimeLogs.count)")
+    }
+    
+    
+    //////////////////////////////////////////////
     // MARK:- Properties
     
     let moc: NSManagedObjectContext? = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -272,6 +291,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let countButton = UIAlertAction(title: "Count data", style: .default, handler: { (action) -> Void in
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.checkDataStore()
+            self.countTimeLogs()
         })
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
