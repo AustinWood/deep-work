@@ -52,7 +52,7 @@
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="135" width="150" height="198"/>
+                                        <rect key="frame" x="112.5" y="135" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>
@@ -145,7 +145,7 @@
                                                     <constraint firstAttribute="width" constant="150" id="1eL-Kn-HIJ"/>
                                                     <constraint firstItem="JlB-9d-vTi" firstAttribute="centerX" secondItem="hqb-N5-vLY" secondAttribute="centerX" id="ILs-vx-3m8"/>
                                                     <constraint firstAttribute="height" constant="75" id="anE-Wi-gBx"/>
-                                                    <constraint firstItem="JlB-9d-vTi" firstAttribute="centerY" secondItem="hqb-N5-vLY" secondAttribute="centerY" constant="4.5" id="lzc-Kv-eRw"/>
+                                                    <constraint firstItem="JlB-9d-vTi" firstAttribute="centerY" secondItem="hqb-N5-vLY" secondAttribute="centerY" id="lzc-Kv-eRw"/>
                                                 </constraints>
                                             </view>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qv3-1M-oZR" userLabel="Week View" customClass="DayWeekView" customModule="Deep_Work" customModuleProvider="target">
@@ -243,7 +243,7 @@
                                         <rect key="frame" x="0.0" y="76" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kta-jk-aqi" id="Kyq-k7-d2m">
-                                            <frame key="frameInset" width="375" height="89"/>
+                                            <frame key="frameInset" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cz-Rt-8N8" customClass="RoundedBorderView" customModule="Deep_Work" customModuleProvider="target">

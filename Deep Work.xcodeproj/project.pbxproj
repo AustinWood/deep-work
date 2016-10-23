@@ -26,6 +26,7 @@
 		42C111E71DBDF056004582A0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C111E31DBDF056004582A0 /* Project+CoreDataProperties.swift */; };
 		42C111E81DBDF056004582A0 /* TimeLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C111E41DBDF056004582A0 /* TimeLog+CoreDataClass.swift */; };
 		42C111E91DBDF056004582A0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C111E51DBDF056004582A0 /* TimeLog+CoreDataProperties.swift */; };
+		42C111EB1DBDF056004582A0 /* MyDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C111EA1DBDF056004582A0 /* MyDateRange.swift */; };
 		42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F71DAD474E008F0260 /* ProjectCell.swift */; };
 		42C3A7FA1DAD482F008F0260 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F91DAD482F008F0260 /* HomeViewController.swift */; };
 		42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */; };
@@ -55,6 +56,7 @@
 		42C111E31DBDF056004582A0 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		42C111E41DBDF056004582A0 /* TimeLog+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		42C111E51DBDF056004582A0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		42C111EA1DBDF056004582A0 /* MyDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDateRange.swift; sourceTree = "<group>"; };
 		42C3A7F71DAD474E008F0260 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		42C3A7F91DAD482F008F0260 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				42A52E5F1DAD502F00924350 /* Colors.swift */,
+				42C111EA1DBDF056004582A0 /* MyDateRange.swift */,
 				427AD7891DAF933400B22DB5 /* FormatTime.swift */,
 			);
 			name = Custom;
@@ -251,6 +254,7 @@
 				42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */,
 				42C111E91DBDF056004582A0 /* TimeLog+CoreDataProperties.swift in Sources */,
 				42541D9B1DBCB17D001544D1 /* DataService.swift in Sources */,
+				42C111EB1DBDF056004582A0 /* MyDateRange.swift in Sources */,
 				42541DBF1DBD007E001544D1 /* TableViewHeaderLabel.swift in Sources */,
 				42BD2DDA1DAD413500D38118 /* Deep_Work.xcdatamodeld in Sources */,
 				42E912591DB94731001FF37A /* HistoryCell.swift in Sources */,

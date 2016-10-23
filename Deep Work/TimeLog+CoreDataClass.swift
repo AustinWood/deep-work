@@ -53,6 +53,9 @@ public class TimeLog: NSManagedObject {
         return totalTime
     }
     
+    // I can refactor these even further by having one function that gets today, week, and month summations
+    // and only fetches allTimeLogs once!
+    
     internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
         let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
         var todayTimeLogs: [TimeLog] = []
@@ -66,10 +69,9 @@ public class TimeLog: NSManagedObject {
     
     internal static func weekTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
         let startOfThisWeek = Date().startOfWeek
-        let calendar = NSCalendar.current
         var dateComponents = DateComponents()
         dateComponents.day = 7
-        let startOfNextWeek = calendar.date(byAdding: dateComponents, to: startOfThisWeek)
+        let startOfNextWeek = Calendar.current.date(byAdding: dateComponents, to: startOfThisWeek)
         let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
         var weekTimeLogs: [TimeLog] = []
         for timeLog in allTimeLogs {
@@ -78,6 +80,38 @@ public class TimeLog: NSManagedObject {
             }
         }
         return calculateTotalTime(timeLogs: weekTimeLogs, moc: moc)
+    }
+    
+    internal static func monthTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        let todayDateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
+        let currentMonth = todayDateComponents.month
+        let currentYear = todayDateComponents.year
+        let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
+        var monthTimeLogs: [TimeLog] = []
+        for timeLog in allTimeLogs {
+            let timeLogDateComponents = Calendar.current.dateComponents([.year, .month], from: timeLog.startTime!)
+            let timeLogMonth = timeLogDateComponents.month
+            let timeLogYear = timeLogDateComponents.year
+            if timeLogMonth == currentMonth && timeLogYear == currentYear {
+                monthTimeLogs.append(timeLog)
+            }
+        }
+        return calculateTotalTime(timeLogs: monthTimeLogs, moc: moc)
+    }
+    
+    internal static func yearTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        let todayDateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
+        let currentYear = todayDateComponents.year
+        let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
+        var yearTimeLogs: [TimeLog] = []
+        for timeLog in allTimeLogs {
+            let timeLogDateComponents = Calendar.current.dateComponents([.year, .month], from: timeLog.startTime!)
+            let timeLogYear = timeLogDateComponents.year
+            if timeLogYear == currentYear {
+                yearTimeLogs.append(timeLog)
+            }
+        }
+        return calculateTotalTime(timeLogs: yearTimeLogs, moc: moc)
     }
     
     //////////////////////////////////////////////

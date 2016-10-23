@@ -3,7 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Refactor time summations (todayTime and weekTime DRY)
 //   # DRY: dayPressed + weekPressed
 //   # Add a Month totals
 //   # Add All Time totals
