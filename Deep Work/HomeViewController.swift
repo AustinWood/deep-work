@@ -25,13 +25,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("* HomeViewController: countTimeLogs()")
         var x = 0
         for project in projects {
-            let timeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
+            let timeLogs = TimeLog.getTimeLogsForProjects(projects: [project], moc: moc!)
             let timeLogCount = timeLogs.count
             x += timeLogCount
             print("project: \(project.title!), timeLogs: \(timeLogCount)")
         }
         print("timeLogs belonging to projects: \(x)")
-        let allTimeLogs = TimeLog.getAllTimeLogs(moc: moc!)
+        let allTimeLogs = TimeLog.getTimeLogs(searchPredicate: nil, moc: moc!)
         print("allTimeLogs: \(allTimeLogs.count)")
     }
     
@@ -296,12 +296,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK:- Start / Stop time log
 
     func startStopTimer(project: Project) {
-        if TimeLog.inProgress(project: project, moc: moc!) {
-            let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
-            currentEntry.stopTime = Date()
+        let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
+        if currentEntry != nil {
+            currentEntry?.stopTime = Date()
             timer.invalidate()
             updateTimeLabels()
-            addNote(timeLog: currentEntry)
+            addNote(timeLog: currentEntry!)
         } else if !timerRunning {
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
@@ -328,10 +328,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         lastStartTime = nil
         timer.invalidate()
         for project in projects {
-            if TimeLog.inProgress(project: project, moc: moc!)  {
+            let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
+            if currentEntry != nil{
                 timerRunning = true
-                lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!).startTime
-                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true);
+                lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!)?.startTime
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true)
             }
         }
     }
@@ -469,8 +470,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             exportDataStr += "\"order\":" + "\(project.order)" + ",\n"
             exportDataStr += "\"color\":\"" + "" + "\",\n" // project.color!
             exportDataStr += "\"timeLog\": [\n\n"
-            var projectTimeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
-            projectTimeLogs.sort(by: { $0.startTime! < $1.startTime! })
+            let projectTimeLogs = TimeLog.getTimeLogsForProjects(projects: [project], moc: moc!).sorted(by: { $0.startTime! < $1.startTime! })
             var timeLogDataStr = ""
             for timeLog in projectTimeLogs {
                 timeLogDataStr += "{\n" + "\"workDay\":\"" + timeLog.workDay! + "\",\n"

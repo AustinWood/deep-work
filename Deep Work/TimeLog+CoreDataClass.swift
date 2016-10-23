@@ -9,129 +9,102 @@
 import Foundation
 import CoreData
 
-
 public class TimeLog: NSManagedObject {
     
-    internal static func getTimeLog(project: Project, moc: NSManagedObjectContext) -> [TimeLog] {
+    //////////////////////////////////////////////
+    // Basic time log fetching
+    
+    internal static func getTimeLogs(searchPredicate: AnyObject?, moc: NSManagedObjectContext) -> [TimeLog] {
         let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        timeLogRequest.predicate = NSPredicate(format: "project = %@", project)
-        
+        if searchPredicate is NSPredicate {
+            timeLogRequest.predicate = searchPredicate as? NSPredicate
+        }
         do {
-            let timeLog = try moc.fetch(timeLogRequest)
-            return timeLog
+            let timeLogs = try moc.fetch(timeLogRequest)
+            return timeLogs
         }
         catch {
             fatalError("Error getting time log")
         }
     }
     
-    internal static func getAllTimeLogs(moc: NSManagedObjectContext) -> [TimeLog] {
-        let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        //timeLogRequest.predicate = NSPredicate(format: "project = %@", project)
-        
-        do {
-            let timeLog = try moc.fetch(timeLogRequest)
-            return timeLog
-        }
-        catch {
-            fatalError("Error getting time log")
-        }
-    }
-    
-    //    func totalTime(project: Project, moc: NSManagedObjectContext) -> (TimeInterval, Bool) {
-    //        var inProgress = false
-    //        let timeLog = TimeLog(context: managedObjectContext!)
-    //        let timeLogArray = timeLog.getTimeLog(project: project, moc: managedObjectContext!)
-    //        var totalTime = TimeInterval()
-    //        for entry in timeLogArray {
-    //            if entry.stopTime != nil {
-    //                if Calendar.current.isDateInToday(entry.startTime!) {
-    //                    totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-    //                }
-    //            } else {
-    //                inProgress = true
-    //                totalTime += (Date().timeIntervalSince(entry.startTime!))
-    //            }
-    //        }
-    //        return (totalTime, inProgress)
-    //    }
-    
-    internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
-        var totalTime = TimeInterval()
+    internal static func getTimeLogsForProjects(projects: [Project], moc: NSManagedObjectContext) -> [TimeLog] {
+        var timeLogs: [TimeLog] = []
         for project in projects {
-            let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
-            for entry in timeLogArray {
-                if entry.stopTime != nil {
-                    let isToday = Calendar.current.isDateInToday(entry.startTime!)
-                    if isToday {
-                        totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-                    }
-                } else {
-                    totalTime += (Date().timeIntervalSince(entry.startTime!))
-                }
+            let searchPredicate = NSPredicate(format: "project = %@", project)
+            let projectTimeLogs = getTimeLogs(searchPredicate: searchPredicate, moc: moc)
+            timeLogs += projectTimeLogs
+        }
+        return timeLogs
+    }
+    
+    //////////////////////////////////////////////
+    // Totals by day, week, month
+    
+    internal static func calculateTotalTime(timeLogs: [TimeLog], moc: NSManagedObjectContext) -> TimeInterval {
+        var totalTime = TimeInterval()
+        for timeLog in timeLogs {
+            if timeLog.stopTime != nil {
+                totalTime += (timeLog.stopTime?.timeIntervalSince(timeLog.startTime!))!
+            } else {
+                totalTime += (Date().timeIntervalSince(timeLog.startTime!))
             }
         }
         return totalTime
     }
     
+    internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
+        var todayTimeLogs: [TimeLog] = []
+        for timeLog in allTimeLogs {
+            if Calendar.current.isDateInToday(timeLog.startTime!) {
+                todayTimeLogs.append(timeLog)
+            }
+        }
+        return calculateTotalTime(timeLogs: todayTimeLogs, moc: moc)
+    }
+    
     internal static func weekTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
-        
         let startOfThisWeek = Date().startOfWeek
         let calendar = NSCalendar.current
         var dateComponents = DateComponents()
         dateComponents.day = 7
         let startOfNextWeek = calendar.date(byAdding: dateComponents, to: startOfThisWeek)
-        
-        var totalTime = TimeInterval()
-        for project in projects {
-            let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
-            for entry in timeLogArray {
-                if entry.stopTime != nil {
-                    if entry.startTime! >= startOfThisWeek && entry.startTime! < startOfNextWeek! {
-                        totalTime += (entry.stopTime?.timeIntervalSince(entry.startTime!))!
-                    }
-                } else {
-                    totalTime += (Date().timeIntervalSince(entry.startTime!))
-                }
+        let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
+        var weekTimeLogs: [TimeLog] = []
+        for timeLog in allTimeLogs {
+            if timeLog.startTime! >= startOfThisWeek && timeLog.startTime! < startOfNextWeek! {
+                weekTimeLogs.append(timeLog)
             }
         }
-        return totalTime
+        return calculateTotalTime(timeLogs: weekTimeLogs, moc: moc)
     }
     
-    internal static func inProgress(project: Project, moc: NSManagedObjectContext) -> Bool {
-        var inProgress = false
-        let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
-        for entry in timeLogArray {
-            if entry.stopTime == nil {
-                inProgress = true
-            }
-        }
-        return inProgress
-    }
+    //////////////////////////////////////////////
+    // Miscellaneous time log methods
     
     internal static func currentSessionLength(project: Project, moc: NSManagedObjectContext) -> TimeInterval {
-        let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
-        for entry in timeLogArray {
-            if entry.stopTime == nil {
-                return (Date().timeIntervalSince(entry.startTime!))
-            }
+        let currentEntry = getCurrentEntry(project: project, moc: moc)
+        if currentEntry != nil {
+            return (Date().timeIntervalSince(currentEntry!.startTime!))
         }
         return 0
     }
     
-    internal static func getCurrentEntry(project: Project, moc: NSManagedObjectContext) -> TimeLog {
-        let timeLogArray = TimeLog.getTimeLog(project: project, moc: moc)
-        for entry in timeLogArray {
-            if entry.stopTime == nil {
-                return entry
+    internal static func getCurrentEntry(project: Project, moc: NSManagedObjectContext) -> TimeLog? {
+        let timeLogs = getTimeLogsForProjects(projects: [project], moc: moc)
+        for timeLog in timeLogs {
+            if timeLog.stopTime == nil {
+                return timeLog
             }
         }
-        return TimeLog()
+        return nil
     }
-    
     
 }
 
+//////////////////////////////////////////////
+// Date extension
 
 extension Date {
     struct Calendar {

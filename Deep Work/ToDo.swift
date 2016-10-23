@@ -3,8 +3,10 @@
 //
 // RESUME WITH:
 //
-//   # Automatically capitalize first letter of entry note, and after periods
-//   # Add a Month View to HomeVC
+//   # Refactor time summations (todayTime and weekTime DRY)
+//   # DRY: dayPressed + weekPressed
+//   # Add a Month totals
+//   # Add All Time totals
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -14,6 +16,7 @@
 // Priority 1:
 //
 //   # Make FormatTime an extension of Date()
+//   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
 //   # Confirmation toast when deleting data / restoring from JSON
@@ -24,7 +27,8 @@
 // Priority 2:
 //
 //   # Import data from other trackers since January
-//   # DRY: dayPressed + weekPressed
+//   # isAfterMidnight()
+//   # Option to switch between All Time totals and Year totals
 //   # After deleting a record in HistoryVC, scroll to correct position
 //   # Sounds
 //   # Visual time line at top (like Hours... No! Better, like my new sketch)
@@ -35,7 +39,6 @@
 //   # Verify that time entries are disaplayed the same when moving across time zones
 //   # Animate: Invalid action, try to start timer while another running: startStopTimer()
 //   # Replace fatalError with something friendlier
-//   # Refactor time summations (todayTime and weekTime DRY)
 //   # Reordering:
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
