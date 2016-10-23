@@ -269,11 +269,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let deleteButton = UIAlertAction(title: "Delete records", style: .destructive, handler: { (action) -> Void in
             self.deleteRecords()
         })
+        let countButton = UIAlertAction(title: "Count data", style: .default, handler: { (action) -> Void in
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.checkDataStore()
+        })
         let exportButton = UIAlertAction(title: "Export data as JSON", style: .default, handler: { (action) -> Void in
             self.emailData()
         })
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
         alertController.addAction(deleteButton)
+        alertController.addAction(countButton)
         alertController.addAction(exportButton)
         alertController.addAction(cancelButton)
         self.present(alertController, animated: true, completion: nil)

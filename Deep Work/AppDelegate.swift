@@ -92,6 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Custom Core Data junk
     
     func checkDataStore() {
+        countProjects()
+        countTimeLogs()
+    }
+    
+    func countProjects() {
         let request: NSFetchRequest<Project> = Project.fetchRequest()
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         do {
@@ -100,6 +105,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if projectCount == 0 {
                 uploadSampleData()
             }
+        }
+        catch {
+            fatalError("Error counting project records")
+        }
+    }
+    
+    func countTimeLogs() {
+        let request: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
+        let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
+        do {
+            let timeLogCount = try moc?.count(for: request)
+            print("timeLogCount: \(timeLogCount!)")
         }
         catch {
             fatalError("Error counting project records")
