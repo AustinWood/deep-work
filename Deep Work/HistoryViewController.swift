@@ -55,9 +55,18 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var timer = Timer()
     
     func setupTableView() { // Called on viewDidLoad
+        
+        // Give tableView a header same size as Visual Effects View which contains back button and project title
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 76))
+        headerView.backgroundColor = UIColor.clear
+        tableView.tableHeaderView = headerView
+        
+        // Miscellaneous tableView setup
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
+        
+        // Without a short delay, scrollToBottom() is called before the data is loaded
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.scrollToBottom), userInfo: nil, repeats: false)
     }
     
@@ -74,29 +83,22 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //////////////////////////////////////////////
-    // MARK:- Table View Headers
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let blackView = UIView()
-//        blackView.backgroundColor = UIColor.clear
-//        return blackView
-//    }
-    
+    // MARK:- Table View Section Headers
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // This should be the same as Visual Effects View which contains the back button and project title
-        return 76 as CGFloat
+        return 50 as CGFloat
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = TableViewHeaderLabel()
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
             let firstObject = currentSection.objects?.first as! TimeLog
             let workDay = firstObject.workDay! as WorkDay
             let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDay.workDay!)
-            return fullDateStr
+            label.text = fullDateStr
         }
-        return "no string"
+        return label
     }
     
     //////////////////////////////////////////////
@@ -157,72 +159,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    
-//    var timeLogArray: [TimeLog] = []
-//    var timeLogNestedArray: [[TimeLog]] = []
-//    var cellInitializerArray: [Int] = []
-//    var colorArray: [UIColor] = []
-//    let color1 = UIColor.black
-//    let color2 = CustomColor.blueDark
-    
-//    func intializeTimeLogs() {
-//        
-//        timeLogArray = []
-//        timeLogNestedArray = []
-//        cellInitializerArray = []
-//        colorArray = []
-//        
-//        // Create an array of all TimeLog entries for the selected project and sort it
-//        timeLogArray = TimeLog.getTimeLog(project: project!, moc: moc!)
-//        timeLogArray.sort(by: { $0.startTime! < $1.startTime! })
-//        
-//        // Created an array of arrays of TimeLog entries, grouping them by date
-//        for entry in timeLogArray {
-//            let currentFormmattedDate = FormatTime().formattedDate(date: entry.startTime!)
-//            var foundMatch = false
-//            var i = 0
-//            while i < timeLogNestedArray.count && !foundMatch {
-//                let entryArray = timeLogNestedArray[i]
-//                let existingFormmattedDate = FormatTime().formattedDate(date: entryArray[0].startTime!)
-//                if currentFormmattedDate == existingFormmattedDate {
-//                    timeLogNestedArray[i].append(entry)
-//                    foundMatch = true
-//                }
-//                i += 1
-//            }
-//            if !foundMatch {
-//                timeLogNestedArray.append([entry])
-//            }
-//        }
-//        
-//        // Create cellInitializerArray, which is used by tableView's cellForRowAtIndexPath for configuring cells
-//        // Each element's position in the array corresponds to a cell's indexPath
-//        var x = 0
-//        var y = 0
-//        while x < timeLogNestedArray.count {
-//            // Negative values indicate a DateCell and their corresponding position in timeLogNestedArray
-//            cellInitializerArray.append(-(x+1))
-//            createColorArray(x: x)
-//            for _ in timeLogNestedArray[x] {
-//                // Positive values indicate a time log HistoryCell and their corresponding position in timeLogArray
-//                cellInitializerArray.append(y)
-//                createColorArray(x: x)
-//                y += 1
-//            }
-//            x += 1
-//        }
-//        
-//        print(cellInitializerArray)
-//    }
-//    
-//    // colorArray is used by tableView's cellForRowAtIndexPath for determining the background color of the cell
-//    func createColorArray(x: Int) {
-//        if x % 2 == 0 {
-//            colorArray.append(color2)
-//        } else {
-//            colorArray.append(color1)
-//        }
-//    }
     
     //////////////////////////////////////////////
     // MARK:- Old Table View
