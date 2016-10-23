@@ -24,7 +24,7 @@ class HistoryCell: UITableViewCell {
         timer.invalidate()
         
         let startTime = entry.startTime
-        let starTimeStr = FormatTime().formattedTime(date: startTime!)
+        let starTimeStr = FormatTime.formattedTime(date: startTime!)
         var stopTime = Date()
         var stopTimeStr = ""
         
@@ -32,9 +32,9 @@ class HistoryCell: UITableViewCell {
         if entry.stopTime != nil {
             configureColors(color: UIColor.white)
             stopTime = entry.stopTime!
-            stopTimeStr = "  →  " +  FormatTime().formattedTime(date: stopTime)
+            stopTimeStr = "  →  " +  FormatTime.formattedTime(date: stopTime)
             let entryLength = stopTime.timeIntervalSince(startTime!)
-            let entryLengthStr = FormatTime().formattedHoursMinutes(timeInterval: entryLength)
+            let entryLengthStr = FormatTime.formattedHoursMinutes(timeInterval: entryLength)
             intervalLabel.text = entryLengthStr
         }
         
@@ -68,7 +68,7 @@ class HistoryCell: UITableViewCell {
     func updateLabelEachSecond() {
         if thisEntry?.stopTime == nil {
             let entryLength = Date().timeIntervalSince((thisEntry?.startTime)!)
-            let entryLengthStr = FormatTime().formattedHoursMinutesSeconds(timeInterval: entryLength)
+            let entryLengthStr = FormatTime.formattedHoursMinutesSeconds(timeInterval: entryLength)
             intervalLabel.text = entryLengthStr
         } else {
             timer.invalidate()

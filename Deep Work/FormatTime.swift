@@ -10,7 +10,7 @@ import Foundation
 
 struct FormatTime {
     
-    func formattedHoursMinutesSeconds(timeInterval: TimeInterval) -> String {
+    internal static func formattedHoursMinutesSeconds(timeInterval: TimeInterval) -> String {
         let time = NSInteger(timeInterval)
         let seconds = time % 60
         let minutes = (time / 60) % 60
@@ -18,7 +18,7 @@ struct FormatTime {
         return NSString(format: "%0.1dh %0.1dm %0.1ds",hours,minutes,seconds) as String
     }
     
-    func formattedHoursMinutes(timeInterval: TimeInterval) -> String {
+    internal static func formattedHoursMinutes(timeInterval: TimeInterval) -> String {
         let time = NSInteger(timeInterval)
         //let seconds = time % 60
         let minutes = (time / 60) % 60
@@ -26,7 +26,7 @@ struct FormatTime {
         return NSString(format: "%0.1dh %0.1dm",hours,minutes) as String
     }
     
-    func formattedTime(date: Date) -> String {
+    internal static func formattedTime(date: Date) -> String {
         let calendar = NSCalendar.current
         let hour = calendar.component(.hour, from: date)
         var hourStr = String(hour)
@@ -41,17 +41,25 @@ struct FormatTime {
         return hourStr + ":" + minuteStr
     }
     
-    func formattedDate(date: Date) -> String {
+    internal static func formattedDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
         return dateFormatter.string(from: date)
     }
     
-    func dateISO(date: Date) -> String {
+    internal static func dateISO(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
+    }
+    
+    internal static func dateISOtoFull(isoStr: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: isoStr)
+        let fullDateStr = FormatTime.formattedDate(date: date!)
+        return fullDateStr
     }
     
 }

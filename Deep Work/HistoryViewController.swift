@@ -93,8 +93,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             let currentSection = sections[section]
             let firstObject = currentSection.objects?.first as! TimeLog
             let workDay = firstObject.workDay! as WorkDay
-            
-            return workDay.workDay
+            let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDay.workDay!)
+            return fullDateStr
         }
         return "no string"
     }

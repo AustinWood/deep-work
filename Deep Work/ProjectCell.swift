@@ -26,11 +26,11 @@ class ProjectCell: UICollectionViewCell {
         displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
         if displayWeekTotals {
             let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
-            let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
+            let weekFormatted = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
             timeLabel.text = weekFormatted
         } else {
             let todayTime = TimeLog.todayTime(projects: [project], moc: moc)
-            let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
+            let todayFormatted = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
             timeLabel.text = todayFormatted
         }
         
@@ -40,7 +40,7 @@ class ProjectCell: UICollectionViewCell {
             currentSessionLabel.isHidden = true
         } else {
             circleView.backgroundColor = CustomColor.red
-            let currentSessionFormatted = FormatTime().formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
+            let currentSessionFormatted = FormatTime.formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
             currentSessionLabel.text = currentSessionFormatted
             currentSessionLabel.isHidden = false
         }

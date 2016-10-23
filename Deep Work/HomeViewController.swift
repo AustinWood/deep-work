@@ -253,7 +253,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func addNote(timeLog: TimeLog) {
         let sessionLength = Date().timeIntervalSince(timeLog.startTime!)
-        let sessionLengthFormatted = FormatTime().formattedHoursMinutes(timeInterval: sessionLength)
+        let sessionLengthFormatted = FormatTime.formattedHoursMinutes(timeInterval: sessionLength)
         let project = timeLog.project
         let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in }
@@ -335,7 +335,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
-            let workDayStr = FormatTime().dateISO(date: Date())
+            let workDayStr = FormatTime.dateISO(date: Date())
             let workDay = WorkDay.getWorkDay(workDayStr: workDayStr, moc: moc!)
             newTimeLog.workDay = workDay
             newTimeLog.startTime = Date()
@@ -376,10 +376,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // Update the time of 'Today' and 'This week' labels
         let todayTime = TimeLog.todayTime(projects: projects, moc: moc!)
-        let todayFormatted = FormatTime().formattedHoursMinutes(timeInterval: todayTime)
+        let todayFormatted = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
         todayLabel.text = todayFormatted
         let weekTime = TimeLog.weekTime(projects: projects, moc: moc!)
-        let weekFormatted = FormatTime().formattedHoursMinutes(timeInterval: weekTime)
+        let weekFormatted = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
         weekLabel.text = weekFormatted
         
         // Refresh the design of 'Today' and 'This week' labels
