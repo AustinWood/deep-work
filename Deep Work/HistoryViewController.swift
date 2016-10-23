@@ -76,15 +76,27 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     // MARK:- Table View Headers
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let blackView = UIView()
-        blackView.backgroundColor = UIColor.clear
-        return blackView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let blackView = UIView()
+//        blackView.backgroundColor = UIColor.clear
+//        return blackView
+//    }
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // This should be the same as Visual Effects View which contains the back button and project title
         return 76 as CGFloat
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            let firstObject = currentSection.objects?.first as! TimeLog
+            let workDay = firstObject.workDay! as WorkDay
+            
+            return workDay.workDay
+        }
+        return "no string"
     }
     
     //////////////////////////////////////////////

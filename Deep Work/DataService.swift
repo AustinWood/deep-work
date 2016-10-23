@@ -19,9 +19,9 @@ class DataService {
         
         
         let request: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        let workDaySort = NSSortDescriptor(key: "workDay", ascending: true)
         let timeSort = NSSortDescriptor(key: "startTime", ascending: true)
-        request.sortDescriptors = [dateSort, timeSort]
+        request.sortDescriptors = [workDaySort, timeSort]
         
         
         let searchPredicate: NSPredicate?
@@ -29,7 +29,7 @@ class DataService {
         request.predicate = searchPredicate
         
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "workDay", cacheName: nil)
         
         
         do {
