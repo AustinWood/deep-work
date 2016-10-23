@@ -6,118 +6,53 @@
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-import UIKit
-import CoreData
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////// PRE-NS FETCHED RESULTS CONTROLLER
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    //////////////////////////////////////////////
-    // MARK:- Properties
-    
-    var moc: NSManagedObjectContext?
-    var project: Project?
-    var fetchedResultsController: NSFetchedResultsController<TimeLog>!
-    
-    //////////////////////////////////////////////
-    // MARK:- Outlets
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    
-    //////////////////////////////////////////////
-    // MARK:- Initialization
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadData()
-        setupViewController()
-        //intializeTimeLogs()
-        //setupTableView()
-    }
-    
-    func setupViewController() {
-        titleLabel.text = project?.title
-    }
-    
-    //////////////////////////////////////////////
-    // MARK:- Table View
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //////////////////////////////////////////////
-        // Old code:
-//        return timeLogArray.count + timeLogNestedArray.count
-        
-        //////////////////////////////////////////////
-        // New code:
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //////////////////////////////////////////////
-        // Old code:
-//        var cell = UITableViewCell()
-//        // Confifure DateCell
-//        if cellInitializerArray[indexPath.row] < 0 {
-//            let dateCell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
-//            let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row] + 1)][0]
-//            let formattedDate = FormatTime().formattedDate(date: entry.startTime!)
-//            dateCell.dateLabel.text = formattedDate
-//            cell = dateCell
-//            // Confifure HistoryCell
-//        } else {
-//            let historyCell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
-//            let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
-//            historyCell.configureCell(entry: entry, moc: moc!)
-//            cell = historyCell
-//        }
-//        // Applicable to both types of cells
-//        cell.selectionStyle = .none
-//        cell.backgroundColor = colorArray[indexPath.row]
-//        return cell
-        
-        //////////////////////////////////////////////
-        // New code:
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
-        let timeLog = fetchedResultsController.object(at: indexPath)
-        cell.configureCell(entry: timeLog, moc: moc!)
-        return cell
-    }
-    
-    //////////////////////////////////////////////
-    // MARK:- Private Function
-    
-    private func loadData() {
-        fetchedResultsController = DataService.fetchTimeLogs(project: project!, moc: moc!)
-    }
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    // MARK:- below this line -- OLD CODE
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    
+//import UIKit
+//import CoreData
+//
+//class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//    
+//    //////////////////////////////////////////////
+//    // MARK:- Properties
+//    
+//    var moc: NSManagedObjectContext?
+//    var project: Project?
 //    var timeLogArray: [TimeLog] = []
 //    var timeLogNestedArray: [[TimeLog]] = []
 //    var cellInitializerArray: [Int] = []
 //    var colorArray: [UIColor] = []
 //    let color1 = UIColor.black
 //    let color2 = CustomColor.blueDark
-    
+//    
+//    //////////////////////////////////////////////
+//    // MARK:- Outlets
+//    
+//    @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var tableView: UITableView!
+//    
+//    //////////////////////////////////////////////
+//    // MARK:- Initialization
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        intializeTimeLogs()
+//        setupViewController()
+//        setupTableView()
+//    }
+//    
+//    func setupViewController() {
+//        titleLabel.text = project?.title
+//    }
+//    
 //    func intializeTimeLogs() {
 //        
 //        timeLogArray = []
@@ -176,10 +111,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 //            colorArray.append(color1)
 //        }
 //    }
-    
-    //////////////////////////////////////////////
-    // MARK:- Old Table View
-    
+//    
+//    //////////////////////////////////////////////
+//    // MARK:- Table View
+//    
 //    var timer = Timer()
 //    
 //    func setupTableView() { // Called on viewDidLoad
@@ -205,6 +140,36 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 //        return 76 as CGFloat
 //    }
 //    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return timeLogArray.count + timeLogNestedArray.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var cell = UITableViewCell()
+//        // Confifure DateCell
+//        if cellInitializerArray[indexPath.row] < 0 {
+//            let dateCell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DateCell
+//            let entry = timeLogNestedArray[-(cellInitializerArray[indexPath.row] + 1)][0]
+//            let formattedDate = FormatTime().formattedDate(date: entry.startTime!)
+//            dateCell.dateLabel.text = formattedDate
+//            cell = dateCell
+//            // Confifure HistoryCell
+//        } else {
+//            let historyCell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
+//            let entry = (timeLogArray[cellInitializerArray[indexPath.row]]) as TimeLog
+//            historyCell.configureCell(entry: entry, moc: moc!)
+//            cell = historyCell
+//        }
+//        // Applicable to both types of cells
+//        cell.selectionStyle = .none
+//        cell.backgroundColor = colorArray[indexPath.row]
+//        return cell
+//    }
+//    
 //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 //        
 //        // No edit actions for dateCell
@@ -220,7 +185,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 //        
 //        return true
 //    }
-//
+//    
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        
 //        print((timeLogArray.count + timeLogNestedArray.count - 1))
@@ -261,5 +226,5 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 //        
 //        return [deleteButton]
 //    }
-    
-}
+//    
+//}
