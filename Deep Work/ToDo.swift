@@ -4,8 +4,8 @@
 // RESUME WITH:
 //
 //   # DRY: dayPressed + weekPressed
-//   # Add a Month totals
-//   # Add All Time totals
+//   # Add Month totals
+//   # Add Year totals
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -14,18 +14,19 @@
 //
 // Priority 1:
 //
+//   # Import data from other trackers since January
+//   # Range checker should use workDay attribute, not starTime attribute
+//   # Confirmation toast when deleting data / restoring from JSON
 //   # Make FormatTime an extension of Date()
 //   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
-//   # Confirmation toast when deleting data / restoring from JSON
 //   # HistoryVC:
 //       # Swipe to edit note
 //       # Swipe to edit start/stop time
 //
 // Priority 2:
 //
-//   # Import data from other trackers since January
 //   # isAfterMidnight()
 //   # Option to switch between All Time totals and Year totals
 //   # After deleting a record in HistoryVC, scroll to correct position
