@@ -21,7 +21,7 @@ class DataService {
         let request: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
         let workDaySort = NSSortDescriptor(key: "workDay", ascending: true)
         let timeSort = NSSortDescriptor(key: "startTime", ascending: true)
-        request.sortDescriptors = [workDaySort, timeSort]
+        request.sortDescriptors = [timeSort, workDaySort]
         
         
         let searchPredicate: NSPredicate?
