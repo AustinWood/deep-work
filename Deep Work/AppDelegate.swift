@@ -159,27 +159,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Time logs
                 if let timeLogs = projectData["timeLog"] {
                     let timeLogsData = project.timeLog?.mutableCopy() as! NSMutableSet
-                    
                     for timeLog in timeLogs as! NSArray {
-                        
                         let timeLogData = timeLog as! [String: AnyObject]
                         let timeLog = TimeLog(context: moc!)
-                        
                         timeLog.workDay = timeLogData["workDay"] as? String
-                        
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                        
                         let startTimeStr = timeLogData["startTime"] as! String
                         let startTime = dateFormatter.date(from: startTimeStr)
                         timeLog.startTime = startTime
-                        
                         let stopTimeStr = timeLogData["stopTime"] as! String
                         let stopTime = dateFormatter.date(from: stopTimeStr)
                         timeLog.stopTime = stopTime
-                        
                         timeLog.note = timeLogData["note"] as? String
-                        
                         timeLogsData.add(timeLog)
                         project.timeLog = timeLogsData.copy() as? NSSet
                     }
@@ -199,12 +191,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
         let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
         var deleteRequest: NSBatchDeleteRequest
-        var deleteResults: NSPersistentStoreResult
         do {
             deleteRequest = NSBatchDeleteRequest(fetchRequest: projectRequest as! NSFetchRequest<NSFetchRequestResult>)
-            deleteResults = try moc!.execute(deleteRequest)
+            try moc!.execute(deleteRequest)
             deleteRequest = NSBatchDeleteRequest(fetchRequest: timeLogRequest as! NSFetchRequest<NSFetchRequestResult>)
-            deleteResults = try moc!.execute(deleteRequest)
+            try moc!.execute(deleteRequest)
         }
         catch {
             fatalError("Failed removing existing records")

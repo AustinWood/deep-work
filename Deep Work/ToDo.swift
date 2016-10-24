@@ -3,9 +3,7 @@
 //
 // RESUME WITH:
 //
-//   # Sort JSON time entries for readability
 //   # Import new JSON data, update with workDayString
-//
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -13,6 +11,8 @@
 // TO DO:
 //
 // Priority 1
+//   # Add a Month View to HomeVC
+//   # Make FormatTime an extension of Date()
 //   # HistoryVC: Edit project name, button in top right
 //   # Turn off landscape
 //   # Automatically capitalize first letter of entry note, and after periods
