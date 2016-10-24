@@ -90,27 +90,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 //    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = TableViewHeaderLabel()
-//        
-//        
-//        if let sections = fetchedResultsController.sections {
-//            let currentSection = sections[section]
-//            let firstObject = currentSection.objects?.first as! TimeLog
-//            let workDay = firstObject.workDay! as WorkDay
-//            let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDay.workDay!)
-//            label.text = fullDateStr
-//        }
-        
-        
-        
-        let label = UILabel()
-        
-        label.backgroundColor = UIColor.black
-        label.textColor = UIColor.white
-        
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.text = "Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They're not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can't do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do."
+        let label = TableViewHeaderLabel()
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            let firstObject = currentSection.objects?.first as! TimeLog
+            let workDayStr = firstObject.workDay
+            let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDayStr!)
+            label.text = fullDateStr
+        }
         return label
     }
     

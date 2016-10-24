@@ -7,6 +7,11 @@
              "timeLog": [
                          
                          {
+                         "workDay":"2016-10-22",
+                         "startTime":"2016-10-22T14:31:02",
+                         "stopTime":"2016-10-22T15:48:37",
+                         "note":"Swipe to delete entry in HistoryVC"},
+                         {
                          "workDay":"2016-10-20",
                          "startTime":"2016-10-20T21:14:09",
                          "stopTime":"2016-10-20T22:23:44",
@@ -17,15 +22,45 @@
                          "stopTime":"2016-10-21T18:40:42",
                          "note":"Timer stops when entering comment, resumes if choose 'Continue working'"},
                          {
+                         "workDay":"2016-10-18",
+                         "startTime":"2016-10-18T17:17:00",
+                         "stopTime":"2016-10-18T18:40:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-22",
+                         "startTime":"2016-10-22T13:36:05",
+                         "stopTime":"2016-10-22T14:21:45",
+                         "note":""},
+                         {
                          "workDay":"2016-10-20",
                          "startTime":"2016-10-20T11:44:33",
                          "stopTime":"2016-10-20T12:39:46",
                          "note":"After stopping timer, user is presented with option to save entry with an optional note, or delete the entry"},
                          {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T12:19:27",
+                         "stopTime":"2016-10-21T13:45:00",
+                         "note":"Working on HistoryVC"},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T14:13:10",
+                         "stopTime":"2016-10-21T16:29:35",
+                         "note":"Huge progress on HistoryVC"},
+                         {
                          "workDay":"2016-10-22",
                          "startTime":"2016-10-22T11:46:39",
                          "stopTime":"2016-10-22T12:51:39",
                          "note":"HistoryCell formats differently if entry is in progress"},
+                         {
+                         "workDay":"2016-10-17",
+                         "startTime":"2016-10-17T20:14:00",
+                         "stopTime":"2016-10-17T20:34:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-19",
+                         "startTime":"2016-10-19T16:35:00",
+                         "stopTime":"2016-10-19T18:01:00",
+                         "note":""},
                          {
                          "workDay":"2016-10-19",
                          "startTime":"2016-10-19T10:24:00",
@@ -33,58 +68,23 @@
                          "note":""},
                          {
                          "workDay":"2016-10-20",
-                         "startTime":"2016-10-20T12:54:38",
-                         "stopTime":"2016-10-20T14:15:50",
-                         "note":"Long press to rearrange projects, order saves persitently."},
-                         {
-                         "workDay":"2016-10-18",
-                         "startTime":"2016-10-18T18:53:00",
-                         "stopTime":"2016-10-18T20:00:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-18",
-                         "startTime":"2016-10-18T17:17:00",
-                         "stopTime":"2016-10-18T18:40:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T12:19:27",
-                         "stopTime":"2016-10-21T13:45:00",
-                         "note":"Working on HistoryVC"},
-                         {
-                         "workDay":"2016-10-17",
-                         "startTime":"2016-10-17T20:14:00",
-                         "stopTime":"2016-10-17T20:34:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-20",
                          "startTime":"2016-10-20T17:40:56",
                          "stopTime":"2016-10-20T18:43:04",
                          "note":"Moved deleteRecords to Settings, doulbe tap to edit title, fix bug: froze when dragging cell out of bounds"},
+                         {
+                         "workDay":"2016-10-20",
+                         "startTime":"2016-10-20T12:54:38",
+                         "stopTime":"2016-10-20T14:15:50",
+                         "note":"Long press to rearrange projects, order saves persitently."},
                          {
                          "workDay":"2016-10-19",
                          "startTime":"2016-10-19T18:31:00",
                          "stopTime":"2016-10-19T20:36:26",
                          "note":""},
                          {
-                         "workDay":"2016-10-22",
-                         "startTime":"2016-10-22T14:31:02",
-                         "stopTime":"2016-10-22T15:48:37",
-                         "note":"Swipe to delete entry in HistoryVC"},
-                         {
-                         "workDay":"2016-10-22",
-                         "startTime":"2016-10-22T13:36:05",
-                         "stopTime":"2016-10-22T14:21:45",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T14:13:10",
-                         "stopTime":"2016-10-21T16:29:35",
-                         "note":"Huge progress on HistoryVC"},
-                         {
-                         "workDay":"2016-10-19",
-                         "startTime":"2016-10-19T16:35:00",
-                         "stopTime":"2016-10-19T18:01:00",
+                         "workDay":"2016-10-18",
+                         "startTime":"2016-10-18T18:53:00",
+                         "stopTime":"2016-10-18T20:00:00",
                          "note":""}
                          ]},{
              "title":"Ruby",
@@ -109,20 +109,20 @@
                          "stopTime":"2016-10-21T12:14:41",
                          "note":"Start and finish Section 4: Automatic subclass generation"},
                          {
-                         "workDay":"2016-10-20",
-                         "startTime":"2016-10-20T14:54:04",
-                         "stopTime":"2016-10-20T15:43:52",
-                         "note":"Finished Section 3: Let's Get Wet (Home Report project)"},
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T17:50:13",
+                         "stopTime":"2016-10-21T18:36:03",
+                         "note":""},
                          {
                          "workDay":"2016-10-22",
                          "startTime":"2016-10-22T17:47:59",
                          "stopTime":"2016-10-22T19:24:12",
                          "note":"Trying to implement fetch controller in my own app"},
                          {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T17:50:13",
-                         "stopTime":"2016-10-21T18:36:03",
-                         "note":""}
+                         "workDay":"2016-10-20",
+                         "startTime":"2016-10-20T14:54:04",
+                         "stopTime":"2016-10-20T15:43:52",
+                         "note":"Finished Section 3: Let's Get Wet (Home Report project)"}
                          ]},{
              "title":"Problem Solving",
              "order":3,
@@ -130,9 +130,14 @@
              "timeLog": [
                          
                          {
+                         "workDay":"2016-10-17",
+                         "startTime":"2016-10-17T11:31:00",
+                         "stopTime":"2016-10-17T12:57:00",
+                         "note":""},
+                         {
                          "workDay":"2016-10-18",
-                         "startTime":"2016-10-18T12:52:00",
-                         "stopTime":"2016-10-18T15:27:00",
+                         "startTime":"2016-10-18T11:14:00",
+                         "stopTime":"2016-10-18T12:40:00",
                          "note":""},
                          {
                          "workDay":"2016-10-20",
@@ -141,23 +146,18 @@
                          "note":"Solved 'How Many Numbers? II' - 5 kyu"},
                          {
                          "workDay":"2016-10-17",
-                         "startTime":"2016-10-17T11:31:00",
-                         "stopTime":"2016-10-17T12:57:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-18",
-                         "startTime":"2016-10-18T10:37:00",
-                         "stopTime":"2016-10-18T11:08:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-17",
                          "startTime":"2016-10-17T20:34:00",
                          "stopTime":"2016-10-17T20:52:00",
                          "note":""},
                          {
                          "workDay":"2016-10-18",
-                         "startTime":"2016-10-18T11:14:00",
-                         "stopTime":"2016-10-18T12:40:00",
+                         "startTime":"2016-10-18T12:52:00",
+                         "stopTime":"2016-10-18T15:27:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-18",
+                         "startTime":"2016-10-18T10:37:00",
+                         "stopTime":"2016-10-18T11:08:00",
                          "note":""}
                          ]},{
              "title":"GamingU",
@@ -166,13 +166,13 @@
              "timeLog": [
                          
                          {
-                         "workDay":"2016-10-22",
-                         "startTime":"2016-10-22T10:36:15",
-                         "stopTime":"2016-10-22T11:39:07",
-                         "note":"Fixed flashing images bug"},
-                         {
                          "workDay":"2016-10-19",
                          "startTime":"2016-10-19T13:39:00",
                          "stopTime":"2016-10-19T14:41:00",
-                         "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"}
+                         "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"},
+                         {
+                         "workDay":"2016-10-22",
+                         "startTime":"2016-10-22T10:36:15",
+                         "stopTime":"2016-10-22T11:39:07",
+                         "note":"Fixed flashing images bug"}
                          ]}]}

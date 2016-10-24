@@ -28,7 +28,6 @@ class DataService {
         searchPredicate = NSPredicate(format: "project = %@", project)
         request.predicate = searchPredicate
         
-        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "workDay", cacheName: nil)
         
         
