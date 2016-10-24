@@ -199,7 +199,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBAction func addPressed(_ sender: AnyObject) {
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addTextField { (textField: UITextField) in }
+        alertController.addTextField { (textField: UITextField) in
+            textField.autocapitalizationType = .words
+        }
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (action: UIAlertAction) in
             let projectTitle: String?
             if alertController.textFields?.first?.text != "" {
@@ -223,7 +225,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let sessionLengthFormatted = FormatTime.formattedHoursMinutes(timeInterval: sessionLength)
         let project = timeLog.project
         let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addTextField { (textField: UITextField) in }
+        alertController.addTextField { (textField: UITextField) in
+            textField.autocapitalizationType = .sentences
+        }
         let deleteAction = UIAlertAction(title: "Delete entry", style: .destructive) { [weak self] (action: UIAlertAction) in
             self?.warningDeleteEntry(timeLog: timeLog)
         }

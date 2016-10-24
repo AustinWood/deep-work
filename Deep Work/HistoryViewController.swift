@@ -85,7 +85,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func editTitle() {
         let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project!.title!):", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addTextField { (textField: UITextField) in }
+        alertController.addTextField { (textField: UITextField) in
+            textField.autocapitalizationType = .words
+        }
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
             let projectTitle: String?
             if alertController.textFields?.first?.text != "" {
