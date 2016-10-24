@@ -3,19 +3,19 @@
 //
 // RESUME WITH:
 //
-//   # Import new JSON data, update with workDayString
+//   # HistoryVC: Edit project name, button in top right
+//   # Turn off landscape
+//   # Automatically capitalize first letter of entry note, and after periods
+//   # Add a Month View to HomeVC
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // TO DO:
 //
-// Priority 1
-//   # Add a Month View to HomeVC
+// Priority 1:
+//
 //   # Make FormatTime an extension of Date()
-//   # HistoryVC: Edit project name, button in top right
-//   # Turn off landscape
-//   # Automatically capitalize first letter of entry note, and after periods
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
 //   # Confirmation toast when deleting data / restoring from JSON
@@ -23,7 +23,9 @@
 //       # Swipe to edit note
 //       # Swipe to edit start/stop time
 //
-// Priority 2
+// Priority 2:
+//
+//   # Import data from other trackers since January
 //   # DRY: dayPressed + weekPressed
 //   # After deleting a record in HistoryVC, scroll to correct position
 //   # Sounds
@@ -40,7 +42,7 @@
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
 //   # Design:
-//       # Professional design (see Evernote, by asset pack?)
+//       # Professional design (see Evernote, buy asset pack?)
 //       # App icon
 //       # Launch screen
 //   # HistoryVC:
@@ -52,8 +54,9 @@
 //       # If in progress - stop entry option instead of delete
 //       # Move to bottom of table view after delete (or move appropriate height down)
 //
-// After v1.0
-//   # Create an asynchronous request in History, upon completion scroll to bottom
+// After v1.0:
+//
+//   # Create an asynchronous request in History, upon completion scroll to bottom (more elegant implementation than arbitrary 0.1 second delay)
 //   # Core Data optimization (see course notes)
 //
 //////////////////////////////////////////////////
