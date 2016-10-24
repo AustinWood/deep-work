@@ -77,6 +77,32 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //////////////////////////////////////////////
+    // MARK:- Edit Project
+    
+    @IBAction func editProjectPressed(_ sender: AnyObject) {
+        editTitle()
+    }
+    
+    func editTitle() {
+        let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project!.title!):", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField: UITextField) in }
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
+            let projectTitle: String?
+            if alertController.textFields?.first?.text != "" {
+                projectTitle = alertController.textFields?.first?.text
+            } else { return }
+            self?.project?.title = projectTitle
+            do { try self?.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self?.setupViewController()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //////////////////////////////////////////////
     // MARK:- Table View Section Headers
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
