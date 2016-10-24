@@ -478,25 +478,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func exportJSON() -> String {
-        
-        //////////////////////////////////////////
-        ////////////////// SORT //////////////////
-        //////////////////////////////////////////
-        //var tasksToSend = allTasks + substances + dataPoint
-        //tasksToSend.sortInPlace({ $0.taskOrder < $1.taskOrder })
-        //////////////////////////////////////////
-        ////////////////// SORT //////////////////
-        //////////////////////////////////////////
-        
         var exportDataStr = "{\"project\": [\n\n"
         for project in projects {
             exportDataStr += "{\n" + "\"title\":\"" + project.title! + "\",\n"
             exportDataStr += "\"order\":" + "\(project.order)" + ",\n"
             exportDataStr += "\"color\":\"" + "" + "\",\n" // project.color!
             exportDataStr += "\"timeLog\": [\n\n"
+            var projectTimeLogs = TimeLog.getTimeLog(project: project, moc: moc!)
+            projectTimeLogs.sort(by: { $0.startTime! < $1.startTime! })
             var timeLogDataStr = ""
-            for eachTimeLog in project.timeLog! {
-                let timeLog = eachTimeLog as! TimeLog
+            for timeLog in projectTimeLogs {
                 timeLogDataStr += "{\n" + "\"workDay\":\"" + timeLog.workDay! + "\",\n"
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
