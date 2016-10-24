@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     //////////////////////////////////////////////
     // MARK:- Properties
@@ -32,22 +32,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         loadData()
         setupViewController()
         setupTableView()
-        //intializeTimeLogs()
     }
     
     private func loadData() {
         fetchedResultsController = DataService.fetchTimeLogs(project: project!, moc: moc!)
+        fetchedResultsController.delegate = self
     }
     
     func setupViewController() {
         titleLabel.text = project?.title
     }
-    
-    // ************************************************
-    // ************************************************
-    // ****************** TABLE VIEW ******************
-    // ************************************************
-    // ************************************************
     
     //////////////////////////////////////////////
     // MARK:- Table View Initialization
@@ -85,9 +79,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     // MARK:- Table View Section Headers
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 50 as CGFloat
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50 as CGFloat
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = TableViewHeaderLabel()
@@ -130,86 +124,51 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //////////////////////////////////////////////
     // MARK:- Swipe to Edit / Delete Row
     
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        
-//        // No edit actions for entry if in progress
-//        let timeLog = fetchedResultsController.object(at: indexPath)
-//        if timeLog.stopTime == nil {
-//            return false
-//        }
-//        
-//        return true
-//    }
-//    
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        
-//        let timeLog = fetchedResultsController.object(at: indexPath)
-//        
-//        // Delete Button
-//        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
-//            let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
-//            
-//            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
-//                print("\n\n")
-//                let sections = self?.fetchedResultsController.sections
-//                print("number of sections: \(sections?.count)")
-//                print("number of objects in current section: \(sections?[indexPath.section].numberOfObjects)")
-//                
-//                self?.moc?.delete(timeLog)
-//                
-//                do {
-//                    try self?.moc?.save()
-//                    
-//                    print("number of sections: \(sections?.count)")
-//                    print("number of objects in current section: \(sections?[indexPath.section].numberOfObjects)")
-//                    
-//                    self?.loadData()
-//                    
-//                    self?.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self?.reloadTableViewData), userInfo: nil, repeats: false)
-//                    
-//                    print("number of sections: \(sections?.count)")
-//                    print("number of objects in current section: \(sections?[indexPath.section].numberOfObjects)")
-//                    
-////                    if let sections = self?.fetchedResultsController.sections {
-////                        
-////
-////                        
-//////                        if sections[indexPath.section].numberOfObjects <= 1 {
-//////                            print("delete a section")
-//////                            self?.loadData()
-//////                            print("number of sections: \(sections.count)")
-//////                            print("number of objects in current section: \(sections[indexPath.section].numberOfObjects)")
-//////                            tableView.deleteSections([indexPath.section], with: .fade)
-//////                            
-//////                        } else {
-//////                            print("delete a row")
-//////                            self?.loadData()
-//////                            print("number of sections: \(sections.count)")
-//////                            print("number of objects in current section: \(sections[indexPath.section].numberOfObjects)")
-//////                            tableView.deleteRows(at: [indexPath], with: .fade)
-//////                        }
-////                    }
-//                }
-//                catch { fatalError("Error storing data") }
-//                })
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in
-//                
-//                tableView.isEditing = false
-//            })
-//            confirmDeleteAlertController.addAction(deleteAction)
-//            confirmDeleteAlertController.addAction(cancelAction)
-//            self.present(confirmDeleteAlertController, animated: true, completion: nil)
-//        }
-//        
-//        deleteButton.backgroundColor = CustomColor.red
-//        
-//        return [deleteButton]
-//    }
-//    
-//    func reloadTableViewData() {
-//        timer.invalidate()
-//        tableView.reloadData()
-//    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // No edit actions for entry if in progress
+        let timeLog = fetchedResultsController.object(at: indexPath)
+        if timeLog.stopTime == nil {
+            return false
+        }
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
+            let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
+                let timeLog = self?.fetchedResultsController.object(at: indexPath)
+                self?.moc?.delete(timeLog!)
+                let delegate = UIApplication.shared.delegate as! AppDelegate
+                delegate.saveContext()
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in tableView.isEditing = false })
+            confirmDeleteAlertController.addAction(deleteAction)
+            confirmDeleteAlertController.addAction(cancelAction)
+            self.present(confirmDeleteAlertController, animated: true, completion: nil)
+        }
+        deleteButton.backgroundColor = CustomColor.red
+        return [deleteButton]
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        if type == NSFetchedResultsChangeType.delete {
+            tableView.deleteSections([sectionIndex], with: .fade)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if type == NSFetchedResultsChangeType.delete {
+            tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
     
 }

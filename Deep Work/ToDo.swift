@@ -4,17 +4,7 @@
 // RESUME WITH:
 //
 //   # Sort JSON time entries for readability
-//
-// >> Results in HistoryVC are not exactly grouped by date
-//
-//      # Delete WorkDay entity, move to an attribute of TimeLog
-//      #
-//      #
-//      #
-//      #
-//
-// >> Once I get that sorted out, figure out how to delete rows/sections by swiping, with fade animation
-
+//   # Import new JSON data, update with workDayString
 //
 //
 //////////////////////////////////////////////////
@@ -35,6 +25,7 @@
 //
 // Priority 2
 //   # DRY: dayPressed + weekPressed
+//   # After deleting a record in HistoryVC, scroll to correct position
 //   # Sounds
 //   # Visual time line at top (like Hours... No! Better, like my new sketch)
 //   # Give projects an Area parent / tags
