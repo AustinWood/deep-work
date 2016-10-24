@@ -3,8 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # HistoryVC: Edit project name, button in top right
-//   # Turn off landscape
 //   # Automatically capitalize first letter of entry note, and after periods
 //   # Add a Month View to HomeVC
 //
