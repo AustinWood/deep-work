@@ -15,6 +15,7 @@
 // Priority 1:
 //
 //   # Import data from other trackers since January
+//   # Implement spell checker in textView
 //   # Range checker should use workDay attribute, not starTime attribute
 //   # Confirmation toast when deleting data / restoring from JSON
 //   # Make FormatTime an extension of Date()
