@@ -355,7 +355,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let monthTime = TimeLog.monthTime(projects: projects, moc: moc!)
         let monthFormatted = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
-        print("Total for month: \(monthFormatted)")
+        //print("Total for month: \(monthFormatted)")
         
         
         // Refresh the design of 'Today' and 'This week' labels
