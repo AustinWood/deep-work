@@ -3,9 +3,19 @@
 //
 // RESUME WITH:
 //
-//   # HistoryVC: Edit project name, button in top right
-//   # Turn off landscape
-//   # Automatically capitalize first letter of entry note, and after periods
+//   # Sort JSON time entries for readability
+//
+// >> Results in HistoryVC are not exactly grouped by date
+//
+//      # Delete WorkDay entity, move to an attribute of TimeLog
+//      #
+//      #
+//      #
+//      #
+//
+// >> Once I get that sorted out, figure out how to delete rows/sections by swiping, with fade animation
+
+//
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -13,6 +23,9 @@
 // TO DO:
 //
 // Priority 1
+//   # HistoryVC: Edit project name, button in top right
+//   # Turn off landscape
+//   # Automatically capitalize first letter of entry note, and after periods
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Edge swipe to go back to main VC from HistoryVC
 //   # Confirmation toast when deleting data / restoring from JSON
@@ -22,10 +35,10 @@
 //
 // Priority 2
 //   # DRY: dayPressed + weekPressed
+//   # Sounds
 //   # Visual time line at top (like Hours... No! Better, like my new sketch)
 //   # Give projects an Area parent / tags
 //   # Daily/Weekly goals (see Evernote)
-//   # Sort JSON time entries for readability
 //   # Delete/archive timers (when dragging, views at top turn into trash can/archive)
 //   # Add randomized confimation messages to "Add note"
 //   # Verify that time entries are disaplayed the same when moving across time zones

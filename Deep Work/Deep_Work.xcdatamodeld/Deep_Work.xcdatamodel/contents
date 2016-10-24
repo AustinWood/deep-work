@@ -10,16 +10,11 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="stopTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="timeLog" inverseEntity="Project" syncable="YES"/>
-        <relationship name="workDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkDay" inverseName="timeLog" inverseEntity="WorkDay" syncable="YES"/>
-    </entity>
-    <entity name="WorkDay" representedClassName=".WorkDay" syncable="YES">
         <attribute name="workDay" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="timeLog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeLog" inverseName="workDay" inverseEntity="TimeLog" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="timeLog" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
         <element name="Project" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="TimeLog" positionX="234" positionY="69" width="128" height="118"/>
-        <element name="WorkDay" positionX="27" positionY="288" width="128" height="73"/>
+        <element name="TimeLog" positionX="234" positionY="69" width="128" height="120"/>
     </elements>
 </model>

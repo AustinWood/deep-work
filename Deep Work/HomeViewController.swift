@@ -19,7 +19,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.checkDataStore()
         self.countTimeLogs()
-        self.countWorkDays()
     }
     
     func countTimeLogs() {
@@ -34,19 +33,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("timeLogs belonging to projects: \(x)")
         let allTimeLogs = TimeLog.getAllTimeLogs(moc: moc!)
         print("allTimeLogs: \(allTimeLogs.count)")
-    }
-    
-    func countWorkDays() {
-        print("* HomeViewController: countWorkDays()")
-        var x = 0
-        let workDays = WorkDay.getAllWorkDays(moc: moc!)
-        for workDay in workDays {
-            let timeLogCount = workDay.timeLog?.count
-            x += timeLogCount!
-            print("workDay: \(workDay.workDay!), timeLogs: \(timeLogCount!)")
-        }
-        print("timeLogs belonging to projects: \(x)")
-        print("workDayCount: \(workDays.count)")
     }
     
     //////////////////////////////////////////////
@@ -335,9 +321,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
-            let workDayStr = FormatTime.dateISO(date: Date())
-            let workDay = WorkDay.getWorkDay(workDayStr: workDayStr, moc: moc!)
-            newTimeLog.workDay = workDay
+            newTimeLog.workDay = FormatTime.dateISO(date: Date())
             newTimeLog.startTime = Date()
             do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
@@ -494,48 +478,50 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func exportJSON() -> String {
-        var dataString = "{\"project\": [\n\n"
+        
+        //////////////////////////////////////////
+        ////////////////// SORT //////////////////
+        //////////////////////////////////////////
         //var tasksToSend = allTasks + substances + dataPoint
         //tasksToSend.sortInPlace({ $0.taskOrder < $1.taskOrder })
+        //////////////////////////////////////////
+        ////////////////// SORT //////////////////
+        //////////////////////////////////////////
+        
+        var exportDataStr = "{\"project\": [\n\n"
         for project in projects {
-            dataString += "{\n" + "\"title\":\"" + project.title! + "\",\n"
-            dataString += "\"order\":" + "\(project.order)" + ",\n"
-            dataString += "\"color\":\"" + "" + "\",\n" // project.color!
-            dataString += "\"timeLog\": [\n\n"
-            var workData = ""
-            for entry in project.timeLog! {
-                let entryData = entry as! TimeLog
+            exportDataStr += "{\n" + "\"title\":\"" + project.title! + "\",\n"
+            exportDataStr += "\"order\":" + "\(project.order)" + ",\n"
+            exportDataStr += "\"color\":\"" + "" + "\",\n" // project.color!
+            exportDataStr += "\"timeLog\": [\n\n"
+            var timeLogDataStr = ""
+            for eachTimeLog in project.timeLog! {
+                let timeLog = eachTimeLog as! TimeLog
+                timeLogDataStr += "{\n" + "\"workDay\":\"" + timeLog.workDay! + "\",\n"
                 let dateFormatter = DateFormatter()
-                
-                let startTime = entryData.startTime
-                
-                //dateFormatter.dateFormat = "yyyy-MM-dd"
-                //let workDayStr = dateFormatter.string(from: startTime!)
-                let workDayStr = entryData.workDay?.workDay
-                workData += "{\n" + "\"workDay\":\"" + workDayStr! + "\",\n"
-                
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                let startTime = timeLog.startTime
                 let startTimeStr = dateFormatter.string(from: startTime!)
-                workData += "\"startTime\":\"" + startTimeStr + "\",\n"
-                if let stopTime = entryData.stopTime {
+                timeLogDataStr += "\"startTime\":\"" + startTimeStr + "\",\n"
+                if let stopTime = timeLog.stopTime {
                     let stopTimeStr = dateFormatter.string(from: stopTime)
-                    workData += "\"stopTime\":\"" + stopTimeStr + "\",\n"
+                    timeLogDataStr += "\"stopTime\":\"" + stopTimeStr + "\",\n"
                 } else {
-                    workData += "\"stopTime\":\"" + "" + "\",\n"
+                    timeLogDataStr += "\"stopTime\":\"" + "" + "\",\n"
                 }
-                if let note = entryData.note {
-                    workData += "\"note\":\"" + note + "\"},\n"
+                if let note = timeLog.note {
+                    timeLogDataStr += "\"note\":\"" + note + "\"},\n"
                 } else {
-                    workData += "\"note\":\"" + "" + "\"},\n"
+                    timeLogDataStr += "\"note\":\"" + "" + "\"},\n"
                 }
             }
-            workData += "]},"
-            workData = workData.replacingOccurrences(of: "},\n]},", with: "}\n]},")
-            dataString += workData
+            timeLogDataStr += "]},"
+            timeLogDataStr = timeLogDataStr.replacingOccurrences(of: "},\n]},", with: "}\n]},")
+            exportDataStr += timeLogDataStr
         }
-        dataString += "]}"
-        dataString = dataString.replacingOccurrences(of: "]},]}", with: "]}]}")
-        return dataString
+        exportDataStr += "]}"
+        exportDataStr = exportDataStr.replacingOccurrences(of: "]},]}", with: "]}]}")
+        return exportDataStr
     }
     
 }

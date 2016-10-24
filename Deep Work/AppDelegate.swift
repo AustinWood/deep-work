@@ -161,22 +161,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let timeLogsData = project.timeLog?.mutableCopy() as! NSMutableSet
                     
                     for timeLog in timeLogs as! NSArray {
-                        let timeLogData = timeLog as! [String: AnyObject]
                         
+                        let timeLogData = timeLog as! [String: AnyObject]
                         let timeLog = TimeLog(context: moc!)
-                        let workDayStr = timeLogData["workDay"] as! String
-                        let startTimeStr = timeLogData["startTime"] as! String
-                        let stopTimeStr = timeLogData["stopTime"] as! String
+                        
+                        timeLog.workDay = timeLogData["workDay"] as? String
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                        
+                        let startTimeStr = timeLogData["startTime"] as! String
                         let startTime = dateFormatter.date(from: startTimeStr)
-                        let stopTime = dateFormatter.date(from: stopTimeStr)
-                        
-                        let workDay = WorkDay.getWorkDay(workDayStr: workDayStr, moc: moc!)
-                        timeLog.workDay = workDay
-                        
                         timeLog.startTime = startTime
+                        
+                        let stopTimeStr = timeLogData["stopTime"] as! String
+                        let stopTime = dateFormatter.date(from: stopTimeStr)
                         timeLog.stopTime = stopTime
                         
                         timeLog.note = timeLogData["note"] as? String
@@ -199,15 +198,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let moc: NSManagedObjectContext? = self.persistentContainer.viewContext
         let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
         let timeLogRequest: NSFetchRequest<TimeLog> = TimeLog.fetchRequest()
-        let workDayRequest: NSFetchRequest<WorkDay> = WorkDay.fetchRequest()
         var deleteRequest: NSBatchDeleteRequest
         var deleteResults: NSPersistentStoreResult
         do {
             deleteRequest = NSBatchDeleteRequest(fetchRequest: projectRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
             deleteRequest = NSBatchDeleteRequest(fetchRequest: timeLogRequest as! NSFetchRequest<NSFetchRequestResult>)
-            deleteResults = try moc!.execute(deleteRequest)
-            deleteRequest = NSBatchDeleteRequest(fetchRequest: workDayRequest as! NSFetchRequest<NSFetchRequestResult>)
             deleteResults = try moc!.execute(deleteRequest)
         }
         catch {
