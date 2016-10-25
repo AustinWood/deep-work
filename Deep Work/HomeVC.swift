@@ -33,6 +33,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         super.viewDidLoad()
         addGestureRecognizers()
         setupView()
+        setupSummaryCV()
+        setupProjectCV()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,7 +160,44 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     //    }
     
     //////////////////////////////////////////////
-    // MARK:- Collection View
+    // MARK:- Collection View setup
+    
+    @IBOutlet weak var summaryCVHeight: NSLayoutConstraint!
+    
+    func setupSummaryCV() {
+        summaryCV.layoutIfNeeded()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let cellSpacing: CGFloat = 10
+        let collectionViewWidth = summaryCV.frame.width
+        let cellWidth = (collectionViewWidth - (cellSpacing * 3)) / 4
+        let cellHeight = cellWidth + 0
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        layout.minimumInteritemSpacing = cellSpacing
+        layout.minimumLineSpacing = cellSpacing
+        summaryCV.collectionViewLayout = layout
+        summaryCVHeight.constant = cellHeight
+    }
+    
+    func setupProjectCV() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        topView.layoutIfNeeded()
+        let topInset = topView.frame.height + 22
+        bottomView.layoutIfNeeded()
+        let bottomInset = bottomView.frame.height + 10
+        layout.sectionInset = UIEdgeInsets(top: topInset, left: 36, bottom: bottomInset, right: 36)
+        let cellSpacing: CGFloat = 20
+        let cellWidth = 150
+        let cellHeight = 198
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        layout.minimumInteritemSpacing = cellSpacing
+        layout.minimumLineSpacing = cellSpacing
+        projectCV.collectionViewLayout = layout
+        projectCV.backgroundColor = CustomColor.dark2
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Collection View required methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -182,7 +221,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Project collection view
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
-        print(currentProject.title)
         cell.configureCell(project: currentProject, moc: moc!)
         return cell
     }

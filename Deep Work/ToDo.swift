@@ -14,6 +14,7 @@
 //
 // Priority 1:
 //
+//   # projectCell size should be dynamic
 //   # Calculate totals on timerStartStop, store in array, add one second
 //   # Import data from other trackers since January
 //   # Implement spell checker in textView
@@ -29,6 +30,7 @@
 //
 // Priority 2:
 //
+//   # Settings: choose for 2-4 project cells per lines
 //   # isAfterMidnight()
 //   # Option to switch between All Time totals and Year totals
 //   # After deleting a record in HistoryVC, scroll to correct position

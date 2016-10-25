@@ -26,11 +26,11 @@
                                     <size key="itemSize" width="150" height="198"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="40" minY="135" maxX="40" maxY="20"/>
+                                    <inset key="sectionInset" minX="40" minY="200" maxX="40" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="112.5" y="135" width="150" height="198"/>
+                                        <rect key="frame" x="113" y="200" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>
@@ -178,19 +178,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1ci-ub-AwF" firstAttribute="top" secondItem="KNN-kO-6hb" secondAttribute="top" id="1LZ-Nz-Jz2"/>
-                            <constraint firstAttribute="trailing" secondItem="1ci-ub-AwF" secondAttribute="trailing" id="3sq-Nd-Xy6"/>
+                            <constraint firstItem="1ci-ub-AwF" firstAttribute="top" secondItem="KNN-kO-6hb" secondAttribute="top" id="4ed-fS-IvK"/>
                             <constraint firstItem="X4A-lU-Eym" firstAttribute="leading" secondItem="KNN-kO-6hb" secondAttribute="leading" id="7et-FH-t20"/>
-                            <constraint firstItem="1ci-ub-AwF" firstAttribute="top" secondItem="KNN-kO-6hb" secondAttribute="top" id="BGZ-r4-OLa"/>
+                            <constraint firstItem="1ci-ub-AwF" firstAttribute="leading" secondItem="KNN-kO-6hb" secondAttribute="leading" id="8bI-J8-dco"/>
                             <constraint firstItem="ZtN-jo-2Tc" firstAttribute="top" secondItem="b0f-Uw-Giz" secondAttribute="bottom" id="EiK-mr-OwX"/>
                             <constraint firstItem="X4A-lU-Eym" firstAttribute="top" secondItem="KNN-kO-6hb" secondAttribute="top" id="Jqs-bD-Lcb"/>
                             <constraint firstAttribute="trailing" secondItem="b0f-Uw-Giz" secondAttribute="trailing" id="OBP-sF-Fah"/>
                             <constraint firstAttribute="trailing" secondItem="X4A-lU-Eym" secondAttribute="trailing" id="VHg-wd-de8"/>
-                            <constraint firstItem="ZtN-jo-2Tc" firstAttribute="top" secondItem="1ci-ub-AwF" secondAttribute="bottom" id="Y0G-gr-vpe"/>
-                            <constraint firstItem="1ci-ub-AwF" firstAttribute="leading" secondItem="KNN-kO-6hb" secondAttribute="leading" id="ZVu-J3-KS6"/>
+                            <constraint firstAttribute="trailing" secondItem="1ci-ub-AwF" secondAttribute="trailing" id="YlH-7A-fot"/>
                             <constraint firstItem="b0f-Uw-Giz" firstAttribute="leading" secondItem="KNN-kO-6hb" secondAttribute="leading" id="ZoV-lW-mq4"/>
-                            <constraint firstItem="1ci-ub-AwF" firstAttribute="leading" secondItem="KNN-kO-6hb" secondAttribute="leading" id="eIW-6D-9ni"/>
-                            <constraint firstAttribute="trailing" secondItem="1ci-ub-AwF" secondAttribute="trailing" id="ke2-OV-BIg"/>
+                            <constraint firstItem="ZtN-jo-2Tc" firstAttribute="top" secondItem="1ci-ub-AwF" secondAttribute="bottom" id="hVK-FS-eIG"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -198,6 +195,7 @@
                         <outlet property="bottomView" destination="gO5-e1-IXR" id="FkW-yD-CCC"/>
                         <outlet property="projectCV" destination="1ci-ub-AwF" id="45l-KU-tgw"/>
                         <outlet property="summaryCV" destination="Dg9-kL-sJA" id="hNj-0b-Klh"/>
+                        <outlet property="summaryCVHeight" destination="7Hk-08-of4" id="169-Pr-omc"/>
                         <outlet property="topView" destination="59F-2P-OXh" id="v8d-3K-kWc"/>
                     </connections>
                 </viewController>
