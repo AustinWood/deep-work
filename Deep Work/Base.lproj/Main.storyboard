@@ -110,20 +110,62 @@
                                                         <constraint firstAttribute="height" constant="120" id="7Hk-08-of4"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PEE-8b-5nY">
-                                                        <size key="itemSize" width="75" height="75"/>
+                                                        <size key="itemSize" width="75" height="100"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summaryCell" id="sVC-4J-6Ct" customClass="SummaryCell" customModule="Deep_Work" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RgC-zs-ntP">
+                                                                        <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfb-EB-rS4" customClass="CircleView" customModule="Deep_Work" customModuleProvider="target">
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61L-ui-I8P">
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="30" id="mHE-xe-aAO"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="trailing" secondItem="61L-ui-I8P" secondAttribute="trailing" id="68C-Uh-niT"/>
+                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="centerY" secondItem="Bfb-EB-rS4" secondAttribute="centerY" id="GaM-ox-I7v"/>
+                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="leading" secondItem="Bfb-EB-rS4" secondAttribute="leading" id="bBK-Jt-7nU"/>
+                                                                                    <constraint firstAttribute="width" secondItem="Bfb-EB-rS4" secondAttribute="height" multiplier="1:1" id="bUR-Bh-dby"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tps-u2-ALu">
+                                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
                                                             </view>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="RgC-zs-ntP" secondAttribute="bottom" id="2my-Da-Pb5"/>
+                                                                <constraint firstItem="Bfb-EB-rS4" firstAttribute="width" secondItem="sVC-4J-6Ct" secondAttribute="width" id="372-2P-APq"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RgC-zs-ntP" secondAttribute="trailing" id="WuJ-6U-noS"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="top" secondItem="sVC-4J-6Ct" secondAttribute="top" id="huX-Lb-bki"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="leading" secondItem="sVC-4J-6Ct" secondAttribute="leading" id="tiy-jE-rYc"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="circleView" destination="Bfb-EB-rS4" id="wje-Rw-6kI"/>
+                                                                <outlet property="timeLabel" destination="61L-ui-I8P" id="2G0-Og-OP4"/>
+                                                                <outlet property="titleLabel" destination="Tps-u2-ALu" id="rov-Aj-Mh0"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
@@ -135,8 +177,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Dg9-kL-sJA" secondAttribute="trailing" constant="16" id="ToU-m4-Ysx"/>
-                                                <constraint firstAttribute="bottom" secondItem="Dg9-kL-sJA" secondAttribute="bottom" constant="16" id="qjW-on-ZRE"/>
-                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="top" secondItem="59F-2P-OXh" secondAttribute="top" constant="36" id="upO-Fn-huR"/>
+                                                <constraint firstAttribute="bottom" secondItem="Dg9-kL-sJA" secondAttribute="bottom" constant="8" id="qjW-on-ZRE"/>
+                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="top" secondItem="59F-2P-OXh" secondAttribute="top" constant="40" id="upO-Fn-huR"/>
                                                 <constraint firstItem="Dg9-kL-sJA" firstAttribute="leading" secondItem="59F-2P-OXh" secondAttribute="leading" constant="16" id="xhb-Vq-AVf"/>
                                             </constraints>
                                         </view>

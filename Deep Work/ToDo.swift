@@ -14,6 +14,7 @@
 //
 // Priority 1:
 //
+//   # Month + year title labels should by dynamic 
 //   # projectCell size should be dynamic
 //   # Calculate totals on timerStartStop, store in array, add one second
 //   # Import data from other trackers since January

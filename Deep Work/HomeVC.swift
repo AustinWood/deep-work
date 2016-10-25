@@ -171,12 +171,13 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let cellSpacing: CGFloat = 10
         let collectionViewWidth = summaryCV.frame.width
         let cellWidth = (collectionViewWidth - (cellSpacing * 3)) / 4
-        let cellHeight = cellWidth + 0
+        let cellHeight = cellWidth + 36
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = cellSpacing
         layout.minimumLineSpacing = cellSpacing
         summaryCV.collectionViewLayout = layout
         summaryCVHeight.constant = cellHeight
+        summaryCV.reloadData()
     }
     
     func setupProjectCV() {
@@ -214,7 +215,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
-            cell.configureCell()
+            cell.configureCell(indexPath: indexPath.row)
             return cell
         }
         
