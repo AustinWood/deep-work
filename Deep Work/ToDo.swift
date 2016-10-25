@@ -3,8 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Update summary time labels
-//   # Add gesture recognizer to summary labels, updates project labels
 //   # Put back ADD and SETTINGS buttons
 //   # Update colors
 //
@@ -16,6 +14,7 @@
 // Priority 1:
 //
 //   # Update fonts
+//   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # projectCell size should be dynamic
 //   # Calculate totals on timerStartStop, store in array, add one second

@@ -18,20 +18,26 @@ class ProjectCell: UICollectionViewCell {
     
     var displayWeekTotals = false
     
-    internal func configureCell(project: Project, moc: NSManagedObjectContext) {
+    internal func configureCell(project: Project, dateRange: MyDateRange, moc: NSManagedObjectContext) {
         circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true
         titleLabel.text = project.title
         
-        displayWeekTotals = UserDefaults.standard.bool(forKey: "displayWeekTotals")
-        if displayWeekTotals {
-            let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
-            let weekFormatted = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
-            timeLabel.text = weekFormatted
-        } else {
+        switch dateRange {
+        case .today:
             let todayTime = TimeLog.todayTime(projects: [project], moc: moc)
-            let todayFormatted = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
-            timeLabel.text = todayFormatted
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
+        case .week:
+            let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
+        case .month:
+            let monthTime = TimeLog.monthTime(projects: [project], moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
+        case .year:
+            let yearTime = TimeLog.yearTime(projects: [project], moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: yearTime)
+        case .allTime:
+            timeLabel.text = ""
         }
         
         let currentSessionLength = TimeLog.currentSessionLength(project: project, moc: moc)

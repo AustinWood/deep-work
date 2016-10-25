@@ -134,25 +134,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    // DRY !!!
-    // I could combine dayPressed and weekPressed by adding tags to the views
-    // This will be especially useful if I want to add a month and year view
-    
-    //    func dayPressed(_ gestureRecognizer: UITapGestureRecognizer) {
-    //        displayWeekTotals = false
-    //        saveDisplaySettings()
-    //    }
-    //    
-    //    func weekPressed(_ gestureRecognizer: UITapGestureRecognizer) {
-    //        displayWeekTotals = true
-    //        saveDisplaySettings()
-    //    }
-    //    
-    //    func saveDisplaySettings() {
-    //        UserDefaults.standard.set(displayWeekTotals, forKey: "displayWeekTotals")
-    //        updateTimeLabels()
-    //    }
-    
     //////////////////////////////////////////////
     // MARK:- Collection View setup
     
@@ -213,7 +194,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Project collection view
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
-        cell.configureCell(project: currentProject, moc: moc!)
+        cell.configureCell(project: currentProject, dateRange: dateRange, moc: moc!)
         return cell
     }
     
@@ -267,9 +248,28 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    
     //////////////////////////////////////////////
-    // MARK:- Calculate Daily and Weekly Totals
+    // MARK:- Update time labels
+    
+    var dateRange: MyDateRange = .today
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 0 {
+            switch indexPath.row {
+            case 0:
+                dateRange = .today
+            case 1:
+                dateRange = .week
+            case 2:
+                dateRange = .month
+            case 3:
+                dateRange = .year
+            default:
+                dateRange = .today
+            }
+        }
+        updateTimeLabels()
+    }
     
     func updateTimeLabels() {
         projectCV.reloadData()
