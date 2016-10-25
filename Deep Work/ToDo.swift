@@ -3,9 +3,11 @@
 //
 // RESUME WITH:
 //
-//   # DRY: dayPressed + weekPressed
-//   # Add Month totals
-//   # Add Year totals
+//   # Restore gesture recognizers to projectCells
+//   # Restore segue to HistoryVC
+//   # Update summary time labels
+//   # Add gesture recognizer to summary labels, updates project labels
+//   # Update colors
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -14,7 +16,8 @@
 //
 // Priority 1:
 //
-//   # Month + year title labels should by dynamic 
+//   # Update fonts
+//   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # projectCell size should be dynamic
 //   # Calculate totals on timerStartStop, store in array, add one second
 //   # Import data from other trackers since January
@@ -31,6 +34,7 @@
 //
 // Priority 2:
 //
+//   # Switch between fixed and relative summaries (e.g. "October" vs "Last 30 days")
 //   # Settings: choose for 2-4 project cells per lines
 //   # isAfterMidnight()
 //   # Option to switch between All Time totals and Year totals
