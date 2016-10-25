@@ -3,6 +3,8 @@
 //
 // RESUME WITH:
 //
+//   # Import data from other trackers since January
+//   # Backup to BitBucket
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -11,22 +13,24 @@
 //
 // Priority 1:
 //
-//   # Update fonts
+//   # Confirmation toast when deleting data / restoring from JSON
+//   # projectCell size should be dynamic
 //   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
-//   # projectCell size should be dynamic
+//   # Update fonts
 //   # Calculate totals on timerStartStop, store in array, add one second
-//   # Import data from other trackers since January
 //   # Implement spell checker in textView
 //   # Range checker should use workDay attribute, not starTime attribute
-//   # Confirmation toast when deleting data / restoring from JSON
 //   # Make FormatTime an extension of Date()
 //   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
 //   # Animation: Fade in button color in when starting timer, fade others out
-//   # Edge swipe to go back to main VC from HistoryVC
 //   # HistoryVC:
 //       # Swipe to edit note
 //       # Swipe to edit start/stop time
+//       # If in progress, "stop entry" instead of "delete"
+//       # Edge swipe to go back to main VC
+//       # Update style to match HomeVC
+//       # Rename from HistoryViewController to HistoryVC
 //
 // Priority 2:
 //
@@ -36,7 +40,6 @@
 //   # Settings: choose for 2-4 project cells per lines
 //   # isAfterMidnight()
 //   # Option to switch between All Time totals and Year totals
-//   # After deleting a record in HistoryVC, scroll to correct position
 //   # Sounds
 //   # Visual time line at top (like Hours... No! Better, like my new sketch)
 //   # Give projects an Area parent / tags
@@ -58,9 +61,7 @@
 //       # Stylize today
 //       # Stylize this week (color code with summary view at top of VC)
 //       # Show totals by day next to each dateLabel
-//   # Swipe to edit
-//       # If in progress - stop entry option instead of delete
-//       # Move to bottom of table view after delete (or move appropriate height down)
+//       # After deleting a record, scroll to correct position
 //
 // After v1.0:
 //

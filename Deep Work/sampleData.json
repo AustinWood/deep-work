@@ -115,7 +115,27 @@
                          "workDay":"2016-10-24",
                          "startTime":"2016-10-24T17:16:10",
                          "stopTime":"2016-10-24T18:57:23",
-                         "note":"Attempting to add second collection view"}
+                         "note":"Attempting to add second collection view"},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T11:04:02",
+                         "stopTime":"2016-10-25T13:01:44",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T13:19:16",
+                         "stopTime":"2016-10-25T14:34:27",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T14:43:46",
+                         "stopTime":"2016-10-25T15:17:56",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T15:27:10",
+                         "stopTime":"",
+                         "note":""}
                          ]},{
              "title":"Problem Solving",
              "order":1,
@@ -167,7 +187,12 @@
                          "workDay":"2016-10-23",
                          "startTime":"2016-10-23T20:02:39",
                          "stopTime":"2016-10-23T21:57:26",
-                         "note":"Started chapter 3. 8% through book"}
+                         "note":"Started chapter 3. 8% through book"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T20:00:47",
+                         "stopTime":"2016-10-24T20:54:04",
+                         "note":"TRPL 9%"}
                          ]},{
              "title":"Core Data",
              "order":3,
@@ -210,7 +235,12 @@
                          "workDay":"2016-10-23",
                          "startTime":"2016-10-23T19:30:55",
                          "stopTime":"2016-10-23T20:02:01",
-                         "note":"Answered question on multiple lines in tableView header"}
+                         "note":"Answered question on multiple lines in tableView header"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T20:55:59",
+                         "stopTime":"2016-10-24T21:10:58",
+                         "note":"Reloding collectionView cell without reseting image"}
                          ]},{
              "title":"GamingU",
              "order":6,
@@ -226,5 +256,10 @@
                          "workDay":"2016-10-22",
                          "startTime":"2016-10-22T10:36:15",
                          "stopTime":"2016-10-22T11:39:07",
-                         "note":"Fixed flashing images bug"}
+                         "note":"Fixed flashing images bug"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T19:40:33",
+                         "stopTime":"2016-10-24T19:54:42",
+                         "note":"Fixed bugs"}
                          ]}]}
