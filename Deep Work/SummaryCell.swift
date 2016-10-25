@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SummaryCell: UICollectionViewCell {
     
@@ -18,13 +19,29 @@ class SummaryCell: UICollectionViewCell {
     
     
     
-    internal func configureCell(indexPath: Int, projects: [Project]) {
+    internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         
         circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true
         circleView.backgroundColor = CustomColor.blueGreen
         
         titleLabel.text = titleLabelArray[indexPath]
+        
+        switch indexPath {
+        case 0:
+            let todayTime = TimeLog.todayTime(projects: projects, moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
+        case 1:
+            let weekTime = TimeLog.weekTime(projects: projects, moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
+        case 2:
+            let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
+        case 3:
+            timeLabel.text = ""
+        default:
+            timeLabel.text = ""
+        }
     }
     
 }

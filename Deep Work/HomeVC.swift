@@ -210,7 +210,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
             
-            cell.configureCell(indexPath: indexPath.row, projects: projects)
+            cell.configureCell(indexPath: indexPath.row, projects: projects, moc: moc!)
             return cell
         }
         
@@ -231,6 +231,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func startStopTimer(project: Project) {
         let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
         if currentEntry != nil {
+            // Stop the timer for the current time log
             currentEntry?.stopTime = Date()
             timer.invalidate()
             updateTimeLabels()
@@ -248,7 +249,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             print("You can't start a timer while another is in progress!")
         }
     }
-    
     
     //////////////////////////////////////////////
     // MARK:- Check for running timers
@@ -276,35 +276,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
-        // Update the time in each collection view cell
         projectCV.reloadData()
-        
-        // Update the time of 'Today' and 'This week' labels
-//        let todayTime = TimeLog.todayTime(projects: projects, moc: moc!)
-//        let todayFormatted = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
-//        todayLabel.text = todayFormatted
-//        let weekTime = TimeLog.weekTime(projects: projects, moc: moc!)
-//        let weekFormatted = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
-//        weekLabel.text = weekFormatted
-        
-        
-//        let monthTime = TimeLog.monthTime(projects: projects, moc: moc!)
-//        let monthFormatted = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
-        //print("Total for month: \(monthFormatted)")
-        
-        
-        // Refresh the design of 'Today' and 'This week' labels
-//        if displayWeekTotals {
-//            weekView.isSelected()
-//            dayView.isNotSelected()
-//        } else {
-//            weekView.isNotSelected()
-//            dayView.isSelected()
-//        }
+        summaryCV.reloadData()
     }
-    
-    
-    
     
     //////////////////////////////////////////////
     // MARK: - Navigation
