@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="projectCell" id="z7j-mK-Lhc" customClass="ProjectCell" customModule="Deep_Work" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="135" width="150" height="198"/>
+                                        <rect key="frame" x="112.5" y="135" width="150" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="198"/>
@@ -97,17 +97,17 @@
                                     <outlet property="delegate" destination="7BL-aY-L6Q" id="ytG-VD-04y"/>
                                 </connections>
                             </collectionView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4A-lU-Eym">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4A-lU-Eym" userLabel="Top Blur">
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EgI-bT-BQJ">
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59F-2P-OXh">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59F-2P-OXh" userLabel="Top View" customClass="BorderView" customModule="Deep_Work" customModuleProvider="target">
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dg9-kL-sJA">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="Zel-rP-kjF"/>
+                                                        <constraint firstAttribute="height" constant="120" id="7Hk-08-of4"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PEE-8b-5nY">
                                                         <size key="itemSize" width="75" height="75"/>
@@ -134,19 +134,19 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Dg9-kL-sJA" secondAttribute="trailing" constant="8" id="BlL-uN-FTi"/>
-                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="top" secondItem="59F-2P-OXh" secondAttribute="top" constant="8" id="LfX-im-Ryq"/>
-                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="leading" secondItem="59F-2P-OXh" secondAttribute="leading" constant="8" id="Pis-XB-xJm"/>
-                                                <constraint firstAttribute="bottom" secondItem="Dg9-kL-sJA" secondAttribute="bottom" constant="8" id="ZZY-ME-daY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dg9-kL-sJA" secondAttribute="trailing" constant="16" id="ToU-m4-Ysx"/>
+                                                <constraint firstAttribute="bottom" secondItem="Dg9-kL-sJA" secondAttribute="bottom" constant="16" id="qjW-on-ZRE"/>
+                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="top" secondItem="59F-2P-OXh" secondAttribute="top" constant="36" id="upO-Fn-huR"/>
+                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="leading" secondItem="59F-2P-OXh" secondAttribute="leading" constant="16" id="xhb-Vq-AVf"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.066666666666666666" green="0.070588235294117646" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="59F-2P-OXh" firstAttribute="leading" secondItem="EgI-bT-BQJ" secondAttribute="leading" constant="16" id="85h-Qm-jqj"/>
-                                        <constraint firstAttribute="trailing" secondItem="59F-2P-OXh" secondAttribute="trailing" constant="16" id="U6Q-us-lHf"/>
-                                        <constraint firstItem="59F-2P-OXh" firstAttribute="top" secondItem="EgI-bT-BQJ" secondAttribute="top" constant="36" id="e3t-5C-eDF"/>
-                                        <constraint firstAttribute="bottom" secondItem="59F-2P-OXh" secondAttribute="bottom" id="kkx-l3-iCW"/>
+                                        <constraint firstAttribute="trailing" secondItem="59F-2P-OXh" secondAttribute="trailing" id="Clh-nT-NWi"/>
+                                        <constraint firstAttribute="bottom" secondItem="59F-2P-OXh" secondAttribute="bottom" id="V6Q-Uc-PwQ"/>
+                                        <constraint firstItem="59F-2P-OXh" firstAttribute="leading" secondItem="EgI-bT-BQJ" secondAttribute="leading" id="rdl-2S-kVW"/>
+                                        <constraint firstItem="59F-2P-OXh" firstAttribute="top" secondItem="EgI-bT-BQJ" secondAttribute="top" id="rm3-al-ohl"/>
                                     </constraints>
                                 </view>
                                 <color key="backgroundColor" red="0.066666666666666666" green="0.070588235294117646" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,7 +157,7 @@
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-e1-IXR" customClass="HomeBottomView" customModule="Deep_Work" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-e1-IXR" customClass="BorderView" customModule="Deep_Work" customModuleProvider="target">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
@@ -195,8 +195,10 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="bottomView" destination="gO5-e1-IXR" id="FkW-yD-CCC"/>
                         <outlet property="projectCV" destination="1ci-ub-AwF" id="45l-KU-tgw"/>
                         <outlet property="summaryCV" destination="Dg9-kL-sJA" id="hNj-0b-Klh"/>
+                        <outlet property="topView" destination="59F-2P-OXh" id="v8d-3K-kWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2a-MS-9BY" userLabel="First Responder" sceneMemberID="firstResponder"/>

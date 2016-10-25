@@ -21,4 +21,10 @@ struct CustomColor {
     static let blueGreen = UIColor(red:0.106, green:0.404, blue:0.475, alpha:1.00) // metallicSeaweed
     static let blueDark = UIColor(red:0.020, green:0.125, blue:0.173, alpha:1.00) // maastrichtBlue
     static let whiteSmoke = UIColor(red:0.949, green:0.949, blue:0.949, alpha:1.00) // whiteSmoke
+    
+    // UI Kit colors
+    static let dark1 = UIColor(red:0.102, green:0.106, blue:0.145, alpha:1.00) // Main Dark
+    static let dark2 = UIColor(red:0.039, green:0.043, blue:0.102, alpha:1.00) // Secondary Dark
+    static let gray = UIColor(red:0.180, green:0.184, blue:0.220, alpha:1.00) // Borders
+    
 }

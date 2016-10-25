@@ -21,8 +21,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     //////////////////////////////////////////////
     // MARK:- Outlets
     
+    @IBOutlet weak var topView: BorderView!
     @IBOutlet weak var summaryCV: UICollectionView!
     @IBOutlet weak var projectCV: UICollectionView!
+    @IBOutlet weak var bottomView: BorderView!
     
     //////////////////////////////////////////////
     // MARK:- Initialization
@@ -30,6 +32,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         addGestureRecognizers()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +41,13 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    func setupView() {
+        topView.addBottomBorder()
+        topView.addTopBorder()
+        bottomView.addTopBorder()
+        bottomView.addBottomBorder()
     }
     
     //////////////////////////////////////////////
@@ -164,7 +174,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("tag: \(collectionView.tag), indexPath: \(indexPath.row)")
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
