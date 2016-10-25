@@ -3,8 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Restore gesture recognizers to projectCells
-//   # Restore segue to HistoryVC
 //   # Update summary time labels
 //   # Add gesture recognizer to summary labels, updates project labels
 //   # Put back ADD and SETTINGS buttons

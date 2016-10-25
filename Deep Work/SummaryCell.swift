@@ -18,7 +18,7 @@ class SummaryCell: UICollectionViewCell {
     
     
     
-    internal func configureCell(indexPath: Int) {
+    internal func configureCell(indexPath: Int, projects: [Project]) {
         
         circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true

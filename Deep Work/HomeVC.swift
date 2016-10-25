@@ -209,7 +209,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
-            cell.configureCell(indexPath: indexPath.row)
+            
+            cell.configureCell(indexPath: indexPath.row, projects: projects)
             return cell
         }
         
@@ -220,10 +221,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        // Logic for moving cells in handleLongPress()
-//    }
-    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Logic for moving cells in handleLongPress()
+    }
     
     //////////////////////////////////////////////
     // MARK:- Start / Stop time log
