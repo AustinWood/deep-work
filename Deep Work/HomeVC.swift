@@ -44,10 +44,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func setupView() {
-        topView.addBottomBorder()
-        topView.addTopBorder()
-        bottomView.addTopBorder()
-        bottomView.addBottomBorder()
+        topView.addBorder(edges: [.bottom])
+        bottomView.addBorder(edges: [.top])
     }
     
     //////////////////////////////////////////////

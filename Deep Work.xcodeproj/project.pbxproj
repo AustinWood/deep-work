@@ -17,6 +17,7 @@
 		42A52E601DAD502F00924350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A52E5F1DAD502F00924350 /* Colors.swift */; };
 		42A5A4D31DBA222000BAAB67 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */; };
 		42A7E9591DBB5F1B00ED4239 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7E9581DBB5F1B00ED4239 /* ToDo.swift */; };
+		42B648731DBF6DFB00026042 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B648721DBF6DFB00026042 /* BorderExtension.swift */; };
 		42BD2DD21DAD413500D38118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD2DD11DAD413500D38118 /* AppDelegate.swift */; };
 		42BD2DD71DAD413500D38118 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BD2DD51DAD413500D38118 /* Main.storyboard */; };
 		42BD2DDA1DAD413500D38118 /* Deep_Work.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42BD2DD81DAD413500D38118 /* Deep_Work.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		42A7E9581DBB5F1B00ED4239 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		42B648721DBF6DFB00026042 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
 		42BD2DCE1DAD413500D38118 /* Deep Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deep Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BD2DD11DAD413500D38118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42BD2DD61DAD413500D38118 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */,
 				42E3A32E1DBF4CAF000E5B6C /* TempCell.swift */,
 				42E3A3301DBF58E3000E5B6C /* BorderView.swift */,
+				42B648721DBF6DFB00026042 /* BorderExtension.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				42E3A3311DBF58E3000E5B6C /* BorderView.swift in Sources */,
 				42A52E601DAD502F00924350 /* Colors.swift in Sources */,
 				42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */,
+				42B648731DBF6DFB00026042 /* BorderExtension.swift in Sources */,
 				42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */,
 				42C111E91DBDF056004582A0 /* TimeLog+CoreDataProperties.swift in Sources */,
 				42E3A32F1DBF4CAF000E5B6C /* TempCell.swift in Sources */,
