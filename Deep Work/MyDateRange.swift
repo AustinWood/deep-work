@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum MyDateRange {
+enum MyDateRange: Int {
     
-    case today
-    case week
-    case month
-    case year
-    case allTime
+    case today = 0
+    case week = 1
+    case month = 2
+    case year = 3
+    case allTime = 4
     
 }

@@ -23,7 +23,7 @@ class SummaryCell: UICollectionViewCell {
         
         circleView.layer.cornerRadius = self.frame.size.width / 2
         circleView.clipsToBounds = true
-        circleView.backgroundColor = CustomColor.blueGreen
+        circleView.backgroundColor = CustomColor.blueDark
         
         titleLabel.text = titleLabelArray[indexPath]
         

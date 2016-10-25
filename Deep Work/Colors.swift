@@ -10,21 +10,23 @@ import UIKit
 
 struct CustomColor {
     
-    static let red = UIColor(red:0.973, green:0.180, blue:0.227, alpha:1.00)
-//    static let blue = UIColor(red:0.314, green:0.596, blue:0.988, alpha:1.00)
-    static let charcoal = UIColor(red:0.224, green:0.243, blue:0.322, alpha:1.00)
-    static let ghostWhite = UIColor(red:0.694, green:0.706, blue:0.733, alpha:1.00)
-    static let ashGrey = UIColor(red:0.694, green:0.706, blue:0.733, alpha:1.00)
+    static let gray = UIColor(red:0.180, green:0.184, blue:0.220, alpha:1.00) // Borders
     
-    // New color set
-    static let blueLight = UIColor(red:0.753, green:0.859, blue:0.965, alpha:1.00) // paleAqua
-    static let blueGreen = UIColor(red:0.106, green:0.404, blue:0.475, alpha:1.00) // metallicSeaweed
-    static let blueDark = UIColor(red:0.020, green:0.125, blue:0.173, alpha:1.00) // maastrichtBlue
-    static let whiteSmoke = UIColor(red:0.949, green:0.949, blue:0.949, alpha:1.00) // whiteSmoke
-    
-    // UI Kit colors
     static let dark1 = UIColor(red:0.102, green:0.106, blue:0.145, alpha:1.00) // Main Dark
     static let dark2 = UIColor(red:0.039, green:0.043, blue:0.102, alpha:1.00) // Secondary Dark
-    static let gray = UIColor(red:0.180, green:0.184, blue:0.220, alpha:1.00) // Borders
+    
+    static let pinkHot = UIColor(red:0.988, green:0.180, blue:0.451, alpha:1.00)
+    static let pinkPale = UIColor(red:0.984, green:0.380, blue:0.863, alpha:1.00)
+    static let pinkRegular = UIColor(red:0.914, green:0.220, blue:0.549, alpha:1.00)
+    
+    static let blueLight = UIColor(red:0.392, green:0.729, blue:0.757, alpha:1.00)
+    static let blueDark = UIColor(red:0.106, green:0.522, blue:0.890, alpha:1.00)
+    
+    static let yellow = UIColor(red:0.976, green:0.827, blue:0.208, alpha:1.00)
+    
+    static let purple1 = UIColor(red:0.592, green:0.361, blue:0.910, alpha:1.00)
+    static let purple2 = UIColor(red:0.455, green:0.408, blue:0.914, alpha:1.00)
+    
+    static let green = UIColor(red:0.545, green:0.843, blue:0.216, alpha:1.00)
     
 }

@@ -175,7 +175,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             confirmDeleteAlertController.addAction(cancelAction)
             self.present(confirmDeleteAlertController, animated: true, completion: nil)
         }
-        deleteButton.backgroundColor = CustomColor.red
+        deleteButton.backgroundColor = CustomColor.pinkHot
         return [deleteButton]
     }
     

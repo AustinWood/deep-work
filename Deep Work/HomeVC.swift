@@ -104,7 +104,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                 oldIndex = selectedIndexPath
                 projectCV.beginInteractiveMovementForItem(at: selectedIndexPath)
                 let selectedCell = self.projectCV.cellForItem(at: selectedIndexPath) as! ProjectCell
-                selectedCell.circleView.backgroundColor = CustomColor.blueGreen
+                selectedCell.circleView.backgroundColor = CustomColor.blueLight
             case UIGestureRecognizerState.changed:
                 projectCV.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
                 if let currentIndexPath = self.projectCV.indexPathForItem(at: gesture.location(in: self.projectCV)) {
@@ -255,20 +255,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 0 {
-            switch indexPath.row {
-            case 0:
-                dateRange = .today
-            case 1:
-                dateRange = .week
-            case 2:
-                dateRange = .month
-            case 3:
-                dateRange = .year
-            default:
-                dateRange = .today
-            }
+            dateRange = MyDateRange(rawValue: indexPath.row)!
+            updateTimeLabels()
         }
-        updateTimeLabels()
     }
     
     func updateTimeLabels() {

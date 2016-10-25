@@ -43,9 +43,11 @@ class ProjectCell: UICollectionViewCell {
         let currentSessionLength = TimeLog.currentSessionLength(project: project, moc: moc)
         if currentSessionLength == 0 {
             circleView.backgroundColor = UIColor.black
+            timeLabel.textColor = UIColor.white
             currentSessionLabel.isHidden = true
         } else {
-            circleView.backgroundColor = CustomColor.red
+            circleView.backgroundColor = CustomColor.green
+            timeLabel.textColor = UIColor.black
             let currentSessionFormatted = FormatTime.formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
             currentSessionLabel.text = currentSessionFormatted
             currentSessionLabel.isHidden = false

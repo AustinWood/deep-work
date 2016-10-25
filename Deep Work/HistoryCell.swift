@@ -40,7 +40,7 @@ class HistoryCell: UITableViewCell {
         
         // Timer is still running, update intervalLabel text each second
         else {
-            configureColors(color: CustomColor.red)
+            configureColors(color: CustomColor.pinkHot)
             updateLabelEachSecond()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateLabelEachSecond), userInfo: nil, repeats: true);
         }
