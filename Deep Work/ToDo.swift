@@ -14,8 +14,7 @@
 //
 // Priority 1:
 //
-//   # Only calculate all times when timer starts/stops.
-//         Otherwise, store an array; add one second to the stored vaues
+//   # Calculate totals on timerStartStop, store in array, add one second
 //   # Import data from other trackers since January
 //   # Implement spell checker in textView
 //   # Range checker should use workDay attribute, not starTime attribute

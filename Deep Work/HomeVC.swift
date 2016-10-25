@@ -164,7 +164,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print("tag: \(collectionView.tag), indexPath: \(indexPath.row)")
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
@@ -173,8 +173,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         // Project collection view
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! TempCell
-        cell.configureCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
+        let currentProject = projects[indexPath.row]
+        print(currentProject.title)
+        cell.configureCell(project: currentProject, moc: moc!)
         return cell
     }
     
