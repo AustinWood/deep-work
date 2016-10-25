@@ -43,6 +43,26 @@ class SummaryCell: UICollectionViewCell {
         default:
             timeLabel.text = ""
         }
+        
+        let defaults = UserDefaults.standard
+        let savedDateRange = defaults.integer(forKey: "dateRange")
+        if savedDateRange == indexPath {
+            switch indexPath {
+            case 0:
+                circleView.backgroundColor = CustomColor.blueLight
+            case 1:
+                circleView.backgroundColor = CustomColor.pinkPale
+            case 2:
+                circleView.backgroundColor = CustomColor.purple1
+            case 3:
+                circleView.backgroundColor = CustomColor.purple2
+            default:
+                circleView.backgroundColor = CustomColor.purple2
+            }
+            
+        } else {
+            circleView.backgroundColor = CustomColor.dark2
+        }
     }
     
 }

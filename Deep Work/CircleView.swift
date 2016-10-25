@@ -11,9 +11,8 @@ import UIKit
 class CircleView: UIView {
     
     override func awakeFromNib() {
-        self.backgroundColor = UIColor.black
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 1
+        layer.borderColor = CustomColor.gray.cgColor
     }
     
 }

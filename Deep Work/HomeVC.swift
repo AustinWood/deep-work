@@ -33,6 +33,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         super.viewDidLoad()
         addGestureRecognizers()
         setupView()
+        loadUserDefaults()
         setupSummaryCV()
         setupProjectCV()
     }
@@ -48,6 +49,12 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func setupView() {
         topView.addBorder(edges: [.bottom])
         bottomView.addBorder(edges: [.top])
+    }
+    
+    func loadUserDefaults() {
+        let defaults = UserDefaults.standard
+        let savedDateRange = defaults.integer(forKey: "dateRange")
+        dateRange = MyDateRange(rawValue: savedDateRange)!
     }
     
     //////////////////////////////////////////////
@@ -194,7 +201,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Project collection view
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
-        cell.configureCell(project: currentProject, dateRange: dateRange, moc: moc!)
+        cell.configureCell(project: currentProject, moc: moc!)
         return cell
     }
     
@@ -256,6 +263,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 0 {
             dateRange = MyDateRange(rawValue: indexPath.row)!
+            let defaults = UserDefaults.standard
+            defaults.set(indexPath.row, forKey: "dateRange")
             updateTimeLabels()
         }
     }

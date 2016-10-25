@@ -3,7 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Update colors
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -31,6 +30,8 @@
 //
 // Priority 2:
 //
+//   # Use gradient colors
+//   # Add blur effect
 //   # Switch between fixed and relative summaries (e.g. "October" vs "Last 30 days")
 //   # Settings: choose for 2-4 project cells per lines
 //   # isAfterMidnight()
