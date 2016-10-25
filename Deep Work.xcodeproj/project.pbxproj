@@ -30,6 +30,9 @@
 		42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F71DAD474E008F0260 /* ProjectCell.swift */; };
 		42C3A7FA1DAD482F008F0260 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7F91DAD482F008F0260 /* HomeViewController.swift */; };
 		42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */; };
+		42E3A32B1DBF4BAC000E5B6C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */; };
+		42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A32C1DBF4C47000E5B6C /* SummaryCell.swift */; };
+		42E3A32F1DBF4CAF000E5B6C /* TempCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A32E1DBF4CAF000E5B6C /* TempCell.swift */; };
 		42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E912561DB941E8001FF37A /* HistoryViewController.swift */; };
 		42E912591DB94731001FF37A /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E912581DB94731001FF37A /* HistoryCell.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		42C3A7F71DAD474E008F0260 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		42C3A7F91DAD482F008F0260 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		42E3A32C1DBF4C47000E5B6C /* SummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
+		42E3A32E1DBF4CAF000E5B6C /* TempCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempCell.swift; sourceTree = "<group>"; };
 		42E912561DB941E8001FF37A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		42E912581DB94731001FF37A /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,11 +139,13 @@
 			isa = PBXGroup;
 			children = (
 				42C3A7F71DAD474E008F0260 /* ProjectCell.swift */,
+				42E3A32C1DBF4C47000E5B6C /* SummaryCell.swift */,
 				42C3A7FB1DAD4B9E008F0260 /* CircleView.swift */,
 				42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */,
 				42303F471DB66F2900365379 /* DayWeekView.swift */,
 				42E912581DB94731001FF37A /* HistoryCell.swift */,
 				42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */,
+				42E3A32E1DBF4CAF000E5B6C /* TempCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 			children = (
 				42C3A7F91DAD482F008F0260 /* HomeViewController.swift */,
 				42E912561DB941E8001FF37A /* HistoryViewController.swift */,
+				42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -253,8 +262,10 @@
 				42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */,
 				42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */,
 				42C111E91DBDF056004582A0 /* TimeLog+CoreDataProperties.swift in Sources */,
+				42E3A32F1DBF4CAF000E5B6C /* TempCell.swift in Sources */,
 				42541D9B1DBCB17D001544D1 /* DataService.swift in Sources */,
 				42C111EB1DBDF056004582A0 /* MyDateRange.swift in Sources */,
+				42E3A32B1DBF4BAC000E5B6C /* HomeVC.swift in Sources */,
 				42541DBF1DBD007E001544D1 /* TableViewHeaderLabel.swift in Sources */,
 				42BD2DDA1DAD413500D38118 /* Deep_Work.xcdatamodeld in Sources */,
 				42E912591DB94731001FF37A /* HistoryCell.swift in Sources */,
@@ -262,6 +273,7 @@
 				42BD2DD21DAD413500D38118 /* AppDelegate.swift in Sources */,
 				42541D9D1DBCB1E4001544D1 /* HistoryBackup.swift in Sources */,
 				42A5A4D31DBA222000BAAB67 /* RoundedBorderView.swift in Sources */,
+				42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */,
 				427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */,
 				42541D971DBCAA2B001544D1 /* OldReferenceCode.swift in Sources */,
 				42C111E61DBDF056004582A0 /* Project+CoreDataClass.swift in Sources */,
