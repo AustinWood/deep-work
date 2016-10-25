@@ -80,7 +80,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if validateTap(gestureLocation: gesture.location(in: self.projectCV!)) {
             performSegue(withIdentifier: "goToHistory", sender: self)
         }
-
     }
     
     var selectedProject: Project?
