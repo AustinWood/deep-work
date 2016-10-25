@@ -195,12 +195,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK:- Collection View required methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         // Summary collection view
         if collectionView.tag == 0 {
             return 4
         }
-        
         // Project collection view
         return projects.count
     }
@@ -209,11 +207,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
-            
             cell.configureCell(indexPath: indexPath.row, projects: projects, moc: moc!)
             return cell
         }
-        
         // Project collection view
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]

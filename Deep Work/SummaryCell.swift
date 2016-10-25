@@ -38,7 +38,8 @@ class SummaryCell: UICollectionViewCell {
             let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
             timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
         case 3:
-            timeLabel.text = ""
+            let yearTime = TimeLog.yearTime(projects: projects, moc: moc)
+            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: yearTime)
         default:
             timeLabel.text = ""
         }
