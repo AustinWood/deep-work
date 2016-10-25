@@ -54,91 +54,86 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK:- Gesture Recognizers
     
     func addGestureRecognizers() {
-        //
-        //        // For recognizing taps on views at top of VC
-        //        let dayRecognizer = UITapGestureRecognizer(target: self, action: #selector(dayPressed(_:)))
-        //        dayView.addGestureRecognizer(dayRecognizer)
-        //        let weekRecognizer = UITapGestureRecognizer(target: self, action: #selector(weekPressed(_:)))
-        //        weekView.addGestureRecognizer(weekRecognizer)
-        //
-        //        // Long press recognizer for rearranging collection view cells
-        //        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        //        longPressGesture.minimumPressDuration = 0.3
-        //        self.collectionView.addGestureRecognizer(longPressGesture)
-        //
-        //        // Single and double tap recognizers for collection view cells
-        //        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.didSingleTap))
-        //        singleTap.numberOfTapsRequired = 1
-        //        self.collectionView!.addGestureRecognizer(singleTap)
-        //        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.didDoubleTap))
-        //        doubleTap.numberOfTapsRequired = 2
-        //        self.collectionView!.addGestureRecognizer(doubleTap)
-        //        singleTap.require(toFail: doubleTap)
-        //    }
-        //
-        //    func didSingleTap(_ gesture: UITapGestureRecognizer) {
-        //        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
-        //            startStopTimer(project: selectedProject!)
-        //        }
-        //    }
-        //
-        //    func didDoubleTap(_ gesture: UITapGestureRecognizer) {
-        //        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
-        //            performSegue(withIdentifier: "goToHistory", sender: self)
-        //        }
+        
+        // Long press recognizer for rearranging project cells
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.3
+        self.projectCV.addGestureRecognizer(longPressGesture)
+        
+        // Single and double tap recognizers for project cells
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.didSingleTap))
+        singleTap.numberOfTapsRequired = 1
+        self.projectCV!.addGestureRecognizer(singleTap)
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.didDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        self.projectCV!.addGestureRecognizer(doubleTap)
+        singleTap.require(toFail: doubleTap)
     }
     
-        var selectedProject: Project?
+    func didSingleTap(_ gesture: UITapGestureRecognizer) {
+        if validateTap(gestureLocation: gesture.location(in: self.projectCV!)) {
+            startStopTimer(project: selectedProject!)
+        }
+    }
     
-    //    func validateTap(gestureLocation: CGPoint) -> Bool {
-    //        if let selectedIndexPath = self.collectionView!.indexPathForItem(at: gestureLocation) {
-    //            selectedProject = projects[selectedIndexPath.row]
-    //            return true
-    //        }
-    //        return false
-    //    }
+    func didDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if validateTap(gestureLocation: gesture.location(in: self.projectCV!)) {
+            performSegue(withIdentifier: "goToHistory", sender: self)
+        }
+
+    }
     
-    //    var oldIndex = IndexPath()
-    //    var lastIndex = IndexPath()
+    var selectedProject: Project?
     
-    //    func handleLongPress(gesture: UILongPressGestureRecognizer) {
-    //        if validateTap(gestureLocation: gesture.location(in: self.collectionView!)) {
-    //            switch(gesture.state) {
-    //            case UIGestureRecognizerState.began:
-    //                guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-    //                    else { break }
-    //                oldIndex = selectedIndexPath
-    //                collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-    //                let selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as! ProjectCell
-    //                selectedCell.circleView.backgroundColor = CustomColor.blueGreen
-    //            case UIGestureRecognizerState.changed:
-    //                collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-    //                if let currentIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
-    //                    lastIndex = currentIndexPath
-    //                } else { break }
-    //            case UIGestureRecognizerState.ended:
-    //                let element = projects.remove(at: oldIndex.row)
-    //                if let newIndex = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) {
-    //                    projects.insert(element, at: newIndex.row)
-    //                } else {
-    //                    projects.insert(element, at: lastIndex.row)
-    //                }
-    //                updateProjectOrder()
-    //                collectionView.endInteractiveMovement()
-    //            default:
-    //                collectionView.cancelInteractiveMovement()
-    //            }
-    //        }
-    //    }
+    func validateTap(gestureLocation: CGPoint) -> Bool {
+        if let selectedIndexPath = self.projectCV!.indexPathForItem(at: gestureLocation) {
+            selectedProject = projects[selectedIndexPath.row]
+            return true
+        }
+        return false
+    }
     
-    //    func updateProjectOrder() {
-    //        var i = 0
-    //        while i < projects.count {
-    //            let project = projects[i] as Project
-    //            project.order = Int16(i)
-    //            i += 1
-    //        }
-    //    }
+    var oldIndex = IndexPath()
+    var lastIndex = IndexPath()
+    
+    func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if validateTap(gestureLocation: gesture.location(in: self.projectCV!)) {
+            switch(gesture.state) {
+            case UIGestureRecognizerState.began:
+                guard let selectedIndexPath = self.projectCV.indexPathForItem(at: gesture.location(in: self.projectCV))
+                    else { break }
+                oldIndex = selectedIndexPath
+                projectCV.beginInteractiveMovementForItem(at: selectedIndexPath)
+                let selectedCell = self.projectCV.cellForItem(at: selectedIndexPath) as! ProjectCell
+                selectedCell.circleView.backgroundColor = CustomColor.blueGreen
+            case UIGestureRecognizerState.changed:
+                projectCV.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+                if let currentIndexPath = self.projectCV.indexPathForItem(at: gesture.location(in: self.projectCV)) {
+                    lastIndex = currentIndexPath
+                } else { break }
+            case UIGestureRecognizerState.ended:
+                let element = projects.remove(at: oldIndex.row)
+                if let newIndex = self.projectCV.indexPathForItem(at: gesture.location(in: self.projectCV)) {
+                    projects.insert(element, at: newIndex.row)
+                } else {
+                    projects.insert(element, at: lastIndex.row)
+                }
+                updateProjectOrder()
+                projectCV.endInteractiveMovement()
+            default:
+                projectCV.cancelInteractiveMovement()
+            }
+        }
+    }
+    
+    func updateProjectOrder() {
+        var i = 0
+        while i < projects.count {
+            let project = projects[i] as Project
+            project.order = Int16(i)
+            i += 1
+        }
+    }
     
     // DRY !!!
     // I could combine dayPressed and weekPressed by adding tags to the views
@@ -235,24 +230,24 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK:- Start / Stop time log
     
     func startStopTimer(project: Project) {
-//        let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
-//        if currentEntry != nil {
-//            currentEntry?.stopTime = Date()
-//            timer.invalidate()
-//            updateTimeLabels()
-//            addNote(timeLog: currentEntry!)
-//        } else if !timerRunning {
-//            // Start a new time log
-//            let newTimeLog = TimeLog(context: (self.moc)!)
-//            newTimeLog.project = project
-//            newTimeLog.workDay = FormatTime.dateISO(date: Date())
-//            newTimeLog.startTime = Date()
-//            do { try self.moc?.save() }
-//            catch { fatalError("Error storing data") }
-//            self.loadData()
-//        } else {
-//            print("You can't start a timer while another is in progress!")
-//        }
+        let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
+        if currentEntry != nil {
+            currentEntry?.stopTime = Date()
+            timer.invalidate()
+            updateTimeLabels()
+            addNote(timeLog: currentEntry!)
+        } else if !timerRunning {
+            // Start a new time log
+            let newTimeLog = TimeLog(context: (self.moc)!)
+            newTimeLog.project = project
+            newTimeLog.workDay = FormatTime.dateISO(date: Date())
+            newTimeLog.startTime = Date()
+            do { try self.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self.loadData()
+        } else {
+            print("You can't start a timer while another is in progress!")
+        }
     }
     
     
@@ -264,17 +259,17 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var timer = Timer()
     
     func checkForRunningTimers() {
-//        timerRunning = false
-//        lastStartTime = nil
-//        timer.invalidate()
-//        for project in projects {
-//            let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
-//            if currentEntry != nil{
-//                timerRunning = true
-//                lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!)?.startTime
-//                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true)
-//            }
-//        }
+        timerRunning = false
+        lastStartTime = nil
+        timer.invalidate()
+        for project in projects {
+            let currentEntry = TimeLog.getCurrentEntry(project: project, moc: moc!)
+            if currentEntry != nil{
+                timerRunning = true
+                lastStartTime = TimeLog.getCurrentEntry(project: project, moc: moc!)?.startTime
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimeLabels), userInfo: nil, repeats: true)
+            }
+        }
     }
     
     
@@ -282,24 +277,24 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK:- Calculate Daily and Weekly Totals
     
     func updateTimeLabels() {
-//        // Update the time in each collection view cell
-//        collectionView.reloadData()
-//        
-//        // Update the time of 'Today' and 'This week' labels
+        // Update the time in each collection view cell
+        projectCV.reloadData()
+        
+        // Update the time of 'Today' and 'This week' labels
 //        let todayTime = TimeLog.todayTime(projects: projects, moc: moc!)
 //        let todayFormatted = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
 //        todayLabel.text = todayFormatted
 //        let weekTime = TimeLog.weekTime(projects: projects, moc: moc!)
 //        let weekFormatted = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
 //        weekLabel.text = weekFormatted
-//        
-//        
+        
+        
 //        let monthTime = TimeLog.monthTime(projects: projects, moc: moc!)
 //        let monthFormatted = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
-//        //print("Total for month: \(monthFormatted)")
-//        
-//        
-//        // Refresh the design of 'Today' and 'This week' labels
+        //print("Total for month: \(monthFormatted)")
+        
+        
+        // Refresh the design of 'Today' and 'This week' labels
 //        if displayWeekTotals {
 //            weekView.isSelected()
 //            dayView.isNotSelected()
@@ -322,7 +317,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             destinationController.moc = moc
         }
     }
-    
     
     //////////////////////////////////////////////
     // MARK:- Alerts and Menus
