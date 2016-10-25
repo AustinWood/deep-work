@@ -3,7 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Put back ADD and SETTINGS buttons
 //   # Update colors
 //
 //////////////////////////////////////////////////

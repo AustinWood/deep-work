@@ -142,8 +142,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func setupSummaryCV() {
         summaryCV.layoutIfNeeded()
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let cellSpacing: CGFloat = 18
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let cellSpacing: CGFloat = 10
         let collectionViewWidth = summaryCV.frame.width
         let cellWidth = (collectionViewWidth - (cellSpacing * 3)) / 4
         let cellHeight = cellWidth + 36
