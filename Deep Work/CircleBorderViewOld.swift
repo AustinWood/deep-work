@@ -1,17 +1,14 @@
 //
-//  AnimatedCircleView.swift
+//  CircleBorderViewOld.swift
 //  Deep Work
 //
 //  Created by Austin Wood on 2016-10-26.
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-// Reference:
-// http://stackoverflow.com/questions/26578023/animate-drawing-of-a-circle
-
 import UIKit
 
-class AnimatedCircleView: UIView {
+class CircleBorderViewOld: UIView {
     
     var circleLayer: CAShapeLayer!
     
@@ -25,7 +22,7 @@ class AnimatedCircleView: UIView {
         circleLayer.path = circlePath.cgPath
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.strokeColor = CustomColor.pinkHot.cgColor
-        circleLayer.lineWidth = 5.0;
+        circleLayer.lineWidth = 5.0
         
         // Don't draw the circle initially
         circleLayer.strokeEnd = 0.0

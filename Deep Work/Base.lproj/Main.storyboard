@@ -168,18 +168,28 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="Bfb-EB-rS4" firstAttribute="width" secondItem="RgC-zs-ntP" secondAttribute="width" id="9d5-5O-3x4"/>
+                                                                        </constraints>
                                                                     </stackView>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMT-jI-nVR" customClass="CircleBorderView" customModule="Deep_Work" customModuleProvider="target">
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    </view>
                                                                 </subviews>
                                                             </view>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="RgC-zs-ntP" secondAttribute="bottom" id="2my-Da-Pb5"/>
-                                                                <constraint firstItem="Bfb-EB-rS4" firstAttribute="width" secondItem="sVC-4J-6Ct" secondAttribute="width" id="372-2P-APq"/>
-                                                                <constraint firstAttribute="trailing" secondItem="RgC-zs-ntP" secondAttribute="trailing" id="WuJ-6U-noS"/>
-                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="top" secondItem="sVC-4J-6Ct" secondAttribute="top" id="huX-Lb-bki"/>
-                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="leading" secondItem="sVC-4J-6Ct" secondAttribute="leading" id="tiy-jE-rYc"/>
+                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="centerY" secondItem="Bfb-EB-rS4" secondAttribute="centerY" id="2xe-4H-ucc"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="leading" secondItem="sVC-4J-6Ct" secondAttribute="leading" constant="2" id="7za-Qa-IDg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RgC-zs-ntP" secondAttribute="trailing" constant="2" id="Dn9-sm-waW"/>
+                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="centerX" secondItem="Bfb-EB-rS4" secondAttribute="centerX" id="IfA-ll-w3l"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="top" secondItem="sVC-4J-6Ct" secondAttribute="top" constant="2" id="NGg-3H-66Z"/>
+                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="height" secondItem="Bfb-EB-rS4" secondAttribute="height" id="bTP-mu-kiE"/>
+                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="width" secondItem="Bfb-EB-rS4" secondAttribute="width" id="doZ-8V-NGc"/>
+                                                                <constraint firstAttribute="bottom" secondItem="RgC-zs-ntP" secondAttribute="bottom" constant="2" id="xFe-Pu-yAS"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="circleBorderView" destination="kMT-jI-nVR" id="0Z0-s5-qs8"/>
                                                                 <outlet property="circleView" destination="Bfb-EB-rS4" id="wje-Rw-6kI"/>
                                                                 <outlet property="timeLabel" destination="61L-ui-I8P" id="2G0-Og-OP4"/>
                                                                 <outlet property="titleLabel" destination="Tps-u2-ALu" id="rov-Aj-Mh0"/>

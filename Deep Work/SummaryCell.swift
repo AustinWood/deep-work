@@ -12,6 +12,7 @@ import CoreData
 class SummaryCell: UICollectionViewCell {
     
     @IBOutlet weak var circleView: CircleView!
+    @IBOutlet weak var circleBorderView: CircleBorderView!
     @IBOutlet weak var timeLabel: UILabel!
     
     let titleLabelArray = ["Today", "Week", "October", "2016"]
@@ -27,20 +28,22 @@ class SummaryCell: UICollectionViewCell {
         
         titleLabel.text = titleLabelArray[indexPath]
         
-        switch indexPath {
-        case 0:
+        let dateRange = MyDateRange(rawValue: indexPath)!
+        
+        switch dateRange {
+        case .today:
             let todayTime = TimeLog.todayTime(projects: projects, moc: moc)
             timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
-        case 1:
+        case .week:
             let weekTime = TimeLog.weekTime(projects: projects, moc: moc)
             timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
-        case 2:
+        case .month:
             let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
             timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
-        case 3:
+        case .year:
             let yearTime = TimeLog.yearTime(projects: projects, moc: moc)
             timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: yearTime)
-        default:
+        case .allTime:
             timeLabel.text = ""
         }
         
@@ -64,17 +67,87 @@ class SummaryCell: UICollectionViewCell {
             circleView.backgroundColor = CustomColor.dark2
         }
         
+        addBorder(indexPath: indexPath)
     }
     
+    //var reanimate = true
     
-    func addCircleView() {
-//        print("addCircleView()")
-//        let circleDiameter = circleView.frame.width
-//        
-//        let animatedBorderView = AnimatedCircleView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: circleDiameter, height: circleDiameter)))
-//        
-//        self.addSubview(animatedBorderView)
-//        animatedBorderView.animateCircle(fillPercent: 0.8)
+    func addBorder(indexPath: Int) {
+        
+        let dateRange = MyDateRange(rawValue: indexPath)!
+        
+        var fillPercent: CGFloat = 0.0
+        
+        switch dateRange {
+        case .today:
+            let calendar = Calendar.current
+            let midnight = calendar.startOfDay(for: Date())
+            let secondsPassed = Date().timeIntervalSince(midnight)
+            let doubleVal: CGFloat = CGFloat(secondsPassed)
+            let secondsInDay: CGFloat = 60.0 * 60.0 * 24.0
+            let percentPassed = doubleVal / secondsInDay
+            fillPercent = percentPassed
+        case .week:
+            let startOfThisWeek = Date().startOfWeek
+            let calendar = Calendar.current
+            let midnight = calendar.startOfDay(for: startOfThisWeek)
+            let secondsPassed = Date().timeIntervalSince(midnight)
+            let doubleVal: CGFloat = CGFloat(secondsPassed)
+            let secondsInWeek: CGFloat = 60 * 60 * 24 * 7
+            let percentPassed = doubleVal / secondsInWeek
+            fillPercent = percentPassed
+            
+        case .month:
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month], from: Date())
+            let startOfMonth = calendar.date(from: components)
+            let midnight = calendar.startOfDay(for: startOfMonth!)
+            let secondsPassed = Date().timeIntervalSince(midnight)
+            let doubleVal: CGFloat = CGFloat(secondsPassed)
+            
+            
+            var comps2 = DateComponents()
+            comps2.month = 1
+            let endOfMonth = calendar.date(byAdding: comps2, to: midnight)
+            
+            let secondsInMonth: CGFloat = CGFloat(endOfMonth!.timeIntervalSince(midnight))
+            
+            
+            let percentPassed = doubleVal / secondsInMonth
+            fillPercent = percentPassed
+        case .year:
+            
+            
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year], from: Date())
+            let startOfYear = calendar.date(from: components)
+            let midnight = calendar.startOfDay(for: startOfYear!)
+            let secondsPassed = Date().timeIntervalSince(midnight)
+            let doubleVal: CGFloat = CGFloat(secondsPassed)
+            
+            
+            var comps2 = DateComponents()
+            comps2.year = 1
+            let endOfYear = calendar.date(byAdding: comps2, to: midnight)
+            
+            let secondsInMonth: CGFloat = CGFloat(endOfYear!.timeIntervalSince(midnight))
+            
+            
+            let percentPassed = doubleVal / secondsInMonth
+            fillPercent = percentPassed
+            
+            
+        case .allTime:
+            break
+        }
+        
+        circleBorderView.animateCircle(fillPercent: fillPercent)
+        
+//        if reanimate {
+//            print(circleView.frame)
+//            reanimate = false
+//        }
+        
     }
     
     

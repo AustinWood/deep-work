@@ -27,13 +27,13 @@ class CircleVC: UIViewController {
         // Create a new CircleView
         //var circleView = CircleView(frame: CGRectMake(diceRoll, 0, circleWidth, circleHeight))
         
-        
-        let circleDiameter = 300
-        
-        let circleView = AnimatedCircleView(frame: CGRect(origin: CGPoint(x: 50,y: 100), size: CGSize(width: circleDiameter, height: circleDiameter)))
-        
-        view.addSubview(circleView)
-        circleView.animateCircle(fillPercent: 0.8)
+//        
+//        let circleDiameter = 300
+//        
+//        let circleView = AnimatedCircleView(frame: CGRect(origin: CGPoint(x: 50,y: 100), size: CGSize(width: circleDiameter, height: circleDiameter)))
+//        
+//        view.addSubview(circleView)
+//        circleView.animateCircle(fillPercent: 0.8)
     }
     
     
