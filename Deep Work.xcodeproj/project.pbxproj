@@ -12,6 +12,8 @@
 		42541D9D1DBCB1E4001544D1 /* HistoryBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541D9C1DBCB1E4001544D1 /* HistoryBackup.swift */; };
 		42541DBF1DBD007E001544D1 /* TableViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */; };
 		427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AD7891DAF933400B22DB5 /* FormatTime.swift */; };
+		429F1F331DC08DD30017E122 /* CircleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F1F321DC08DD30017E122 /* CircleVC.swift */; };
+		429F1F351DC08E090017E122 /* AnimatedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F1F341DC08E090017E122 /* AnimatedCircleView.swift */; };
 		429FA5A71DB7AFCF00242E77 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 429FA5A61DB7AFCF00242E77 /* sampleData.json */; };
 		42A52E601DAD502F00924350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A52E5F1DAD502F00924350 /* Colors.swift */; };
 		42A5A4D31DBA222000BAAB67 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */; };
@@ -42,6 +44,8 @@
 		42541D9C1DBCB1E4001544D1 /* HistoryBackup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryBackup.swift; sourceTree = "<group>"; };
 		42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeaderLabel.swift; sourceTree = "<group>"; };
 		427AD7891DAF933400B22DB5 /* FormatTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatTime.swift; sourceTree = "<group>"; };
+		429F1F321DC08DD30017E122 /* CircleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleVC.swift; sourceTree = "<group>"; };
+		429F1F341DC08E090017E122 /* AnimatedCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCircleView.swift; sourceTree = "<group>"; };
 		429FA5A61DB7AFCF00242E77 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */,
 				42E3A3301DBF58E3000E5B6C /* BorderView.swift */,
 				42B648721DBF6DFB00026042 /* BorderExtension.swift */,
+				429F1F341DC08E090017E122 /* AnimatedCircleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			children = (
 				42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */,
 				42E912561DB941E8001FF37A /* HistoryViewController.swift */,
+				429F1F321DC08DD30017E122 /* CircleVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 			files = (
 				42C111E81DBDF056004582A0 /* TimeLog+CoreDataClass.swift in Sources */,
 				42E3A3311DBF58E3000E5B6C /* BorderView.swift in Sources */,
+				429F1F351DC08E090017E122 /* AnimatedCircleView.swift in Sources */,
 				42A52E601DAD502F00924350 /* Colors.swift in Sources */,
 				42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */,
 				42B648731DBF6DFB00026042 /* BorderExtension.swift in Sources */,
@@ -272,6 +279,7 @@
 				42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */,
 				427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */,
 				42541D971DBCAA2B001544D1 /* OldReferenceCode.swift in Sources */,
+				429F1F331DC08DD30017E122 /* CircleVC.swift in Sources */,
 				42C111E61DBDF056004582A0 /* Project+CoreDataClass.swift in Sources */,
 				42C111E71DBDF056004582A0 /* Project+CoreDataProperties.swift in Sources */,
 				42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */,

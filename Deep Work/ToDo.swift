@@ -15,6 +15,7 @@
 //
 //   # Confirmation toast when deleting data / restoring from JSON
 //   # projectCell size should be dynamic
+//   # Summary cells show border pie graph of range completion
 //   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # Update fonts
@@ -34,6 +35,7 @@
 //
 // Priority 2:
 //
+//   # Settings: Choose color for each project: text + border when not selected, background color when selected
 //   # Use gradient colors
 //   # Add blur effect
 //   # Switch between fixed and relative summaries (e.g. "October" vs "Last 30 days")
@@ -62,6 +64,7 @@
 //       # Stylize this week (color code with summary view at top of VC)
 //       # Show totals by day next to each dateLabel
 //       # After deleting a record, scroll to correct position
+//       # Segue left/right, not from bottom
 //
 // After v1.0:
 //

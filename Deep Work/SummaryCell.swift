@@ -63,6 +63,19 @@ class SummaryCell: UICollectionViewCell {
         } else {
             circleView.backgroundColor = CustomColor.dark2
         }
+        
     }
+    
+    
+    func addCircleView() {
+//        print("addCircleView()")
+//        let circleDiameter = circleView.frame.width
+//        
+//        let animatedBorderView = AnimatedCircleView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: circleDiameter, height: circleDiameter)))
+//        
+//        self.addSubview(animatedBorderView)
+//        animatedBorderView.animateCircle(fillPercent: 0.8)
+    }
+    
     
 }

@@ -191,11 +191,21 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return projects.count
     }
     
+    var loadBorders = true
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Summary collection view
         if collectionView.tag == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "summaryCell", for: indexPath) as! SummaryCell
             cell.configureCell(indexPath: indexPath.row, projects: projects, moc: moc!)
+            if loadBorders {
+                //cell.addCircleView()
+            }
+            loadBorders = false
+            
+            addBorders(cellFrame: cell.frame)
+            
+            
             return cell
         }
         // Project collection view
@@ -207,6 +217,16 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // Logic for moving cells in handleLongPress()
+    }
+    
+    func addBorders(cellFrame: CGRect) {
+        print("addCircleView()")
+        let circleDiameter = cellFrame.width
+        
+        let animatedBorderView = AnimatedCircleView(frame: CGRect(origin: cellFrame.origin, size: CGSize(width: circleDiameter, height: circleDiameter)))
+        
+        self.view.addSubview(animatedBorderView)
+        animatedBorderView.animateCircle(fillPercent: 0.8)
     }
     
     //////////////////////////////////////////////
