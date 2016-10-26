@@ -134,8 +134,18 @@
                          {
                          "workDay":"2016-10-25",
                          "startTime":"2016-10-25T15:27:10",
-                         "stopTime":"",
-                         "note":""}
+                         "stopTime":"2016-10-25T17:06:00",
+                         "note":"Huge style/layout/color updates, including adding summaryVC"},
+                         {
+                         "workDay":"2016-10-26",
+                         "startTime":"2016-10-26T10:02:57",
+                         "stopTime":"2016-10-26T10:59:10",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-26",
+                         "startTime":"2016-10-26T11:30:08",
+                         "stopTime":"2016-10-26T12:45:10",
+                         "note":"Borders around summary cells show percentage of time interval passed"}
                          ]},{
              "title":"Problem Solving",
              "order":1,
@@ -218,7 +228,12 @@
                          "workDay":"2016-10-22",
                          "startTime":"2016-10-22T17:47:59",
                          "stopTime":"2016-10-22T19:24:12",
-                         "note":"Trying to implement fetch controller in my own app"}
+                         "note":"Trying to implement fetch controller in my own app"},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T21:47:39",
+                         "stopTime":"2016-10-25T22:50:18",
+                         "note":"Section 6: Performance Tuning (started and finished section)"}
                          ]},{
              "title":"Data Structures",
              "order":4,
@@ -261,5 +276,10 @@
                          "workDay":"2016-10-24",
                          "startTime":"2016-10-24T19:40:33",
                          "stopTime":"2016-10-24T19:54:42",
-                         "note":"Fixed bugs"}
+                         "note":"Fixed bugs"},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T18:22:44",
+                         "stopTime":"2016-10-25T19:51:21",
+                         "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"}
                          ]}]}

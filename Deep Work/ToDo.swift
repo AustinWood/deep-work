@@ -3,6 +3,8 @@
 //
 // RESUME WITH:
 //
+//   # Cleanup and refactor the border percentage code
+//   # Verify that all circles are circles
 //   # Import data from other trackers since January
 //   # Backup to BitBucket
 //
