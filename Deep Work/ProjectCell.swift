@@ -58,4 +58,5 @@ class ProjectCell: UICollectionViewCell {
             currentSessionLabel.isHidden = false
         }
     }
+    
 }
