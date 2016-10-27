@@ -42,6 +42,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         loadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setupSummaryCells()
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -162,6 +166,17 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         summaryCV.reloadData()
     }
     
+    // Rename
+    func setupSummaryCells() {
+        var i = 0
+        while i <= 3 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
+            cell.addBorder(indexPath: i)
+            i += 1
+        }
+    }
+    
     func setupProjectCV() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         topView.layoutIfNeeded()
@@ -267,13 +282,35 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             dateRange = MyDateRange(rawValue: indexPath.row)!
             let defaults = UserDefaults.standard
             defaults.set(indexPath.row, forKey: "dateRange")
+            updateSummaryColors()
             updateTimeLabels()
         }
     }
     
     func updateTimeLabels() {
         projectCV.reloadData()
-        summaryCV.reloadData()
+        updateSummaryColors()
+        updateSummaryLabels()
+    }
+    
+    func updateSummaryLabels() {
+        var i = 0
+        while i <= 3 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
+            cell.updateTimeLabel(indexPath: i, projects: projects, moc: moc!)
+            i += 1
+        }
+    }
+    
+    func updateSummaryColors() {
+        var i = 0
+        while i <= 3 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
+            cell.updateBackgroundColor(indexPath: i)
+            i += 1
+        }
     }
     
     //////////////////////////////////////////////

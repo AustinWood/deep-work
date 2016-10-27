@@ -7,24 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CircleVC-->
-        <scene sceneID="GSh-02-710">
-            <objects>
-                <viewController id="g5O-l2-Do9" customClass="CircleVC" customModule="Deep_Work" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NJS-Yt-Ek0"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ubm-t0-daC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Est-qb-hdq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yFi-xz-wIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2001" y="109"/>
-        </scene>
         <!--HomeVC-->
         <scene sceneID="58o-kO-YKW">
             <objects>
@@ -145,10 +127,8 @@
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfb-EB-rS4" customClass="CircleView" customModule="Deep_Work" customModuleProvider="target">
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61L-ui-I8P">
-                                                                                        <constraints>
-                                                                                            <constraint firstAttribute="height" constant="30" id="mHE-xe-aAO"/>
-                                                                                        </constraints>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61L-ui-I8P">
+                                                                                        <frame key="frameInset" minY="20.5" width="71" height="30"/>
                                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -156,10 +136,10 @@
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="trailing" secondItem="61L-ui-I8P" secondAttribute="trailing" id="68C-Uh-niT"/>
-                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="centerY" secondItem="Bfb-EB-rS4" secondAttribute="centerY" id="GaM-ox-I7v"/>
-                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="leading" secondItem="Bfb-EB-rS4" secondAttribute="leading" id="bBK-Jt-7nU"/>
-                                                                                    <constraint firstAttribute="width" secondItem="Bfb-EB-rS4" secondAttribute="height" multiplier="1:1" id="bUR-Bh-dby"/>
+                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="leading" secondItem="Bfb-EB-rS4" secondAttribute="leading" id="41q-Uu-uVi"/>
+                                                                                    <constraint firstItem="61L-ui-I8P" firstAttribute="centerY" secondItem="Bfb-EB-rS4" secondAttribute="centerY" id="48I-Nt-620"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="61L-ui-I8P" secondAttribute="trailing" id="lcA-ED-ldv"/>
+                                                                                    <constraint firstAttribute="width" secondItem="Bfb-EB-rS4" secondAttribute="height" multiplier="1:1" id="pty-vh-c0a"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tps-u2-ALu">
@@ -169,27 +149,20 @@
                                                                             </label>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstItem="Bfb-EB-rS4" firstAttribute="width" secondItem="RgC-zs-ntP" secondAttribute="width" id="9d5-5O-3x4"/>
+                                                                            <constraint firstItem="Tps-u2-ALu" firstAttribute="width" secondItem="RgC-zs-ntP" secondAttribute="width" id="LfP-F7-dpb"/>
+                                                                            <constraint firstItem="Bfb-EB-rS4" firstAttribute="width" secondItem="RgC-zs-ntP" secondAttribute="width" id="OqF-tt-gBG"/>
                                                                         </constraints>
                                                                     </stackView>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMT-jI-nVR" customClass="CircleBorderView" customModule="Deep_Work" customModuleProvider="target">
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    </view>
                                                                 </subviews>
                                                             </view>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="centerY" secondItem="Bfb-EB-rS4" secondAttribute="centerY" id="2xe-4H-ucc"/>
-                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="leading" secondItem="sVC-4J-6Ct" secondAttribute="leading" constant="2" id="7za-Qa-IDg"/>
-                                                                <constraint firstAttribute="trailing" secondItem="RgC-zs-ntP" secondAttribute="trailing" constant="2" id="Dn9-sm-waW"/>
-                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="centerX" secondItem="Bfb-EB-rS4" secondAttribute="centerX" id="IfA-ll-w3l"/>
-                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="top" secondItem="sVC-4J-6Ct" secondAttribute="top" constant="2" id="NGg-3H-66Z"/>
-                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="height" secondItem="Bfb-EB-rS4" secondAttribute="height" id="bTP-mu-kiE"/>
-                                                                <constraint firstItem="kMT-jI-nVR" firstAttribute="width" secondItem="Bfb-EB-rS4" secondAttribute="width" id="doZ-8V-NGc"/>
-                                                                <constraint firstAttribute="bottom" secondItem="RgC-zs-ntP" secondAttribute="bottom" constant="2" id="xFe-Pu-yAS"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="leading" secondItem="sVC-4J-6Ct" secondAttribute="leading" constant="2" id="6X2-gN-Zuh"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RgC-zs-ntP" secondAttribute="trailing" constant="2" id="Ie9-a9-tcd"/>
+                                                                <constraint firstAttribute="bottom" secondItem="RgC-zs-ntP" secondAttribute="bottom" id="Iql-4E-o4V"/>
+                                                                <constraint firstItem="RgC-zs-ntP" firstAttribute="top" secondItem="sVC-4J-6Ct" secondAttribute="top" constant="2" id="kvl-xG-80p"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="circleBorderView" destination="kMT-jI-nVR" id="0Z0-s5-qs8"/>
                                                                 <outlet property="circleView" destination="Bfb-EB-rS4" id="wje-Rw-6kI"/>
                                                                 <outlet property="timeLabel" destination="61L-ui-I8P" id="2G0-Og-OP4"/>
                                                                 <outlet property="titleLabel" destination="Tps-u2-ALu" id="rov-Aj-Mh0"/>
@@ -321,7 +294,7 @@
                                         <rect key="frame" x="0.0" y="76" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kta-jk-aqi" id="Kyq-k7-d2m">
-                                            <frame key="frameInset" width="375" height="90"/>
+                                            <frame key="frameInset" width="375" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cz-Rt-8N8" customClass="RoundedBorderView" customModule="Deep_Work" customModuleProvider="target">

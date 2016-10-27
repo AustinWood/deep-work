@@ -12,21 +12,12 @@ import CoreData
 class SummaryCell: UICollectionViewCell {
     
     @IBOutlet weak var circleView: CircleView!
-    @IBOutlet weak var circleBorderView: CircleBorderView!
     @IBOutlet weak var timeLabel: UILabel!
     
     let titleLabelArray = ["Today", "Week", "October", "2016"]
     @IBOutlet weak var titleLabel: UILabel!
     
-    
-    
-    internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
-        
-        circleView.layer.cornerRadius = self.frame.size.width / 2
-        circleView.clipsToBounds = true
-        circleView.backgroundColor = CustomColor.blueDark
-        
-        titleLabel.text = titleLabelArray[indexPath]
+    func updateTimeLabel(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         
         let dateRange = MyDateRange(rawValue: indexPath)!
         
@@ -46,31 +37,36 @@ class SummaryCell: UICollectionViewCell {
         case .allTime:
             timeLabel.text = ""
         }
-        
+    }
+    
+    func updateBackgroundColor(indexPath: Int) {
         let defaults = UserDefaults.standard
         let savedDateRange = defaults.integer(forKey: "dateRange")
         if savedDateRange == indexPath {
-            switch indexPath {
-            case 0:
-                circleView.backgroundColor = CustomColor.blueLight
-            case 1:
-                circleView.backgroundColor = CustomColor.pinkPale
-            case 2:
-                circleView.backgroundColor = CustomColor.purple1
-            case 3:
-                circleView.backgroundColor = CustomColor.purple2
-            default:
-                circleView.backgroundColor = CustomColor.purple2
-            }
-            
+            circleView.setBackgroundColor(color: CustomColor.blueLight)
+//            switch indexPath {
+//            case 0:
+//                circleView.setBackgroundColor(color: CustomColor.blueLight)
+//            case 1:
+//                circleView.setBackgroundColor(color: CustomColor.pinkPale)
+//            case 2:
+//                circleView.setBackgroundColor(color: CustomColor.purple1)
+//            case 3:
+//                circleView.setBackgroundColor(color: CustomColor.purple2)
+//            default:
+//                circleView.setBackgroundColor(color: CustomColor.purple2)
+//            }
         } else {
-            circleView.backgroundColor = CustomColor.dark2
+            circleView.setBackgroundColor(color: CustomColor.dark2)
         }
-        
-        addBorder(indexPath: indexPath)
     }
     
-    //var reanimate = true
+    internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
+        
+        titleLabel.text = titleLabelArray[indexPath]
+        updateTimeLabel(indexPath: indexPath, projects: projects, moc: moc)
+        updateBackgroundColor(indexPath: indexPath)
+    }
     
     func addBorder(indexPath: Int) {
         
@@ -141,12 +137,7 @@ class SummaryCell: UICollectionViewCell {
             break
         }
         
-        circleBorderView.animateCircle(fillPercent: fillPercent)
-        
-//        if reanimate {
-//            print(circleView.frame)
-//            reanimate = false
-//        }
+        circleView.drawBorder(fillPercent: fillPercent)
         
     }
     
