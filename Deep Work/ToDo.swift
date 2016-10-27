@@ -3,8 +3,9 @@
 //
 // RESUME WITH:
 //
-//   # Import data from other trackers since January
 //   # Backup to BitBucket
+//   # projectCell border shows percentage of weekly goal
+//   # Embed in Navigation Controller
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -13,10 +14,10 @@
 //
 // Priority 1:
 //
-//   # Investigate why I have some timeLogs with startTime == nil
+//   # Import data from Hours
+//   # Investigate why some timeLogs with startTime == nil, create cleanup function?
 //   # Confirmation toast when deleting data / restoring from JSON
 //   # projectCell size should be dynamic
-//   # Summary cells show border pie graph of range completion
 //   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # Update fonts
