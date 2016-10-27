@@ -3,8 +3,6 @@
 //
 // RESUME WITH:
 //
-//   # Cleanup and refactor the border percentage code
-//   # Verify that all circles are circles
 //   # Import data from other trackers since January
 //   # Backup to BitBucket
 //
@@ -15,6 +13,7 @@
 //
 // Priority 1:
 //
+//   # Investigate why I have some timeLogs with startTime == nil
 //   # Confirmation toast when deleting data / restoring from JSON
 //   # projectCell size should be dynamic
 //   # Summary cells show border pie graph of range completion

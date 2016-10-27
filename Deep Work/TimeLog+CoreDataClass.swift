@@ -31,7 +31,7 @@ public class TimeLog: NSManagedObject {
     internal static func getTimeLogsForProjects(projects: [Project], moc: NSManagedObjectContext) -> [TimeLog] {
         var timeLogs: [TimeLog] = []
         for project in projects {
-            let searchPredicate = NSPredicate(format: "project = %@", project)
+            let searchPredicate = NSPredicate(format: "project = %@ && startTime != nil", project)
             let projectTimeLogs = getTimeLogs(searchPredicate: searchPredicate, moc: moc)
             timeLogs += projectTimeLogs
         }

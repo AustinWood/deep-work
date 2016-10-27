@@ -7,6 +7,51 @@
              "timeLog": [
                          
                          {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T18:46:00",
+                         "stopTime":"2016-10-11T19:57:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T20:50:00",
+                         "stopTime":"2016-10-11T21:58:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T18:34:00",
+                         "stopTime":"2016-10-12T19:59:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T12:46:00",
+                         "stopTime":"2016-10-13T13:50:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T14:14:00",
+                         "stopTime":"2016-10-13T14:56:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T17:48:00",
+                         "stopTime":"2016-10-13T18:55:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T20:32:00",
+                         "stopTime":"2016-10-13T21:07:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T14:43:00",
+                         "stopTime":"2016-10-14T15:44:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T22:12:00",
+                         "stopTime":"2016-10-15T23:32:00",
+                         "note":""},
+                         {
                          "workDay":"2016-10-17",
                          "startTime":"2016-10-17T20:14:00",
                          "stopTime":"2016-10-17T20:34:00",
@@ -145,13 +190,103 @@
                          "workDay":"2016-10-26",
                          "startTime":"2016-10-26T11:30:08",
                          "stopTime":"2016-10-26T12:45:10",
-                         "note":"Borders around summary cells show percentage of time interval passed"}
+                         "note":"Borders around summary cells show percentage of time interval passed"},
+                         {
+                         "workDay":"2016-10-26",
+                         "startTime":"2016-10-26T23:14:13",
+                         "stopTime":"2016-10-26T23:28:13",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-27",
+                         "startTime":"2016-10-27T10:25:54",
+                         "stopTime":"2016-10-27T11:47:57",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-27",
+                         "startTime":"2016-10-27T12:02:30",
+                         "stopTime":"",
+                         "note":""}
                          ]},{
              "title":"Problem Solving",
              "order":1,
              "color":"",
              "timeLog": [
                          
+                         {
+                         "workDay":"2016-10-06",
+                         "startTime":"2016-10-06T10:35:00",
+                         "stopTime":"2016-10-06T12:02:00",
+                         "note":"Code Wars - 3 problems"},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T10:36:00",
+                         "stopTime":"2016-10-07T12:44:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T20:55:00",
+                         "stopTime":"2016-10-07T21:56:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T10:34:00",
+                         "stopTime":"2016-10-08T12:24:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T10:21:00",
+                         "stopTime":"2016-10-09T11:00:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T10:34:00",
+                         "stopTime":"2016-10-10T11:19:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T11:23:00",
+                         "stopTime":"2016-10-10T11:59:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T10:37:00",
+                         "stopTime":"2016-10-11T11:57:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T11:38:00",
+                         "stopTime":"2016-10-12T12:04:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T12:48:00",
+                         "stopTime":"2016-10-12T13:07:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T10:18:00",
+                         "stopTime":"2016-10-13T11:22:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T10:41:00",
+                         "stopTime":"2016-10-14T12:10:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T16:01:00",
+                         "stopTime":"2016-10-15T17:20:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-16",
+                         "startTime":"2016-10-16T12:01:00",
+                         "stopTime":"2016-10-16T13:05:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-16",
+                         "startTime":"2016-10-16T13:13:00",
+                         "stopTime":"2016-10-16T14:05:00",
+                         "note":""},
                          {
                          "workDay":"2016-10-17",
                          "startTime":"2016-10-17T11:31:00",
@@ -181,13 +316,58 @@
                          "workDay":"2016-10-20",
                          "startTime":"2016-10-20T10:53:39",
                          "stopTime":"2016-10-20T11:40:58",
-                         "note":"Solved 'How Many Numbers? II' - 5 kyu"}
+                         "note":"Solved 'How Many Numbers? II' - 5 kyu"},
+                         {
+                         "workDay":"2016-10-26",
+                         "startTime":"2016-10-26T21:55:01",
+                         "stopTime":"2016-10-26T22:55:42",
+                         "note":"Solved two Kata at Kyu 6"}
                          ]},{
              "title":"Ruby",
              "order":2,
              "color":"",
              "timeLog": [
                          
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T20:04:00",
+                         "stopTime":"2016-10-08T20:59:00",
+                         "note":"Started reading “The Ruby Programming Language”"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T11:05:00",
+                         "stopTime":"2016-10-09T12:05:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T12:01:00",
+                         "stopTime":"2016-10-10T12:23:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T12:24:00",
+                         "stopTime":"2016-10-11T13:17:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T12:08:00",
+                         "stopTime":"2016-10-12T12:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T11:25:00",
+                         "stopTime":"2016-10-13T12:30:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T12:24:00",
+                         "stopTime":"2016-10-14T13:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T18:05:00",
+                         "stopTime":"2016-10-15T18:47:00",
+                         "note":""},
                          {
                          "workDay":"2016-10-21",
                          "startTime":"2016-10-21T10:20:32",
@@ -209,6 +389,41 @@
              "color":"",
              "timeLog": [
                          
+                         {
+                         "workDay":"2016-10-06",
+                         "startTime":"2016-10-06T17:26:00",
+                         "stopTime":"2016-10-06T18:42:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T19:51:00",
+                         "stopTime":"2016-10-07T20:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T13:30:00",
+                         "stopTime":"2016-10-08T14:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T14:24:00",
+                         "stopTime":"2016-10-11T15:27:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T16:12:00",
+                         "stopTime":"2016-10-11T16:32:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T18:38:00",
+                         "stopTime":"2016-10-11T18:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-16",
+                         "startTime":"2016-10-16T14:07:00",
+                         "stopTime":"2016-10-16T15:43:00",
+                         "note":""},
                          {
                          "workDay":"2016-10-20",
                          "startTime":"2016-10-20T14:54:04",
@@ -247,6 +462,16 @@
              "timeLog": [
                          
                          {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T15:06:00",
+                         "stopTime":"2016-10-09T15:51:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T18:50:00",
+                         "stopTime":"2016-10-15T19:30:00",
+                         "note":""},
+                         {
                          "workDay":"2016-10-23",
                          "startTime":"2016-10-23T19:30:55",
                          "stopTime":"2016-10-23T20:02:01",
@@ -262,6 +487,86 @@
              "color":"",
              "timeLog": [
                          
+                         {
+                         "workDay":"2016-10-06",
+                         "startTime":"2016-10-06T12:25:00",
+                         "stopTime":"2016-10-06T13:44:00",
+                         "note":"Finished Swift 3 updates"},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T13:47:00",
+                         "stopTime":"2016-10-07T14:58:00",
+                         "note":"InMobi ad integration"},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T15:48:00",
+                         "stopTime":"2016-10-07T17:23:00",
+                         "note":"InMobi ad integration"},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T12:29:00",
+                         "stopTime":"2016-10-08T13:07:00",
+                         "note":"Installed InMobi framework"},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T17:00:00",
+                         "stopTime":"2016-10-08T18:31:00",
+                         "note":"Banner Ads"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T12:10:00",
+                         "stopTime":"2016-10-09T13:31:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T13:48:00",
+                         "stopTime":"2016-10-09T14:35:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T17:27:00",
+                         "stopTime":"2016-10-09T18:45:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T12:44:00",
+                         "stopTime":"2016-10-10T14:45:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T15:28:00",
+                         "stopTime":"2016-10-10T16:29:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T18:43:00",
+                         "stopTime":"2016-10-10T19:08:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T13:18:00",
+                         "stopTime":"2016-10-12T14:19:00",
+                         "note":"Native ads"},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T15:13:00",
+                         "stopTime":"2016-10-12T17:28:00",
+                         "note":"Native ads"},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T13:51:00",
+                         "stopTime":"2016-10-14T14:01:00",
+                         "note":"plist"},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T19:35:00",
+                         "stopTime":"2016-10-15T20:03:00",
+                         "note":"Bug fixes"},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T21:46:00",
+                         "stopTime":"2016-10-15T22:11:00",
+                         "note":"Bug fixes"},
                          {
                          "workDay":"2016-10-19",
                          "startTime":"2016-10-19T13:39:00",
@@ -282,4 +587,36 @@
                          "startTime":"2016-10-25T18:22:44",
                          "stopTime":"2016-10-25T19:51:21",
                          "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"}
+                         ]},{
+             "title":"Weed App",
+             "order":7,
+             "color":"",
+             "timeLog": [
+             
+             ]},{
+             "title":"Object Oriented Design",
+             "order":8,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T21:27:00",
+                         "stopTime":"2016-10-09T21:54:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T19:38:00",
+                         "stopTime":"2016-10-10T20:34:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T15:00:00",
+                         "stopTime":"2016-10-13T15:16:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T17:20:00",
+                         "stopTime":"2016-10-13T17:34:00",
+                         "note":""}
                          ]}]}
