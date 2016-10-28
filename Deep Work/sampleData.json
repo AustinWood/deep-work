@@ -204,11 +204,87 @@
                          {
                          "workDay":"2016-10-27",
                          "startTime":"2016-10-27T12:02:30",
-                         "stopTime":"",
+                         "stopTime":"2016-10-27T14:08:59",
+                         "note":"Summary borders look great, added animation. Imported data from Time.numbers"},
+                         {
+                         "workDay":"2016-10-28",
+                         "startTime":"2016-10-28T11:22:10",
+                         "stopTime":"2016-10-28T13:12:23",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-28",
+                         "startTime":"2016-10-28T14:30:44",
+                         "stopTime":"2016-10-28T15:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-28",
+                         "startTime":"2016-10-28T17:58:55",
+                         "stopTime":"2016-10-28T18:25:09",
                          "note":""}
                          ]},{
-             "title":"Problem Solving",
+             "title":"Ruby",
              "order":1,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T20:04:00",
+                         "stopTime":"2016-10-08T20:59:00",
+                         "note":"Started reading “The Ruby Programming Language”"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T11:05:00",
+                         "stopTime":"2016-10-09T12:05:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T12:01:00",
+                         "stopTime":"2016-10-10T12:23:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T12:24:00",
+                         "stopTime":"2016-10-11T13:17:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T12:08:00",
+                         "stopTime":"2016-10-12T12:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T11:25:00",
+                         "stopTime":"2016-10-13T12:30:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T12:24:00",
+                         "stopTime":"2016-10-14T13:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T18:05:00",
+                         "stopTime":"2016-10-15T18:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T10:20:32",
+                         "stopTime":"2016-10-21T11:28:33",
+                         "note":"Textbook"},
+                         {
+                         "workDay":"2016-10-23",
+                         "startTime":"2016-10-23T20:02:39",
+                         "stopTime":"2016-10-23T21:57:26",
+                         "note":"Started chapter 3. 8% through book"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T20:00:47",
+                         "stopTime":"2016-10-24T20:54:04",
+                         "note":"TRPL 9%"}
+                         ]},{
+             "title":"Problem Solving",
+             "order":2,
              "color":"",
              "timeLog": [
                          
@@ -323,69 +399,40 @@
                          "stopTime":"2016-10-26T22:55:42",
                          "note":"Solved two Kata at Kyu 6"}
                          ]},{
-             "title":"Ruby",
-             "order":2,
+             "title":"Data Structures",
+             "order":3,
+             "color":"",
+             "timeLog": [
+             
+             ]},{
+             "title":"Stack Overflow",
+             "order":4,
              "color":"",
              "timeLog": [
                          
                          {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T20:04:00",
-                         "stopTime":"2016-10-08T20:59:00",
-                         "note":"Started reading “The Ruby Programming Language”"},
-                         {
                          "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T11:05:00",
-                         "stopTime":"2016-10-09T12:05:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T12:01:00",
-                         "stopTime":"2016-10-10T12:23:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T12:24:00",
-                         "stopTime":"2016-10-11T13:17:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-12",
-                         "startTime":"2016-10-12T12:08:00",
-                         "stopTime":"2016-10-12T12:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-13",
-                         "startTime":"2016-10-13T11:25:00",
-                         "stopTime":"2016-10-13T12:30:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-14",
-                         "startTime":"2016-10-14T12:24:00",
-                         "stopTime":"2016-10-14T13:46:00",
+                         "startTime":"2016-10-09T15:06:00",
+                         "stopTime":"2016-10-09T15:51:00",
                          "note":""},
                          {
                          "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T18:05:00",
-                         "stopTime":"2016-10-15T18:47:00",
+                         "startTime":"2016-10-15T18:50:00",
+                         "stopTime":"2016-10-15T19:30:00",
                          "note":""},
                          {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T10:20:32",
-                         "stopTime":"2016-10-21T11:28:33",
-                         "note":"Textbook"},
-                         {
                          "workDay":"2016-10-23",
-                         "startTime":"2016-10-23T20:02:39",
-                         "stopTime":"2016-10-23T21:57:26",
-                         "note":"Started chapter 3. 8% through book"},
+                         "startTime":"2016-10-23T19:30:55",
+                         "stopTime":"2016-10-23T20:02:01",
+                         "note":"Answered question on multiple lines in tableView header"},
                          {
                          "workDay":"2016-10-24",
-                         "startTime":"2016-10-24T20:00:47",
-                         "stopTime":"2016-10-24T20:54:04",
-                         "note":"TRPL 9%"}
+                         "startTime":"2016-10-24T20:55:59",
+                         "stopTime":"2016-10-24T21:10:58",
+                         "note":"Reloding collectionView cell without reseting image"}
                          ]},{
              "title":"Core Data",
-             "order":3,
+             "order":5,
              "color":"",
              "timeLog": [
                          
@@ -448,39 +495,12 @@
                          "workDay":"2016-10-25",
                          "startTime":"2016-10-25T21:47:39",
                          "stopTime":"2016-10-25T22:50:18",
-                         "note":"Section 6: Performance Tuning (started and finished section)"}
-                         ]},{
-             "title":"Data Structures",
-             "order":4,
-             "color":"",
-             "timeLog": [
-             
-             ]},{
-             "title":"Stack Overflow",
-             "order":5,
-             "color":"",
-             "timeLog": [
-                         
+                         "note":"Section 6: Performance Tuning (started and finished section)"},
                          {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T15:06:00",
-                         "stopTime":"2016-10-09T15:51:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T18:50:00",
-                         "stopTime":"2016-10-15T19:30:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-23",
-                         "startTime":"2016-10-23T19:30:55",
-                         "stopTime":"2016-10-23T20:02:01",
-                         "note":"Answered question on multiple lines in tableView header"},
-                         {
-                         "workDay":"2016-10-24",
-                         "startTime":"2016-10-24T20:55:59",
-                         "stopTime":"2016-10-24T21:10:58",
-                         "note":"Reloding collectionView cell without reseting image"}
+                         "workDay":"2016-10-27",
+                         "startTime":"2016-10-27T14:40:00",
+                         "stopTime":"2016-10-27T15:39:28",
+                         "note":"Section 7: Lightweight and mapping model migration"}
                          ]},{
              "title":"GamingU",
              "order":6,
@@ -586,16 +606,15 @@
                          "workDay":"2016-10-25",
                          "startTime":"2016-10-25T18:22:44",
                          "stopTime":"2016-10-25T19:51:21",
-                         "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"}
+                         "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"},
+                         {
+                         "workDay":"2016-10-28",
+                         "startTime":"2016-10-28T17:37:24",
+                         "stopTime":"2016-10-28T17:58:17",
+                         "note":"Fixed bugs: first game linked to ad; ratings images missing in Specialist"}
                          ]},{
-             "title":"Weed App",
-             "order":7,
-             "color":"",
-             "timeLog": [
-             
-             ]},{
              "title":"Object Oriented Design",
-             "order":8,
+             "order":7,
              "color":"",
              "timeLog": [
                          
@@ -619,4 +638,10 @@
                          "startTime":"2016-10-13T17:20:00",
                          "stopTime":"2016-10-13T17:34:00",
                          "note":""}
-                         ]}]}
+                         ]},{
+             "title":"Weed App",
+             "order":8,
+             "color":"",
+             "timeLog": [
+             
+             ]}]}
