@@ -19,6 +19,10 @@ class SummaryCell: UICollectionViewCell {
     
     internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         titleLabel.text = titleLabelArray[indexPath]
+        updateCell(indexPath: indexPath, projects: projects, moc: moc)
+    }
+    
+    func updateCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         updateTimeLabel(indexPath: indexPath, projects: projects, moc: moc)
         updateBackgroundColor(indexPath: indexPath)
     }
@@ -30,16 +34,16 @@ class SummaryCell: UICollectionViewCell {
         switch dateRange {
         case .today:
             let todayTime = TimeLog.todayTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
+            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: todayTime)
         case .week:
             let weekTime = TimeLog.weekTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
+            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: weekTime)
         case .month:
             let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
+            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: monthTime)
         case .year:
             let yearTime = TimeLog.yearTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: yearTime)
+            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: yearTime)
         case .allTime:
             timeLabel.text = ""
         }

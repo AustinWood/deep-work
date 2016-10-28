@@ -10,6 +10,19 @@ import Foundation
 
 struct FormatTime {
     
+    internal static func formattedHoursDecimal(timeInterval: TimeInterval) -> String {
+        let hours = Double(timeInterval) / 3600.0 as NSNumber
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.maximumFractionDigits = 1
+        numberFormatter.minimumFractionDigits = 1
+        if let stringFromNumber = numberFormatter.string(from: hours) {
+            return(stringFromNumber + "h")
+        } else {
+            return "Error"
+        }
+    }
+    
     internal static func formattedHoursMinutesSeconds(timeInterval: TimeInterval) -> String {
         let time = NSInteger(timeInterval)
         let seconds = time % 60
