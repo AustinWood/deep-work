@@ -28,6 +28,7 @@ class CircleView: UIView {
     }
     
     func createLayer(fillPercent: CGFloat, color: UIColor, animated: Bool) {
+        self.layoutIfNeeded()
         var borderLayer: CAShapeLayer!
         let borderRadius = (self.frame.size.width + borderWidth/2)/2
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: borderRadius, startAngle: CGFloat(M_PI * -0.5), endAngle: CGFloat(M_PI * 1.5), clockwise: true)

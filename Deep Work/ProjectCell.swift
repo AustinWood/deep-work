@@ -16,18 +16,18 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var currentSessionLabel: UILabel!
     
-    override func prepareForReuse() {
-        print("GET READY! \(titleLabel.text)")
-    }
-    
-    
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
         
         titleLabel.text = project.title
-        
         circleView.layer.cornerRadius = self.frame.size.width / 2
         
-        //circleView.createLayer(fillPercent: 1.0, color: CustomColor.gray, animated: false)
+        for layer in circleView.layer.sublayers! {
+            if layer.name == "borderLayer" {
+                layer.removeFromSuperlayer()
+            }
+        }
+        
+        circleView.createLayer(fillPercent: 1.0, color: CustomColor.gray, animated: false)
         
         updateTimeLabels(project: project, moc: moc)
     }

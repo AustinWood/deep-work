@@ -12,7 +12,7 @@ import QuartzCore
 class BorderView: UIView {
     
     override func awakeFromNib() {
-        self.backgroundColor = CustomColor.dark1
+        //self.backgroundColor = CustomColor.dark1
     }
     
 }

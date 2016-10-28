@@ -4,7 +4,6 @@
 // RESUME WITH:
 //
 //   # Backup to BitBucket
-//   # projectCell border shows percentage of weekly goal
 //   # Embed in Navigation Controller
 //
 //////////////////////////////////////////////////
@@ -14,6 +13,7 @@
 //
 // Priority 1:
 //
+//   # Bug: Incorrect time displayed in project cell while dragging
 //   # Import data from Hours
 //   # Investigate why some timeLogs with startTime == nil, create cleanup function?
 //   # Confirmation toast when deleting data / restoring from JSON
@@ -37,6 +37,7 @@
 //
 // Priority 2:
 //
+//   # projectCell border shows percentage of weekly goal
 //   # Settings: Choose color for each project: text + border when not selected, background color when selected
 //   # Use gradient colors
 //   # Add blur effect

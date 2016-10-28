@@ -14,8 +14,13 @@ struct FormatTime {
         let hours = Double(timeInterval) / 3600.0 as NSNumber
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
-        numberFormatter.maximumFractionDigits = 1
-        numberFormatter.minimumFractionDigits = 1
+        if Double(hours) < 100.0 {
+            numberFormatter.maximumFractionDigits = 1
+            numberFormatter.minimumFractionDigits = 1
+        } else {
+            numberFormatter.maximumFractionDigits = 0
+        }
+        numberFormatter.decimalSeparator = "."
         if let stringFromNumber = numberFormatter.string(from: hours) {
             return(stringFromNumber + "h")
         } else {
