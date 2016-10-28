@@ -13,7 +13,6 @@
 		42541DBF1DBD007E001544D1 /* TableViewHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */; };
 		427567D11DC0A39400813AF1 /* CircleBorderViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427567D01DC0A39400813AF1 /* CircleBorderViewOld.swift */; };
 		427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AD7891DAF933400B22DB5 /* FormatTime.swift */; };
-		429F1F331DC08DD30017E122 /* CircleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F1F321DC08DD30017E122 /* CircleVC.swift */; };
 		429F1F351DC08E090017E122 /* CircleBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F1F341DC08E090017E122 /* CircleBorderView.swift */; };
 		429FA5A71DB7AFCF00242E77 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 429FA5A61DB7AFCF00242E77 /* sampleData.json */; };
 		42A52E601DAD502F00924350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A52E5F1DAD502F00924350 /* Colors.swift */; };
@@ -46,7 +45,6 @@
 		42541DBE1DBD007E001544D1 /* TableViewHeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeaderLabel.swift; sourceTree = "<group>"; };
 		427567D01DC0A39400813AF1 /* CircleBorderViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBorderViewOld.swift; sourceTree = "<group>"; };
 		427AD7891DAF933400B22DB5 /* FormatTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatTime.swift; sourceTree = "<group>"; };
-		429F1F321DC08DD30017E122 /* CircleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleVC.swift; sourceTree = "<group>"; };
 		429F1F341DC08E090017E122 /* CircleBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleBorderView.swift; sourceTree = "<group>"; };
 		429FA5A61DB7AFCF00242E77 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */,
 				42E912561DB941E8001FF37A /* HistoryViewController.swift */,
-				429F1F321DC08DD30017E122 /* CircleVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -283,7 +280,6 @@
 				42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */,
 				427AD78A1DAF933400B22DB5 /* FormatTime.swift in Sources */,
 				42541D971DBCAA2B001544D1 /* OldReferenceCode.swift in Sources */,
-				429F1F331DC08DD30017E122 /* CircleVC.swift in Sources */,
 				42C111E61DBDF056004582A0 /* Project+CoreDataClass.swift in Sources */,
 				42C111E71DBDF056004582A0 /* Project+CoreDataProperties.swift in Sources */,
 				42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */,

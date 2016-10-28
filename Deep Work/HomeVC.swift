@@ -44,6 +44,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         setupSummaryCells()
+        setupProjectCells()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -177,6 +178,44 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    var visibleProjects = [Project]()
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == projectCV {
+            print("we scrolling")
+            initiateVisibleProjects()
+        }
+    }
+    
+    func initiateVisibleProjects() {
+        var newVisibleProjects = [Project]()
+        let cells = projectCV.visibleCells
+        let visibleCells = cells as! [ProjectCell]
+        for cell in visibleCells {
+            let index = projectCV.indexPath(for: cell)!.row
+            let visibleProject = projects[index]
+            if !visibleProjects.contains(visibleProject) {
+                cell.circleView.drawBorder(fillPercent: 1.0)
+            }
+            newVisibleProjects.append(visibleProject)
+        }
+        visibleProjects = newVisibleProjects
+    }
+    
+    var drawBorders = false
+    
+    func setupProjectCells() {
+        initiateVisibleProjects()
+        drawBorders = true
+        projectCV.reloadData()
+//        for cell in projectCV.visibleCells {
+//            let projectCell = cell as! ProjectCell
+//            let index = projectCV.indexPath(for: cell)!.row
+//            projectCell.circleView.drawBorder(fillPercent: 1.0)
+//        }
+//        drawBorders = true
+    }
+    
     func setupProjectCV() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         topView.layoutIfNeeded()
@@ -219,6 +258,17 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! ProjectCell
         let currentProject = projects[indexPath.row]
         cell.configureCell(project: currentProject, moc: moc!)
+        if drawBorders && visibleProjects.contains(currentProject) {
+            print("drawBorders for \(currentProject.title!)")
+            
+            for layer in cell.circleView.layer.sublayers! {
+                if layer.name == "borderLayer" {
+                    print("removing a layer")
+                    layer.removeFromSuperlayer()
+                }
+            }
+            cell.circleView.drawBorder(fillPercent: 1.0)
+        }
         return cell
     }
     
@@ -288,7 +338,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func updateTimeLabels() {
-        projectCV.reloadData()
+        //projectCV.reloadData()
+        updateProjectLabels()
         updateSummaryColors()
         updateSummaryLabels()
     }
@@ -310,6 +361,15 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.updateBackgroundColor(indexPath: i)
             i += 1
+        }
+    }
+    
+    func updateProjectLabels() {
+        for cell in projectCV.visibleCells {
+            let projectCell = cell as! ProjectCell
+            let index = projectCV.indexPath(for: cell)!.row
+            let project = projects[index]
+            projectCell.updateTimeLabels(project: project, moc: moc!)
         }
     }
     

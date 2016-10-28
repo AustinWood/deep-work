@@ -36,6 +36,7 @@ class CircleView: UIView {
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = color.cgColor
         borderLayer.lineWidth = borderWidth
+        borderLayer.name = "borderLayer"
         if animated {
             borderLayer.strokeEnd = 0.0
             layer.addSublayer(borderLayer)

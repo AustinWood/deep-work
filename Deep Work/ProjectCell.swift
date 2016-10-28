@@ -16,13 +16,23 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var currentSessionLabel: UILabel!
     
-    var displayWeekTotals = false
+    override func prepareForReuse() {
+        print("GET READY! \(titleLabel.text)")
+    }
+    
     
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
-        circleView.layer.cornerRadius = self.frame.size.width / 2
-        circleView.clipsToBounds = true
+        
         titleLabel.text = project.title
         
+        circleView.layer.cornerRadius = self.frame.size.width / 2
+        
+        //circleView.createLayer(fillPercent: 1.0, color: CustomColor.gray, animated: false)
+        
+        updateTimeLabels(project: project, moc: moc)
+    }
+    
+    func updateTimeLabels(project: Project, moc: NSManagedObjectContext) {
         let defaults = UserDefaults.standard
         let savedDateRange = defaults.integer(forKey: "dateRange")
         let dateRange = MyDateRange(rawValue: savedDateRange)!
