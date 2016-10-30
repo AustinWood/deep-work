@@ -3,14 +3,12 @@
 //
 // NOW:
 //
-//   # Verify that not adding multiple layers of gray borders on project cells
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
 // PRIORITY 1:
 //
-//   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
 //   # projectCell size should be dynamic
 //   # Bug: Incorrect time displayed in project cell while dragging if timer is running
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")

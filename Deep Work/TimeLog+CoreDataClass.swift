@@ -56,6 +56,22 @@ public class TimeLog: NSManagedObject {
     // Refactor: one function that gets today, week, and month summations and only fetches allTimeLogs once!
     // Refactor: one function that checks if timeLogs are in a range; today, week, month, year define the range and call that function
     
+    internal static func calculateTimeInterval(projects: [Project], dateRange: MyDateRange, moc: NSManagedObjectContext) -> TimeInterval {
+        
+        switch dateRange {
+        case .today:
+            return TimeLog.todayTime(projects: projects, moc: moc)
+        case .week:
+            return TimeLog.weekTime(projects: projects, moc: moc)
+        case .month:
+            return TimeLog.monthTime(projects: projects, moc: moc)
+        case .year:
+            return TimeLog.yearTime(projects: projects, moc: moc)
+        case .allTime:
+            return 0 as TimeInterval
+        }
+    }
+    
     internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
         let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
         var todayTimeLogs: [TimeLog] = []

@@ -28,25 +28,9 @@ class SummaryCell: UICollectionViewCell {
     }
     
     func updateTimeLabel(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
-        
         let dateRange = MyDateRange(rawValue: indexPath)!
-        
-        switch dateRange {
-        case .today:
-            let todayTime = TimeLog.todayTime(projects: projects, moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: todayTime)
-        case .week:
-            let weekTime = TimeLog.weekTime(projects: projects, moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: weekTime)
-        case .month:
-            let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: monthTime)
-        case .year:
-            let yearTime = TimeLog.yearTime(projects: projects, moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: yearTime)
-        case .allTime:
-            timeLabel.text = ""
-        }
+        let timeInterval = TimeLog.calculateTimeInterval(projects: projects, dateRange: dateRange, moc: moc)
+        timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: timeInterval)
     }
     
     func updateBackgroundColor(indexPath: Int) {

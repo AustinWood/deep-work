@@ -35,25 +35,8 @@ class ProjectCell: UICollectionViewCell {
         let defaults = UserDefaults.standard
         let savedDateRange = defaults.integer(forKey: "dateRange")
         let dateRange = MyDateRange(rawValue: savedDateRange)!
-        
-        
-        switch dateRange {
-        case .today:
-            let todayTime = TimeLog.todayTime(projects: [project], moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: todayTime)
-        case .week:
-            let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: weekTime)
-        case .month:
-            let monthTime = TimeLog.monthTime(projects: [project], moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: monthTime)
-        case .year:
-            let yearTime = TimeLog.yearTime(projects: [project], moc: moc)
-            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: yearTime)
-        case .allTime:
-            timeLabel.text = ""
-        }
-        
+        let timeInterval = TimeLog.calculateTimeInterval(projects: [project], dateRange: dateRange, moc: moc)
+        timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: timeInterval)
         let currentSessionLength = TimeLog.currentSessionLength(project: project, moc: moc)
         if currentSessionLength == 0 {
             circleView.backgroundColor = CustomColor.dark1
