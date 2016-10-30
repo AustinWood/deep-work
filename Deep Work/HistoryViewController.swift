@@ -40,7 +40,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func setupViewController() {
-        titleLabel.text = project?.title
+        self.title = project?.title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProjectPressed(_:)))
     }
     
     //////////////////////////////////////////////
@@ -48,14 +49,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var timer = Timer()
     
-    func setupTableView() { // Called on viewDidLoad
-        
-        // Give tableView a header same size as Visual Effects View which contains back button and project title
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 76))
-        headerView.backgroundColor = UIColor.clear
-        tableView.tableHeaderView = headerView
-        
-        // Miscellaneous tableView setup
+    func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 75
         tableView.separatorColor = UIColor.clear
@@ -120,6 +114,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDayStr!)
             label.text = fullDateStr
         }
+        // Would like to make use of the TableViewHeaderLabel.addBlur() instead of colorWithAlphaComponent, but can't get the text and blur to work together
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.85)
         return label
     }
     

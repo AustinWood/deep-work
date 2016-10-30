@@ -222,10 +222,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 //    }
     
     func setupProjectCV() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         topView.layoutIfNeeded()
-        let topInset = topView.frame.height + 22
         bottomView.layoutIfNeeded()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let topInset = topView.frame.height + 10
         let bottomInset = bottomView.frame.height + 10
         layout.sectionInset = UIEdgeInsets(top: topInset, left: 36, bottom: bottomInset, right: 36)
         let cellSpacing: CGFloat = 20

@@ -21,10 +21,18 @@ class TableViewHeaderLabel: UILabel {
         self.setNeedsLayout()
         
         self.textColor = UIColor.white
-        self.backgroundColor = UIColor.black
         self.textAlignment = NSTextAlignment.right
         
         return super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
+    
+//    func addBlur() {
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = self.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.addSubview(blurEffectView)
+//        self.sendSubview(toBack: blurEffectView)
+//    }
     
 }
