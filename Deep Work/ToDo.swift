@@ -14,8 +14,6 @@
 //   # Use Codegen: Class Definition
 //   # Bug: Incorrect time displayed in project cell while dragging if timer is running
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
-//   # HistoryVC:
-//       # Swipe to edit note
 //   # Reordering:
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
@@ -53,6 +51,7 @@
 //       # Stylize this week (color code with summary view at top of VC)
 //       # Show totals by day next to each dateLabel
 //       # After deleting a record, scroll to correct position
+//       # Make edit note text field multi-line
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # projectCell border shows percentage of weekly goal
 //   # Range checker should use workDay attribute, not starTime attribute

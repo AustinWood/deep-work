@@ -72,7 +72,7 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     }
     
     //////////////////////////////////////////////
-    // MARK:- Edit Project
+    // MARK:- Edit Project Title
     
     func editTitle() {
         let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project!.title!):", preferredStyle: UIAlertControllerStyle.alert)
@@ -156,21 +156,55 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let timeLog = self.fetchedResultsController.object(at: indexPath)
+        let editButton = UITableViewRowAction(style: .default, title: "Edit     ") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
+            self.editNote(timeLog: timeLog)
+        }
+        editButton.backgroundColor = CustomColor.green
         let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
-            let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
-            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
-                let timeLog = self?.fetchedResultsController.object(at: indexPath)
-                self?.moc?.delete(timeLog!)
-                let delegate = UIApplication.shared.delegate as! AppDelegate
-                delegate.saveContext()
-            })
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in tableView.isEditing = false })
-            confirmDeleteAlertController.addAction(deleteAction)
-            confirmDeleteAlertController.addAction(cancelAction)
-            self.present(confirmDeleteAlertController, animated: true, completion: nil)
+            self.deleteTimeLog(timeLog: timeLog)
         }
         deleteButton.backgroundColor = CustomColor.pinkHot
-        return [deleteButton]
+        return [editButton, deleteButton]
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Edit Note
+    
+    func editNote(timeLog: TimeLog) {
+        let alertController = UIAlertController(title: "Edit Note", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField: UITextField) in
+            textField.autocapitalizationType = .sentences
+            textField.autocorrectionType = .yes
+            textField.text = timeLog.note
+        }
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
+            let newNote = alertController.textFields?.first?.text
+            timeLog.note = newNote
+            do { try self?.moc?.save() }
+            catch { fatalError("Error storing data") }
+            self?.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //////////////////////////////////////////////
+    // MARK:- Delete Row
+    
+    func deleteTimeLog(timeLog: TimeLog) {
+        let confirmDeleteAlertController = UIAlertController(title: "Delete Entry", message: "Are you sure you would like to delete this entry?", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { [weak self] (action: UIAlertAction) in
+            self?.moc?.delete(timeLog)
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.saveContext()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction) in self.tableView.isEditing = false })
+        confirmDeleteAlertController.addAction(deleteAction)
+        confirmDeleteAlertController.addAction(cancelAction)
+        self.present(confirmDeleteAlertController, animated: true, completion: nil)
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
