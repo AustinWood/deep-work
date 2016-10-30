@@ -3,7 +3,7 @@
 //
 // NOW:
 //
-//   # Animation: Fade in button color in when starting timer, fade others out
+//   # Verify that not adding multiple layers of gray borders on project cells
 //   # Make FormatTime an extension of Date()
 //   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
 //
@@ -54,6 +54,7 @@
 //       # Stylize this week (color code with summary view at top of VC)
 //       # Show totals by day next to each dateLabel
 //       # After deleting a record, scroll to correct position
+//   # Animation: Fade in button color in when starting timer, fade others out
 //   # projectCell border shows percentage of weekly goal
 //   # Range checker should use workDay attribute, not starTime attribute
 //   # Calculate totals on timerStartStop, store in array, add one second

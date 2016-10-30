@@ -41,16 +41,16 @@ class ProjectCell: UICollectionViewCell {
         switch dateRange {
         case .today:
             let todayTime = TimeLog.todayTime(projects: [project], moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: todayTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: todayTime)
         case .week:
             let weekTime = TimeLog.weekTime(projects: [project], moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: weekTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: weekTime)
         case .month:
             let monthTime = TimeLog.monthTime(projects: [project], moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: monthTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: monthTime)
         case .year:
             let yearTime = TimeLog.yearTime(projects: [project], moc: moc)
-            timeLabel.text = FormatTime.formattedHoursMinutes(timeInterval: yearTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursMinutes(timeInterval: yearTime)
         case .allTime:
             timeLabel.text = ""
         }
@@ -63,7 +63,7 @@ class ProjectCell: UICollectionViewCell {
         } else {
             circleView.backgroundColor = CustomColor.blueDark
             timeLabel.textColor = UIColor.black
-            let currentSessionFormatted = FormatTime.formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
+            let currentSessionFormatted = CustomDateFormatter.formattedHoursMinutesSeconds(timeInterval: currentSessionLength)
             currentSessionLabel.text = currentSessionFormatted
             currentSessionLabel.isHidden = false
         }

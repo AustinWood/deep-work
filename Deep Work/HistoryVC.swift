@@ -108,7 +108,7 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
             let currentSection = sections[section]
             let firstObject = currentSection.objects?.first as! TimeLog
             let workDayStr = firstObject.workDay
-            let fullDateStr = FormatTime.dateISOtoFull(isoStr: workDayStr!)
+            let fullDateStr = CustomDateFormatter.dateISOtoFull(isoStr: workDayStr!)
             label.text = fullDateStr
         }
         // Would like to make use of the TableViewHeaderLabel.addBlur() instead of colorWithAlphaComponent, but can't get the text and blur to work together

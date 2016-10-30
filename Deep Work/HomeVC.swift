@@ -21,10 +21,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     //////////////////////////////////////////////
     // MARK:- Outlets
     
-    @IBOutlet weak var topView: BorderView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var summaryCV: UICollectionView!
     @IBOutlet weak var projectCV: UICollectionView!
-    @IBOutlet weak var bottomView: BorderView!
+    @IBOutlet weak var bottomView: UIView!
     
     //////////////////////////////////////////////
     // MARK:- Initialization
@@ -316,7 +316,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             // Start a new time log
             let newTimeLog = TimeLog(context: (self.moc)!)
             newTimeLog.project = project
-            newTimeLog.workDay = FormatTime.dateISO(date: Date())
+            newTimeLog.workDay = CustomDateFormatter.dateISO(date: Date())
             newTimeLog.startTime = Date()
             do { try self.moc?.save() }
             catch { fatalError("Error storing data") }
@@ -363,7 +363,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func updateTimeLabels() {
-        //projectCV.reloadData()
         updateProjectLabels()
         updateSummaryColors()
         updateSummaryLabels()
@@ -439,7 +438,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func addNote(timeLog: TimeLog) {
         let sessionLength = Date().timeIntervalSince(timeLog.startTime!)
-        let sessionLengthFormatted = FormatTime.formattedHoursMinutes(timeInterval: sessionLength)
+        let sessionLengthFormatted = CustomDateFormatter.formattedHoursMinutes(timeInterval: sessionLength)
         let project = timeLog.project
         let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in

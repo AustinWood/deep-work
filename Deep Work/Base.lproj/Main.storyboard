@@ -129,7 +129,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59F-2P-OXh" userLabel="Top View" customClass="BorderView" customModule="Deep_Work" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59F-2P-OXh" userLabel="Top View">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dg9-kL-sJA">
@@ -227,13 +227,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-Uw-Giz">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-Uw-Giz" userLabel="Bottom Blur">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ejs-EP-hUE">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-e1-IXR" customClass="BorderView" customModule="Deep_Work" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-e1-IXR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nv4-g9-gX5">
@@ -301,11 +301,11 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="bottomView" destination="gO5-e1-IXR" id="FkW-yD-CCC"/>
+                        <outlet property="bottomView" destination="gO5-e1-IXR" id="b6K-oz-V0W"/>
                         <outlet property="projectCV" destination="1ci-ub-AwF" id="45l-KU-tgw"/>
                         <outlet property="summaryCV" destination="Dg9-kL-sJA" id="hNj-0b-Klh"/>
                         <outlet property="summaryCVHeight" destination="7Hk-08-of4" id="169-Pr-omc"/>
-                        <outlet property="topView" destination="59F-2P-OXh" id="v8d-3K-kWc"/>
+                        <outlet property="topView" destination="59F-2P-OXh" id="4HU-SG-EXv"/>
                         <segue destination="Hns-0m-vjX" kind="show" identifier="goToHistory" id="djE-6n-kxQ"/>
                     </connections>
                 </viewController>

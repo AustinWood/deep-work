@@ -136,15 +136,3 @@ public class TimeLog: NSManagedObject {
     }
     
 }
-
-//////////////////////////////////////////////
-// Date extension
-
-extension Date {
-    struct Calendar {
-        static let iso8601 = NSCalendar(calendarIdentifier: NSCalendar.Identifier.ISO8601)!
-    }
-    var startOfWeek: Date {
-        return Calendar.iso8601.date(from: Calendar.iso8601.components([.yearForWeekOfYear, .weekOfYear], from: self as Date))!
-    }
-}

@@ -34,16 +34,16 @@ class SummaryCell: UICollectionViewCell {
         switch dateRange {
         case .today:
             let todayTime = TimeLog.todayTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: todayTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: todayTime)
         case .week:
             let weekTime = TimeLog.weekTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: weekTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: weekTime)
         case .month:
             let monthTime = TimeLog.monthTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: monthTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: monthTime)
         case .year:
             let yearTime = TimeLog.yearTime(projects: projects, moc: moc)
-            timeLabel.text = FormatTime.formattedHoursDecimal(timeInterval: yearTime)
+            timeLabel.text = CustomDateFormatter.formattedHoursDecimal(timeInterval: yearTime)
         case .allTime:
             timeLabel.text = ""
         }

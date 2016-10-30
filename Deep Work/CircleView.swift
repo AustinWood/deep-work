@@ -60,10 +60,17 @@ class CircleView: UIView {
     func removeBorders() {
         for layer in self.layer.sublayers! {
             if layer.name == "animatedBorder" {
-                print("removing a border")
                 layer.removeFromSuperlayer()
             }
         }
     }
+    
+//    func animateBackground(duration: TimeInterval, backgroundColor: UIColor) {
+//        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
+//            self.backgroundColor = backgroundColor
+//        }, completion: {(finished: Bool) -> Void in
+//            // Completed animation
+//        })
+//    }
     
 }
