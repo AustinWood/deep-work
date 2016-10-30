@@ -390,6 +390,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func updateProjectLabels() {
+        if projects.count == 0 { return }
         for cell in projectCV.visibleCells {
             let projectCell = cell as! ProjectCell
             let index = projectCV.indexPath(for: cell)!.row
@@ -403,7 +404,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHistory" {
-            let destinationController = segue.destination as! HistoryViewController
+            let destinationController = segue.destination as! HistoryVC
             destinationController.project = selectedProject!
             destinationController.moc = moc
         }

@@ -34,7 +34,7 @@
 		42E3A32B1DBF4BAC000E5B6C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */; };
 		42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A32C1DBF4C47000E5B6C /* SummaryCell.swift */; };
 		42E3A3311DBF58E3000E5B6C /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E3A3301DBF58E3000E5B6C /* BorderView.swift */; };
-		42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E912561DB941E8001FF37A /* HistoryViewController.swift */; };
+		42E912571DB941E8001FF37A /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E912561DB941E8001FF37A /* HistoryVC.swift */; };
 		42E912591DB94731001FF37A /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E912581DB94731001FF37A /* HistoryCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		42E3A32C1DBF4C47000E5B6C /* SummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		42E3A3301DBF58E3000E5B6C /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
-		42E912561DB941E8001FF37A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		42E912561DB941E8001FF37A /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		42E912581DB94731001FF37A /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				42E3A32A1DBF4BAC000E5B6C /* HomeVC.swift */,
-				42E912561DB941E8001FF37A /* HistoryViewController.swift */,
+				42E912561DB941E8001FF37A /* HistoryVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 				42A52E601DAD502F00924350 /* Colors.swift in Sources */,
 				42C3A7FC1DAD4B9E008F0260 /* CircleView.swift in Sources */,
 				42B648731DBF6DFB00026042 /* BorderExtension.swift in Sources */,
-				42E912571DB941E8001FF37A /* HistoryViewController.swift in Sources */,
+				42E912571DB941E8001FF37A /* HistoryVC.swift in Sources */,
 				42C111E91DBDF056004582A0 /* TimeLog+CoreDataProperties.swift in Sources */,
 				42541D9B1DBCB17D001544D1 /* DataService.swift in Sources */,
 				42C111EB1DBDF056004582A0 /* MyDateRange.swift in Sources */,

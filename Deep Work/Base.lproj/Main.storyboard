@@ -313,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="-900" y="176.76161919040482"/>
         </scene>
-        <!--History View Controller-->
+        <!--HistoryVC-->
         <scene sceneID="Cs7-Ii-qnO">
             <objects>
-                <viewController id="Hns-0m-vjX" customClass="HistoryViewController" customModule="Deep_Work" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hns-0m-vjX" customClass="HistoryVC" customModule="Deep_Work" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hed-PV-PER"/>
                         <viewControllerLayoutGuide type="bottom" id="Iqn-Jv-Czo"/>
