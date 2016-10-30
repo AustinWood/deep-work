@@ -41,7 +41,7 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     
     func setupViewController() {
         self.title = project?.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProjectPressed(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTitle))
     }
     
     //////////////////////////////////////////////
@@ -73,14 +73,11 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     //////////////////////////////////////////////
     // MARK:- Edit Project
     
-    @IBAction func editProjectPressed(_ sender: AnyObject) {
-        editTitle()
-    }
-    
     func editTitle() {
         let alertController = UIAlertController(title: "Edit Project Title", message: "Enter a new title for \(project!.title!):", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in
             textField.autocapitalizationType = .words
+            textField.autocorrectionType = .yes
         }
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (action: UIAlertAction) in
             let projectTitle: String?

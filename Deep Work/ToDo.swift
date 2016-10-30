@@ -3,8 +3,6 @@
 //
 // NOW:
 //
-//   # Rename from HistoryViewController to HistoryVC
-//   # Implement spell checker in textView
 //   # Animation: Fade in button color in when starting timer, fade others out
 //   # Make FormatTime an extension of Date()
 //   # Move Date extension from TimeLog+CoreDataClass.swift to separate file

@@ -49,7 +49,7 @@
 		429FA5A61DB7AFCF00242E77 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
-		42A7E9581DBB5F1B00ED4239 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		42A7E9581DBB5F1B00ED4239 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDo.swift; path = "Deep Work/ToDo.swift"; sourceTree = "<group>"; };
 		42B648721DBF6DFB00026042 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
 		42BD2DCE1DAD413500D38118 /* Deep Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deep Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BD2DD11DAD413500D38118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +102,6 @@
 				42BD2DDD1DAD413500D38118 /* LaunchScreen.storyboard */,
 				42541D961DBCAA2B001544D1 /* OldReferenceCode.swift */,
 				42541D9C1DBCB1E4001544D1 /* HistoryBackup.swift */,
-				42A7E9581DBB5F1B00ED4239 /* ToDo.swift */,
 				427567D01DC0A39400813AF1 /* CircleBorderViewOld.swift */,
 			);
 			name = Other;
@@ -111,6 +110,7 @@
 		42BD2DC51DAD413500D38118 = {
 			isa = PBXGroup;
 			children = (
+				42A7E9581DBB5F1B00ED4239 /* ToDo.swift */,
 				42BD2DD01DAD413500D38118 /* Deep Work */,
 				42BD2DCF1DAD413500D38118 /* Products */,
 			);

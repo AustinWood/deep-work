@@ -417,6 +417,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let alertController = UIAlertController(title: "Add Project", message: "Enter a title:", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in
             textField.autocapitalizationType = .words
+            textField.autocorrectionType = .yes
         }
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] (action: UIAlertAction) in
             let projectTitle: String?
@@ -443,6 +444,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let alertController = UIAlertController(title: "\(project!.title!)\n\n\(sessionLengthFormatted)", message: "\nGreat work!\n\nYou may add a note if you wish.", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField: UITextField) in
             textField.autocapitalizationType = .sentences
+            textField.autocorrectionType = .yes
         }
         let deleteAction = UIAlertAction(title: "Delete entry", style: .destructive) { [weak self] (action: UIAlertAction) in
             self?.warningDeleteEntry(timeLog: timeLog)
