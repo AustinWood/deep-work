@@ -40,11 +40,16 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setupSummaryCells()
         projectCV.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
