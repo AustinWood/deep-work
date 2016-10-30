@@ -87,7 +87,7 @@ class SummaryCell: UICollectionViewCell {
         case .week:
             let startOfWeek = Date().startOfWeek
             secondsPassed = Date().timeIntervalSince(startOfWeek)
-            secondsInRange = 60 * 60 * 24 * 7
+            secondsInRange = 60.0 * 60.0 * 24.0 * 7.0
         case .month:
             let components = calendar.dateComponents([.year, .month], from: Date())
             let startOfMonth = calendar.date(from: components)
