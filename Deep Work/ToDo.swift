@@ -9,7 +9,6 @@
 //
 // PRIORITY 1:
 //
-//   # HistoryVC colors
 //   # Confirmation toast when deleting data / restoring from JSON / exporting / etc
 //   # projectCell size should be dynamic
 //   # Use Codegen: Class Definition
@@ -17,7 +16,6 @@
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # HistoryVC:
 //       # Swipe to edit note
-//       # Scroll view indicator
 //   # Reordering:
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
