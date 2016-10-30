@@ -214,12 +214,14 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         if type == NSFetchedResultsChangeType.delete {
             tableView.deleteSections([sectionIndex], with: .fade)
+            self.view.makeToast(message: "Deletion successful!")
         }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         if type == NSFetchedResultsChangeType.delete {
             tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+            self.view.makeToast(message: "Deletion successful!")
         }
     }
     

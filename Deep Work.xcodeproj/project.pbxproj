@@ -16,6 +16,7 @@
 		42A52E601DAD502F00924350 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A52E5F1DAD502F00924350 /* Colors.swift */; };
 		42A5A4D31DBA222000BAAB67 /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */; };
 		42A7E9591DBB5F1B00ED4239 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7E9581DBB5F1B00ED4239 /* ToDo.swift */; };
+		42A96D991DC63C040017F7A1 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A96D981DC63C040017F7A1 /* Toast.swift */; };
 		42B648731DBF6DFB00026042 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B648721DBF6DFB00026042 /* BorderExtension.swift */; };
 		42BD2DD21DAD413500D38118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD2DD11DAD413500D38118 /* AppDelegate.swift */; };
 		42BD2DD71DAD413500D38118 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BD2DD51DAD413500D38118 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		42A52E5F1DAD502F00924350 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		42A5A4D21DBA222000BAAB67 /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		42A7E9581DBB5F1B00ED4239 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDo.swift; path = "Deep Work/ToDo.swift"; sourceTree = "<group>"; };
+		42A96D981DC63C040017F7A1 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		42B648721DBF6DFB00026042 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
 		42BD2DCE1DAD413500D38118 /* Deep Work.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deep Work.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BD2DD11DAD413500D38118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				4282B3511DC5F6CA003918F9 /* UIView subclasses */,
 				42B648721DBF6DFB00026042 /* BorderExtension.swift */,
 				42A52E5F1DAD502F00924350 /* Colors.swift */,
+				42A96D981DC63C040017F7A1 /* Toast.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				42E3A32D1DBF4C47000E5B6C /* SummaryCell.swift in Sources */,
 				42541D971DBCAA2B001544D1 /* OldReferenceCode.swift in Sources */,
 				42C111E61DBDF056004582A0 /* Project+CoreDataClass.swift in Sources */,
+				42A96D991DC63C040017F7A1 /* Toast.swift in Sources */,
 				42C111E71DBDF056004582A0 /* Project+CoreDataProperties.swift in Sources */,
 				42C3A7F81DAD474E008F0260 /* ProjectCell.swift in Sources */,
 			);
