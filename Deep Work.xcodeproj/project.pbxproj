@@ -162,9 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				4282B34E1DC5F459003918F9 /* DateAndTime.swift */,
-				429FA5A61DB7AFCF00242E77 /* sampleData.json */,
 				42BD2DD81DAD413500D38118 /* Deep_Work.xcdatamodeld */,
 				42541D9A1DBCB17D001544D1 /* DataService.swift */,
+				429FA5A61DB7AFCF00242E77 /* sampleData.json */,
 			);
 			name = Model;
 			sourceTree = "<group>";

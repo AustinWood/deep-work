@@ -174,16 +174,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         summaryCV.reloadData()
     }
     
-//    func setupSummaryCells() {
-//        addGrayBorders()
-//    }
-//    
-//    var summaryCellArray = [SummaryCell]()
-//    
-//    func createSummaryCellArray() {
-//
-//    }
-    
     func addGrayBorders() {
         var i = 0
         while i <= 3 {

@@ -22,11 +22,10 @@ class ProjectCell: UICollectionViewCell {
         circleView.layer.cornerRadius = self.frame.size.width / 2
         
         for layer in circleView.layer.sublayers! {
-            if layer.name == "borderLayer" {
+            if layer.name == "staticBorder" {
                 layer.removeFromSuperlayer()
             }
         }
-        
         circleView.drawGrayBorder()
         
         updateTimeLabels(project: project, moc: moc)

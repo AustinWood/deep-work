@@ -4,8 +4,6 @@
 // NOW:
 //
 //   # Verify that not adding multiple layers of gray borders on project cells
-//   # Make FormatTime an extension of Date()
-//   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
