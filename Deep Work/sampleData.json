@@ -237,8 +237,161 @@
                          "stopTime":"2016-10-30T13:01:56",
                          "note":"Reanimate colored borders on ViewDidAppear, add spell checker to text views, lots of refactoring and optimization"}
                          ]},{
-             "title":"Problem Solving",
+             "title":"Ruby",
              "order":1,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T20:04:00",
+                         "stopTime":"2016-10-08T20:59:00",
+                         "note":"Started reading “The Ruby Programming Language”"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T11:05:00",
+                         "stopTime":"2016-10-09T12:05:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T12:01:00",
+                         "stopTime":"2016-10-10T12:23:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T12:24:00",
+                         "stopTime":"2016-10-11T13:17:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T12:08:00",
+                         "stopTime":"2016-10-12T12:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T11:25:00",
+                         "stopTime":"2016-10-13T12:30:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T12:24:00",
+                         "stopTime":"2016-10-14T13:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T18:05:00",
+                         "stopTime":"2016-10-15T18:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T10:20:32",
+                         "stopTime":"2016-10-21T11:28:33",
+                         "note":"Textbook"},
+                         {
+                         "workDay":"2016-10-23",
+                         "startTime":"2016-10-23T20:02:39",
+                         "stopTime":"2016-10-23T21:57:26",
+                         "note":"Started chapter 3. 8% through book"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T20:00:47",
+                         "stopTime":"2016-10-24T20:54:04",
+                         "note":"TRPL 9%"},
+                         {
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T14:40:33",
+                         "stopTime":"2016-10-30T15:23:34",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T16:13:55",
+                         "stopTime":"2016-10-30T16:38:22",
+                         "note":""}
+                         ]},{
+             "title":"Core Data",
+             "order":2,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-06",
+                         "startTime":"2016-10-06T17:26:00",
+                         "stopTime":"2016-10-06T18:42:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T19:51:00",
+                         "stopTime":"2016-10-07T20:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T13:30:00",
+                         "stopTime":"2016-10-08T14:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T14:24:00",
+                         "stopTime":"2016-10-11T15:27:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T16:12:00",
+                         "stopTime":"2016-10-11T16:32:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T18:38:00",
+                         "stopTime":"2016-10-11T18:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-16",
+                         "startTime":"2016-10-16T14:07:00",
+                         "stopTime":"2016-10-16T15:43:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-20",
+                         "startTime":"2016-10-20T14:54:04",
+                         "stopTime":"2016-10-20T15:43:52",
+                         "note":"Finished Section 3: Let's Get Wet (Home Report project)"},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T11:35:02",
+                         "stopTime":"2016-10-21T12:14:41",
+                         "note":"Start and finish Section 4: Automatic subclass generation"},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T17:50:13",
+                         "stopTime":"2016-10-21T18:36:03",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-22",
+                         "startTime":"2016-10-22T17:47:59",
+                         "stopTime":"2016-10-22T19:24:12",
+                         "note":"Trying to implement fetch controller in my own app"},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T21:47:39",
+                         "stopTime":"2016-10-25T22:50:18",
+                         "note":"Section 6: Performance Tuning (started and finished section)"},
+                         {
+                         "workDay":"2016-10-27",
+                         "startTime":"2016-10-27T14:40:00",
+                         "stopTime":"2016-10-27T15:39:28",
+                         "note":"Section 7: Lightweight and mapping model migration"},
+                         {
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T13:19:01",
+                         "stopTime":"2016-10-30T14:22:34",
+                         "note":"Finished Core Data course!"}
+                         ]},{
+             "title":"Data Structures",
+             "order":3,
+             "color":"",
+             "timeLog": [
+             
+             ]},{
+             "title":"Problem Solving",
+             "order":4,
              "color":"",
              "timeLog": [
                          
@@ -353,14 +506,8 @@
                          "stopTime":"2016-10-26T22:55:42",
                          "note":"Solved two Kata at Kyu 6"}
                          ]},{
-             "title":"Data Structures",
-             "order":2,
-             "color":"",
-             "timeLog": [
-             
-             ]},{
              "title":"Stack Overflow",
-             "order":3,
+             "order":5,
              "color":"",
              "timeLog": [
                          
@@ -385,69 +532,8 @@
                          "stopTime":"2016-10-24T21:10:58",
                          "note":"Reloding collectionView cell without reseting image"}
                          ]},{
-             "title":"Ruby",
-             "order":4,
-             "color":"",
-             "timeLog": [
-                         
-                         {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T20:04:00",
-                         "stopTime":"2016-10-08T20:59:00",
-                         "note":"Started reading “The Ruby Programming Language”"},
-                         {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T11:05:00",
-                         "stopTime":"2016-10-09T12:05:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T12:01:00",
-                         "stopTime":"2016-10-10T12:23:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T12:24:00",
-                         "stopTime":"2016-10-11T13:17:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-12",
-                         "startTime":"2016-10-12T12:08:00",
-                         "stopTime":"2016-10-12T12:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-13",
-                         "startTime":"2016-10-13T11:25:00",
-                         "stopTime":"2016-10-13T12:30:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-14",
-                         "startTime":"2016-10-14T12:24:00",
-                         "stopTime":"2016-10-14T13:46:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T18:05:00",
-                         "stopTime":"2016-10-15T18:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T10:20:32",
-                         "stopTime":"2016-10-21T11:28:33",
-                         "note":"Textbook"},
-                         {
-                         "workDay":"2016-10-23",
-                         "startTime":"2016-10-23T20:02:39",
-                         "stopTime":"2016-10-23T21:57:26",
-                         "note":"Started chapter 3. 8% through book"},
-                         {
-                         "workDay":"2016-10-24",
-                         "startTime":"2016-10-24T20:00:47",
-                         "stopTime":"2016-10-24T20:54:04",
-                         "note":"TRPL 9%"}
-                         ]},{
              "title":"Object Oriented Design",
-             "order":5,
+             "order":6,
              "color":"",
              "timeLog": [
                          
@@ -473,82 +559,11 @@
                          "note":""}
                          ]},{
              "title":"Weed App",
-             "order":6,
+             "order":7,
              "color":"",
              "timeLog": [
              
              ]},{
-             "title":"Core Data",
-             "order":7,
-             "color":"",
-             "timeLog": [
-                         
-                         {
-                         "workDay":"2016-10-06",
-                         "startTime":"2016-10-06T17:26:00",
-                         "stopTime":"2016-10-06T18:42:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-07",
-                         "startTime":"2016-10-07T19:51:00",
-                         "stopTime":"2016-10-07T20:46:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T13:30:00",
-                         "stopTime":"2016-10-08T14:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T14:24:00",
-                         "stopTime":"2016-10-11T15:27:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T16:12:00",
-                         "stopTime":"2016-10-11T16:32:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T18:38:00",
-                         "stopTime":"2016-10-11T18:46:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-16",
-                         "startTime":"2016-10-16T14:07:00",
-                         "stopTime":"2016-10-16T15:43:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-20",
-                         "startTime":"2016-10-20T14:54:04",
-                         "stopTime":"2016-10-20T15:43:52",
-                         "note":"Finished Section 3: Let's Get Wet (Home Report project)"},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T11:35:02",
-                         "stopTime":"2016-10-21T12:14:41",
-                         "note":"Start and finish Section 4: Automatic subclass generation"},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T17:50:13",
-                         "stopTime":"2016-10-21T18:36:03",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-22",
-                         "startTime":"2016-10-22T17:47:59",
-                         "stopTime":"2016-10-22T19:24:12",
-                         "note":"Trying to implement fetch controller in my own app"},
-                         {
-                         "workDay":"2016-10-25",
-                         "startTime":"2016-10-25T21:47:39",
-                         "stopTime":"2016-10-25T22:50:18",
-                         "note":"Section 6: Performance Tuning (started and finished section)"},
-                         {
-                         "workDay":"2016-10-27",
-                         "startTime":"2016-10-27T14:40:00",
-                         "stopTime":"2016-10-27T15:39:28",
-                         "note":"Section 7: Lightweight and mapping model migration"}
-                         ]},{
              "title":"GamingU",
              "order":8,
              "color":"",

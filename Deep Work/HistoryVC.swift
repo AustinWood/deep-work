@@ -111,8 +111,8 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
             let fullDateStr = CustomDateFormatter.dateISOtoFull(isoStr: workDayStr!)
             label.text = fullDateStr
         }
-        // Would like to make use of the TableViewHeaderLabel.addBlur() instead of colorWithAlphaComponent, but can't get the text and blur to work together
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.85)
+        // Would like to make use of the TableViewHeaderLabel.addBlur(), but can't get the text and blur to work together
+        label.backgroundColor = UIColor.black
         return label
     }
     
