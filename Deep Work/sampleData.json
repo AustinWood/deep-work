@@ -220,71 +220,25 @@
                          "workDay":"2016-10-28",
                          "startTime":"2016-10-28T17:58:55",
                          "stopTime":"2016-10-28T18:25:09",
-                         "note":""}
-                         ]},{
-             "title":"Ruby",
-             "order":1,
-             "color":"",
-             "timeLog": [
-                         
-                         {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T20:04:00",
-                         "stopTime":"2016-10-08T20:59:00",
-                         "note":"Started reading “The Ruby Programming Language”"},
-                         {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T11:05:00",
-                         "stopTime":"2016-10-09T12:05:00",
                          "note":""},
                          {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T12:01:00",
-                         "stopTime":"2016-10-10T12:23:00",
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T10:31:21",
+                         "stopTime":"2016-10-30T10:39:58",
                          "note":""},
                          {
-                         "workDay":"2016-10-11",
-                         "startTime":"2016-10-11T12:24:00",
-                         "stopTime":"2016-10-11T13:17:00",
-                         "note":""},
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T10:47:15",
+                         "stopTime":"2016-10-30T11:42:55",
+                         "note":"Embeded in Navigation Controller"},
                          {
-                         "workDay":"2016-10-12",
-                         "startTime":"2016-10-12T12:08:00",
-                         "stopTime":"2016-10-12T12:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-13",
-                         "startTime":"2016-10-13T11:25:00",
-                         "stopTime":"2016-10-13T12:30:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-14",
-                         "startTime":"2016-10-14T12:24:00",
-                         "stopTime":"2016-10-14T13:46:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T18:05:00",
-                         "stopTime":"2016-10-15T18:47:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-21",
-                         "startTime":"2016-10-21T10:20:32",
-                         "stopTime":"2016-10-21T11:28:33",
-                         "note":"Textbook"},
-                         {
-                         "workDay":"2016-10-23",
-                         "startTime":"2016-10-23T20:02:39",
-                         "stopTime":"2016-10-23T21:57:26",
-                         "note":"Started chapter 3. 8% through book"},
-                         {
-                         "workDay":"2016-10-24",
-                         "startTime":"2016-10-24T20:00:47",
-                         "stopTime":"2016-10-24T20:54:04",
-                         "note":"TRPL 9%"}
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T11:57:23",
+                         "stopTime":"2016-10-30T13:01:56",
+                         "note":"Reanimate colored borders on ViewDidAppear, add spell checker to text views, lots of refactoring and optimization"}
                          ]},{
              "title":"Problem Solving",
-             "order":2,
+             "order":1,
              "color":"",
              "timeLog": [
                          
@@ -400,13 +354,13 @@
                          "note":"Solved two Kata at Kyu 6"}
                          ]},{
              "title":"Data Structures",
-             "order":3,
+             "order":2,
              "color":"",
              "timeLog": [
              
              ]},{
              "title":"Stack Overflow",
-             "order":4,
+             "order":3,
              "color":"",
              "timeLog": [
                          
@@ -431,8 +385,101 @@
                          "stopTime":"2016-10-24T21:10:58",
                          "note":"Reloding collectionView cell without reseting image"}
                          ]},{
-             "title":"Core Data",
+             "title":"Ruby",
+             "order":4,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T20:04:00",
+                         "stopTime":"2016-10-08T20:59:00",
+                         "note":"Started reading “The Ruby Programming Language”"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T11:05:00",
+                         "stopTime":"2016-10-09T12:05:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T12:01:00",
+                         "stopTime":"2016-10-10T12:23:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-11",
+                         "startTime":"2016-10-11T12:24:00",
+                         "stopTime":"2016-10-11T13:17:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T12:08:00",
+                         "stopTime":"2016-10-12T12:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T11:25:00",
+                         "stopTime":"2016-10-13T12:30:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T12:24:00",
+                         "stopTime":"2016-10-14T13:46:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T18:05:00",
+                         "stopTime":"2016-10-15T18:47:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-21",
+                         "startTime":"2016-10-21T10:20:32",
+                         "stopTime":"2016-10-21T11:28:33",
+                         "note":"Textbook"},
+                         {
+                         "workDay":"2016-10-23",
+                         "startTime":"2016-10-23T20:02:39",
+                         "stopTime":"2016-10-23T21:57:26",
+                         "note":"Started chapter 3. 8% through book"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T20:00:47",
+                         "stopTime":"2016-10-24T20:54:04",
+                         "note":"TRPL 9%"}
+                         ]},{
+             "title":"Object Oriented Design",
              "order":5,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T21:27:00",
+                         "stopTime":"2016-10-09T21:54:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T19:38:00",
+                         "stopTime":"2016-10-10T20:34:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T15:00:00",
+                         "stopTime":"2016-10-13T15:16:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-13",
+                         "startTime":"2016-10-13T17:20:00",
+                         "stopTime":"2016-10-13T17:34:00",
+                         "note":""}
+                         ]},{
+             "title":"Weed App",
+             "order":6,
+             "color":"",
+             "timeLog": [
+             
+             ]},{
+             "title":"Core Data",
+             "order":7,
              "color":"",
              "timeLog": [
                          
@@ -503,7 +550,7 @@
                          "note":"Section 7: Lightweight and mapping model migration"}
                          ]},{
              "title":"GamingU",
-             "order":6,
+             "order":8,
              "color":"",
              "timeLog": [
                          
@@ -611,37 +658,10 @@
                          "workDay":"2016-10-28",
                          "startTime":"2016-10-28T17:37:24",
                          "stopTime":"2016-10-28T17:58:17",
-                         "note":"Fixed bugs: first game linked to ad; ratings images missing in Specialist"}
-                         ]},{
-             "title":"Object Oriented Design",
-             "order":7,
-             "color":"",
-             "timeLog": [
-                         
+                         "note":"Fixed bugs: first game linked to ad; ratings images missing in Specialist"},
                          {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T21:27:00",
-                         "stopTime":"2016-10-09T21:54:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T19:38:00",
-                         "stopTime":"2016-10-10T20:34:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-13",
-                         "startTime":"2016-10-13T15:00:00",
-                         "stopTime":"2016-10-13T15:16:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-13",
-                         "startTime":"2016-10-13T17:20:00",
-                         "stopTime":"2016-10-13T17:34:00",
-                         "note":""}
-                         ]},{
-             "title":"Weed App",
-             "order":8,
-             "color":"",
-             "timeLog": [
-             
-             ]}]}
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T10:22:32",
+                         "stopTime":"2016-10-30T10:30:40",
+                         "note":"Bug fixes"}
+                         ]}]}

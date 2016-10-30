@@ -9,11 +9,13 @@
 //
 // PRIORITY 1:
 //
+//   # Confirmation toast when deleting data / restoring from JSON / exporting / etc
 //   # projectCell size should be dynamic
 //   # Bug: Incorrect time displayed in project cell while dragging if timer is running
 //   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # HistoryVC:
 //       # Swipe to edit note
+//       # Scroll view indicator
 //   # Reordering:
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
@@ -25,8 +27,8 @@
 //
 // PRIORITY 2:
 //
+//   # Add info / about page
 //   # Investigate why some timeLogs with startTime == nil, create cleanup function?
-//   # Confirmation toast when deleting data / restoring from JSON
 //   # Delete data, 3 options: delete all, upload sample, import from backupt
 //   # Update fonts
 //   # Replace fatalError with something friendlier
