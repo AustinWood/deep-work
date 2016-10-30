@@ -28,9 +28,12 @@ class HistoryCell: UITableViewCell {
         var stopTime = Date()
         var stopTimeStr = ""
         
+        roundedBorderView.setBorderColor(color: UIColor.white)
+        
         // This entry is complete, set intervalLabel text
         if entry.stopTime != nil {
-            configureColors(color: UIColor.white)
+            timeLabel.textColor = UIColor.white
+            intervalLabel.textColor = UIColor.white
             stopTime = entry.stopTime!
             stopTimeStr = "  →  " +  CustomDateFormatter.formattedTime(date: stopTime)
             let entryLength = stopTime.timeIntervalSince(startTime!)
@@ -40,7 +43,8 @@ class HistoryCell: UITableViewCell {
         
         // Timer is still running, update intervalLabel text each second
         else {
-            configureColors(color: CustomColor.pinkHot)
+            timeLabel.textColor = CustomColor.pinkHot
+            intervalLabel.textColor = CustomColor.pinkHot
             updateLabelEachSecond()
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateLabelEachSecond), userInfo: nil, repeats: true);
         }
@@ -55,12 +59,6 @@ class HistoryCell: UITableViewCell {
             noteLabel.isHidden = false
             noteLabel.text = entry.note
         }
-    }
-    
-    func configureColors(color: UIColor) {
-        roundedBorderView.setBorderColor(color: color)
-        timeLabel.textColor = color
-        intervalLabel.textColor = color
     }
     
     var timer = Timer()

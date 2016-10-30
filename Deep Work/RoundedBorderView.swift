@@ -13,8 +13,8 @@ class RoundedBorderView: UIView {
     override func awakeFromNib() {
         self.backgroundColor = UIColor.clear
         self.layer.cornerRadius = 10
-        layer.borderWidth = 1
-        setBorderColor(color: UIColor.white)
+        layer.borderWidth = 0.6
+        setBorderColor(color: CustomColor.gray)
     }
     
     func setBorderColor(color: UIColor) {

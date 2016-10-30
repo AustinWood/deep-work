@@ -42,6 +42,7 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
     func setupViewController() {
         self.title = project?.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTitle))
+        self.view.backgroundColor = CustomColor.dark2
     }
     
     //////////////////////////////////////////////
@@ -112,7 +113,7 @@ class HistoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate, N
             label.text = fullDateStr
         }
         // Would like to make use of the TableViewHeaderLabel.addBlur(), but can't get the text and blur to work together
-        label.backgroundColor = UIColor.black
+        label.backgroundColor = CustomColor.dark1
         return label
     }
     
