@@ -109,7 +109,7 @@ class SummaryCell: UICollectionViewCell {
         }
         
         fillPercent = CGFloat(secondsPassed) / CGFloat(secondsInRange)
-        circleView.drawBorder(fillPercent: fillPercent)
+        circleView.drawBorder(fillPercent: fillPercent, color: CustomColor.pinkHot, animated: true)
     }
     
 }

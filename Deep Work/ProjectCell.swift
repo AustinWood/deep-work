@@ -27,7 +27,7 @@ class ProjectCell: UICollectionViewCell {
             }
         }
         
-        circleView.createLayer(fillPercent: 1.0, color: CustomColor.gray, animated: false)
+        circleView.drawGrayBorder()
         
         updateTimeLabels(project: project, moc: moc)
     }

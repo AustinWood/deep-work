@@ -36,6 +36,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         loadUserDefaults()
         setupSummaryCV()
         setupProjectCV()
+        addGrayBorders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +45,12 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setupSummaryCells()
+        addColoredBorders()
         projectCV.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        removeColoredBorders()
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -172,13 +174,42 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         summaryCV.reloadData()
     }
     
-    // Rename
-    func setupSummaryCells() {
+//    func setupSummaryCells() {
+//        addGrayBorders()
+//    }
+//    
+//    var summaryCellArray = [SummaryCell]()
+//    
+//    func createSummaryCellArray() {
+//
+//    }
+    
+    func addGrayBorders() {
+        var i = 0
+        while i <= 3 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
+            cell.circleView.drawGrayBorder()
+            i += 1
+        }
+    }
+    
+    func addColoredBorders() {
         var i = 0
         while i <= 3 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.addBorder(indexPath: i)
+            i += 1
+        }
+    }
+    
+    func removeColoredBorders() {
+        var i = 0
+        while i <= 3 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
+            cell.circleView.removeBorders()
             i += 1
         }
     }

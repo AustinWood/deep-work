@@ -22,12 +22,11 @@ class CircleView: UIView {
     
     let borderWidth: CGFloat = 1.0
     
-    func drawBorder(fillPercent: CGFloat) {
-        createLayer(fillPercent: 1.0, color: CustomColor.gray, animated: false)
-        createLayer(fillPercent: fillPercent, color: CustomColor.pinkHot, animated: true)
+    func drawGrayBorder() {
+        drawBorder(fillPercent: 1.0, color: CustomColor.gray, animated: false)
     }
     
-    func createLayer(fillPercent: CGFloat, color: UIColor, animated: Bool) {
+    func drawBorder(fillPercent: CGFloat, color: UIColor, animated: Bool) {
         self.layoutIfNeeded()
         var borderLayer: CAShapeLayer!
         let borderRadius = (self.frame.size.width + borderWidth/2)/2
@@ -37,7 +36,11 @@ class CircleView: UIView {
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = color.cgColor
         borderLayer.lineWidth = borderWidth
-        borderLayer.name = "borderLayer"
+        if animated {
+            borderLayer.name = "animatedBorder"
+        } else {
+            borderLayer.name = "staticBorder"
+        }
         if animated {
             borderLayer.strokeEnd = 0.0
             layer.addSublayer(borderLayer)
@@ -51,6 +54,15 @@ class CircleView: UIView {
         } else {
             borderLayer.strokeEnd = fillPercent
             layer.addSublayer(borderLayer)
+        }
+    }
+    
+    func removeBorders() {
+        for layer in self.layer.sublayers! {
+            if layer.name == "animatedBorder" {
+                print("removing a border")
+                layer.removeFromSuperlayer()
+            }
         }
     }
     
