@@ -1,78 +1,79 @@
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //
-// RESUME WITH:
+// NOW:
 //
-//   # Backup to BitBucket
-//   # Embed in Navigation Controller
-//
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//
-// TO DO:
-//
-// Priority 1:
-//
-//   # Bug: Incorrect time displayed in project cell while dragging
-//   # Import data from Hours
-//   # Investigate why some timeLogs with startTime == nil, create cleanup function?
-//   # Confirmation toast when deleting data / restoring from JSON
-//   # projectCell size should be dynamic
-//   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
-//   # Month + year title labels should by dynamic (now fixed "October" and "2016")
-//   # Update fonts
-//   # Calculate totals on timerStartStop, store in array, add one second
+//   # Rename from HistoryViewController to HistoryVC
 //   # Implement spell checker in textView
-//   # Range checker should use workDay attribute, not starTime attribute
+//   # Animation: Fade in button color in when starting timer, fade others out
 //   # Make FormatTime an extension of Date()
 //   # Move Date extension from TimeLog+CoreDataClass.swift to separate file
-//   # Animation: Fade in button color in when starting timer, fade others out
+//
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//
+// PRIORITY 1:
+//
+//   # DRY: Pass MyDateRange into TimeLog to prevent numerous switch statements throughout project
+//   # projectCell size should be dynamic
+//   # Bug: Incorrect time displayed in project cell while dragging if timer is running
+//   # Month + year title labels should by dynamic (now fixed "October" and "2016")
 //   # HistoryVC:
 //       # Swipe to edit note
-//       # Swipe to edit start/stop time
-//       # If in progress, "stop entry" instead of "delete"
-//       # Edge swipe to go back to main VC
-//       # Update style to match HomeVC
-//       # Rename from HistoryViewController to HistoryVC
-//
-// Priority 2:
-//
-//   # projectCell border shows percentage of weekly goal
-//   # Settings: Choose color for each project: text + border when not selected, background color when selected
-//   # Use gradient colors
-//   # Add blur effect
-//   # Switch between fixed and relative summaries (e.g. "October" vs "Last 30 days")
-//   # Settings: choose for 2-4 project cells per lines
-//   # isAfterMidnight()
-//   # Option to switch between All Time totals and Year totals
-//   # Sounds
-//   # Visual time line at top (like Hours... No! Better, like my new sketch)
-//   # Give projects an Area parent / tags
-//   # Daily/Weekly goals (see Evernote)
-//   # Delete/archive timers (when dragging, views at top turn into trash can/archive)
-//   # Add randomized confimation messages to "Add note"
-//   # Verify that time entries are disaplayed the same when moving across time zones
-//   # Animate: Invalid action, try to start timer while another running: startStopTimer()
-//   # Replace fatalError with something friendlier
 //   # Reordering:
 //       # Cell usually stays highlighted until another action is performed
 //       # App sometimes freezes if lots of reordering is done quickly
+//   # Import data from Hours
+//   # Backup to BitBucket with .gitignore
+//
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//
+// PRIORITY 2:
+//
+//   # Investigate why some timeLogs with startTime == nil, create cleanup function?
+//   # Confirmation toast when deleting data / restoring from JSON
+//   # Delete data, 3 options: delete all, upload sample, import from backupt
+//   # Update fonts
+//   # Replace fatalError with something friendlier
+//   # Delete timers
 //   # Design:
-//       # Professional design (see Evernote, buy asset pack?)
 //       # App icon
 //       # Launch screen
+//
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//
+// AFTER v1.0:
+//
 //   # HistoryVC:
+//       # Swipe to edit start/stop time
+//       # If in progress, "stop entry" instead of "delete"
+//       # Update style to match HomeVC
+//       # Add blur effects (section headers, NavBar)
 //       # Add summary views to top of VC
 //       # Stylize today
 //       # Stylize this week (color code with summary view at top of VC)
 //       # Show totals by day next to each dateLabel
 //       # After deleting a record, scroll to correct position
-//       # Segue left/right, not from bottom
-//
-// After v1.0:
-//
+//   # projectCell border shows percentage of weekly goal
+//   # Range checker should use workDay attribute, not starTime attribute
+//   # Calculate totals on timerStartStop, store in array, add one second
 //   # Create an asynchronous request in History, upon completion scroll to bottom (more elegant implementation than arbitrary 0.1 second delay)
 //   # Core Data optimization (see course notes)
+//   # isAfterMidnight()
+//   # Settings: Choose color for each project: text + border when not selected, background color when selected
+//   # Use gradient colors
+//   # Switch between fixed and relative summaries (e.g. "October" vs "Last 30 days")
+//   # Settings: choose for 2-4 project cells per lines
+//   # Option to switch between All Time totals and Year totals
+//   # Sounds
+//   # Visual time line at top (see sketch scan in Evernote)
+//   # Give projects an Area parent / tags
+//   # Delete/archive timers (when dragging, views at top turn into trash can/archive)
+//   # Add randomized confimation messages to "Add note"
+//   # Verify that time entries are disaplayed the same when moving across time zones
+//   # Animate: Invalid action, try to start timer while another running: startStopTimer()
 //
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
