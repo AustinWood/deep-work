@@ -49,6 +49,29 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         projectCV.reloadData()
     }
     
+    //var x = 0
+    override func viewDidLayoutSubviews() {
+        print("VIEW DID LAYOUT SUBVIEWS")
+        //print("update labels: \(x)")
+        //x += 1
+        let cells = projectCV.visibleCells
+        print("visible cell count: \(cells.count)")
+        let visibleCells = cells as! [ProjectCell]
+        for cell in visibleCells {
+            //let index = projectCV.indexPath(for: cell)!.row
+            //let visibleProject = projects[index]
+            //cell.sliderPast.setLabelText(text: "\(x)")
+//            visibleStr += "\(cell.currentRow!) "
+//            cell.updateLabels()
+            //cell.configureCell(rowNumber: cell.currentRow!, currentSmokeSession: smokeSession!)
+            let circleWidth = cell.circleView.frame.width
+            let circleHeight = cell.circleView.frame.height
+            print("width: \(circleWidth), height: \(circleHeight)")
+            cell.layoutCell()
+        }
+        //print("visible cells: \(visibleStr)")
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         removeColoredBorders()
         self.navigationController?.isNavigationBarHidden = false
@@ -248,10 +271,15 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let topInset = topView.frame.height + 10
         let bottomInset = bottomView.frame.height + 10
-        layout.sectionInset = UIEdgeInsets(top: topInset, left: 36, bottom: bottomInset, right: 36)
-        let cellSpacing: CGFloat = 20
-        let cellWidth = 150
-        let cellHeight = 198
+        let leftRightInset: CGFloat = 18
+        layout.sectionInset = UIEdgeInsets(top: topInset, left: leftRightInset, bottom: bottomInset, right: leftRightInset)
+        
+        let collectionViewWidth = projectCV.frame.width - (leftRightInset * 2)
+        let cellSpacing: CGFloat = 0
+        let numberOfColumns: CGFloat = 3
+        let cellWidth = (collectionViewWidth - (cellSpacing * (numberOfColumns - 1))) / numberOfColumns
+        let cellHeight = cellWidth + 48
+        
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = cellSpacing
         layout.minimumLineSpacing = cellSpacing

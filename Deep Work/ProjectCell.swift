@@ -17,9 +17,13 @@ class ProjectCell: UICollectionViewCell {
     @IBOutlet weak var currentSessionLabel: UILabel!
     
     internal func configureCell(project: Project, moc: NSManagedObjectContext) {
-        
+        layoutCell()
         titleLabel.text = project.title
-        circleView.layer.cornerRadius = self.frame.size.width / 2
+        updateTimeLabels(project: project, moc: moc)
+    }
+    
+    func layoutCell() {
+        //circleView.layer.cornerRadius = self.frame.size.width / 2
         
         for layer in circleView.layer.sublayers! {
             if layer.name == "staticBorder" {
@@ -27,8 +31,6 @@ class ProjectCell: UICollectionViewCell {
             }
         }
         circleView.drawGrayBorder()
-        
-        updateTimeLabels(project: project, moc: moc)
     }
     
     func updateTimeLabels(project: Project, moc: NSManagedObjectContext) {

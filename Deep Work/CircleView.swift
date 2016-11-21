@@ -15,6 +15,12 @@ class CircleView: UIView {
         self.layer.cornerRadius = self.frame.size.width / 2
     }
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.frame.size.width / 2
+    }
+    
     //////////////////////////////////////////////
     // MARK:- Circle Border
     
@@ -29,7 +35,9 @@ class CircleView: UIView {
     func drawBorder(fillPercent: CGFloat, color: UIColor, animated: Bool) {
         self.layoutIfNeeded()
         var borderLayer: CAShapeLayer!
-        let borderRadius = (self.frame.size.width + borderWidth/2)/2
+        //let borderRadius = (self.frame.size.width + borderWidth/2)/2 // ORIGINAL
+        //let borderRadius = (self.frame.size.width)/2 // also works
+        let borderRadius = (self.frame.size.width - borderWidth/2)/2 // best?
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: borderRadius, startAngle: CGFloat(M_PI * -0.5), endAngle: CGFloat(M_PI * 1.5), clockwise: true)
         borderLayer = CAShapeLayer()
         borderLayer.path = circlePath.cgPath

@@ -15,7 +15,7 @@ class SummaryCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    let titleLabelArray = ["Today", "Week", "October", "2016"]
+    let titleLabelArray = ["Today", "Week", "November", "2016"]
     
     internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         titleLabel.text = titleLabelArray[indexPath]
