@@ -3,6 +3,10 @@
 //
 // NOW:
 //
+// Install build counter
+// Change borders to white(er)
+// Border fills don't update when exiting app and reopening. Especially noticeable at midnight. AppDelegate?
+// Show running timers on lock screen
 //   # Delete timers
 //   # Import data from Hours
 //   # projectCell size should be dynamic
@@ -27,6 +31,7 @@
 //
 // PRIORITY 2:
 //
+// Always show running timer on lock screen
 //   # Add info / about page
 //   # When reordering, scroll from below nav bar
 //   # Investigate why some timeLogs with startTime == nil, create cleanup function?

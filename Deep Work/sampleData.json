@@ -1,8 +1,376 @@
 {"project": [
              
              {
-             "title":"Deep Work",
+             "title":"Отым",
              "order":0,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-11-27",
+                         "startTime":"2016-11-27T13:16:32",
+                         "stopTime":"2016-11-27T13:54:50",
+                         "note":"START NEW PROJECT"},
+                         {
+                         "workDay":"2016-11-27",
+                         "startTime":"2016-11-27T14:06:25",
+                         "stopTime":"2016-11-27T16:18:02",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-27",
+                         "startTime":"2016-11-27T16:22:41",
+                         "stopTime":"2016-11-27T17:02:49",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-27",
+                         "startTime":"2016-11-27T18:36:01",
+                         "stopTime":"2016-11-27T19:09:36",
+                         "note":"Working prototype! Select score for Deep Work and Planning from 3-4 options. Habits score calculated as percentage of completed due habits, weighted by priority. Total score calculated on main screen."},
+                         {
+                         "workDay":"2016-11-28",
+                         "startTime":"2016-11-28T00:05:55",
+                         "stopTime":"2016-11-28T00:16:24",
+                         "note":"Added Reset button to wipe User Defaults (but not Core Data)"},
+                         {
+                         "workDay":"2016-11-28",
+                         "startTime":"2016-11-28T20:46:39",
+                         "stopTime":"2016-11-28T21:50:36",
+                         "note":"Adjusted priority calculations. Added functionality to create a new habit. Create app icon and change display name to Отым"},
+                         {
+                         "workDay":"2016-11-29",
+                         "startTime":"2016-11-29T13:27:37",
+                         "stopTime":"2016-11-29T15:47:43",
+                         "note":"Add functionality to edit habit attributes. New HomeVC layout (buttons instead of alert controller). Current date displayed in Header. Major refactoring and code cleanup. "},
+                         {
+                         "workDay":"2016-11-29",
+                         "startTime":"2016-11-29T16:36:13",
+                         "stopTime":"2016-11-29T17:17:41",
+                         "note":"When closing out with Plan3, export data, reset scores and choose set currentDate accordingly"},
+                         {
+                         "workDay":"2016-11-30",
+                         "startTime":"2016-11-30T12:57:20",
+                         "stopTime":"2016-11-30T14:33:45",
+                         "note":""}
+                         ]},{
+             "title":"GamingU",
+             "order":1,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-10-06",
+                         "startTime":"2016-10-06T05:25:00",
+                         "stopTime":"2016-10-06T06:44:00",
+                         "note":"Finished Swift 3 updates"},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T06:47:00",
+                         "stopTime":"2016-10-07T07:58:00",
+                         "note":"InMobi ad integration"},
+                         {
+                         "workDay":"2016-10-07",
+                         "startTime":"2016-10-07T08:48:00",
+                         "stopTime":"2016-10-07T10:23:00",
+                         "note":"InMobi ad integration"},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T05:29:00",
+                         "stopTime":"2016-10-08T06:07:00",
+                         "note":"Installed InMobi framework"},
+                         {
+                         "workDay":"2016-10-08",
+                         "startTime":"2016-10-08T10:00:00",
+                         "stopTime":"2016-10-08T11:31:00",
+                         "note":"Banner Ads"},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T05:10:00",
+                         "stopTime":"2016-10-09T06:31:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T06:48:00",
+                         "stopTime":"2016-10-09T07:35:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-09",
+                         "startTime":"2016-10-09T10:27:00",
+                         "stopTime":"2016-10-09T11:45:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T05:44:00",
+                         "stopTime":"2016-10-10T07:45:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T08:28:00",
+                         "stopTime":"2016-10-10T09:29:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-10",
+                         "startTime":"2016-10-10T11:43:00",
+                         "stopTime":"2016-10-10T12:08:00",
+                         "note":"Banner ads"},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T06:18:00",
+                         "stopTime":"2016-10-12T07:19:00",
+                         "note":"Native ads"},
+                         {
+                         "workDay":"2016-10-12",
+                         "startTime":"2016-10-12T08:13:00",
+                         "stopTime":"2016-10-12T10:28:00",
+                         "note":"Native ads"},
+                         {
+                         "workDay":"2016-10-14",
+                         "startTime":"2016-10-14T06:51:00",
+                         "stopTime":"2016-10-14T07:01:00",
+                         "note":"plist"},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T12:35:00",
+                         "stopTime":"2016-10-15T13:03:00",
+                         "note":"Bug fixes"},
+                         {
+                         "workDay":"2016-10-15",
+                         "startTime":"2016-10-15T14:46:00",
+                         "stopTime":"2016-10-15T15:11:00",
+                         "note":"Bug fixes"},
+                         {
+                         "workDay":"2016-10-19",
+                         "startTime":"2016-10-19T06:39:00",
+                         "stopTime":"2016-10-19T07:41:00",
+                         "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"},
+                         {
+                         "workDay":"2016-10-22",
+                         "startTime":"2016-10-22T03:36:15",
+                         "stopTime":"2016-10-22T04:39:07",
+                         "note":"Fixed flashing images bug"},
+                         {
+                         "workDay":"2016-10-24",
+                         "startTime":"2016-10-24T12:40:33",
+                         "stopTime":"2016-10-24T12:54:42",
+                         "note":"Fixed bugs"},
+                         {
+                         "workDay":"2016-10-25",
+                         "startTime":"2016-10-25T11:22:44",
+                         "stopTime":"2016-10-25T12:51:21",
+                         "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"},
+                         {
+                         "workDay":"2016-10-28",
+                         "startTime":"2016-10-28T10:37:24",
+                         "stopTime":"2016-10-28T10:58:17",
+                         "note":"Fixed bugs: first game linked to ad; ratings images missing in Specialist"},
+                         {
+                         "workDay":"2016-10-30",
+                         "startTime":"2016-10-30T03:22:32",
+                         "stopTime":"2016-10-30T03:30:40",
+                         "note":"Bug fixes"},
+                         {
+                         "workDay":"2016-11-21",
+                         "startTime":"2016-11-21T12:37:33",
+                         "stopTime":"2016-11-21T14:08:29",
+                         "note":" Start EYEGAMES23 - Migration from Parse to Firebase"},
+                         {
+                         "workDay":"2016-11-21",
+                         "startTime":"2016-11-21T14:27:30",
+                         "stopTime":"2016-11-21T15:09:10",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-21",
+                         "startTime":"2016-11-21T15:13:01",
+                         "stopTime":"2016-11-21T16:43:13",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-22",
+                         "startTime":"2016-11-22T17:39:20",
+                         "stopTime":"2016-11-22T18:00:43",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-23",
+                         "startTime":"2016-11-23T10:11:43",
+                         "stopTime":"2016-11-23T11:18:38",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-28",
+                         "startTime":"2016-11-28T11:17:10",
+                         "stopTime":"2016-11-28T12:56:14",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-28",
+                         "startTime":"2016-11-28T20:17:01",
+                         "stopTime":"2016-11-28T20:44:20",
+                         "note":""}
+                         ]},{
+             "title":"HighStats",
+             "order":2,
+             "color":"",
+             "timeLog": [
+                         
+                         {
+                         "workDay":"2016-11-03",
+                         "startTime":"2016-11-03T06:45:57",
+                         "stopTime":"2016-11-03T09:34:26",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-03",
+                         "startTime":"2016-11-03T09:48:24",
+                         "stopTime":"2016-11-03T11:52:03",
+                         "note":"Custom TabBar with animations, UI for Contact, StartSmoking, Tracking, and SmokingMethod"},
+                         {
+                         "workDay":"2016-11-03",
+                         "startTime":"2016-11-03T13:28:37",
+                         "stopTime":"2016-11-03T14:09:35",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-04",
+                         "startTime":"2016-11-04T05:19:36",
+                         "stopTime":"2016-11-04T07:10:36",
+                         "note":"UI updated based on Asia's feedback, initial setup of ReviewVC"},
+                         {
+                         "workDay":"2016-11-04",
+                         "startTime":"2016-11-04T10:38:41",
+                         "stopTime":"2016-11-04T11:13:01",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-04",
+                         "startTime":"2016-11-04T11:42:16",
+                         "stopTime":"2016-11-04T12:47:03",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-05",
+                         "startTime":"2016-11-05T08:19:16",
+                         "stopTime":"2016-11-05T09:11:20",
+                         "note":"Started implementing CoreData. Create new session with strain, Take Hit adds HitDP to session"},
+                         {
+                         "workDay":"2016-11-05",
+                         "startTime":"2016-11-05T09:41:49",
+                         "stopTime":"2016-11-05T10:32:09",
+                         "note":"Core Data setup"},
+                         {
+                         "workDay":"2016-11-06",
+                         "startTime":"2016-11-06T03:20:40",
+                         "stopTime":"2016-11-06T05:31:34",
+                         "note":"Finished saving Core Data, also displays data in readable format in DataVC, began export as JSON function"},
+                         {
+                         "workDay":"2016-11-08",
+                         "startTime":"2016-11-08T19:05:57",
+                         "stopTime":"2016-11-08T20:35:34",
+                         "note":"Finished JSON exporter. Revamped RatingCV - now in scroll view, 5 star collection view works, and text view saves to Core Data"},
+                         {
+                         "workDay":"2016-11-09",
+                         "startTime":"2016-11-09T12:31:03",
+                         "stopTime":"2016-11-09T14:30:42",
+                         "note":"Update colors, adjust layout for all device sizes"},
+                         {
+                         "workDay":"2016-11-09",
+                         "startTime":"2016-11-09T14:33:39",
+                         "stopTime":"2016-11-09T15:42:15",
+                         "note":"Working on uploading to iTunes connect"},
+                         {
+                         "workDay":"2016-11-09",
+                         "startTime":"2016-11-09T17:20:47",
+                         "stopTime":"2016-11-09T17:53:27",
+                         "note":"Submitted v0.1 to Asia!"},
+                         {
+                         "workDay":"2016-11-10",
+                         "startTime":"2016-11-10T14:16:02",
+                         "stopTime":"2016-11-10T15:16:03",
+                         "note":"Changes based on feedback from v0.1.0 -- smoking methods fit in one screen, smoking method button on StartSmokingVC, Toast on data point logged"},
+                         {
+                         "workDay":"2016-11-10",
+                         "startTime":"2016-11-10T15:52:06",
+                         "stopTime":"2016-11-10T15:55:59",
+                         "note":"v0.1.1 in TestFlight!"},
+                         {
+                         "workDay":"2016-11-11",
+                         "startTime":"2016-11-11T08:45:12",
+                         "stopTime":"2016-11-11T10:51:53",
+                         "note":"*** START WORKING ON v0.2 ***"},
+                         {
+                         "workDay":"2016-11-11",
+                         "startTime":"2016-11-11T17:07:53",
+                         "stopTime":"2016-11-11T18:18:50",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-11",
+                         "startTime":"2016-11-11T18:36:20",
+                         "stopTime":"2016-11-11T19:55:00",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-11",
+                         "startTime":"2016-11-11T20:44:40",
+                         "stopTime":"2016-11-11T21:22:25",
+                         "note":"Highness slider working"},
+                         {
+                         "workDay":"2016-11-12",
+                         "startTime":"2016-11-12T08:20:50",
+                         "stopTime":"2016-11-12T08:44:36",
+                         "note":"Label for session number and timer"},
+                         {
+                         "workDay":"2016-11-12",
+                         "startTime":"2016-11-12T09:36:11",
+                         "stopTime":"2016-11-12T11:39:38",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-12",
+                         "startTime":"2016-11-12T11:53:25",
+                         "stopTime":"2016-11-12T12:14:15",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-12",
+                         "startTime":"2016-11-12T12:36:02",
+                         "stopTime":"2016-11-12T13:27:54",
+                         "note":"Label for Last Hit and major code cleanup in TrackingVC"},
+                         {
+                         "workDay":"2016-11-12",
+                         "startTime":"2016-11-12T13:44:09",
+                         "stopTime":"2016-11-12T14:42:21",
+                         "note":"Dope animation for leaf in tab bar"},
+                         {
+                         "workDay":"2016-11-14",
+                         "startTime":"2016-11-14T15:54:03",
+                         "stopTime":"2016-11-14T16:45:18",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-14",
+                         "startTime":"2016-11-14T19:37:16",
+                         "stopTime":"2016-11-14T20:12:19",
+                         "note":"Start working on EffectsVC"},
+                         {
+                         "workDay":"2016-11-15",
+                         "startTime":"2016-11-15T10:12:11",
+                         "stopTime":"2016-11-15T11:09:05",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-15",
+                         "startTime":"2016-11-15T19:37:23",
+                         "stopTime":"2016-11-15T19:46:29",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-16",
+                         "startTime":"2016-11-16T11:29:24",
+                         "stopTime":"2016-11-16T12:29:51",
+                         "note":"Created new data model to accommodate effects data points. Updated JSON exporter accordingly"},
+                         {
+                         "workDay":"2016-11-16",
+                         "startTime":"2016-11-16T12:52:28",
+                         "stopTime":"2016-11-16T13:50:08",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-16",
+                         "startTime":"2016-11-16T13:52:29",
+                         "stopTime":"2016-11-16T14:52:17",
+                         "note":""},
+                         {
+                         "workDay":"2016-11-16",
+                         "startTime":"2016-11-16T15:04:58",
+                         "stopTime":"2016-11-16T16:42:59",
+                         "note":"Finished EffectsVC"}
+                         ]},{
+             "title":"Deep Work",
+             "order":3,
              "color":"",
              "timeLog": [
                          
@@ -245,307 +613,15 @@
                          "workDay":"2016-11-21",
                          "startTime":"2016-11-21T16:47:49",
                          "stopTime":"2016-11-21T17:29:55",
-                         "note":"Layout: 3 cells per row, circles are always circles!"}
-                         ]},{
-             "title":"HighStats",
-             "order":1,
-             "color":"",
-             "timeLog": [
-                         
-                         {
-                         "workDay":"2016-11-03",
-                         "startTime":"2016-11-03T06:45:57",
-                         "stopTime":"2016-11-03T09:34:26",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-03",
-                         "startTime":"2016-11-03T09:48:24",
-                         "stopTime":"2016-11-03T11:52:03",
-                         "note":"Custom TabBar with animations, UI for Contact, StartSmoking, Tracking, and SmokingMethod"},
-                         {
-                         "workDay":"2016-11-03",
-                         "startTime":"2016-11-03T13:28:37",
-                         "stopTime":"2016-11-03T14:09:35",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-04",
-                         "startTime":"2016-11-04T05:19:36",
-                         "stopTime":"2016-11-04T07:10:36",
-                         "note":"UI updated based on Asia's feedback, initial setup of ReviewVC"},
-                         {
-                         "workDay":"2016-11-04",
-                         "startTime":"2016-11-04T10:38:41",
-                         "stopTime":"2016-11-04T11:13:01",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-04",
-                         "startTime":"2016-11-04T11:42:16",
-                         "stopTime":"2016-11-04T12:47:03",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-05",
-                         "startTime":"2016-11-05T08:19:16",
-                         "stopTime":"2016-11-05T09:11:20",
-                         "note":"Started implementing CoreData. Create new session with strain, Take Hit adds HitDP to session"},
-                         {
-                         "workDay":"2016-11-05",
-                         "startTime":"2016-11-05T09:41:49",
-                         "stopTime":"2016-11-05T10:32:09",
-                         "note":"Core Data setup"},
-                         {
-                         "workDay":"2016-11-06",
-                         "startTime":"2016-11-06T03:20:40",
-                         "stopTime":"2016-11-06T05:31:34",
-                         "note":"Finished saving Core Data, also displays data in readable format in DataVC, began export as JSON function"},
-                         {
-                         "workDay":"2016-11-08",
-                         "startTime":"2016-11-08T19:05:57",
-                         "stopTime":"2016-11-08T20:35:34",
-                         "note":"Finished JSON exporter. Revamped RatingCV - now in scroll view, 5 star collection view works, and text view saves to Core Data"},
-                         {
-                         "workDay":"2016-11-09",
-                         "startTime":"2016-11-09T12:31:03",
-                         "stopTime":"2016-11-09T14:30:42",
-                         "note":"Update colors, adjust layout for all device sizes"},
-                         {
-                         "workDay":"2016-11-09",
-                         "startTime":"2016-11-09T14:33:39",
-                         "stopTime":"2016-11-09T15:42:15",
-                         "note":"Working on uploading to iTunes connect"},
-                         {
-                         "workDay":"2016-11-09",
-                         "startTime":"2016-11-09T17:20:47",
-                         "stopTime":"2016-11-09T17:53:27",
-                         "note":"Submitted v0.1 to Asia!"},
-                         {
-                         "workDay":"2016-11-10",
-                         "startTime":"2016-11-10T14:16:02",
-                         "stopTime":"2016-11-10T15:16:03",
-                         "note":"Changes based on feedback from v0.1.0 -- smoking methods fit in one screen, smoking method button on StartSmokingVC, Toast on data point logged"},
-                         {
-                         "workDay":"2016-11-10",
-                         "startTime":"2016-11-10T15:52:06",
-                         "stopTime":"2016-11-10T15:55:59",
-                         "note":"v0.1.1 in TestFlight!"},
-                         {
-                         "workDay":"2016-11-11",
-                         "startTime":"2016-11-11T08:45:12",
-                         "stopTime":"2016-11-11T10:51:53",
-                         "note":"*** START WORKING ON v0.2 ***"},
-                         {
-                         "workDay":"2016-11-11",
-                         "startTime":"2016-11-11T17:07:53",
-                         "stopTime":"2016-11-11T18:18:50",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-11",
-                         "startTime":"2016-11-11T18:36:20",
-                         "stopTime":"2016-11-11T19:55:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-11",
-                         "startTime":"2016-11-11T20:44:40",
-                         "stopTime":"2016-11-11T21:22:25",
-                         "note":"Highness slider working"},
-                         {
-                         "workDay":"2016-11-12",
-                         "startTime":"2016-11-12T08:20:50",
-                         "stopTime":"2016-11-12T08:44:36",
-                         "note":"Label for session number and timer"},
-                         {
-                         "workDay":"2016-11-12",
-                         "startTime":"2016-11-12T09:36:11",
-                         "stopTime":"2016-11-12T11:39:38",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-12",
-                         "startTime":"2016-11-12T11:53:25",
-                         "stopTime":"2016-11-12T12:14:15",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-12",
-                         "startTime":"2016-11-12T12:36:02",
-                         "stopTime":"2016-11-12T13:27:54",
-                         "note":"Label for Last Hit and major code cleanup in TrackingVC"},
-                         {
-                         "workDay":"2016-11-12",
-                         "startTime":"2016-11-12T13:44:09",
-                         "stopTime":"2016-11-12T14:42:21",
-                         "note":"Dope animation for leaf in tab bar"},
-                         {
-                         "workDay":"2016-11-14",
-                         "startTime":"2016-11-14T15:54:03",
-                         "stopTime":"2016-11-14T16:45:18",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-14",
-                         "startTime":"2016-11-14T19:37:16",
-                         "stopTime":"2016-11-14T20:12:19",
-                         "note":"Start working on EffectsVC"},
-                         {
-                         "workDay":"2016-11-15",
-                         "startTime":"2016-11-15T10:12:11",
-                         "stopTime":"2016-11-15T11:09:05",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-15",
-                         "startTime":"2016-11-15T19:37:23",
-                         "stopTime":"2016-11-15T19:46:29",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-16",
-                         "startTime":"2016-11-16T11:29:24",
-                         "stopTime":"2016-11-16T12:29:51",
-                         "note":"Created new data model to accommodate effects data points. Updated JSON exporter accordingly"},
-                         {
-                         "workDay":"2016-11-16",
-                         "startTime":"2016-11-16T12:52:28",
-                         "stopTime":"2016-11-16T13:50:08",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-16",
-                         "startTime":"2016-11-16T13:52:29",
-                         "stopTime":"2016-11-16T14:52:17",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-16",
-                         "startTime":"2016-11-16T15:04:58",
-                         "stopTime":"2016-11-16T16:42:59",
-                         "note":"Finished EffectsVC"}
-                         ]},{
-             "title":"GamingU",
-             "order":2,
-             "color":"",
-             "timeLog": [
-                         
-                         {
-                         "workDay":"2016-10-06",
-                         "startTime":"2016-10-06T05:25:00",
-                         "stopTime":"2016-10-06T06:44:00",
-                         "note":"Finished Swift 3 updates"},
-                         {
-                         "workDay":"2016-10-07",
-                         "startTime":"2016-10-07T06:47:00",
-                         "stopTime":"2016-10-07T07:58:00",
-                         "note":"InMobi ad integration"},
-                         {
-                         "workDay":"2016-10-07",
-                         "startTime":"2016-10-07T08:48:00",
-                         "stopTime":"2016-10-07T10:23:00",
-                         "note":"InMobi ad integration"},
-                         {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T05:29:00",
-                         "stopTime":"2016-10-08T06:07:00",
-                         "note":"Installed InMobi framework"},
-                         {
-                         "workDay":"2016-10-08",
-                         "startTime":"2016-10-08T10:00:00",
-                         "stopTime":"2016-10-08T11:31:00",
-                         "note":"Banner Ads"},
-                         {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T05:10:00",
-                         "stopTime":"2016-10-09T06:31:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T06:48:00",
-                         "stopTime":"2016-10-09T07:35:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-09",
-                         "startTime":"2016-10-09T10:27:00",
-                         "stopTime":"2016-10-09T11:45:00",
-                         "note":""},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T05:44:00",
-                         "stopTime":"2016-10-10T07:45:00",
-                         "note":"Banner ads"},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T08:28:00",
-                         "stopTime":"2016-10-10T09:29:00",
-                         "note":"Banner ads"},
-                         {
-                         "workDay":"2016-10-10",
-                         "startTime":"2016-10-10T11:43:00",
-                         "stopTime":"2016-10-10T12:08:00",
-                         "note":"Banner ads"},
-                         {
-                         "workDay":"2016-10-12",
-                         "startTime":"2016-10-12T06:18:00",
-                         "stopTime":"2016-10-12T07:19:00",
-                         "note":"Native ads"},
-                         {
-                         "workDay":"2016-10-12",
-                         "startTime":"2016-10-12T08:13:00",
-                         "stopTime":"2016-10-12T10:28:00",
-                         "note":"Native ads"},
-                         {
-                         "workDay":"2016-10-14",
-                         "startTime":"2016-10-14T06:51:00",
-                         "stopTime":"2016-10-14T07:01:00",
-                         "note":"plist"},
-                         {
-                         "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T12:35:00",
-                         "stopTime":"2016-10-15T13:03:00",
-                         "note":"Bug fixes"},
-                         {
-                         "workDay":"2016-10-15",
-                         "startTime":"2016-10-15T14:46:00",
-                         "stopTime":"2016-10-15T15:11:00",
-                         "note":"Bug fixes"},
-                         {
-                         "workDay":"2016-10-19",
-                         "startTime":"2016-10-19T06:39:00",
-                         "stopTime":"2016-10-19T07:41:00",
-                         "note":"Began working on flashing images bug. Discovered issue is probably related to asynchronous requests and cell reuse"},
-                         {
-                         "workDay":"2016-10-22",
-                         "startTime":"2016-10-22T03:36:15",
-                         "stopTime":"2016-10-22T04:39:07",
-                         "note":"Fixed flashing images bug"},
-                         {
-                         "workDay":"2016-10-24",
-                         "startTime":"2016-10-24T12:40:33",
-                         "stopTime":"2016-10-24T12:54:42",
-                         "note":"Fixed bugs"},
-                         {
-                         "workDay":"2016-10-25",
-                         "startTime":"2016-10-25T11:22:44",
-                         "stopTime":"2016-10-25T12:51:21",
-                         "note":"Fixed 2 bugs: invalid URLs and load more games on scroll"},
-                         {
-                         "workDay":"2016-10-28",
-                         "startTime":"2016-10-28T10:37:24",
-                         "stopTime":"2016-10-28T10:58:17",
-                         "note":"Fixed bugs: first game linked to ad; ratings images missing in Specialist"},
-                         {
-                         "workDay":"2016-10-30",
-                         "startTime":"2016-10-30T03:22:32",
-                         "stopTime":"2016-10-30T03:30:40",
-                         "note":"Bug fixes"},
+                         "note":"Layout: 3 cells per row, circles are always circles!"},
                          {
                          "workDay":"2016-11-21",
-                         "startTime":"2016-11-21T12:37:33",
-                         "stopTime":"2016-11-21T14:08:29",
-                         "note":" Start EYEGAMES23 - Migration from Parse to Firebase"},
-                         {
-                         "workDay":"2016-11-21",
-                         "startTime":"2016-11-21T14:27:30",
-                         "stopTime":"2016-11-21T15:09:10",
-                         "note":""},
-                         {
-                         "workDay":"2016-11-21",
-                         "startTime":"2016-11-21T15:13:01",
-                         "stopTime":"2016-11-21T16:43:13",
+                         "startTime":"2016-11-21T17:51:08",
+                         "stopTime":"2016-11-21T17:58:06",
                          "note":""}
                          ]},{
              "title":"Core Data",
-             "order":3,
+             "order":4,
              "color":"",
              "timeLog": [
                          
@@ -621,7 +697,7 @@
                          "note":"Finished Core Data course!"}
                          ]},{
              "title":"Ruby",
-             "order":4,
+             "order":5,
              "color":"",
              "timeLog": [
                          
@@ -697,13 +773,13 @@
                          "note":""}
                          ]},{
              "title":"Data Structures",
-             "order":5,
+             "order":6,
              "color":"",
              "timeLog": [
              
              ]},{
              "title":"Problem Solving",
-             "order":6,
+             "order":7,
              "color":"",
              "timeLog": [
                          
@@ -819,7 +895,7 @@
                          "note":"Solved two Kata at Kyu 6"}
                          ]},{
              "title":"Obj Oriented Design",
-             "order":7,
+             "order":8,
              "color":"",
              "timeLog": [
                          
@@ -845,7 +921,7 @@
                          "note":""}
                          ]},{
              "title":"Stack Overflow",
-             "order":8,
+             "order":9,
              "color":"",
              "timeLog": [
                          
@@ -869,4 +945,16 @@
                          "startTime":"2016-10-24T13:55:59",
                          "stopTime":"2016-10-24T14:10:58",
                          "note":"Reloding collectionView cell without reseting image"}
-                         ]}]}
+                         ]},{
+             "title":"Momentum",
+             "order":10,
+             "color":"",
+             "timeLog": [
+             
+             ]},{
+             "title":"Pharmacology",
+             "order":11,
+             "color":"",
+             "timeLog": [
+             
+             ]}]}
