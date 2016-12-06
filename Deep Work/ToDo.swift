@@ -3,7 +3,6 @@
 //
 // NOW:
 //
-// Install build counter
 // Change borders to white(er)
 // Border fills don't update when exiting app and reopening. Especially noticeable at midnight. AppDelegate?
 // Show running timers on lock screen
