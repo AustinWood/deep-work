@@ -6,6 +6,7 @@
 // Change borders to white(er)
 // Border fills don't update when exiting app and reopening. Especially noticeable at midnight. AppDelegate?
 // Show running timers on lock screen
+// 'Trim time log' functionality, in case forgot to stop
 //   # Delete timers
 //   # Import data from Hours
 //   # projectCell size should be dynamic
