@@ -144,7 +144,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dg9-kL-sJA">
-                                                    <rect key="frame" x="18" y="40" width="339" height="120"/>
+                                                    <rect key="frame" x="14" y="40" width="347" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="7Hk-08-of4"/>
@@ -186,7 +186,7 @@
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tps-u2-ALu">
                                                                                 <rect key="frame" x="0.0" y="71" width="71" height="27"/>
-                                                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
                                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -220,10 +220,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Dg9-kL-sJA" secondAttribute="trailing" constant="18" id="ToU-m4-Ysx"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dg9-kL-sJA" secondAttribute="trailing" constant="14" id="ToU-m4-Ysx"/>
                                                 <constraint firstAttribute="bottom" secondItem="Dg9-kL-sJA" secondAttribute="bottom" constant="8" id="qjW-on-ZRE"/>
                                                 <constraint firstItem="Dg9-kL-sJA" firstAttribute="top" secondItem="59F-2P-OXh" secondAttribute="top" constant="40" id="upO-Fn-huR"/>
-                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="leading" secondItem="59F-2P-OXh" secondAttribute="leading" constant="18" id="xhb-Vq-AVf"/>
+                                                <constraint firstItem="Dg9-kL-sJA" firstAttribute="leading" secondItem="59F-2P-OXh" secondAttribute="leading" constant="14" id="xhb-Vq-AVf"/>
                                             </constraints>
                                         </view>
                                     </subviews>

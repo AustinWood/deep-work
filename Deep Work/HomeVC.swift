@@ -36,12 +36,12 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         loadUserDefaults()
         setupSummaryCV()
         setupProjectCV()
-        addGrayBorders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
         self.navigationController?.isNavigationBarHidden = true
+//        addGrayBorders()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,7 +51,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     //var x = 0
     override func viewDidLayoutSubviews() {
-        print("VIEW DID LAYOUT SUBVIEWS")
         //print("update labels: \(x)")
         //x += 1
         let cells = projectCV.visibleCells
@@ -184,10 +183,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func setupSummaryCV() {
         summaryCV.layoutIfNeeded()
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let cellSpacing: CGFloat = 18
+        let cellSpacing: CGFloat = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let collectionViewWidth = summaryCV.frame.width
-        let cellWidth = (collectionViewWidth - (cellSpacing * 3)) / 4
+        let cellWidth = (collectionViewWidth - (cellSpacing * 4)) / 5
         let cellHeight = cellWidth + 36
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = cellSpacing
@@ -199,7 +198,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func addGrayBorders() {
         var i = 0
-        while i <= 3 {
+        while i <= 4 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.circleView.drawGrayBorder()
@@ -209,7 +208,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func addColoredBorders() {
         var i = 0
-        while i <= 3 {
+        while i <= 4 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.addBorder(indexPath: i)
@@ -219,7 +218,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func removeColoredBorders() {
         var i = 0
-        while i <= 3 {
+        while i <= 4 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.circleView.removeBorders()
@@ -293,7 +292,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Summary collection view
         if collectionView.tag == 0 {
-            return 4
+            return 5
         }
         // Project collection view
         return projects.count
@@ -373,6 +372,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 0 {
             dateRange = MyDateRange(rawValue: indexPath.row)!
+            print("\(dateRange)")
             let defaults = UserDefaults.standard
             defaults.set(indexPath.row, forKey: "dateRange")
             updateSummaryColors()
@@ -388,7 +388,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func updateSummaryLabels() {
         var i = 0
-        while i <= 3 {
+        // Refactor: this is bad code, as I have to update each instance manually when summaryCV number of cells changes
+        while i <= 4 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.updateTimeLabel(indexPath: i, projects: projects, moc: moc!)
@@ -398,7 +399,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func updateSummaryColors() {
         var i = 0
-        while i <= 3 {
+        while i <= 4 {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = summaryCV.cellForItem(at: indexPath) as! SummaryCell
             cell.updateBackgroundColor(indexPath: i)

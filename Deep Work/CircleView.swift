@@ -21,6 +21,12 @@ class CircleView: UIView {
         self.layer.cornerRadius = self.frame.size.width / 2
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = self.frame.size.width / 2.0
+        drawGrayBorder()
+    }
+    
     //////////////////////////////////////////////
     // MARK:- Circle Border
     
@@ -29,6 +35,7 @@ class CircleView: UIView {
     let borderWidth: CGFloat = 1.0
     
     func drawGrayBorder() {
+        removeGrayBorders()
         drawBorder(fillPercent: 1.0, color: CustomColor.gray, animated: false)
     }
     
@@ -68,6 +75,14 @@ class CircleView: UIView {
     func removeBorders() {
         for layer in self.layer.sublayers! {
             if layer.name == "animatedBorder" {
+                layer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    func removeGrayBorders() {
+        for layer in self.layer.sublayers! {
+            if layer.name == "staticBorder" {
                 layer.removeFromSuperlayer()
             }
         }

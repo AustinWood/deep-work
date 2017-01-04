@@ -68,7 +68,7 @@ public class TimeLog: NSManagedObject {
         case .year:
             return TimeLog.yearTime(projects: projects, moc: moc)
         case .allTime:
-            return 0 as TimeInterval
+            return TimeLog.allTime(projects: projects, moc: moc)
         }
     }
     
@@ -128,6 +128,11 @@ public class TimeLog: NSManagedObject {
             }
         }
         return calculateTotalTime(timeLogs: yearTimeLogs, moc: moc)
+    }
+    
+    internal static func allTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
+        let allTimeLogs = getTimeLogsForProjects(projects: projects, moc: moc)
+        return calculateTotalTime(timeLogs: allTimeLogs, moc: moc)
     }
     
     //////////////////////////////////////////////

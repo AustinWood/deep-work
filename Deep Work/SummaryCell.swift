@@ -15,7 +15,7 @@ class SummaryCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    let titleLabelArray = ["Today", "Week", "December", "2016"]
+    let titleLabelArray = ["Today", "Week", "January", "2017", "All"]
     
     internal func configureCell(indexPath: Int, projects: [Project], moc: NSManagedObjectContext) {
         titleLabel.text = titleLabelArray[indexPath]
@@ -37,7 +37,7 @@ class SummaryCell: UICollectionViewCell {
         let defaults = UserDefaults.standard
         let savedDateRange = defaults.integer(forKey: "dateRange")
         if savedDateRange == indexPath {
-            circleView.setBackgroundColor(color: CustomColor.blueLight)
+            circleView.setBackgroundColor(color: CustomColor.purple2)
 //            switch indexPath {
 //            case 0:
 //                circleView.setBackgroundColor(color: CustomColor.blueLight)
@@ -88,8 +88,11 @@ class SummaryCell: UICollectionViewCell {
             oneYear.year = 1
             let endOfYear = calendar.date(byAdding: oneYear, to: startOfYear!)
             secondsInRange = endOfYear!.timeIntervalSince(startOfYear!)
-        default:
-            break
+        case .allTime:
+            
+            print("draw mah circle!")
+            secondsPassed = 1
+            secondsInRange = 1
         }
         
         fillPercent = CGFloat(secondsPassed) / CGFloat(secondsInRange)
