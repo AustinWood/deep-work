@@ -57,19 +57,29 @@ public class TimeLog: NSManagedObject {
     // Refactor: one function that checks if timeLogs are in a range; today, week, month, year define the range and call that function
     
     internal static func calculateTimeInterval(projects: [Project], dateRange: MyDateRange, moc: NSManagedObjectContext) -> TimeInterval {
-        
+        let filteredProjects = TimeLog.filteredProjects(projects: projects)
         switch dateRange {
         case .today:
-            return TimeLog.todayTime(projects: projects, moc: moc)
+            return TimeLog.todayTime(projects: filteredProjects, moc: moc)
         case .week:
-            return TimeLog.weekTime(projects: projects, moc: moc)
+            return TimeLog.weekTime(projects: filteredProjects, moc: moc)
         case .month:
-            return TimeLog.monthTime(projects: projects, moc: moc)
+            return TimeLog.monthTime(projects: filteredProjects, moc: moc)
         case .year:
-            return TimeLog.yearTime(projects: projects, moc: moc)
+            return TimeLog.yearTime(projects: filteredProjects, moc: moc)
         case .allTime:
-            return TimeLog.allTime(projects: projects, moc: moc)
+            return TimeLog.allTime(projects: filteredProjects, moc: moc)
         }
+    }
+    
+    internal static func filteredProjects(projects: [Project]) -> [Project] {
+        var filteredProjects: [Project] = []
+        for project in projects {
+            if project.title != "Sleep" {
+                filteredProjects.append(project)
+            }
+        }
+        return filteredProjects
     }
     
     internal static func todayTime(projects: [Project], moc: NSManagedObjectContext) -> TimeInterval {
